@@ -1,31 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-        <el-button>默认按钮</el-button>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <!-- 头部 -->
+    <Header/>
     <router-view/>
+    <!-- 尾部 -->
+    <el-button type="primary">jsjaj </el-button>
   </div>
 </template>
 
+<script lang="ts">
+  import {Component,Vue} from 'vue-property-decorator';
+  import Header from '@/components/header/index.vue';
+
+  @Component({
+      name: 'App',
+      components: {
+        Header
+      }
+  })
+
+  export default class extends Vue {}
+</script>
+
 <style lang="less">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  display: flex;
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  .transition {
+    transition: all .3s;
   }
 }
 </style>
