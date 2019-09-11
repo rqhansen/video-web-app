@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import './style/less/reset.less';
+import './style/scss/reset.scss';
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import './plugins';
-import './style/scss/element-variables.scss';
+// import './style/scss/variables.scss';
 
 Vue.config.productionTip = false
 

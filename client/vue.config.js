@@ -2,10 +2,8 @@
 module.exports = {
     css: {
         loaderOptions: {
-            less: {
-                globalVars: {
-                    primary: '#be1204'
-                }
+            sass: {
+               prependData: `@import "@/style/scss/variables.scss";`
             }
         } 
     },

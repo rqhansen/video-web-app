@@ -1,10 +1,42 @@
 <template>
-    <div>
-        
+    <div class="search">
+        <el-input type="text" v-model.trim="movieName" placeholder="输入电影名称搜索..." clearable></el-input>
+        <div class="btn-wp">
+            <el-button type="primary" size="middle" :round="false" icon="el-icon-search">搜索</el-button>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
-    import {Components,Vue} from 'vue-property-decorator';
-    
+    import {Component,Vue} from 'vue-property-decorator';
+    @Component({
+        name: 'Search'
+    })
+
+    export default class extends Vue {
+        private movieName = ''
+    }
 </script>
+
+<style lang="scss" scoped>
+    .search {
+        display: flex;
+        justify-content: flex-start;
+        .el-input {
+            /deep/ .el-input__inner {
+                width: 406px;
+                height: 38px;
+                border-radius: 0;
+                border-right: none;
+            }
+        }
+        .el-button {
+            width: 112px;
+            height: 38px;
+            padding: 0;
+            line-height: 38px;
+            font-size: 16px;
+            border-radius: 0;
+        }
+    }
+</style>

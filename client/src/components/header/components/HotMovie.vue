@@ -30,7 +30,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
     .m-list {
         width: 100%;
         height: 30px;
@@ -42,12 +42,15 @@
         }
         dd {
             float: left;
-            color: #999;
+            color: $font-gray-color;
             span {
                 margin: 0 2px;
                 cursor: pointer;
                 &:hover {
-                    color: #be1204;
+                    color: $--color-primary;
+                }
+                &.active {
+                    color: $--color-primary;
                 }
             } 
         }

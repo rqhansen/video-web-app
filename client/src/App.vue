@@ -22,8 +22,23 @@
   export default class extends Vue {}
 </script>
 
-<style lang="less">
+<style lang="scss">
 #app {
+  //全局
+  .clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+  }
+  .clearfix {
+    zoom: 1;
+  }
+  .section {
+    width: 1000px;
+    margin: 0 auto;
+  }
   .transition {
     transition: all .3s;
   }
