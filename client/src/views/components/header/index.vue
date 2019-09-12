@@ -99,14 +99,14 @@
                     color: $font-blue-color;
                     cursor: pointer;
                     &:hover {
-                        color: $--color-primary;
+                        color: $font-theme-color;
                     }
                 }
             }
         }
         //导航菜单
         .movie-nav-wp {
-            background: $--color-primary;
+            background: $font-theme-color;
         }
     }
 </style>

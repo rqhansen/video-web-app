@@ -10,7 +10,8 @@
 
 <script lang="ts">
   import {Component,Vue} from 'vue-property-decorator';
-  import Header from '@/components/header/index.vue';
+  import {getIndexMovieList} from '@/apis/home.ts';
+  import Header from '@/views/components/header/index.vue';
 
   @Component({
       name: 'App',
@@ -19,7 +20,12 @@
       }
   })
 
-  export default class extends Vue {}
+  export default class extends Vue {
+    async created() {
+      const list = await getIndexMovieList();
+      console.log(list);
+    }
+  }
 </script>
 
 <style lang="scss">

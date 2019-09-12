@@ -1,11 +1,12 @@
 import Vue from 'vue'
-import './style/scss/reset.scss';
+import elementUi from './plugins/element';
+import './styles/index.scss';
 import App from './App.vue'
+// import './utils/rquest.js'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
-import './plugins';
-// import './style/scss/variables.scss';
+Vue.use(elementUi);
 
 Vue.config.productionTip = false
 

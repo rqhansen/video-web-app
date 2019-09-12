@@ -27,6 +27,7 @@
             '扫毒2: 天地对决',
             '追龙2: 贼王'
         ];
+        
     }
 </script>
 
@@ -47,10 +48,10 @@
                 margin: 0 2px;
                 cursor: pointer;
                 &:hover {
-                    color: $--color-primary;
+                    color: $font-theme-color;
                 }
                 &.active {
-                    color: $--color-primary;
+                    color: $font-theme-color;
                 }
             } 
         }
