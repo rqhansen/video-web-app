@@ -1,0 +1,130 @@
+MYSQL57
+User: root
+Password: admin
+
+win7下MYSQL57启动：
+在开始菜单的搜索框中输入cmd，然后右键单击，并选择以管理员身份运行！
+
+mysql查询字符集不匹配问题
+
+插入数据
+module.exports.movieSql = "insert into films (typeId,typeName,fullName,pureName,pubDate,indexImgSrc,detailImgSrc,transName,subPureName,year,country,types,language,caption,onDate,imdbScore,imdbLink,format,fileSize,videoSize,filmLength,doubanScore,doubanLink,director,editor,actor,label,shortIntro,getAward,downUrl) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+mysql自增字段重新从1开始计数并且删除数据
+truncate table 表名;
+
+
+ER_CANT_AGGREGATE_2COLLATIONS: Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and （utf8_general_ci,COERCIBLE) for operation '='
+解决
+
+SET collation_connection = 'utf8_general_ci'
+
+ALTER DATABASE your_database_name CHARACTER SET utf8 COLLATE utf8_general_ci 
+ALTER TABLE your_table_name CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci
+
+html的<meta charset="utf-8">
+
+//找出重复数据
+select * from films where fullName in (select fullName from films group by fullName having count(fullName) > 1)
+
+删除表
+delete * from 表名
+
+truncate  table  films;
+
+select * from films where fullName in (select fullName from films group by fullName having count(fullName) > 1)
+
+//删除表中重复数据,只保留最小id的数据(重点)
+delete from films where id not in (select id from (select min(id) as id from films group by pureName ) t)
+						
+排序：
+select * from films order by 字段 ASC;
+//DESC从近到远
+select * from films order by pubDate DESC;
+
+//排序加限制数量
+select * from films order by pubDate DESC limit 24 offset 0 ;
+
+mysql-限制返回记录数limit
+
+SELECT  * FROM  table  LIMIT 2 OFFSET 1;
+
+比如这个SQL ，limit后面跟的是2条数据，offset后面是从第1条开始读取。
+
+SELECT  * FROM  table  LIMIT 2,1;
+
+而这个SQL，limit后面是从第2条开始读，读取1条信息。
+
+创建新表,并拷贝旧表的一些字段到新表:
+CREATE TABLE newadmin AS
+(
+    SELECT username, password FROM admin
+)
+
+//从旧表创建新表，字段完全复制,只复制typeId等于指定值的
+create table actionFilm as select * from films where typeId=1; 
+
+//依据当前字段更新某个字段，(if-else)
+update films
+
+set typeName =(case
+
+when(typeId=1) then
+
+'动作片'
+
+when(typeId=2) then
+
+'喜剧片'
+
+when(typeId=3) then
+
+'爱情片'
+
+when(typeId=4) then
+
+'科幻片'
+
+when(typeId=5) then
+
+'剧情片'
+
+when(typeId=6) then
+
+'悬疑片'
+
+when(typeId=7) then
+
+'战争片'
+
+when(typeId=8) then
+
+'恐怖片'
+
+when(typeId=9) then
+
+'灾难片'
+
+else 
+
+''
+
+end)
+
+//同步读取文件：
+fs.readdirSync('\public\\images\\movies\\detail'); 目录,返回文件名的数组
+//异步读取文件
+fs.readdir(目录路径)
+//同步删除文件
+ fs.unlinkSync(`\public\\images\\movies\\detail/${files[i]}`);
+ //异步删除文件
+  fs.unlink(`/public/images/movies/index/${name}`, function (err) {
+        //     if (err) { console.log('删除文件失败') }
+        //     console.log('删除成功');
+        // })
+
+        mysql中的外键foreign key
+
+      一、如果一张表中有一个非主键的字段指向了别一张表中的主键，就将该字段叫做外键。
+
+						

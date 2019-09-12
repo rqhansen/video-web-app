@@ -1,0 +1,29 @@
+.title-bar {
+    position: relative;
+    line-height: 40px;
+    background-color:#f7f7f7;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    overflow: hidden;
+}
+.title-bar h2 {
+    font-weight: bold;
+    clear: right;
+}
+.title-bar a {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    height: 100%;
+    font-size: 12px;
+    font-weight: bold;
+}
+.title-bar a:hover {
+    color:#be1204;
+}
+@media only screen and (min-width: 576px) {
+    .title-bar {
+        padding: 0 10px;
+    }
+}

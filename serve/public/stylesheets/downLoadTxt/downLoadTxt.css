@@ -1,0 +1,43 @@
+
+.title {
+    width: 100%;
+    margin: 10px 0;
+    height: 42px;
+    line-height: 42px;
+    font-size: 22px;
+    border-bottom: 1px solid #ececec;
+}
+.title img {
+    vertical-align: top;
+}
+.down-load-txt-wp {
+    margin: 0 auto;
+    padding: 0 15px;
+    color: #333;
+}
+.down-load-txt .img-wp {
+    margin: 5px 0;
+}
+.down-load-txt p {
+    width: 100%;
+    word-break: break-all;
+}
+.down-load-txt .tip {
+    min-height: 30px;
+    line-height: 30px;
+}
+
+@media only screen and (max-width: 776px) {
+    .title {
+        font-size: 18px;
+    }
+    .down-load-txt-wp {
+        padding: 45px 0 0;
+        margin: 0 7px;
+    }
+    .down-load-txt img {
+        width: 100%;
+        height: 100%;
+    }
+}
+

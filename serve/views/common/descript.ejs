@@ -1,0 +1,18 @@
+<% if(flag==='index' || flag==='notFind' || flag==="downLoadTxt" || flag==="downLoadThurder") {%>
+<title>万寻资源网_万寻迅雷电影下载网_最新电影_高清电影_迅雷免费电影下载</title>
+<meta name="keywords" content="电影下载,最新电影,电影网,迅雷电影,高清电影下载">
+<meta name="description" content="万寻电影网－最新电影,迅雷电影下载-每天搜集最新迅雷免费电影下载。为使用迅雷软件的用户提供最新的免费电影下载、小电影下载、高清电影下载等服务。" />
+<% } else if (flag==="detail") {%>
+<title><%= movieName %>下载_迅雷下载_免费下载_万寻电影网</title>
+<meta name="keywords" content="<%= movieName %>迅雷下载,<%= movieName %>下载,下载地址>" />
+<meta name="description"
+    content="<%= movieName %>迅雷下载、<%= movieName %>免费下载，在万寻网您可以免费获得<%= movieName %>的详细剧情介绍,剧照和迅雷高速免费下载地址>" />
+<% } else if(flag==='type') { %>
+<title><%= movieName %>_迅雷下载_免费下载_万寻电影网</title>
+<meta name="keywords" content="<%= movieName %>迅雷下载,免费下载，Gvod高清在线播放" />
+<meta name="description" content="<%= movieName %>迅雷下载、免费下载，<%= movieName %>Gvod高清在线播放，剧情介绍等>" />
+<% } else if(flag==='search') {%>
+<title>万寻高清电影下载网万寻迅雷电影下载站-搜索最新电影免费下载</title>
+<meta name="keywords" content="迅雷下载,免费电影下载,海报剧情" />
+<meta name="description" content="本站每天搜集最新电影迅雷下载" />
+<% } %>

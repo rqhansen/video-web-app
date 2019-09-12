@@ -1,0 +1,38 @@
+<%- include("common/header",{flag:"index",movieName:""}) %>
+<!-- 主内容,hhe -->
+<div class="main" id="main">
+    <div class="container">
+        <div class="title-bar">
+            <h2>今日热门电影推荐</h2>
+            <a href="/html/movie/more">更多...</a>
+        </div>
+        <div class="media-list">
+            <ul>
+                <% for(let i=0;i<movies.length;i++) {%>
+                <li>
+                    <a href="<%- `/html/${movies[i].filmType}/${movies[i].id}` %>" target="_self"
+                        title="<%= movies[i].pureName %>">
+                        <div>
+                            <img class="lazyImg" src="/public/images/lazy-load.jpg"
+                                data-src="/public/<%= movies[i].indexImgSrc %>" alt="<%= movies[i].pureName %>">
+                        </div>
+                        <div>
+                            <h3 class="ellipsis"><%- movies[i].fullName %></h3>
+                            <time class=<%= movies[i].isNew ?'new':'' %>><%- movies[i].pubDate%></time>
+                        </div>
+                    </a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 主内容结束 -->
+<!-- 底部 -->
+<%- include('common/footer.ejs') %>
+<!-- 底部结束 -->
+<%- include('common/script.ejs') %>
+<script src="/public/javascripts/index.js"></script>
+</body>
+
+</html>

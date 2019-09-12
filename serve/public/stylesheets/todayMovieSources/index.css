@@ -1,0 +1,11 @@
+
+.empty {
+    height: 315px;
+    line-height: 200px;
+    text-align: center;
+}
+@media only screen and (max-width: 776px) {
+    .empty {
+        height: 404px;
+    }
+}
