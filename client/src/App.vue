@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import {Component,Vue} from 'vue-property-decorator';
-  import {getIndexMovieList} from '@/apis/home.ts';
-  import Header from '@/views/components/header/index.vue';
+  import {getIndexMovieList} from '@/apis/home';
+  import Header from '@components/header/index.vue';
 
   @Component({
       name: 'App',

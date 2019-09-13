@@ -65,6 +65,8 @@
     .header {
         //热门电影
         .hot-m-wp {
+            // width: 95%;
+            // margin: 0 auto;
             box-shadow: 0 1px 10px 0 #d9d9d9;
             overflow: hidden;
         }

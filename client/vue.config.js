@@ -1,29 +1,71 @@
+const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+
+function resolve (dir) {
+    return path.join(__dirname, dir)
+}
 
 module.exports = {
+    publicPath:'./',
+    outputDir: 'dist',
+    assetsDir: './static',
+    //configureWebpack配置
+    configureWebpack: config => {
+        if(process.env.NODE_ENV === 'production') {
+            //开启gzip压缩
+            config.plugins.push(new CompressionWebpackPlugin({
+                test: /\.js$|\.html$|\.css/,
+                threshold:10240,
+                deleteOriginalAssets: true // 删除原文件
+            }))
+            //去掉debugger
+            config.plugins.push(
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        compress: {
+                            drop_debugger: true,
+                            drop_console: true,
+                            pure_funcs: ['console.log']
+                        }
+                    },
+                    sourceMap: false,
+                    // parallel: true
+                })
+            ); 
+        }
+    },
     chainWebpack: config => {
         config.plugins.delete('prefetch');
+        config.plugins.delete('preload');
+        // //压缩代码
+        config.optimization.minimize(true);
+        // //分割代码
+        config.optimization.splitChunks({
+            chunks: 'all'
+        });
+        config.resolve.alias
+            .set('@',resolve('src'))
+            .set('@imgs',resolve('src/assets/images'))
+            .set('@styles',resolve('src/assets/styles'))
+            .set('@components',resolve('src/views/components'))
         config.module
             .rule('images')
                 .use('url-loader')
                     .loader('url-loader')
                     .tap(options => Object.assign(options,{limit: 10240}))
-        config.
-        plugin
-        (
-        'webpack-bundle-analyzer'
-        ).use(BundleAnalyzerPlugin).end();
+        config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin).end();
     },
     css: {
+        sourceMap: false,
         loaderOptions: {
             sass: {
-               prependData: `@import "@/styles/variables.scss";` //全局变量
+               prependData: `@import "@/assets/styles/variables.scss";` //全局变量
             }
-        } 
+        },
+        modules: false 
     },
-    // publicPath: process.env.NODE_ENV === 'production' ? '/client/' : ''
-    publicPath: '/',
-    outputDir: 'dist',
     productionSourceMap: false,
     devServer: {
         publicPath: "/",
@@ -37,13 +79,14 @@ module.exports = {
             pathRewrite: {'^/api': '/api'},    //这里重写路径(接口路径里有api字段)
             // pathRewrite: {‘^/api’: '/'} //这里重写路径(接口路径里无api字段)
             // ws: false
-          },
-        //   "/socket": {
-        //     target: "ws://192.168.5.131:80",
-        //     changeOrigin: true
-        //   }
+          }
         },
         open: "chrome",
-        hotOnly: true
+        hotOnly: true,
+        compress: false,
+        overlay: {
+            warnings: true,
+            errors: true
+        }
       },
 }

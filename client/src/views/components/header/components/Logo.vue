@@ -2,7 +2,7 @@
     <div class="logo">
         <h1>
             <router-link to="/">
-                <img src="@/assets/image/header/logo.jpg" title="万寻资源网" width="200" height="66">
+                <img src="@imgs/header/logo.jpg" title="万寻资源网" width="200" height="66">
             </router-link>
         </h1>
     </div>
