@@ -30,8 +30,8 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
   .home {
-    min-width: 768px;
     .m-list-wp{
+      width: 100%;
       margin-top: 20px;
     }
   }

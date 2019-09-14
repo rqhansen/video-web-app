@@ -3,9 +3,9 @@
         <ul>
             <li v-for="m of movies" :key="m.pureName">
                 <div class="poster">
-                    <img :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
+                    <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
                 </div>
-                <div class="txt">
+                <div class="txt" :class="{'new': m.isNew}">
                     <h3 class="ellipsis">{{m.fullName}}</h3>
                     <time>{{m.pubDate}}</time>
                 </div>
@@ -38,15 +38,15 @@ export default class extends Vue {
 <style lang="scss" scoped>
     .movie-list {
         width: 100%;
-        min-width: 768px;
         ul {
-            width: 100%;
+            min-width: 716px;
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;
             li {
-                // flex: 0 0 16.66667%;
-                padding: 0 15px;
+                flex: 0 0 16.666667%;
+                max-width: 16.666667%;
+                padding: 0 10px;
                 margin-bottom: 15px;
                 font-size: 0;
                 text-align: center;
@@ -66,51 +66,42 @@ export default class extends Vue {
                         padding: 1px;
                         border: 1px solid transparent;
                         &:hover {
-                            border-color: #FF0000;
+                            border-color: $font-red-color;
                         }
                     }
                 }
                 .txt {
                     margin-top: 2px;
+                    &.new {
+                        time {
+                            color: $font-red-color;
+                        }
+                    }
                     h3 {
                         line-height: 24px;
                         font-size: 13px;
-                        color: #FF0000;
+                        color: $font-red-color;
                     }
                     time {
                         line-height: 16px;
                         font-size: 12px;
-                        color: #FF0000;
+                        color: $font-regular-color;
                     }
                 }
             }
         }
     }
-    @media (min-width: 768px) {
-        .movie-list {
-            li {
-                flex: 0 0 25%;
-                max-width: 25%;
-            }
-        } 
-    }
-    @media (min-width: 992px) {
-        .movie-list {
-            li {
-                flex: 0 0 16.66667%;
-                max-width: 16.66667%;
-            }
-        } 
-    }
-
     @media (max-width: 992px) {
         .movie-list {
             ul {
                 li {
-                    padding: 0 10px;
+                    flex: 0 0 25%;
+                    max-width: 25%;
+                    padding: 0 15px;
                 }
             }
         } 
     }
+    
 </style>
 

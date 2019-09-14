@@ -4,18 +4,19 @@
     <Header/>
     <router-view/>
     <!-- 尾部 -->
-    <!-- <el-button type="primary">jsjaj </el-button> -->
+    <common-footer/>
   </div>
 </template>
 
 <script lang="ts">
   import {Component,Vue} from 'vue-property-decorator';
-  import Header from '@components/header/index.vue';
-
+  import Header from '@components/header/Index.vue';
+  import CommonFooter from '@components/footer/Index.vue';
   @Component({
       name: 'App',
       components: {
-        Header
+        Header,
+        CommonFooter
       }
   })
 
@@ -26,7 +27,9 @@
 
 <style lang="scss">
 #app {
-  //全局
+  .clearfix {
+    zoom: 1;
+  }
   .clearfix:after {
     display: block;
     clear: both;
@@ -34,17 +37,9 @@
     visibility: hidden;
     height: 0;
   }
-  .clearfix {
-    zoom: 1;
-  }
   .section {
     width: 1000px;
     margin: 0 auto;
-  }
-  @Media (max-width:999px) {
-    .section  {
-      width: 95%;
-    }
   }
   .transition {
     transition: all .3s;
@@ -53,6 +48,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  @Media (max-width:999px) {
+    .section  {
+      width: 95%;
+    }
   }
 }
 </style>

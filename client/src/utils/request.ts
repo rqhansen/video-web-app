@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const service = axios.create({
     // baseURL: '192.168.5.131',
-    timeout: 5000
+    timeout: 6000
 });
 
 //添加请求拦截器

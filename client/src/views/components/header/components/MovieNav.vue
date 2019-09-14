@@ -59,7 +59,7 @@ export default class extends Vue{
 
 <style lang="scss" scoped>
     .movie-nav {
-        min-width: 768px;
+        width: 100%;
         li {
             float: left;
             height: 40px;
