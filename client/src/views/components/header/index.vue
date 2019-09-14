@@ -64,9 +64,8 @@
 <style lang="scss" scoped>
     .header {
         //热门电影
+        min-width: 768px;
         .hot-m-wp {
-            // width: 95%;
-            // margin: 0 auto;
             box-shadow: 0 1px 10px 0 #d9d9d9;
             overflow: hidden;
         }
@@ -96,7 +95,7 @@
             .down-m-tip {
                 position: absolute;
                 bottom: 12px;
-                right: 406px;
+                right: 396px;
                 .tip {
                     color: $font-blue-color;
                     cursor: pointer;
@@ -109,6 +108,23 @@
         //导航菜单
         .movie-nav-wp {
             background: $font-theme-color;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .header {
+            .logo-search-wp {
+                .logo-wp {
+                    width: 30%;
+                }
+                .down-m-tip  {
+                    left: 30%;
+                    right: initial;
+                }
+            }
+            .search-wp {
+                width: 70%;
+            }
         }
     }
 </style>

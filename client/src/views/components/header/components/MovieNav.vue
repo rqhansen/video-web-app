@@ -49,6 +49,9 @@ export default class extends Vue{
         },
         {
             title: '动画片'
+        },
+        {
+            title: '更多'
         }
     ]
 }
@@ -56,6 +59,7 @@ export default class extends Vue{
 
 <style lang="scss" scoped>
     .movie-nav {
+        min-width: 768px;
         li {
             float: left;
             height: 40px;

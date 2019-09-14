@@ -14,6 +14,34 @@ module.exports = {
     //configureWebpack配置
     configureWebpack: config => {
         if(process.env.NODE_ENV === 'production') {
+            config.optimization = {
+                splitChunks: {
+                    cacheGroups: {
+                        vendors: {
+                            name: `chunk-vendors`,
+                            test: /[\\/]node_modules[\\/]/,
+                            priority: -10,
+                            chunks: 'async'
+                        },
+                        common: {
+                            name: `chunk-common`,
+                            minChunks: 2,
+                            priority: -20,
+                            chunks: 'async',
+                            reuseExistingChunk: true
+                        },
+                        // newsdk: {
+                        //     name: 'new-sdk-config',
+                        //     test: /new-sdk/,  // src 项目下的文件夹，对该文件jia
+                        //     minChunks: 1,
+                        //     minSize: 0,
+                        //     chunks: 'async',
+                        //     priority: 60,
+                        //     reuseExistingChunk: true
+                        // }
+                   }
+                }
+            }
             //开启gzip压缩
             config.plugins.push(new CompressionWebpackPlugin({
                 test: /\.js$|\.html$|\.css/,
@@ -39,6 +67,7 @@ module.exports = {
     chainWebpack: config => {
         config.plugins.delete('prefetch');
         config.plugins.delete('preload');
+
         // //压缩代码
         config.optimization.minimize(true);
         // //分割代码
@@ -55,6 +84,7 @@ module.exports = {
                 .use('url-loader')
                     .loader('url-loader')
                     .tap(options => Object.assign(options,{limit: 10240}))
+                    //
         config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin).end();
     },
     css: {

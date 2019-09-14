@@ -4,13 +4,12 @@
     <Header/>
     <router-view/>
     <!-- 尾部 -->
-    <el-button type="primary">jsjaj </el-button>
+    <!-- <el-button type="primary">jsjaj </el-button> -->
   </div>
 </template>
 
 <script lang="ts">
   import {Component,Vue} from 'vue-property-decorator';
-  import {getIndexMovieList} from '@/apis/home';
   import Header from '@components/header/index.vue';
 
   @Component({
@@ -21,10 +20,7 @@
   })
 
   export default class extends Vue {
-    async created() {
-      const list = await getIndexMovieList();
-      console.log(list);
-    }
+    
   }
 </script>
 
@@ -45,8 +41,18 @@
     width: 1000px;
     margin: 0 auto;
   }
+  @Media (max-width:999px) {
+    .section  {
+      width: 95%;
+    }
+  }
   .transition {
     transition: all .3s;
+  }
+  .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

@@ -24,7 +24,7 @@
         justify-content: flex-start;
         .el-input {
             /deep/ .el-input__inner {
-                width: 406px;
+                width: 396px;
                 height: 38px;
                 border-radius: 0;
                 border-right: none;
@@ -37,6 +37,26 @@
             line-height: 38px;
             font-size: 16px;
             border-radius: 0;
+        }
+    }
+    @media (max-width: 767px) {
+        .search {
+            width: 100%;
+            .el-input {
+                width: 80%;
+                 /deep/ .el-input__inner {
+                    width: 100%;
+                    height: 38px;
+                    border-radius: 0;
+                    border-right: none;
+                }
+            }
+             .btn-wp {
+                    width: 20%;
+                }
+                .el-button {
+                    width: 100%;
+                }
         }
     }
 </style>

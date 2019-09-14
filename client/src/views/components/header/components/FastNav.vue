@@ -34,6 +34,9 @@ export default class extends Vue{
             color: $font-blue-color;
             font-size: 13px;
             cursor: pointer;
+            &:last-child {
+                margin-right: 0;
+            }
             &:hover {
                 color: $font-theme-color;
             }
