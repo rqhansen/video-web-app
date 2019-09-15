@@ -48,7 +48,13 @@ async function getWeekMovieSources(ctx) {
     if (cartoon.length) {
         results.push(handleMovieList(cartoon));
     }
-    await (ctx.render('weekMovieSources', { results }));
+    // await (ctx.render('weekMovieSources', { results }));
+    ctx.body = {
+        code: 0,
+        data: {
+            typeMovie: results
+        }
+    }
 }
 
 module.exports = {

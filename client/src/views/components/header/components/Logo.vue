@@ -1,21 +1,32 @@
 <template>
     <div class="logo">
         <h1>
-            <router-link to="/">
+            <div class="img-wp" :class="{'not-allowed': isHomePage}" @click="goHome">
                 <img src="@imgs/header/logo.jpg" title="万寻资源网">
-            </router-link>
+            </div>
         </h1>
     </div>
 </template>
 
 <script lang="ts">
-    import {Component,Vue} from 'vue-property-decorator';
+    import { Component, Vue, Watch } from 'vue-property-decorator';
+    import { Route } from 'vue-router';
     @Component({
         name: 'Logo'
     })
 
     export default class extends Vue {
+        
+        get isHomePage() {
+            const {name} = this.$route;
+            return name === 'home';
+        }
 
+        //去首页
+        private goHome() {
+            if(this.isHomePage) return;
+            this.$router.push('/');
+        }
     }
 </script>
 
@@ -27,10 +38,14 @@
             width: 100%;
             height: 100%;
             margin-left: -22px;
-            a {
+            .img-wp {
                 display: block;
                 width:100%;
                 height: 100%;
+                cursor: pointer;
+                &.not-allowed {
+                    cursor: initial;
+                }
             }
         }
         img {

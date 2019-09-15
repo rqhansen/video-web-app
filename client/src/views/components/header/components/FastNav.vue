@@ -1,7 +1,7 @@
 <template>
     <div class="fast-nav">
         <ul>
-            <li v-for="m of menus" :key="m.title" class="transition">{{m.title}}</li>
+            <li v-for="m of menus" :key="m.title" class="transition"><span @click="goPage(m.routeName)">{{m.title}}</span></li>
         </ul>
     </div>
 </template>
@@ -12,17 +12,32 @@ import {Component,Vue} from 'vue-property-decorator';
     name: 'FastNav'
 })
 export default class extends Vue{
-        private menus = [
-            {
-                title: '今日最新电影',
-            },
-            {
-                title: '近一周最新电影',
-            },
-            {
-                title: '收藏本站'
-            }
-        ]
+    private menus = [
+        {
+            title: '今日最新电影',
+            routeName: 'todayMovie'
+        },
+        {
+            title: '近一周最新电影',
+            routeName: 'weekMovie'
+        },
+        {
+            title: '收藏本站'
+        }
+    ]
+
+    private goPage(rName: string) {
+        if(!rName) {
+            this.$message({
+                message: '请使用Ctrl+D进行添加',
+                center: true,
+                showClose: true,
+                type: 'success'
+            });
+            return;
+        }
+        this.$router.push(`${rName}`);
+    }
 }
 </script>
 

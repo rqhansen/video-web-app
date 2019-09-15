@@ -3,8 +3,12 @@
         <dl>
             <dt><span>热门电影：</span></dt>
             <dd>
-                <span v-for="(movie,idx) of movies" :key="idx" class="transition">
-                    {{movie}}
+                <span v-for="(movie,idx) of movies" 
+                        :key="idx" 
+                        class="transition" 
+                        :class="{'new': idx <2}"
+                        @click="goMovieDetail(movie.url)">
+                    {{movie.title}}
                 </span>
             </dd>
         </dl>
@@ -13,21 +17,62 @@
 
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator'
+
+    interface MovieList {
+        title: string,
+        url: string
+    }
+
+    const defaultMovieList: MovieList = {
+        title: '',
+        url: ''
+    }
+
     @Component({
         name: 'HotMovie',
         
     })
     export default class extends Vue {
-        //初始化data
-        private movies= [
-            '昆虫总动员2',
-            '速度与激情：特别行动',
-            '熊出没：原始时代',
-            '银河补习班',
-            '扫毒2: 天地对决',
-            '追龙2: 贼王'
-        ];
-        
+        private movies = [defaultMovieList]
+
+        created() {
+            this.getMovieList();
+            console.log();
+        }
+
+        private getMovieList() {
+            this.movies = [
+                {
+                    title: '鼠胆英雄',
+                    url:'/html/comedy/3862'
+                },
+                {
+                    title: '鬼娃回魂',
+                    url:'/html/horror/2670'
+                },
+                {
+                    title: '狱中龙',
+                    url:'/html/action/4645'
+                },  
+                {
+                    title: '昆虫总动员2',
+                    url:'/html/cartoon/14'
+                },  
+                {
+                    title: '银河补习班',
+                    url:'/html/drama/6080'
+                },
+                {
+                    title: '追龙2:贼王',
+                    url:'/html/drama/6079'
+                }
+            ]
+        }
+
+        //去电影详情页
+        private goMovieDetail(url: string) {
+            // console.log(1);
+        }  
     }
 </script>
 
@@ -47,10 +92,10 @@
             span {
                 margin: 0 2px;
                 cursor: pointer;
-                &:hover {
+                &:not(.new):hover {
                     color: $font-theme-color;
                 }
-                &.active {
+                &.new {
                     color: $font-theme-color;
                 }
             } 

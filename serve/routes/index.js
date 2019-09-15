@@ -20,6 +20,25 @@ router.prefix('/api')
 router.get('/homeMovieList', getHome);
 
 /**
+ * 今日最新电影
+ */
+router.get('/todayMovie', getTodayMovieSources);
+
+
+/**
+ * 近一周最新电影
+ */
+router.get('/weekMovie', getWeekMovieSources);
+
+
+/**
+ * 更多
+ */
+
+router.get('/moreMovie', getMore);
+
+
+/**
  * 下载无限制版迅雷
  */
 router.get('/html/downThurder', downLoadThurder);
@@ -28,21 +47,7 @@ router.get('/html/downThurder', downLoadThurder);
  * 查看下载教程
  */
 router.get('/html/downTxt', downLoadTxt);
-/**
- * 今日最新电影
- */
-router.get('/html/todaymovie', getTodayMovieSources);
 
-/**
- * 近一周最新电影
- */
-router.get('/html/weekmovie', getWeekMovieSources);
-
-/**
- * 更多
- */
-
-router.get('/html/*/more', getMore);
 
 
 /**

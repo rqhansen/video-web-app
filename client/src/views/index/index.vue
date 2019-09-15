@@ -4,15 +4,14 @@
       <!-- 今日热门电影推荐 -->
       <title-bar></title-bar>
       <!-- 今日电影列表 -->
-      <div class="m-list-wp">
-          <movie-list></movie-list>
-      </div>
+      <movie-list :movies="movies"></movie-list>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import {getIndexMovies} from '@/apis/home';
+import { Component,Vue } from 'vue-property-decorator';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
 
@@ -24,7 +23,15 @@ import MovieList from '@/components/MovieList.vue';
   },
 })
 export default class extends Vue {
-  
+    private movies = [];
+    async created() {
+        this.getMovieList();
+    }
+
+    private async getMovieList() {
+        const { data: { code, data: { movies } } } = await getIndexMovies();
+        this.movies = movies;
+    }
 }
 </script>
 
@@ -32,7 +39,7 @@ export default class extends Vue {
   .home {
     .m-list-wp{
       width: 100%;
-      margin-top: 20px;
+      min-width: 720px;
     }
   }
 </style>

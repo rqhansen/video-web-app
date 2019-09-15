@@ -2,7 +2,9 @@
   <div id="app">
     <!-- 头部 -->
     <Header/>
-    <router-view/>
+    <keep-alive>
+      <router-view class="main"/>
+    </keep-alive>
     <!-- 尾部 -->
     <common-footer/>
   </div>
@@ -26,6 +28,7 @@
 </script>
 
 <style lang="scss">
+@import '~@styles/index.scss';
 #app {
   .clearfix {
     zoom: 1;
@@ -53,6 +56,10 @@
     .section  {
       width: 95%;
     }
+  }
+
+  .main {
+    min-height: 725px;
   }
 }
 </style>

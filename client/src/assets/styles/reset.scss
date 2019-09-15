@@ -18,6 +18,7 @@ html,body {
     background-color: #fff;
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
+    user-select: none;
 }
 
 html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,p,button,textarea,input {

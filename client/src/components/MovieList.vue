@@ -15,22 +15,22 @@
 </template>
 
 <script lang="ts">
-import {Component,Vue} from 'vue-property-decorator';
-import {getIndexMovieList} from '@/apis/home';
+import {Component,Prop,Vue} from 'vue-property-decorator';
 
 @Component({
     name: 'movieList'
 })
 
 export default class extends Vue {
-    private movies = [];
-    private async getMovieList() {
-        const { data: { code, data: { movies } } } = await getIndexMovieList();
-        console.log(movies);
-        this.movies = movies;
-    }
+    @Prop({default: () => []}) private movies!: []
+    // private movies = [];
+    // private async getMovieList() {
+    //     // const { data: { code, data: { movies } } } = await getIndexMovieList();
+    //     // console.log(movies);
+    //     // this.movies = movies;
+    // }
     async created() {
-        this.getMovieList();
+        // this.getMovieList();
     }
 }
 </script>
@@ -38,6 +38,7 @@ export default class extends Vue {
 <style lang="scss" scoped>
     .movie-list {
         width: 100%;
+        padding-top: 10px;
         ul {
             min-width: 716px;
             display: flex;
@@ -46,7 +47,7 @@ export default class extends Vue {
             li {
                 flex: 0 0 16.666667%;
                 max-width: 16.666667%;
-                padding: 0 10px;
+                padding: 0 20px;
                 margin-bottom: 15px;
                 font-size: 0;
                 text-align: center;

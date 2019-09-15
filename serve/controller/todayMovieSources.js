@@ -20,7 +20,13 @@ async function getTodayMovieSources(ctx) {
         item.isNew = true;
         delete item['date_format(pubDate,"%Y-%m-%d")'];
     })
-    await (ctx.render('todayMovieSources', { results }));
+    ctx.body = {
+        code: 0,
+        data: {
+            movies: results
+        }
+    }
+    // await (ctx.render('todayMovieSources', { results }));
 }
 
 module.exports = {
