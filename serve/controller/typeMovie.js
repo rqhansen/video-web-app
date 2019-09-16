@@ -3,6 +3,8 @@ const { query } = require('../database/db');
 const { movieTypes, limitSeconds } = require('../config/index');
 
 async function getTypeMovies(ctx) {
+    console.log(ctx.url);
+    // return;
     let { url } = ctx;
     let urlSplit = url.split('/');
     let [type, index] = [urlSplit[2], urlSplit[3]];
@@ -49,7 +51,15 @@ async function getTypeMovies(ctx) {
         delete item['trim(fullName)'];
         delete item['left(shortIntro,90)'];
     })
-    await ctx.render('typeMovie', { typeChar, result, total: length });
+    // await ctx.render('typeMovie', { typeChar, result, total: length });
+    ctx.body = {
+        code: 0,
+        data: {
+            typeMovie: result,
+            typeChar,
+            total: length
+        }
+    }
 }
 
 module.exports = {

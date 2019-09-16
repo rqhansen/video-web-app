@@ -37,6 +37,18 @@ router.get('/weekMovie', getWeekMovieSources);
 
 router.get('/moreMovie', getMore);
 
+/**
+ * 指定类型的电影列表
+ */
+
+// router.get(`/${typeExp}/index`, getTypeMovies);
+
+/**
+ * 类别电影
+ */
+
+router.get(`/${typeExp}`, getTypeMovies);
+
 
 /**
  * 下载无限制版迅雷
@@ -49,12 +61,6 @@ router.get('/html/downThurder', downLoadThurder);
 router.get('/html/downTxt', downLoadTxt);
 
 
-
-/**
- * 类别电影
- */
-
-router.get(`/html/${typeExp}`, getTypeMovies);
 
 /**
  * 电影详情
@@ -71,10 +77,6 @@ router.get('/plus/search', getSearchResult);
  */
 router.get('*', getNotFind);
 
-/**
- * 指定类型的电影列表
- */
 
-// router.get('/html/*/index', getSomeTypeMoiveList);
 
 module.exports = router

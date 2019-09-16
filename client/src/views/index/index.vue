@@ -4,7 +4,7 @@
       <!-- 今日热门电影推荐 -->
       <title-bar></title-bar>
       <!-- 今日电影列表 -->
-      <movie-list :movies="movies"></movie-list>
+      <movie-list :handleMovieFun="indexMoviesFun"></movie-list>
     </div>
   </div>
 </template>
@@ -23,15 +23,7 @@ import MovieList from '@/components/MovieList.vue';
   },
 })
 export default class extends Vue {
-    private movies = [];
-    async created() {
-        this.getMovieList();
-    }
-
-    private async getMovieList() {
-        const { data: { code, data: { movies } } } = await getIndexMovies();
-        this.movies = movies;
-    }
+    private indexMoviesFun = getIndexMovies;
 }
 </script>
 

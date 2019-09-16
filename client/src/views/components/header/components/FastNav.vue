@@ -36,7 +36,7 @@ export default class extends Vue{
             });
             return;
         }
-        this.$router.push(`${rName}`);
+        this.$router.push(`/${rName}`);
     }
 }
 </script>

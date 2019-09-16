@@ -1,7 +1,7 @@
 <template>
     <div class="movie-list">
         <ul>
-            <li v-for="m of movies" :key="m.pureName">
+            <li v-for="m of CurrentMovie" :key="m.pureName">
                 <div class="poster">
                     <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
                 </div>
@@ -17,20 +17,31 @@
 <script lang="ts">
 import {Component,Prop,Vue} from 'vue-property-decorator';
 
+// export interface movieList {
+
+// } 
+
+
 @Component({
     name: 'movieList'
 })
 
 export default class extends Vue {
-    @Prop({default: () => []}) private movies!: []
-    // private movies = [];
-    // private async getMovieList() {
-    //     // const { data: { code, data: { movies } } } = await getIndexMovieList();
-    //     // console.log(movies);
-    //     // this.movies = movies;
-    // }
+    @Prop({default: () => {}}) private handleMovieFun!: () => {}
+    @Prop({default: () => []}) private fetchMovie!: () => []
+
+    get CurrentMovie() {
+        return this.fetchMovie.length ? this.fetchMovie : this.movies
+    }
+    private movies = [];
     async created() {
-        // this.getMovieList();
+        if(!this.fetchMovie.length) { //排除掉
+            this.getMovieList();
+        }
+    }
+    private async getMovieList() {
+        const { data: { code, data: { movies } } } = await this.handleMovieFun();
+        this.movies = movies;
     }
 }
 </script>

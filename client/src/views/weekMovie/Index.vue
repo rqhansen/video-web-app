@@ -4,7 +4,7 @@
             <div class="m-type-list" 
                 v-for="(m,idx) of movies" :key="idx">
                 <title-bar :title="`最新${m[0].typeName}`" :url="`/${m[0].filmType}/index`" />
-                <movie-list :movies="m"></movie-list>
+                <movie-list :fetchMovie="m"></movie-list>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
     <div class="more-movie-wp">
         <div class="section">
             <title-bar :isShowMore="false"/>
-            <movie-list :movies="movies"/>
+            <movie-list :handleMovieFun="moreMovieFun"/>
         </div>
     </div>
 </template>
@@ -23,16 +23,7 @@ import MovieList from '@/components/MovieList.vue';
 
 
 export default class extends Vue{
-    private movies = [];
-
-    async created() {
-        this.getMoreMovie();
-    }
-
-    private async getMoreMovie() {
-        const { data: { code, data: { movies } } } = await getMoreMovie();
-        this.movies = movies;
-    }
+    private moreMovieFun = getMoreMovie;
 }
 </script>
 
