@@ -76,6 +76,7 @@ module.exports = {
         });
         config.resolve.alias
             .set('@',resolve('src'))
+            .set('@js',resolve('src/assets/js'))
             .set('@imgs',resolve('src/assets/images'))
             .set('@styles',resolve('src/assets/styles'))
             .set('@components',resolve('src/views/components'))

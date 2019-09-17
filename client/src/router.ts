@@ -33,7 +33,7 @@ export default new Router({
       component: MoreMovie
     },
     {
-      path: '/:id/index',
+      path: '/movie/:id',
       name: 'classifyMovie',
       component: ClassifyMovie
     }

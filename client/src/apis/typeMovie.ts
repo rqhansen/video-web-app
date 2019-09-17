@@ -1,7 +1,8 @@
 import request from '@/utils/request';
 
-export const getTypeMovie = (id: string) => 
+export const getTypeMovie = (params: object) => 
     request({
-        url: `/api/${id}/index`,
-        method: 'get'
+        url: `/api/typeMovie`,
+        method: 'post',
+        data: params
     })

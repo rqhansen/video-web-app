@@ -3,7 +3,7 @@
         <div class="section">
             <div class="m-type-list" 
                 v-for="(m,idx) of movies" :key="idx">
-                <title-bar :title="`最新${m[0].typeName}`" :url="`/${m[0].filmType}/index`" />
+                <title-bar :title="`最新${m[0].typeName}`" :url="`/movie/${m[0].filmType}`" />
                 <movie-list :fetchMovie="m"></movie-list>
             </div>
         </div>

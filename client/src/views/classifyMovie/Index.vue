@@ -1,8 +1,15 @@
 <template>
     <div class="classify-m-wp">
         <div class="section classify-m">
-            <crumbs/>
-            <page-list/>
+            <crumbs v-if="movie.length" 
+                    :typeEnName="movieType"
+                    :typeZhName="movie[0].typeName"/>
+            <page-list v-if="movie.length"
+                :movie="movie"
+                :totalPage="totalPage"
+                :typeEnName="movieType"
+                @get-curr-page-data="getCurPageData"
+                />
         </div>
     </div>
 </template>
@@ -30,15 +37,28 @@ export default class extends Vue {
         const params = route.params;
         if(params.id) {
             const id = params.id;
-            this.getCurMovie(id);
+            this.getCurMovie({
+                page: 1,
+                type: id
+            });
         }
     }
     created() {
         const {params: {id}} = this.$route;
-        this.getCurMovie(id);
+        this.getCurMovie({
+            page: 1,
+            type: id
+        });
     }
 
-    private async getCurMovie(params:string) {
+    private async getCurPageData(page) {
+        this.getCurMovie({
+            page: page,
+            type: 'action'
+        })
+    }
+
+    private async getCurMovie(params: object) {
         const {data: {code,data: {total,movieType,typeMovie}}} = await getTypeMovie(params);
         this.movie = typeMovie;
         this.totalPage = total;

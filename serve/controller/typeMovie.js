@@ -3,30 +3,29 @@ const { query } = require('../database/db');
 const { movieTypes, limitSeconds } = require('../config/index');
 
 async function getTypeMovies(ctx) {
-    console.log(ctx.url);
-    // return;
-    let { url } = ctx;
-    let urlSplit = url.split('/');
-    let [type, index] = [urlSplit[2], urlSplit[3]];
-    let page, result, typeChar;
-    if (index === 'index') {
-        page = 0;
-    } else {
-        page = index.split('_')[1] - 1;
-    }
+    let {page,type} = ctx.request.body;
+    // let { url } = ctx;
+    // let urlSplit = url.split('/');
+    // let [type, index] = [urlSplit[2], urlSplit[3]];
+    let result, typeChar;
+    // if (index === 'index') {
+    //     page = 0;
+    // } else {
+    //     page = index.split('_')[1] - 1;
+    // }
     result = await query(`select id,typeId,typeName,indexImgSrc,trim(year),trim(country),trim(pureName),trim(fullName),actor,date_format(pubDate,"%Y-%m-%d"),left(shortIntro,90) from ${type} order by pubDate desc`);
     let { length } = result;
-    if (!length) {
-        await ctx.render('notFind', { title: '您要找的资源不存在' });
-        return;
-    }
+    // if (!length) {
+    //     await ctx.render('notFind', { title: '您要找的资源不存在' });
+    //     return;
+    // }
     let { typeId } = result[0];
     typeChar = Object.values(movieTypes.filter(type => type[`${typeId}`])[0])[0];
-    result = result.slice(page * 14, page * 14 + 14);
-    if (!result.length) {
-        await ctx.render('notFind', { title: '您找的资源不存在' });
-        return;
-    }
+    result = result.slice((page-1) * 14, (page-1) * 14 + 14);
+    // if (!result.length) {
+    //     await ctx.render('notFind', { title: '您找的资源不存在' });
+    //     return;
+    // }
     result.forEach(item => {
         item.year = item['trim(year)'];
         item.country = item['trim(country)'];

@@ -31,47 +31,25 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from 'vue-property-decorator';
-// import {Route} from 'vue-router';
-// import {getTypeMovie} from '@/apis/typeMovie';
 
 @Component({
     name: 'pageList'
 })
+
 export default class extends Vue{
     @Prop({ required: true,default: () => [] }) private movie!: object
     @Prop({required: true,default: 0}) private totalPage!: number
-    @Prop({required: true,default: 'action'}) private movieType!: string
-    // private movie = [];
-    // private totalPage = 0;
-    // private movieType = '';
-
-    // @Watch('$route')
-    // private handleRouteChange(route: Route) {
-    //     const params = route.params;
-    //     if(params.id) {
-    //         const id = params.id;
-    //         this.getCurMovie(id);
-    //     }
-    // }
-    // created() {
-    //     const {params: {id}} = this.$route;
-    //     this.getCurMovie(id);
-    // }
-
-    // private async getCurMovie(params:string) {
-    //     const {data: {code,data: {total,movieType,typeMovie}}} = await getTypeMovie(params);
-    //     this.movie = typeMovie;
-    //     this.totalPage = total;
-    //     this.movieType = movieType;
-    // }
+    @Prop({required: true,default: 'action'}) private typeEnName!: string
 
     //页码改变时
-    handleCurrentChange(page) {
-        console.log(page);
-    }
-
-    activated() {
-        // console.log(this.$route);
+    handleCurrentChange(page: number) {
+        this.$emit('get-curr-page-data',page);
+        // console.log(typeof page);
+        // if(page === 1) {
+        //     // this.$router.push(`/${this.typeEnName}/index`);
+        //     return;
+        // }
+        // this.$router.push(`/${this.typeEnName}/page_${page}`);
     }
 }
 </script>
@@ -161,6 +139,10 @@ export default class extends Vue{
                     }
                 }
             }
+        }
+        .page-wp {
+            padding: 10px 0;
+            text-align: center;
         }
     }
 }

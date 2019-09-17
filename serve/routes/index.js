@@ -9,7 +9,7 @@ const { getMore } = require('../controller/more');
 const { getTypeMovies } = require('../controller/typeMovie');
 const { getSearchResult } = require('../controller/search');
 const { getNotFind } = require('../controller/notFind');
-const typeExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|tv)/(index|page_\\d+)';
+const typeExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|)';
 const detailExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|tv)/(\\d+)';
 
 
@@ -47,7 +47,7 @@ router.get('/moreMovie', getMore);
  * 类别电影
  */
 
-router.get(`/${typeExp}`, getTypeMovies);
+router.post(`/typeMovie`, getTypeMovies);
 
 
 /**

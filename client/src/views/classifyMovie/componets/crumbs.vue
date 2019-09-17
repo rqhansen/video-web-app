@@ -3,19 +3,22 @@
         <div class="crumbs">
             <span>当前位置&nbsp;：&nbsp;&nbsp;</span> 
             <router-link to="/" class="transition">万寻电影>&nbsp;&nbsp;</router-link>
-            <router-link to="/" class="transition">动作片> ></router-link>
+            <router-link :to="`/movie/${typeEnName}`" class="transition">{{typeZhName}}> ></router-link>
             <span>迅雷下载页面</span>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Component,Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
     name: 'crumbs'
 })
-export default class extends Vue{}
+export default class extends Vue{
+    @Prop({ required: true, default: 'action' }) private typeEnName!: string
+    @Prop({ required: true, default: '动作片'}) private typeZhName!: string
+}
 </script>
 
 <style lang="scss" scoped>
