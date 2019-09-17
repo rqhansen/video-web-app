@@ -3,7 +3,7 @@
     <!-- 头部 -->
     <Header/>
     <keep-alive>
-      <router-view class="main"/>
+      <router-view class="main" />
     </keep-alive>
     <!-- 尾部 -->
     <common-footer/>

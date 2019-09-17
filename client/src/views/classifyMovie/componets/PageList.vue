@@ -20,8 +20,10 @@
                     background 
                     layout="total,prev,pager,next,jumper" 
                     :total="totalPage"
+                    :page-size="14"
+                    :current-page="currentPage"
                     @current-change="handleCurrentChange"
-                    :hide-on-single-page="true"
+                    :hide-on-single-page="false"
                 >
                 </el-pagination>
             </div>
@@ -40,16 +42,11 @@ export default class extends Vue{
     @Prop({ required: true,default: () => [] }) private movie!: object
     @Prop({required: true,default: 0}) private totalPage!: number
     @Prop({required: true,default: 'action'}) private typeEnName!: string
+    @Prop({required: true,default: 1}) private currentPage!: number
 
     //页码改变时
     handleCurrentChange(page: number) {
         this.$emit('get-curr-page-data',page);
-        // console.log(typeof page);
-        // if(page === 1) {
-        //     // this.$router.push(`/${this.typeEnName}/index`);
-        //     return;
-        // }
-        // this.$router.push(`/${this.typeEnName}/page_${page}`);
     }
 }
 </script>

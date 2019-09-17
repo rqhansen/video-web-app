@@ -3,11 +3,14 @@
         <div class="section classify-m">
             <crumbs v-if="movie.length" 
                     :typeEnName="movieType"
-                    :typeZhName="movie[0].typeName"/>
-            <page-list v-if="movie.length"
+                    :typeZhName="movie[0].typeName"
+                    @get-index-page-data="getIndexPageData"/>
+            <page-list 
                 :movie="movie"
                 :totalPage="totalPage"
                 :typeEnName="movieType"
+                :page-size="14"
+                :currentPage="currPage"
                 @get-curr-page-data="getCurPageData"
                 />
         </div>
@@ -31,16 +34,23 @@ export default class extends Vue {
     private movie = [];
     private totalPage = 0;
     private movieType = '';
+    private currPage = 1;
 
     @Watch('$route')
-    private handleRouteChange(route: Route) {
-        const params = route.params;
-        if(params.id) {
-            const id = params.id;
-            this.getCurMovie({
-                page: 1,
-                type: id
-            });
+    private handleRouteChange(to: Route,from: Route) {
+        const fromPath = from.path;
+        const toPath = to.path;
+        const params = to.params;
+        if(params.id) { //跳到分类电影才开始请求
+            let flag = fromPath.includes('/movie/*') && toPath.includes('/movie/*');
+            let flag2 = this.movieType !== params.id;
+            if(flag || ( !fromPath.includes('/movie/*') && flag2 )) {
+                const id = params.id;
+                this.getCurMovie({
+                    page: 1,
+                    type: id
+                });
+            }
         }
     }
     created() {
@@ -51,18 +61,31 @@ export default class extends Vue {
         });
     }
 
+    //分页事件
     private async getCurPageData(page) {
         this.getCurMovie({
             page: page,
-            type: 'action'
+            type: this.movieType
         })
     }
 
+    //获取当前页数据
     private async getCurMovie(params: object) {
         const {data: {code,data: {total,movieType,typeMovie}}} = await getTypeMovie(params);
+        if(code !== 0) return;
         this.movie = typeMovie;
         this.totalPage = total;
-        this.movieType = movieType;
+        this.currPage = params.page;
+        this.movieType = params.type;
+    }
+
+    //获取首页数据
+    private async getIndexPageData() {
+        if(this.currPage === 1) return;
+        this.getCurMovie({
+            page: 1,
+            type: this.movieType
+        })
     }
     
 }

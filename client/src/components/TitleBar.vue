@@ -1,7 +1,7 @@
 <template>
     <div class="title-wp clearfix">
         <h2>{{title}}</h2>
-        <span v-if="isShowMore" class="more transition" @click="more">更多...</span>
+        <span v-if="isShowMore" class="more transition" @click.stop="more">更多...</span>
     </div>  
 </template>
 

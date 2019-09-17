@@ -1,6 +1,6 @@
 <template>
     <div class="movie-list">
-        <ul>
+        <ul v-if="CurrentMovie.length">
             <li v-for="m of CurrentMovie" :key="m.pureName">
                 <div class="poster">
                     <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
@@ -11,6 +11,9 @@
                 </div>
             </li>
         </ul>
+        <div v-else>
+            <li>暂无数据</li>
+        </div>
     </div>
 </template>
 
