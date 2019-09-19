@@ -12,42 +12,31 @@ const { getNotFind } = require('../controller/notFind');
 const typeExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|)';
 const detailExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|tv)/(\\d+)';
 
-
 router.prefix('/api')
-/**
- * 首页
- */
+
+//首页
 router.get('/homeMovieList', getHome);
 
-/**
- * 今日最新电影
- */
+//今日最新电影
 router.get('/todayMovie', getTodayMovieSources);
 
-
-/**
- * 近一周最新电影
- */
+//近一周最新电影
 router.get('/weekMovie', getWeekMovieSources);
 
-
-/**
- * 更多
- */
-
+//更多电影
 router.get('/moreMovie', getMore);
+
+//分类电影
+router.post(`/typeMovie`, getTypeMovies);
+
+//电影详情
+router.post(`/getMovieDetail`, getMovieDetail);
 
 /**
  * 指定类型的电影列表
  */
 
 // router.get(`/${typeExp}/index`, getTypeMovies);
-
-/**
- * 类别电影
- */
-
-router.post(`/typeMovie`, getTypeMovies);
 
 
 /**
@@ -60,12 +49,6 @@ router.get('/html/downThurder', downLoadThurder);
  */
 router.get('/html/downTxt', downLoadTxt);
 
-
-
-/**
- * 电影详情
- */
-router.get(`/html/${detailExp}`, getMovieDetail);
 
 /**
  * 搜索

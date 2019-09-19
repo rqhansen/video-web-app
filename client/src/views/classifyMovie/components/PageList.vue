@@ -3,14 +3,27 @@
         <div class="section">
             <ul>
                 <li v-for="(m,idx) of movie" :key="idx">
-                    <div class="poster transition" :style="`background-image:url(http://www.wx520.net/public/${m.indexImgSrc})`"></div>
+                    <div class="poster transition" 
+                        :style="`background-image:url(http://www.wx520.net/public/${m.indexImgSrc})`"
+                        @click.stop="goMovieDetail(m.id)">
+                    </div>
                     <div class="txt">
-                        <p class="full-name ellipsis transition"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
+                        <p class="full-name ellipsis transition" @click.stop="goMovieDetail(m.id)"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
                         <div class="intro-wp">
                             <p class="ellipsis"><span class="title">@年&nbsp;&nbsp;代</span>{{m.year}}({{m.country}})</p>
                             <p class="ellipsis"><span class="title">@主&nbsp;&nbsp;演</span>{{m.actor[0]}}</p>
                             <p class="intro title ellispis"><span class="title">@简&nbsp;&nbsp;介</span>{{m.shortIntro}}</p>
-                            <p class="update ellipsis">更新时间&nbsp;:<time>{{m.pubDate}}</time><span class="transition">点击下载</span></p>
+                            <p class="update ellipsis" :class="{'new': m.isNew}">
+                                更新时间&nbsp;:
+                                <template v-if="!m.isNew">
+                                    <time>{{m.pubDate}}</time>
+                                    <span class="transition">点击下载</span>
+                                </template>
+                                <template v-else>
+                                    <time>{{m.pubDate}}(今日推荐)</time>
+                                    <span class="transition">点击下载</span>
+                                </template>
+                            </p>
                         </div>
                     </div>
                 </li>
@@ -32,21 +45,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Prop, Vue } from 'vue-property-decorator';
+import { Component, Watch, Prop, Emit,Vue } from 'vue-property-decorator';
 
 @Component({
     name: 'pageList'
 })
 
 export default class extends Vue{
-    @Prop({ required: true,default: () => [] }) private movie!: object
-    @Prop({required: true,default: 0}) private totalPage!: number
-    @Prop({required: true,default: 'action'}) private typeEnName!: string
-    @Prop({required: true,default: 1}) private currentPage!: number
+    @Prop({ 
+        required: true,
+        default: () => [] 
+    }) private movie!: object
+    @Prop({
+        required: true,
+        default: 0
+    }) private totalPage!: number
+    @Prop({
+        required: true,
+        default: 'action'
+    }) private typeEnName!: string
+    @Prop({
+        required: true,
+        default: 1
+    }) private currentPage!: number
 
     //页码改变时
+    @Emit('get-curr-page-data')
     handleCurrentChange(page: number) {
-        this.$emit('get-curr-page-data',page);
+        return page;
+    }
+
+    //去电影详情
+    goMovieDetail(id: string) {
+        this.$router.push(`/${this.typeEnName}/${id}`);
     }
 }
 </script>
@@ -90,6 +121,7 @@ export default class extends Vue{
                         margin-right: 6px;
                     }
                     .full-name {
+                        display: inline-block;
                         font-size: 16px;
                         margin-bottom: 5px;
                         line-height: 30px;
@@ -100,7 +132,7 @@ export default class extends Vue{
                             color: $font-red-color;
                         }
                         span {
-                            color: $font-red-color*.96;
+                            color: $font-red-color;
                         }
                     }
                     .intro-wp {
@@ -124,6 +156,11 @@ export default class extends Vue{
                         bottom: 0;
                         color: #106492;
                         line-height: 30px;
+                        &.new {
+                            time {
+                                color: $font-red-color;
+                            }
+                        }
                         time {
                             margin: 0 8px;
                         }
@@ -148,7 +185,7 @@ export default class extends Vue{
         .section {
             ul {
                 li {
-                     flex: 0 0 100%;
+                    flex: 0 0 100%;
                     max-width: 100%;
                 }
             }

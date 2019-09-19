@@ -17,27 +17,16 @@
 
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator'
-
-    interface MovieList {
-        title: string,
-        url: string
-    }
-
-    const defaultMovieList: MovieList = {
-        title: '',
-        url: ''
-    }
+    import {HotMovie} from '@/interface/hotMovie';
 
     @Component({
-        name: 'HotMovie',
-        
+        name: 'HotMovie', 
     })
     export default class extends Vue {
-        private movies = [defaultMovieList]
+        private movies: HotMovie[] = []
 
         created() {
             this.getMovieList();
-            console.log();
         }
 
         private getMovieList() {
@@ -71,7 +60,7 @@
 
         //去电影详情页
         private goMovieDetail(url: string) {
-            // console.log(1);
+            
         }  
     }
 </script>

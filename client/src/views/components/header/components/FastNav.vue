@@ -7,12 +7,7 @@
 </template>
 
 <script lang="ts">
-import {Component,Vue} from 'vue-property-decorator';
-@Component({
-    name: 'FastNav'
-})
-export default class extends Vue{
-    private menus = [
+const MENU = [
         {
             title: '今日最新电影',
             routeName: 'todayMovie'
@@ -26,6 +21,12 @@ export default class extends Vue{
         }
     ]
 
+import {Component,Vue} from 'vue-property-decorator';
+@Component({
+    name: 'FastNav'
+})
+export default class extends Vue{
+    private menus = MENU;
     private goPage(rName: string) {
         if(!rName) {
             this.$message({

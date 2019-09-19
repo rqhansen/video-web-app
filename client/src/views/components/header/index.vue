@@ -45,6 +45,7 @@
     import Search from './components/Search.vue';
     import MovieNav from './components/MovieNav.vue';
     import FastNav from './components/FastNav.vue';
+    
     @Component({
         name:'Header',
         components: {
@@ -56,9 +57,7 @@
         }
     })
 
-    export default class extends Vue {
-        
-    }
+    export default class extends Vue {}
 </script> 
 
 <style lang="scss" scoped>

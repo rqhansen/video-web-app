@@ -14,6 +14,7 @@
   import {Component,Vue} from 'vue-property-decorator';
   import Header from '@components/header/Index.vue';
   import CommonFooter from '@components/footer/Index.vue';
+
   @Component({
       name: 'App',
       components: {
@@ -22,9 +23,7 @@
       }
   })
 
-  export default class extends Vue {
-    
-  }
+  export default class extends Vue {}
 </script>
 
 <style lang="scss">

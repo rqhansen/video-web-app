@@ -1,10 +1,12 @@
 <template>
     <div class="classify-m-wp">
         <div class="section classify-m">
-            <crumbs v-if="movie.length" 
-                    :typeEnName="movieType"
-                    :typeZhName="movie[0].typeName"
-                    @get-index-page-data="getIndexPageData"/>
+            <div class="header">
+                <crumbs v-if="movie.length" 
+                                    :typeEnName="movieType"
+                                    :typeZhName="movie[0].typeName"
+                                    @get-index-page-data="getIndexPageData"/>
+            </div>
             <page-list 
                 :movie="movie"
                 :totalPage="totalPage"
@@ -21,8 +23,9 @@
 import { Component, Watch, Vue } from 'vue-property-decorator';
 import {Route} from 'vue-router';
 import {getTypeMovie} from '@/apis/typeMovie';
-import crumbs from './componets/Crumbs.vue';
-import PageList from './componets/PageList.vue';
+import {Page} from '@/interface/page';
+import crumbs from '@/components/Crumbs.vue';
+import PageList from './components/PageList.vue';
 @Component({
     name: 'classifyMovie',
     components: {
@@ -41,7 +44,8 @@ export default class extends Vue {
         const fromPath = from.path;
         const toPath = to.path;
         const params = to.params;
-        if(params.id) { //跳到分类电影才开始请求
+        const name = to.name;
+        if(name === 'classifyMovie' && params.id) { //跳到分类电影才开始请求
             let flag = fromPath.includes('/movie/*') && toPath.includes('/movie/*');
             let flag2 = this.movieType !== params.id;
             if(flag || ( !fromPath.includes('/movie/*') && flag2 )) {
@@ -62,7 +66,7 @@ export default class extends Vue {
     }
 
     //分页事件
-    private async getCurPageData(page) {
+    private async getCurPageData(page: number) {
         this.getCurMovie({
             page: page,
             type: this.movieType
@@ -70,7 +74,7 @@ export default class extends Vue {
     }
 
     //获取当前页数据
-    private async getCurMovie(params: object) {
+    private async getCurMovie(params: Page) {
         const {data: {code,data: {total,movieType,typeMovie}}} = await getTypeMovie(params);
         if(code !== 0) return;
         this.movie = typeMovie;
@@ -95,6 +99,11 @@ export default class extends Vue {
 .classify-m-wp {
     .classify-m {
         padding-top: 30px;
+        .header{
+            margin-bottom: 20px;
+            border: 1px solid #bfe4ff;
+            background-color: #f7f7ff;
+        }
     }
 }   
 </style>

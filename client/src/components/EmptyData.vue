@@ -1,16 +1,16 @@
 <template>
     <div class="empty-wp">
         <div class="empty">
-            <span>暂无数据</span>
+            <span>暂无资源</span>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Component,Vue } from 'vue';
+import { Component,Vue } from 'vue-property-decorator';
 
 @Component({
-    name: 'empty'
+    name: 'emptyData'
 })
 
 export default class extends Vue{
@@ -24,11 +24,12 @@ export default class extends Vue{
         height: 100%;
         overflow: hidden;
         .empty {
-            text-align: center;
-            line-height: 100px;
+            text-align: center;   
         }
         span {  
-            // color: #
+            color: #999;
+            line-height: 200px;
+            font-size: 18px;
         }
     }
 </style>

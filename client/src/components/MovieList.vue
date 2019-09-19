@@ -11,27 +11,31 @@
                 </div>
             </li>
         </ul>
-        <div v-else>
-            <li>暂无数据</li>
-        </div>
+        <empty-data  v-else/>
     </div>
 </template>
 
 <script lang="ts">
 import {Component,Prop,Vue} from 'vue-property-decorator';
-
-// export interface movieList {
-
-// } 
+import EmptyData from './EmptyData.vue';
 
 
 @Component({
-    name: 'movieList'
+    name: 'movieList',
+    components: {
+        EmptyData
+    }
 })
 
 export default class extends Vue {
-    @Prop({default: () => {}}) private handleMovieFun!: () => {}
-    @Prop({default: () => []}) private fetchMovie!: () => []
+    @Prop({
+        default: () => {
+            return () => {}
+        }
+    }) private handleMovieFun!: Function
+    @Prop({
+        default: () => []
+    }) private fetchMovie!: () => []
 
     get CurrentMovie() {
         return this.fetchMovie.length ? this.fetchMovie : this.movies
@@ -43,7 +47,7 @@ export default class extends Vue {
         }
     }
     private async getMovieList() {
-        const { data: { code, data: { movies } } } = await this.handleMovieFun();
+        const { data : { code, data: { movies } } } = await this.handleMovieFun();
         this.movies = movies;
     }
 }

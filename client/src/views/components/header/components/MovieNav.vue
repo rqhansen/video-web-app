@@ -1,59 +1,87 @@
 <template>
     <div class="movie-nav clearfix">
         <ul>
-            <li v-for="m of menus" :key="m.title" class="transition">{{m.title}}</li>
+            <li v-for="m of menus" 
+                :key="m.title" 
+                class="transition" 
+                :class="{'active': m.url === currMovieType}"
+                @click.stop="goClassifyMovie(m.url)"
+            >{{m.title}}</li>
         </ul>
     </div>
 </template>
 
 <script lang="ts">
-import {Component,Vue} from 'vue-property-decorator';
+const navMenus = [
+        {
+            title: '首页',
+            url: '/'
+        },
+        {
+            title: '动作片',
+            url: '/movie/action'
+        },
+        {
+            title: '喜剧片',
+            url: '/movie/comedy'
+        },
+        {
+            title: '爱情片',
+            url: '/movie/romance'
+        },
+        {
+            title: '科幻片',
+            url: '/movie/science'
+        },
+        {
+            title: '剧情片',
+            url: '/movie/drama'
+        },
+        {
+            title: '悬疑片',
+            url: '/movie/suspense'
+        },
+        {
+            title: '战争片',
+            url: '/movie/war'
+        },
+        {
+            title: '惊悚片',
+            url: '/movie/thrill'
+        },
+        {
+            title: '恐怖片',
+            url: '/movie/horror'
+        },
+        {
+            title: '灾难片',
+            url: '/movie/disaster'
+        },
+        {
+            title: '动画片',
+            url: '/movie/cartoon'
+        }
+    ]
+
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
     name: 'MovieNav',
 })
 export default class extends Vue{
-    private menus = [
-        {
-            title: '首页'
-        },
-        {
-            title: '动作片'
-        },
-        {
-            title: '喜剧片'
-        },
-        {
-            title: '爱情片'
-        },
-        {
-            title: '科幻片'
-        },
-        {
-            title: '剧情片'
-        },
-        {
-            title: '悬疑片'
-        },
-        {
-            title: '战争片'
-        },
-        {
-            title: '惊悚片'
-        },
-        {
-            title: '恐怖片'
-        },
-        {
-            title: '灾难片'
-        },
-        {
-            title: '动画片'
-        },
-        {
-            title: '更多'
+    private menus = navMenus;
+
+    get currMovieType() {
+        const { name, path, params: { id } } = this.$route;
+        if(name === 'home') return '/';
+        if(name === 'classifyMovie') {
+            return `/movie/${id}`;
         }
-    ]
+    }
+
+    private goClassifyMovie(url: string) {
+        this.$router.push(url);
+    }
 }
 </script>
 
@@ -67,6 +95,9 @@ export default class extends Vue{
             padding: 0 7px;
             color:#fff;
             cursor: pointer;
+            &.active {
+                color: $font-red-color;
+            }
             &:hover {
                 color: $font-red-color;
             }
