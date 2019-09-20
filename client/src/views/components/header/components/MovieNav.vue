@@ -80,6 +80,8 @@ export default class extends Vue{
     }
 
     private goClassifyMovie(url: string) {
+        const { path } = this.$route;
+        if(path === url)  return;
         this.$router.push(url);
     }
 }

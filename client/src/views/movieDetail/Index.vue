@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+import { Component, Watch, Vue } from 'vue-property-decorator';
 import { Route } from 'vue-router';
 import {movieDetail as movieDetailInterface} from '@/interface/movieDetail';
 import {copyText} from '@/utils/utils';
@@ -39,6 +39,20 @@ import detail from './components/detail.vue';
 
 export default class extends Vue{
     private mDetail:movieDetailInterface = {filmType:''}
+    private movieType = '';
+    private movieId = '';
+
+    @Watch('$route')
+    private handleRouteChange(to: Route,from: Route) {
+        const {name,params } = to;
+        if(name === 'movieDetail') {
+            const {movie_type,id} = params;
+            if(movie_type === this.movieType && id === this.movieId) {
+                return;
+            }
+            this.getMovieDetail();
+        }
+    }
     created() {
         this.getMovieDetail()
     }
@@ -50,6 +64,8 @@ export default class extends Vue{
             id: id
         });
         this.mDetail = movieDetail;
+        this.movieType = movie_type;
+        this.movieId = id;
     }
 
     private getIndexPageData() {
@@ -67,7 +83,6 @@ export default class extends Vue{
                 showClose: true
             });
         }
-        // debugger;
     }
 }
 </script>

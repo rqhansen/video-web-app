@@ -1,7 +1,7 @@
 <template>
     <div class="movie-list">
         <ul v-if="CurrentMovie.length">
-            <li v-for="m of CurrentMovie" :key="m.pureName">
+            <li v-for="m of CurrentMovie" :key="m.pureName" @click.stop="goMovieDetail(m.filmType,m.id)">
                 <div class="poster">
                     <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
                 </div>
@@ -40,15 +40,21 @@ export default class extends Vue {
     get CurrentMovie() {
         return this.fetchMovie.length ? this.fetchMovie : this.movies
     }
+
     private movies = [];
     async created() {
         if(!this.fetchMovie.length) { //排除掉
             this.getMovieList();
         }
     }
+
     private async getMovieList() {
         const { data : { code, data: { movies } } } = await this.handleMovieFun();
         this.movies = movies;
+    }
+
+    private goMovieDetail(mType: string, mId: number) {
+        this.$router.push(`/${mType}/${mId}`);
     }
 }
 </script>

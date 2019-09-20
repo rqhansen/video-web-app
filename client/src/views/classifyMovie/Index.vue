@@ -41,20 +41,29 @@ export default class extends Vue {
 
     @Watch('$route')
     private handleRouteChange(to: Route,from: Route) {
-        const fromPath = from.path;
-        const toPath = to.path;
-        const params = to.params;
-        const name = to.name;
-        if(name === 'classifyMovie' && params.id) { //跳到分类电影才开始请求
-            let flag = fromPath.includes('/movie/*') && toPath.includes('/movie/*');
-            let flag2 = this.movieType !== params.id;
-            if(flag || ( !fromPath.includes('/movie/*') && flag2 )) {
-                const id = params.id;
-                this.getCurMovie({
+        const { path: fromPath } = from;
+        const { path: toPath, params: toParams, name: toName } = to;
+        // const toPath = to.path;
+        // const params = to.params;
+        // const name = to.name; && params.id
+        if(toName === 'classifyMovie' ) { //跳到分类电影才开始请求
+            // let flag = fromPath.includes('/movie/*') && path.includes('/movie/*');
+            // let flag2 = this.movieType !== params.id;
+            // if(flag || ( !fromPath.includes('/movie/*') && flag2 )) {
+            //     const id = params.id;
+            //     this.getCurMovie({
+            //         page: 1,
+            //         type: id
+            //     });
+            // }
+            if(this.movieType === toParams.id) {
+                return;
+            }
+            const {id} = toParams;
+            this.getCurMovie({
                     page: 1,
                     type: id
                 });
-            }
         }
     }
     created() {

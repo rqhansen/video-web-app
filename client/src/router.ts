@@ -7,6 +7,7 @@ const WeekMovie = () => import(/* webpackChunkName: "weekMovie" */ './views/week
 const MoreMovie = () => import(/* webpackChunkName: "moreMovie" */ './views/moreMovie/Index.vue');
 const ClassifyMovie = () => import(/*webpackChunkName: "classifyMovie" */ './views/classifyMovie/Index.vue');
 const MovieDetail = () => import(/*webpackChunkName: "movieDetail" */ './views/movieDetail/Index.vue');
+const Search = () => import(/*webpackChunkName: "search" */ './views/search/Index.vue');
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       path: '/:movie_type/:id',
       name: 'movieDetail',
       component: MovieDetail
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search
     }
   ]
 })

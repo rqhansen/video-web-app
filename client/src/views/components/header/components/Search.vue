@@ -2,7 +2,12 @@
     <div class="search">
         <el-input type="text" v-model.trim="movieName" placeholder="输入电影名称搜索..." clearable></el-input>
         <div class="btn-wp">
-            <el-button type="primary" size="middle" :round="false" icon="el-icon-search">搜索</el-button>
+            <el-button 
+                type="primary" 
+                size="middle" 
+                :round="false" 
+                icon="el-icon-search" 
+                @click.stop="search">搜索</el-button>
         </div>
     </div>
 </template>
@@ -15,6 +20,11 @@
 
     export default class extends Vue {
         private movieName = ''
+
+        private search() {
+            if(!this.movieName) return;
+            this.$router.push(`/search?keyword=${this.movieName}&page=1`);
+        }
     }
 </script>
 

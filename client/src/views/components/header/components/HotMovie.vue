@@ -33,34 +33,36 @@
             this.movies = [
                 {
                     title: '鼠胆英雄',
-                    url:'/html/comedy/3862'
+                    url:'/comedy/3862'
                 },
                 {
                     title: '鬼娃回魂',
-                    url:'/html/horror/2670'
+                    url:'/horror/2670'
                 },
                 {
                     title: '狱中龙',
-                    url:'/html/action/4645'
+                    url:'/action/4645'
                 },  
                 {
                     title: '昆虫总动员2',
-                    url:'/html/cartoon/14'
+                    url:'/cartoon/14'
                 },  
                 {
                     title: '银河补习班',
-                    url:'/html/drama/6080'
+                    url:'/drama/6080'
                 },
                 {
                     title: '追龙2:贼王',
-                    url:'/html/drama/6079'
+                    url:'/drama/6079'
                 }
             ]
         }
 
         //去电影详情页
         private goMovieDetail(url: string) {
-            
+            const {path} = this.$route;
+            if(path === url) return;
+            this.$router.push(`${url}`);
         }  
     }
 </script>

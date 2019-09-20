@@ -13,7 +13,6 @@
        <div v-else class="m-body">
             <p class="thunder-down">
                <span>{{mDetail.pureName}}迅雷下载地址和剧情：</span>
-               <span class="share">点此分享影片</span>
             </p>
             <img :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px" height="800px" max-height="800px"> 
             <p v-if="mDetail.transName && mDetail.transName!== ' '">
