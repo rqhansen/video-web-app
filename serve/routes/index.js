@@ -9,8 +9,8 @@ const { getMore } = require('../controller/more');
 const { getTypeMovies } = require('../controller/typeMovie');
 const { getSearchResult } = require('../controller/search');
 const { getNotFind } = require('../controller/notFind');
-const typeExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|)';
-const detailExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|tv)/(\\d+)';
+// const typeExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|)';
+// const detailExp = '(action|comedy|romance|science|drama|suspense|horror|war|thrill|horror|disaster|cartoon|tv)/(\\d+)';
 
 router.prefix('/api')
 
@@ -32,6 +32,9 @@ router.post(`/typeMovie`, getTypeMovies);
 //电影详情
 router.post(`/getMovieDetail`, getMovieDetail);
 
+//搜索
+router.post('/search', getSearchResult);
+
 /**
  * 指定类型的电影列表
  */
@@ -49,11 +52,6 @@ router.get('/html/downThurder', downLoadThurder);
  */
 router.get('/html/downTxt', downLoadTxt);
 
-
-/**
- * 搜索
- */
-router.get('/plus/search', getSearchResult);
 
 /**
  * 404页面

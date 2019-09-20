@@ -3,7 +3,8 @@ const connection = require('../database/db');
 const { movieTypes, limitSeconds } = require('../config/index');
 
 async function getSearchResult(ctx) {
-    let { keyword, page } = ctx.query;
+    // let { keyword, page } = ctx.query;
+    let {keyword,page} = ctx.request.body;
     let result = await connection.query(`select id,typeId,indexImgSrc,trim(year),trim(country),trim(pureName),trim(fullName),actor,date_format(pubDate,"%Y-%m-%d"),left(shortIntro,90) from action where fullName like "%${keyword}%" 
                                         union select id,typeId,indexImgSrc,trim(year),trim(country),trim(pureName),trim(fullName),actor,date_format(pubDate,"%Y-%m-%d"),left(shortIntro,90) from comedy where fullName like "%${keyword}%"
                                         union select id,typeId,indexImgSrc,trim(year),trim(country),trim(pureName),trim(fullName),actor,date_format(pubDate,"%Y-%m-%d"),left(shortIntro,90) from romance where fullName like "%${keyword}%"
@@ -36,7 +37,15 @@ async function getSearchResult(ctx) {
         delete item['trim(fullName)'];
         delete item['left(shortIntro,90)'];
     })
-    await ctx.render('searchResult', { keyword, result, total: length });
+    // await ctx.render('searchResult', { keyword, result, total: length });
+    ctx.body = {
+        code: 0,
+        data: {
+            keyword,
+            movies: result,
+            total: length
+        }
+    }
 }
 
 module.exports = {
