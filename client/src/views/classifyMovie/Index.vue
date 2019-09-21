@@ -1,20 +1,19 @@
 <template>
     <div class="classify-m-wp">
         <div class="section classify-m">
-            <div class="header">
-                <crumbs v-if="movie.length" 
-                                    :typeEnName="movieType"
-                                    :typeZhName="movie[0].typeName"
-                                    @get-index-page-data="getIndexPageData"/>
-            </div>
+            <nav-bg>
+                    <crumbs v-if="movie.length" 
+                    :typeEnName="movieType"
+                    :typeZhName="movie[0].typeName"
+                    @get-index-page-data="getIndexPageData"/>
+            </nav-bg>
             <page-list 
                 :movie="movie"
+            />
+            <pagination 
                 :totalPage="totalPage"
-                :typeEnName="movieType"
-                :page-size="14"
                 :currentPage="currPage"
-                @get-curr-page-data="getCurPageData"
-                />
+                @get-curr-page-data="getCurPageData"/>
         </div>
     </div>
 </template>
@@ -24,13 +23,17 @@ import { Component, Watch, Vue } from 'vue-property-decorator';
 import {Route} from 'vue-router';
 import {getTypeMovie} from '@/apis/typeMovie';
 import {Page} from '@/interface/page';
-import crumbs from '@/components/Crumbs.vue';
-import PageList from './components/PageList.vue';
+import Crumbs from '@/components/Crumbs.vue';
+import PageList from '@/components/PageList.vue';
+import Pagination from '@/components/Page.vue';
+import NavBg from '@/components/NavBg.vue';
 @Component({
     name: 'classifyMovie',
     components: {
-        crumbs,
-        PageList
+        NavBg,
+        Crumbs,
+        PageList,
+        Pagination
     }
 })
 export default class extends Vue {
@@ -43,19 +46,7 @@ export default class extends Vue {
     private handleRouteChange(to: Route,from: Route) {
         const { path: fromPath } = from;
         const { path: toPath, params: toParams, name: toName } = to;
-        // const toPath = to.path;
-        // const params = to.params;
-        // const name = to.name; && params.id
         if(toName === 'classifyMovie' ) { //跳到分类电影才开始请求
-            // let flag = fromPath.includes('/movie/*') && path.includes('/movie/*');
-            // let flag2 = this.movieType !== params.id;
-            // if(flag || ( !fromPath.includes('/movie/*') && flag2 )) {
-            //     const id = params.id;
-            //     this.getCurMovie({
-            //         page: 1,
-            //         type: id
-            //     });
-            // }
             if(this.movieType === toParams.id) {
                 return;
             }
@@ -84,7 +75,7 @@ export default class extends Vue {
 
     //获取当前页数据
     private async getCurMovie(params: Page) {
-        const {data: {code,data: {total,movieType,typeMovie}}} = await getTypeMovie(params);
+        const {data: {code,data: {total,typeMovie}}} = await getTypeMovie(params);
         if(code !== 0) return;
         this.movie = typeMovie;
         this.totalPage = total;
@@ -108,11 +99,17 @@ export default class extends Vue {
 .classify-m-wp {
     .classify-m {
         padding-top: 30px;
-        .header{
-            margin-bottom: 20px;
-            border: 1px solid #bfe4ff;
-            background-color: #f7f7ff;
-        }
+        min-width: 730px;
     }
 }   
+@media (max-width: 768px){
+        .section {
+            ul {
+                li {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+}
 </style>

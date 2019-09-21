@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="header limit-width">
         <!-- 热门电影 -->
         <div class="hot-m-wp">
             <div class="section">
@@ -63,7 +63,6 @@
 <style lang="scss" scoped>
     .header {
         //热门电影
-        min-width: 768px;
         .hot-m-wp {
             box-shadow: 0 1px 10px 0 #d9d9d9;
             overflow: hidden;

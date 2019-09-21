@@ -2,8 +2,8 @@
     <div class="crumbs-wp">
         <div class="crumbs">
             <span>当前位置：&nbsp;</span> 
-            <router-link to="/" class="transition">万寻电影>&nbsp;&nbsp;</router-link>
-            <span class="top transition" @click.stop="goIndex">{{typeZhName}}> ></span>
+            <router-link to="/" class="transition">万寻电影>&nbsp;</router-link>
+            <span class="top transition" @click.stop="goIndex">{{typeZhName}}>></span>
             <span>{{downText}}</span>
         </div>
     </div>
@@ -13,7 +13,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
-    name: 'crumbs'
+    name: 'Crumbs'
 })
 export default class extends Vue{
     @Prop({ 
@@ -38,14 +38,8 @@ export default class extends Vue{
 
 <style lang="scss" scoped>
 .crumbs-wp { 
-    font-size: 0;
     .crumbs {
-        height: 27px;
-        line-height: 27px;
-        padding: 0 10px;
-        font-size: 12px;
         color: $font-regular-color;
-        overflow: hidden;
         .router-link-active {
             &:hover {
                 color: $font-theme-color;

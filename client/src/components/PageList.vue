@@ -1,90 +1,63 @@
 <template>
     <div class="page-m-list-wp">
-        <div class="section">
-            <ul>
-                <li v-for="(m,idx) of movie" :key="idx">
-                    <div class="poster transition" 
-                        :style="`background-image:url(http://www.wx520.net/public/${m.indexImgSrc})`"
-                        @click.stop="goMovieDetail(m.id)">
+        <empty-data v-if="!movie.length"/>
+        <ul v-else>
+            <li v-for="(m,idx) of movie" :key="idx">
+                <div class="poster transition" 
+                    :style="`background-image:url(http://www.wx520.net/public/${m.indexImgSrc})`"
+                    @click.stop="goMovieDetail(m.type,m.id)">
+                </div>
+                <div class="txt">
+                    <p class="full-name ellipsis transition" @click.stop="goMovieDetail(m.type,m.id)"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
+                    <div class="intro-wp">
+                        <p class="ellipsis"><span class="title">@年&nbsp;&nbsp;代</span>{{m.year}}({{m.country}})</p>
+                        <p class="ellipsis"><span class="title">@主&nbsp;&nbsp;演</span>{{m.actor[0]}}</p>
+                        <p class="intro title ellispis"><span class="title">@简&nbsp;&nbsp;介</span>{{m.shortIntro}}</p>
+                        <p class="update ellipsis" :class="{'new': m.isNew}">
+                            更新时间&nbsp;:
+                            <template v-if="!m.isNew">
+                                <time>{{m.pubDate}}</time>
+                                <span class="transition">点击下载</span>
+                            </template>
+                            <template v-else>
+                                <time>{{m.pubDate}}(今日推荐)</time>
+                                <span class="transition">点击下载</span>
+                            </template>
+                        </p>
                     </div>
-                    <div class="txt">
-                        <p class="full-name ellipsis transition" @click.stop="goMovieDetail(m.id)"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
-                        <div class="intro-wp">
-                            <p class="ellipsis"><span class="title">@年&nbsp;&nbsp;代</span>{{m.year}}({{m.country}})</p>
-                            <p class="ellipsis"><span class="title">@主&nbsp;&nbsp;演</span>{{m.actor[0]}}</p>
-                            <p class="intro title ellispis"><span class="title">@简&nbsp;&nbsp;介</span>{{m.shortIntro}}</p>
-                            <p class="update ellipsis" :class="{'new': m.isNew}">
-                                更新时间&nbsp;:
-                                <template v-if="!m.isNew">
-                                    <time>{{m.pubDate}}</time>
-                                    <span class="transition">点击下载</span>
-                                </template>
-                                <template v-else>
-                                    <time>{{m.pubDate}}(今日推荐)</time>
-                                    <span class="transition">点击下载</span>
-                                </template>
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div class="page-wp">
-                <el-pagination 
-                    background 
-                    layout="total,prev,pager,next,jumper" 
-                    :total="totalPage"
-                    :page-size="14"
-                    :current-page="currentPage"
-                    @current-change="handleCurrentChange"
-                    :hide-on-single-page="false"
-                >
-                </el-pagination>
-            </div>
-        </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Watch, Prop, Emit,Vue } from 'vue-property-decorator';
+    import { Component, Prop, Vue } from 'vue-property-decorator';
+    import EmptyData from './EmptyData.vue';
+    @Component({
+        name: 'pageList',
+        components: {
+            EmptyData
+        }
+    })
 
-@Component({
-    name: 'pageList'
-})
+    export default class extends Vue {
+        @Prop({
+            required: true,
+            default: () => []
+        }) private movie!: object
 
-export default class extends Vue{
-    @Prop({ 
-        required: true,
-        default: () => [] 
-    }) private movie!: object
-    @Prop({
-        required: true,
-        default: 0
-    }) private totalPage!: number
-    @Prop({
-        required: true,
-        default: 'action'
-    }) private typeEnName!: string
-    @Prop({
-        required: true,
-        default: 1
-    }) private currentPage!: number
-
-    //页码改变时
-    @Emit('get-curr-page-data')
-    handleCurrentChange(page: number) {
-        return page;
+        //去电影详情
+        goMovieDetail(enName: string,id: string) {
+            this.$router.push(`/${enName}/${id}`);
+        }
     }
-
-    //去电影详情
-    goMovieDetail(id: string) {
-        this.$router.push(`/${this.typeEnName}/${id}`);
-    }
-}
 </script>
 
 <style lang="scss" scoped>
-.page-m-list-wp {
-    .section{
+    .page-m-list-wp {
+        width: 100%;
+        height: 100%;
         ul {
             width: 100%;
             display: flex;
@@ -174,21 +147,5 @@ export default class extends Vue{
                 }
             }
         }
-        .page-wp {
-            padding: 10px 0;
-            text-align: center;
-        }
     }
-}
-
-@media (max-width: 768px){
-        .section {
-            ul {
-                li {
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-            }
-        }
-}
 </style>

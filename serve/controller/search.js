@@ -3,7 +3,6 @@ const connection = require('../database/db');
 const { movieTypes, limitSeconds } = require('../config/index');
 
 async function getSearchResult(ctx) {
-    // let { keyword, page } = ctx.query;
     let {keyword,page} = ctx.request.body;
     let result = await connection.query(`select id,typeId,indexImgSrc,trim(year),trim(country),trim(pureName),trim(fullName),actor,date_format(pubDate,"%Y-%m-%d"),left(shortIntro,90) from action where fullName like "%${keyword}%" 
                                         union select id,typeId,indexImgSrc,trim(year),trim(country),trim(pureName),trim(fullName),actor,date_format(pubDate,"%Y-%m-%d"),left(shortIntro,90) from comedy where fullName like "%${keyword}%"
@@ -19,7 +18,7 @@ async function getSearchResult(ctx) {
     let { length } = result;
     result = result.slice((page - 1) * 10, (page - 1) * 10 + 10);
     result.forEach(item => {
-        item.typeChar = Object.values(movieTypes.filter(type => type[`${item.typeId}`])[0])[0];
+        item.type = Object.values(movieTypes.filter(type => type[`${item.typeId}`])[0])[0];
         item.year = item['trim(year)'];
         item.country = item['trim(country)'];
         item.pureName = item['trim(pureName)'];
@@ -37,7 +36,6 @@ async function getSearchResult(ctx) {
         delete item['trim(fullName)'];
         delete item['left(shortIntro,90)'];
     })
-    // await ctx.render('searchResult', { keyword, result, total: length });
     ctx.body = {
         code: 0,
         data: {

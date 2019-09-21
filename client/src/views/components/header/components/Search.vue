@@ -19,11 +19,22 @@
     })
 
     export default class extends Vue {
-        private movieName = ''
+        private movieName = '';
+        private page: any = '';
 
         private search() {
             if(!this.movieName) return;
-            this.$router.push(`/search?keyword=${this.movieName}&page=1`);
+            const query = this.$route.query;
+            if(query.keyword && query.page) {
+                const {keyword,page} = query;
+                if(this.movieName === keyword && this.page == page) return;
+                // debugger;
+                this.page = page;
+                this.$router.push(`/search?keyword=${this.movieName}&page=${page}`);
+            } else if(!query.keyword && !query.page) {
+                this.page = '1';
+                this.$router.push(`/search?keyword=${this.movieName}&page=1`);
+            }
         }
     }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <!-- 头部 -->
     <Header/>
     <keep-alive>
@@ -28,7 +28,7 @@
 
 <style lang="scss">
 @import '~@styles/index.scss';
-#app {
+.app {
   .clearfix {
     zoom: 1;
   }
@@ -38,6 +38,9 @@
     content: "";
     visibility: hidden;
     height: 0;
+  }
+  .limit-width {
+    min-width: 768px;
   }
   .section {
     width: 1000px;
