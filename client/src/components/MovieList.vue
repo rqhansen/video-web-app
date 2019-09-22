@@ -64,7 +64,6 @@ export default class extends Vue {
         width: 100%;
         padding-top: 10px;
         ul {
-            min-width: 716px;
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;

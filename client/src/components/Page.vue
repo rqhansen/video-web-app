@@ -41,5 +41,8 @@
 .page-wp {
     padding: 10px 0;
     text-align: center;
+    .el-pagination {
+        font-weight: normal;
+    }
 }
 </style>

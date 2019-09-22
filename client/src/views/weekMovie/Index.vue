@@ -1,7 +1,7 @@
 <template>
-    <div class="week-m-wp">
+    <div class="week-m-wp limit-width">
         <div class="section">
-            <div class="m-type-list" 
+            <div
                 v-for="(m,idx) of movies" :key="idx">
                 <title-bar :title="`最新${m[0].typeName}`" :url="`/movie/${m[0].filmType}`" />
                 <movie-list :fetchMovie="m"></movie-list>

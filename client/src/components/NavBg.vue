@@ -1,7 +1,7 @@
 <template>
     <div class="nav-bg-wp">
         <div class="nav-bg">
-            <slot />
+            <slot></slot>
         </div>
     </div>
 </template>

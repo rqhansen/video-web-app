@@ -72,10 +72,13 @@ export default class extends Vue{
     private menus = navMenus;
 
     get currMovieType() {
-        const { name, path, params: { id } } = this.$route;
+        const { name, path, params, params: { id } } = this.$route;
         if(name === 'home') return '/';
         if(name === 'classifyMovie') {
             return `/movie/${id}`;
+        }
+        if(name === 'movieDetail') {
+            return `/movie/${params.movie_type}`;
         }
     }
 

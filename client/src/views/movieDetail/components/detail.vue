@@ -73,7 +73,7 @@
                 <p>
                     <span class="title">◎主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演</span><span>{{mDetail.actor[0]}}</span>
                 </p>
-                <p v-for="item of mDetail.actor.slice(1)" :key="item">
+                <p v-for="(item,idx) of mDetail.actor.slice(1)" :key="`actor${idx}`">
                     <span class="title"></span><span>{{item}}</span>
                 </p>
             </template>
@@ -84,7 +84,7 @@
                 <div class="margin">
                     <span class="title" style="width: 68px;">◎简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介</span>
                 </div>
-                 <p v-for="item of mDetail.shortIntro" :key="item">
+                 <p v-for="(item,idx) of mDetail.shortIntro" :key="`intro${idx}`">
                     <span class="title" style="width: 32px;"></span><span>{{item}}</span>
                 </p>
             </template>
@@ -92,7 +92,7 @@
                 <div class="margin">
                     <span class="title" style="width: 32px;">◎获&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奖</span>
                 </div>
-                 <p v-for="item of mDetial.getAward" :key="item">
+                 <p v-for="(item,idx) of mDetial.getAward" :key="`award${idx}`">
                     <span class="title"></span><span>{{item}}</span>
                 </p>
             </template>
@@ -101,10 +101,10 @@
            <h3>下载地址列表:</h3>
            <a
                 v-for="(url,idx) of mDetail.downUrl" 
-                :key="idx" 
+                :key="`downUrl${idx}`" 
                 :href="url"
                 target="__self"
-                class="down-url transition"
+                class="down-url transition ellipsis"
             >
             {{url}}[www.wx520.net]下载
             </a>

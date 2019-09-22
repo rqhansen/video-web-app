@@ -1,5 +1,5 @@
 <template>
-    <div class="classify-m-wp">
+    <div class="classify-m-wp limit-width">
         <div class="section classify-m">
             <nav-bg>
                     <crumbs v-if="movie.length" 
@@ -99,7 +99,6 @@ export default class extends Vue {
 .classify-m-wp {
     .classify-m {
         padding-top: 30px;
-        min-width: 730px;
     }
 }   
 @media (max-width: 768px){

@@ -1,19 +1,19 @@
 <template>
-    <div class="m-detail-wp">
+    <div class="m-detail-wp limit-width">
         <div class="section">
             <div class="m-detail">
-                <div class="header">
+                <nav-bg>
                     <crumbs 
                         v-if="mDetail.typeName"
                         :typeEnName="mDetail.filmType"
                         :typeZhName="mDetail.typeName"
                         :movieName="mDetail.pureName"
-                        @get-index-page-data="getIndexPageData"/>
+                        @get-index-page-data="getIndexPageData"></crumbs>
                     <div class="share">
                         <span>分享本影片给朋友=》</span>
                         <el-button size="small" type="primary" @click="copy">点次即可复制</el-button>
                     </div>
-                </div>
+                </nav-bg>
                 <detail :mDetail="mDetail"/>
             </div>
         </div>
@@ -26,6 +26,7 @@ import { Route } from 'vue-router';
 import {movieDetail as movieDetailInterface} from '@/interface/movieDetail';
 import {copyText} from '@/utils/utils';
 import {getMovieDetail} from '@/apis/movieDetail';
+import NavBg from '@/components/NavBg.vue';
 import Crumbs from '@/components/Crumbs.vue';
 import detail from './components/detail.vue';
 
@@ -33,7 +34,8 @@ import detail from './components/detail.vue';
     name: 'movieDetail',
     components: {
         Crumbs,
-        detail
+        detail,
+        NavBg
     }
 })
 
@@ -96,25 +98,29 @@ export default class extends Vue{
         }
         .m-detail {
             border: 1px solid $font-theme-color;
-            .header{
+            /deep/ .nav-bg {
                 display: flex;
+                justify-content: flex-start;
                 align-items: center;
-                background-color: #f7f7f7;
-                .el-button--small {
-                    width: 92px;
-                    height: 20px;
-                    padding: 0;
-                    line-height: 20px;
-                    font-size: 13px;
-                }
-                .share {
-                    margin-left: 30px;
-                    span {
-                        color: $font-red-color;
-                    }
+                border-top: none;
+                border-left: none;
+                border-right: none;
+            }
+            .el-button--small {
+                width: 92px;
+                height: 20px;
+                padding: 0;
+                line-height: 20px;
+                font-size: 13px;
+            }
+            .share {
+                margin-left: 30px;
+                span {
+                    color: $font-red-color;
                 }
             }
         }
+      
     }
 }
 </style>

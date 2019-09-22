@@ -1,5 +1,5 @@
 <template>
-    <div class="search-wp">
+    <div class="search-wp limit-width">
         <div class="section search">
             <nav-bg>
                 <div class="search-title"><span>{{movieName}}</span>搜素结果</div>
@@ -62,7 +62,6 @@ export default class extends Vue{
 <style lang="scss" scoped>
 .search-wp {
     .search {
-        min-width: 730px;
         padding: 25px 0;
         .search-title {
             span {

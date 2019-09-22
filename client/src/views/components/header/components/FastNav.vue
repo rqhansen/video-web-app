@@ -37,6 +37,8 @@ export default class extends Vue{
             });
             return;
         }
+        const {name} = this.$route;
+        if(name === rName) return;
         this.$router.push(`/${rName}`);
     }
 }

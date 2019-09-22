@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <el-input type="text" v-model.trim="movieName" placeholder="输入电影名称搜索..." clearable></el-input>
+        <el-input type="text" @keyup.native.enter.exact="search" v-model.trim="movieName" placeholder="输入电影名称搜索..." clearable></el-input>
         <div class="btn-wp">
             <el-button 
                 type="primary" 
@@ -23,6 +23,7 @@
         private page: any = '';
 
         private search() {
+            debugger;
             if(!this.movieName) return;
             const query = this.$route.query;
             if(query.keyword && query.page) {

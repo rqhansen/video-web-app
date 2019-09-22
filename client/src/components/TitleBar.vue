@@ -27,7 +27,6 @@
 <style lang="scss" scoped>
       .title-wp {
         width: 100%;
-        min-width: 720px;
         padding: 0 10px;
         line-height: 40px;
         background-color: #f7f7f7;
