@@ -1,0 +1,2 @@
+
+export const CURR_SEARCH_PAGE = 'CURR_SEARCH_PAGE';
