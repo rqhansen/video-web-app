@@ -17,6 +17,7 @@
 <script lang="ts">
 import {Component,Watch,Vue} from 'vue-property-decorator';
 import {Route} from 'vue-router';
+import {PageModule} from '@/store/modules/page';
 import {search} from '@/apis/search';
 import NavBg from '@/components/NavBg.vue';
 import PageList from '@/components/PageList.vue';
@@ -49,7 +50,8 @@ export default class extends Vue{
         this.movies = movies;
         this.movieName = movieName;
         this.total = total;
-        // this.currPage = page;
+        this.currPage = +page;
+        PageModule.changePage(`${page}`);
     }
 
     //分页事件

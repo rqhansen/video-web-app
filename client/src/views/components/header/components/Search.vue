@@ -14,26 +14,33 @@
 
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator';
+    import {PageModule} from '@/store/modules/page';
     @Component({
         name: 'Search'
     })
 
     export default class extends Vue {
         private movieName = '';
-        private page: any = '';
+        // private page: any = '';
 
+        get currentPage() {
+            return PageModule.page
+        }
         private search() {
-            debugger;
+            // debugger;
             if(!this.movieName) return;
             const query = this.$route.query;
             if(query.keyword && query.page) {
-                const {keyword,page} = query;
-                if(this.movieName === keyword && this.page == page) return;
+                let {keyword,page} = query;
+                if(this.movieName === keyword && this.currentPage == page) return;
                 // debugger;
-                this.page = page;
+                // this.page = pag
+                if(this.movieName !== keyword) {
+                    page = 1;
+                }
                 this.$router.push(`/search?keyword=${this.movieName}&page=${page}`);
             } else if(!query.keyword && !query.page) {
-                this.page = '1';
+                // this.page = '1';
                 this.$router.push(`/search?keyword=${this.movieName}&page=1`);
             }
         }
