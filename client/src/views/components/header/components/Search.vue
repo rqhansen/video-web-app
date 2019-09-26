@@ -14,36 +14,45 @@
 
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator';
-    import {PageModule} from '@/store/modules/page';
+    import {SearchModule} from '@/store/modules/search';
     @Component({
         name: 'Search'
     })
 
     export default class extends Vue {
         private movieName = '';
-        // private page: any = '';
 
         get currentPage() {
-            return PageModule.page
+            return SearchModule.searchInfo.page;
         }
         private search() {
-            // debugger;
             if(!this.movieName) return;
-            const query = this.$route.query;
+            const searchData = this.getSearchData();
+            if(!searchData) return;
+            const { page, movieName} = searchData;
+            this.$router.push(`/search?keyword=${movieName}&page=${page}`)
+        }
+
+        private getSearchData() {
+            const {query} = this.$route;
             if(query.keyword && query.page) {
                 let {keyword,page} = query;
-                if(this.movieName === keyword && this.currentPage == page) return;
-                // debugger;
-                // this.page = pag
-                if(this.movieName !== keyword) {
-                    page = 1;
+                // if(this.movieName === keyword && this.currentPage == page) return;
+                if(this.movieName === keyword) {
+                    if(this.currentPage === page) {
+                        if (page === '1') return;
+                        page = '1';
+                    }
                 }
-                this.$router.push(`/search?keyword=${this.movieName}&page=${page}`);
-            } else if(!query.keyword && !query.page) {
-                // this.page = '1';
-                this.$router.push(`/search?keyword=${this.movieName}&page=1`);
+                if(this.movieName !== keyword) {
+                    page = '1';
+                }
+                return { page,movieName: this.movieName }
+            }else if(!query.keyword && !query.page) {
+                return { page: 1, movieName: this.movieName
+                }
             }
-        }
+        } 
     }
 </script>
 

@@ -1,20 +1,17 @@
 <template>
     <div class="m-text">
-       <h1>{{mDetail.fullName}}</h1>
+       <h1 class="ellipsis">{{mDetail.fullName}}</h1>
        <div class="info">
            <span>片名&nbsp;:</span>
-           <span>{{mDetail.pureName}}</span>
+           <span class="ellipsis movie-name">{{mDetail.pureName}}</span>
            <span>发布时间&nbsp;</span>
            <time>{{mDetail.pubDate}}</time>
        </div>
-       <div class="m-body" v-if="!mDetail.fullName">
-           空
-       </div>
-       <div v-else class="m-body">
+       <div class="m-body">
             <p class="thunder-down">
-               <span>{{mDetail.pureName}}迅雷下载地址和剧情：</span>
+               <span>{{mDetail.pureName}}</span>迅雷下载地址和剧情：
             </p>
-            <img :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px" height="800px" max-height="800px"> 
+            <img  :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px" height="800px" max-height="800px"> 
             <p v-if="mDetail.transName && mDetail.transName!== ' '">
                 <span class="title">◎译&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span>{{mDetail.transName}}</span>
             </p>
@@ -90,10 +87,10 @@
             </template>
             <template v-if="mDetail.getAward && mDetail.getAward!=' '">
                 <div class="margin">
-                    <span class="title" style="width: 32px;">◎获&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奖</span>
+                    <span class="title" style="width: 60px;">◎获&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奖</span>
                 </div>
-                 <p v-for="(item,idx) of mDetial.getAward" :key="`award${idx}`">
-                    <span class="title"></span><span>{{item}}</span>
+                 <p v-for="(item,idx) of mDetail.getAward" :key="`award${idx}`">
+                    <span class="title" style="width: 32px;"></span><span>{{item}}</span>
                 </p>
             </template>
        </div>
@@ -125,7 +122,7 @@ import {Component, Prop, Vue} from 'vue-property-decorator';
 export default class extends Vue{
     @Prop({
         required: true,
-        default: () => {}
+        default: () => ''
     }) private mDetail!: object
 }
 </script>
@@ -133,7 +130,13 @@ export default class extends Vue{
 <style lang="scss" scoped>
     .m-text {
         overflow: hidden;
+        .movie-name {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 240px;
+        }
         h1 {
+            padding: 0 20px;
             margin-bottom: 11px;
             line-height: 42px;
             color: $font-blue-color;
@@ -184,11 +187,14 @@ export default class extends Vue{
                 background-color: #ffb;
                 border: 1px #ff8c00 solid;
                 &:hover {
-                    color: $font-red-color;
+                    color: $font-theme-color;
                 }
             }
             .down-tip {
                 color: $font-blue-color;
+                a:hover{
+                    color: $font-theme-color;
+                }
             }
         }
     }

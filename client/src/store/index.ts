@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {IPageState} from './modules/page';
+import {ISearchState} from './modules/search';
 
 Vue.use(Vuex);
 
 export interface IRootState {
-    page: IPageState
+    searchInfo: ISearchState
 }
 
 // const store = new Vuex.Store({

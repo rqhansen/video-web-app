@@ -8,7 +8,7 @@ function resolve (dir) {
 }
 
 module.exports = {
-    publicPath:'./',
+    publicPath:'/', //history模式时配置
     outputDir: 'dist',
     assetsDir: './static',
     //configureWebpack配置

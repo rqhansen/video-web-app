@@ -4,7 +4,7 @@
             <span>当前位置：&nbsp;</span> 
             <router-link to="/" class="transition">万寻电影>&nbsp;</router-link>
             <span class="top transition" @click.stop="goIndex">{{typeZhName}}>></span>
-            <span>{{downText}}</span>
+            <span class="ellipsis movie-name">{{downText}}</span>
         </div>
     </div>
 </template>
@@ -51,6 +51,11 @@ export default class extends Vue{
             &:hover {
                 color: $font-theme-color;
             }
+        }
+        .movie-name {
+            display: inline-block;
+            vertical-align: bottom;
+            max-width: 260px;
         }
     }
 }

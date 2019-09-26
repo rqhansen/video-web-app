@@ -17,11 +17,11 @@
 <style lang="scss" scoped>
     .nav-bg-wp {
         width: 100%;
+        margin-bottom: 30px;
         .nav-bg {
             height: 27px;
             line-height: 27px;
             padding: 0 10px;
-            margin-bottom: 30px;
             border: 1px solid #bfe4ff;
             background-color: #f7f7ff;
             font-size: 12px;

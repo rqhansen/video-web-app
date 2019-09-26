@@ -1,8 +1,8 @@
 <template>
     <div class="classify-m-wp limit-width">
         <div class="section classify-m">
-            <nav-bg>
-                    <crumbs v-if="movie.length" 
+            <nav-bg  v-if="movie.length">
+                    <crumbs
                     :typeEnName="movieType"
                     :typeZhName="movie[0].typeName"
                     @get-index-page-data="getIndexPageData"/>
@@ -11,6 +11,7 @@
                 :movie="movie"
             />
             <pagination 
+                v-if="movie"
                 :totalPage="totalPage"
                 :currentPage="currPage"
                 @get-curr-page-data="getCurPageData"/>
@@ -37,7 +38,7 @@ import NavBg from '@/components/NavBg.vue';
     }
 })
 export default class extends Vue {
-    private movie = [];
+    private movie = '';
     private totalPage = 0;
     private movieType = '';
     private currPage = 1;

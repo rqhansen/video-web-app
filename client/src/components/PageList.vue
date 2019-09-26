@@ -1,6 +1,6 @@
 <template>
     <div class="page-m-list-wp">
-        <empty-data v-if="!movie.length"/>
+        <empty-data v-if="movie && !movie.length"/>
         <ul v-else>
             <li v-for="(m,idx) of movie" :key="idx">
                 <div class="poster transition" 
@@ -58,6 +58,7 @@
     .page-m-list-wp {
         width: 100%;
         height: 100%;
+        min-height: 638px;
         ul {
             width: 100%;
             display: flex;

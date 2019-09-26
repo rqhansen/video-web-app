@@ -1,7 +1,12 @@
 <template>
     <div class="fast-nav">
-        <ul>
-            <li v-for="m of menus" :key="m.title" class="transition"><span @click="goPage(m.routeName)">{{m.title}}</span></li>
+        <ul class="clearfix">
+            <li v-for="m of menus" 
+                :key="m.title" 
+                class="transition"
+                :class="{'active':currRouteName===m.routeName}">
+                <span @click="goPage(m.routeName)">{{m.title}}</span>
+            </li>
         </ul>
     </div>
 </template>
@@ -27,6 +32,10 @@ import {Component,Vue} from 'vue-property-decorator';
 })
 export default class extends Vue{
     private menus = MENU;
+
+    get currRouteName() {
+        return this.$route.name;
+    }
     private goPage(rName: string) {
         if(!rName) {
             this.$message({
@@ -54,6 +63,9 @@ export default class extends Vue{
             cursor: pointer;
             &:last-child {
                 margin-right: 0;
+            }
+            &.active {
+                color: $font-theme-color;
             }
             &:hover {
                 color: $font-theme-color;

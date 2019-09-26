@@ -2,9 +2,11 @@
   <div id="app" class="app">
     <!-- 头部 -->
     <Header/>
-    <keep-alive>
-      <router-view class="main" />
-    </keep-alive>
+    <transition name="fade-move">
+      <keep-alive>
+        <router-view class="main" />
+      </keep-alive>
+  </transition>
     <!-- 尾部 -->
     <common-footer/>
   </div>
@@ -38,6 +40,13 @@
     content: "";
     visibility: hidden;
     height: 0;
+  }
+  .fade-move-enter-active {
+    transition: all .3s ease;
+  }
+  .fade-move-enter {
+    transform: translateX(10px);
+    opacity: 0;
   }
   .limit-width {
     min-width: 768px;

@@ -12,7 +12,7 @@ const Search = () => import(/*webpackChunkName: "search" */ './views/search/Inde
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -50,5 +50,9 @@ export default new Router({
       name: 'search',
       component: Search
     }
-  ]
+  ],
+  scrollBehavior () {
+    //期望滚动到哪个位置
+    return { x: 0, y: 0 }
+  }
 })

@@ -29,9 +29,10 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
   .home {
-    .m-list-wp{
-      width: 100%;
-      min-width: 720px;
+    /deep/ .movie-list {
+      ul {
+        min-height: 685px;
+      }
     }
   }
 </style>
