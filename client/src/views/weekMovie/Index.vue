@@ -1,5 +1,5 @@
 <template>
-    <div class="week-m-wp limit-width">
+    <div class="week-m-wp min-width">
         <div class="section">
             <div
                 v-for="(m,idx) of movies" :key="idx">

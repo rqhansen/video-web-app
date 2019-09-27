@@ -1,5 +1,5 @@
 <template>
-    <div class="today-m-wp limit-width">
+    <div class="today-m-wp min-width">
         <div class="section">
             <title-bar :isShowMore="false" title="今日最新电影推荐" url="/movie/more"></title-bar>
             <!-- 今日热门电影 -->

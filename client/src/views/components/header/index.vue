@@ -1,5 +1,5 @@
 <template>
-    <div class="header limit-width">
+    <div class="header min-width">
         <!-- 热门电影 -->
         <div class="hot-m-wp">
             <div class="section">
@@ -22,7 +22,7 @@
                 </div>
                 <!-- 下载提示 -->
                 <div class="down-m-tip">
-                    <div class="tip transition">
+                    <div class="tip transition" @click.stop="goDownLoad">
                         <span>下载无限制版迅雷</span>
                     </div>
                 </div>
@@ -57,17 +57,20 @@
         }
     })
 
-    export default class extends Vue {}
+    export default class extends Vue {
+
+        private goDownLoad() {
+            this.$router.push('/download')
+        }
+    }
 </script> 
 
 <style lang="scss" scoped>
     .header {
-        //热门电影
         .hot-m-wp {
             box-shadow: 0 1px 10px 0 #d9d9d9;
             overflow: hidden;
         }
-        //logo、快捷导航及搜索区
         .logo-search-wp {
             .section {
                 position: relative;
@@ -103,7 +106,6 @@
                 }
             }
         }
-        //导航菜单
         .movie-nav-wp {
             background: $font-theme-color;
         }

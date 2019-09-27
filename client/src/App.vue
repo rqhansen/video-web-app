@@ -45,10 +45,10 @@
     transition: all .3s ease;
   }
   .fade-move-enter {
-    transform: translateX(10px);
+    transform: translateX(20px);
     opacity: 0;
   }
-  .limit-width {
+  .min-width {
     min-width: 768px;
   }
   .section {

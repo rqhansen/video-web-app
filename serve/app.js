@@ -7,6 +7,8 @@ const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
+//配置vue的history模式
+const history = require('connect-history-api-fallback'); 
 // const logger = require('koa-logger')
 
 
@@ -51,6 +53,7 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
+app.use(history());
 app.listen(process.env.PORT || 6666);
 
 module.exports = app

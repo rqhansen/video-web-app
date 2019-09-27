@@ -1,5 +1,5 @@
 <template>
-    <div class="footer-wp limit-width">
+    <div class="footer-wp today-width">
         <div class="section">
             <p>
                 <span>Copyright © 2019</span>

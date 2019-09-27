@@ -15,11 +15,11 @@
 const MENU = [
         {
             title: '今日最新电影',
-            routeName: 'todayMovie'
+            routeName: 'todaymovie'
         },
         {
             title: '近一周最新电影',
-            routeName: 'weekMovie'
+            routeName: 'weekmovie'
         },
         {
             title: '收藏本站'

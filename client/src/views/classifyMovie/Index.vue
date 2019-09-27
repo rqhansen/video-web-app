@@ -1,5 +1,5 @@
 <template>
-    <div class="classify-m-wp limit-width">
+    <div class="classify-m-wp min-width">
         <div class="section classify-m">
             <nav-bg  v-if="movie.length">
                     <crumbs

@@ -1,5 +1,5 @@
 <template>
-    <div class="m-detail-wp limit-width">
+    <div class="m-detail-wp min-width">
         <div class="section">
             <div class="m-detail">
                 <nav-bg>
