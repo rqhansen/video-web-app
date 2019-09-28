@@ -1,12 +1,12 @@
 <template>
-    <div class="title">
+    <div class="down-load-title">
         <dl>
             <dt>
                 <img src="@/assets/images/downLoad/xunlei_icon.jpg" alt="" width="40" height="40">
             </dt>
             <dd>
                 <h1>迅雷5&nbsp;&nbsp;官方无限制版</h1>
-                <a href="" class="transition">查看下载教程</a>
+                <router-link to="/downloadlesson" class="transition">查看下载教程</router-link>
             </dd>
         </dl>
     </div>
@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .title {
+    .down-load-title {
         margin-bottom: 15px;
         line-height: 42px;
         font-size: 22px;

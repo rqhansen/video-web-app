@@ -9,6 +9,7 @@
   </transition>
     <!-- 尾部 -->
     <common-footer/>
+    <el-backtop target=".app"></el-backtop>
   </div>
 </template>
 
