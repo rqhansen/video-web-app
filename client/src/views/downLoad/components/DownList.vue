@@ -34,7 +34,7 @@
 <style lang="scss" scoped>
     .down-list-wp {
         li {
-            display:inline-block;
+            display: inline-block;
             margin-right: 10px;
             overflow: hidden;
         }
@@ -49,7 +49,7 @@
             background-color: $font-theme-color;
             font-weight: normal;
             &:hover {
-                background-color: $font-theme-color*0.95;
+                background-color: rgba($font-theme-color,.9);
             }
         }
         i {

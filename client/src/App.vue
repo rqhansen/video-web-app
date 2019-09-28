@@ -4,12 +4,13 @@
     <Header/>
     <transition name="fade-move">
       <keep-alive>
-        <router-view class="main" />
+        <router-view class="main"/>
       </keep-alive>
-  </transition>
+    </transition>
     <!-- 尾部 -->
     <common-footer/>
-    <el-backtop target=".app"></el-backtop>
+    <!-- 回顶部 -->
+    <el-backtop target=".app" :visibilityHeight="400" :bottom="100" :right="80"></el-backtop>
   </div>
 </template>
 
@@ -32,7 +33,9 @@
 <style lang="scss">
 @import '~@styles/index.scss';
 .app {
+  height: 100%;
   overflow-x: hidden;
+  overflow-y: scroll;
   .clearfix {
     zoom: 1;
   }

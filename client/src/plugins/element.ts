@@ -3,7 +3,8 @@ import {
     Input,
     Message,
     Pagination,
-    Backtop
+    Backtop,
+    Icon,
 } from 'element-ui';
 export default {
     install(V:any) {
@@ -11,6 +12,7 @@ export default {
         V.use(Input)
         V.use(Pagination)
         V.use(Backtop)
+        V.use(Icon)
         V.prototype.$message = Message;
     }
 }

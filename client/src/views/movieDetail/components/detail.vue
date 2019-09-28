@@ -106,7 +106,7 @@
             {{url}}[www.wx520.net]下载
             </a>
              <div class="down-tip">
-                <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<a href="/html/downThurder" target="_blank">无限制版迅雷</a>!
+                <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<router-link to="/download" target="_blank">无限制版迅雷</router-link>
             </div>
        </div>
     </div>  
@@ -191,7 +191,7 @@ export default class extends Vue{
                 }
             }
             .down-tip {
-                color: $font-blue-color;
+                color: $font-base-color;
                 a:hover{
                     color: $font-theme-color;
                 }
