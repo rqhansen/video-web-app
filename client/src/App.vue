@@ -32,6 +32,7 @@
 <style lang="scss">
 @import '~@styles/index.scss';
 .app {
+  overflow-x: hidden;
   .clearfix {
     zoom: 1;
   }
@@ -48,6 +49,9 @@
   .fade-move-enter {
     transform: translateX(20px);
     opacity: 0;
+  }
+  .main {
+    min-height: 725px;
   }
   .min-width {
     min-width: 768px;
@@ -68,10 +72,6 @@
     .section  {
       width: 95%;
     }
-  }
-
-  .main {
-    min-height: 725px;
   }
 }
 </style>
