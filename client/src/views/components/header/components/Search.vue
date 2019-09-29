@@ -34,22 +34,20 @@
         }
 
         private getSearchData() {
-            const {query} = this.$route;
-            if(query.keyword && query.page) {
+            const { query } = this.$route;
+            if  ( query.keyword && query.page) {
                 let {keyword,page} = query;
-                // if(this.movieName === keyword && this.currentPage == page) return;
                 if(this.movieName === keyword) {
                     if(this.currentPage === page) {
                         if (page === '1') return;
                         page = '1';
                     }
-                }
-                if(this.movieName !== keyword) {
+                } else {
                     page = '1';
                 }
                 return { page,movieName: this.movieName }
-            }else if(!query.keyword && !query.page) {
-                return { page: 1, movieName: this.movieName
+            }   else if(!query.keyword && !query.page) {
+                    return { page: 1, movieName: this.movieName
                 }
             }
         } 

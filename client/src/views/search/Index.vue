@@ -98,7 +98,7 @@ export default class extends Vue {
         padding: 25px 0;
         .search-title {
             span {
-            color: $font-red-color;
+                color: $font-red-color;
             }
         }
     }

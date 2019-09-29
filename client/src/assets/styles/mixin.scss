@@ -1,4 +1,4 @@
-//配置全局变量
+// @import './variables';
 $font-base-color: #000;
 $font-theme-color: #4da6ff;
 $font-border-color: #ccc;
@@ -9,3 +9,10 @@ $font-footer-color: #666;
 
 //主题2
 $font-theme2-color: green;
+
+// @mixin font_color($color) {
+//     color: $color;
+//     [data-theme="theme2"] & {
+//         color: $font-theme2-color;
+//     }
+// }

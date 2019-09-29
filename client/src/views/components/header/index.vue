@@ -1,9 +1,14 @@
 <template>
     <div class="header min-width">
-        <!-- 热门电影 -->
-        <div class="hot-m-wp">
+        <!-- 热门电影和切换主题 -->
+        <div class="header-top-wp">
             <div class="section">
-                <hot-movie/>
+                <div class="lf">
+                    <hot-movie/>
+                </div>
+                <div class="rt">
+                    <switch-theme/>
+                </div>
             </div>
         </div>
         <!-- 热门电影结束 -->
@@ -41,6 +46,7 @@
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator';
     import HotMovie from './components/HotMovie.vue';
+    import SwitchTheme from './components/SwitchTheme.vue';
     import Logo from './components/Logo.vue';
     import Search from './components/Search.vue';
     import MovieNav from './components/MovieNav.vue';
@@ -50,6 +56,7 @@
         name:'Header',
         components: {
             HotMovie,
+            SwitchTheme,
             Logo,
             Search,
             MovieNav,
@@ -67,9 +74,15 @@
 
 <style lang="scss" scoped>
     .header {
-        .hot-m-wp {
+        .header-top-wp {
             box-shadow: 0 1px 10px 0 #d9d9d9;
             overflow: hidden;
+            .lf {
+                float: left;
+            }
+            .rt {
+                float: right;
+            }
         }
         .logo-search-wp {
             .section {

@@ -24,7 +24,7 @@
     .footer-wp {
         padding: 10px;
         text-align: center;
-        color: $font-regular-color;
+        color: $font-footer-color;
         line-height: 22px;
         font-size: 12px;
         border-top: 2px solid $font-theme-color;

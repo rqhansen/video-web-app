@@ -77,9 +77,9 @@
                 .poster {
                     width: 140px;
                     height: 174px;
-                    padding: 1px;
+                    padding: 2px;
                     margin-right: 10px;
-                    border: 1px solid transparent;
+                    border: 1px solid $font-border-color;
                     background-size: cover;
                     background-clip: content-box;
                     cursor: pointer;

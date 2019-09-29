@@ -27,9 +27,11 @@
 <style lang="scss" scoped>
       .title-wp {
         width: 100%;
+        height: 40px;
         padding: 0 10px;
         line-height: 40px;
         background-color: #f7f7f7;
+        overflow: hidden;
       h2 {
         float: left;
         font-size: 16px;

@@ -23,7 +23,6 @@
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
 import { Route } from 'vue-router';
-import {movieDetail as movieDetailInterface} from '@/interface/movieDetail';
 import {copyText} from '@/utils/utils';
 import {getMovieDetail} from '@/apis/movieDetail';
 import NavBg from '@/components/NavBg.vue';
@@ -40,7 +39,7 @@ import detail from './components/detail.vue';
 })
 
 export default class extends Vue{
-    private mDetail:movieDetailInterface = {filmType:''}
+    private mDetail = {filmType: ''};
     private movieType = '';
     private movieId = '';
 
@@ -74,6 +73,7 @@ export default class extends Vue{
         this.$router.push(`/movie/${this.mDetail.filmType}`);
     }
 
+    //复制网址
     copy() {
        const url = window.location.href;
        const flag = copyText(url);

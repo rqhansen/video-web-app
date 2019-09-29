@@ -1,12 +1,13 @@
 import { VuexModule, Module, Mutation, Action, getModule} from 'vuex-module-decorators';
 import store from '@/store';
+import {ISearchState} from '@/interface/ISearchState'
 
-export interface ISearchState {
-    searchInfo: {
-        page: string, 
-        movieName: string
-    }
-}
+// export interface ISearchState {
+//     searchInfo: {
+//         page: string, 
+//         movieName: string
+//     }
+// }
 
 @Module({dynamic: true, store, name: 'searchState'})
 class SearchState extends VuexModule implements ISearchState {
@@ -25,4 +26,5 @@ class SearchState extends VuexModule implements ISearchState {
     }
 }
 
+//导入到组件中使用
 export const SearchModule = getModule(SearchState);

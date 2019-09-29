@@ -4,8 +4,8 @@ import router from './router'
 import store from './store/index'
 import App from './App.vue'
 import './registerServiceWorker'
-Vue.use(elementUi);
 
+Vue.use(elementUi);
 
 Vue.config.productionTip = false
 

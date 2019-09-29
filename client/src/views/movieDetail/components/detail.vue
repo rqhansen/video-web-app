@@ -191,7 +191,7 @@ export default class extends Vue{
                 }
             }
             .down-tip {
-                color: $font-base-color;
+                color: $font-red-color;
                 a:hover{
                     color: $font-theme-color;
                 }

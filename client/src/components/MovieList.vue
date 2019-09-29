@@ -3,7 +3,9 @@
         <ul v-if="currentMovie.length">
             <li v-for="m of currentMovie" :key="m.pureName" @click.stop="goMovieDetail(m.filmType,m.id)">
                 <div class="poster">
-                    <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
+                    <a :title="m.pureName">
+                        <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
+                    </a>
                 </div>
                 <div class="txt" :class="{'new': m.isNew}">
                     <h3 class="ellipsis">{{m.fullName}}</h3>
@@ -28,11 +30,13 @@ import EmptyData from './EmptyData.vue';
 })
 
 export default class extends Vue {
+    
     @Prop({
         default: () => {
             return () => {}
         }
     }) private handleMovieFun!: Function
+
     @Prop({
         default: () => []
     }) private fetchMovie!: () => []
@@ -73,7 +77,7 @@ export default class extends Vue {
                 flex: 0 0 16.666667%;
                 max-width: 16.666667%;
                 padding: 0 20px;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
                 font-size: 0;
                 text-align: center;
                 cursor: pointer;
@@ -82,6 +86,7 @@ export default class extends Vue {
                     position: relative;
                     height: 0;
                     padding-top: 121.5%;
+                    margin-bottom: 3px;
                     overflow: hidden;
                     img {
                         position: absolute;
@@ -89,15 +94,14 @@ export default class extends Vue {
                         top: 0;
                         width: 100%;
                         height: 100%;
-                        padding: 1px;
-                        border: 1px solid transparent;
+                        padding: 2px;
+                        border: 1px solid $font-border-color;
                         &:hover {
                             border-color: $font-red-color;
                         }
                     }
                 }
                 .txt {
-                    margin-top: 2px;
                     &.new {
                         time {
                             color: $font-red-color;
@@ -111,7 +115,6 @@ export default class extends Vue {
                     time {
                         line-height: 16px;
                         font-size: 12px;
-                        color: $font-regular-color;
                     }
                 }
             }
