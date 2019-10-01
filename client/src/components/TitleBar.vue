@@ -44,7 +44,7 @@
         color: $font-blue-color;
         cursor:pointer;
         &:hover {
-          color: $font-theme-color;
+          @include font_color($font-theme1-color);
         }
       }
     }

@@ -1,0 +1,86 @@
+.el-backtop {
+    transition: .3s;
+    @include font_color($font-theme1-color);
+}
+.el-message--success {
+    .el-message__content {
+        @include font_color($font-theme1-color);
+    }
+}
+.el-message__icon {
+    &.el-icon-success {
+        @include font_color($font-theme1-color);
+    }
+}
+
+.el-message__closeBtn{
+    transition-duration: .3s;
+    @include font_color($font-theme1-color);
+    &:hover {
+        @include hover_font_color($font-theme1-color);
+    }
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+    @include font_color($font-theme1-color);
+    &:hover {
+        @include hover_font_color($font-theme1-color);
+    }
+}
+
+.el-input__inner {
+    transition-duration: .3s;
+    &:focus {
+        @include br_color($font-theme1-color)
+    }
+    &:hover {
+        @include br_color($font-theme1-color)
+    }
+}
+
+.el-button {
+    transition-duration: .3s;
+}
+
+.el-button--default {
+    @include font_color($font-theme1-color);
+    &:hover {
+        @include hover_font_color($font-theme1-color);
+    }
+    &:active {
+        @include br_color($font-theme1-color);
+    }
+}
+.el-button--primary {
+    @include bg_color($font-theme1-color);
+    @include br_color($font-theme1-color);
+    &:hover {
+        @include hover_bg_color($font-theme1-color);
+        @include hover_br_color($font-theme1-color);
+    }
+    &:active {
+        @include hover_bg_color($font-theme1-color);
+        @include hover_br_color($font-theme1-color);
+    }
+}
+
+.el-pagination {
+    &.is-background {
+        .el-pager {
+            li:not(.disabled) {
+                transition-duration: .3s;
+                &.active {
+                    @include hover_bg_color($font-theme1-color);
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+                &:hover {
+                    @include font_color($font-theme1-color);
+                }
+            }
+        }
+    }
+}
+
+  

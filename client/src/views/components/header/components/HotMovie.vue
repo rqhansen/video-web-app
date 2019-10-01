@@ -79,15 +79,15 @@
         }
         dd {
             float: left;
-            color: $font-gray-color;
+            color: $font-blue-color;
             span {
                 margin: 0 2px;
                 cursor: pointer;
                 &:not(.new):hover {
-                    color: $font-theme-color;
+                    @include font_color($font-theme1-color);
                 }
                 &.new {
-                    color: $font-theme-color;
+                    @include font_color($font-theme1-color);
                 }
             } 
         }

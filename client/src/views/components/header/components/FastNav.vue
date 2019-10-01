@@ -42,7 +42,8 @@ export default class extends Vue{
                 message: '请使用Ctrl+D进行添加',
                 center: true,
                 showClose: true,
-                type: 'success'
+                type: 'success',
+                duration: 1500
             });
             return;
         }
@@ -65,10 +66,10 @@ export default class extends Vue{
                 margin-right: 0;
             }
             &.active {
-                color: $font-theme-color;
+                @include font_color($font-theme1-color);
             }
             &:hover {
-                color: $font-theme-color;
+                @include font_color($font-theme1-color);
             }
         }
     }

@@ -1,18 +1,124 @@
-// @import './variables';
-$font-base-color: #000;
-$font-theme-color: #4da6ff;
-$font-border-color: #ccc;
-$font-gray-color: #999;
-$font-blue-color: #106492;
-$font-red-color: #ff0000;
-$font-footer-color: #666;
+@import './var';
 
-//主题2
-$font-theme2-color: green;
+//字体颜色
+@mixin font_color($color) {
+    color: $color;
+    [data-theme="theme1"] & {
+        color: $font-theme1-color;
+    }
+    [data-theme="theme2"] & {
+        color: $font-theme2-color;
+    }
+    [data-theme="theme3"] & {
+        color: $font-theme3-color;
+    }
+    [data-theme="theme4"] & {
+        color: $font-theme4-color;
+    }
+    [data-theme="theme5"] & {
+        color: $font-theme5-color;
+    }
+}
 
-// @mixin font_color($color) {
-//     color: $color;
-//     [data-theme="theme2"] & {
-//         color: $font-theme2-color;
-//     }
-// }
+//hover 字体颜色
+@mixin hover_font_color($color) {
+    color: rgba($color, .8);
+    [data-theme="theme1"] & {
+        color: rgba($font-theme1-color, .8);
+    }
+    [data-theme="theme2"] & {
+        color: rgba($font-theme2-color, .8);
+    }
+    [data-theme="theme3"] & {
+        color: rgba($font-theme3-color, .8);
+    }
+    [data-theme="theme4"] & {
+        color: rgba($font-theme4-color, .8);
+    }
+    [data-theme="theme5"] & {
+        color: rgba($font-theme5-color, .8);
+    }
+}
+
+//背景颜色
+@mixin bg_color($color) {
+    background: $color;
+    [data-theme="theme1"] & {
+        background: $font-theme1-color;
+    }
+    [data-theme="theme2"] & {
+        background: $font-theme2-color;
+    }
+    [data-theme="theme3"] & {
+        background: $font-theme3-color;
+    }
+    [data-theme="theme4"] & {
+        background: $font-theme4-color;
+    }
+    [data-theme="theme5"] & {
+        background: $font-theme5-color;
+    }
+}
+
+//hover背景颜色
+@mixin hover_bg_color($color) {
+    background: rgba($color, .8);
+    [data-theme="theme1"] & {
+        background: rgba($font-theme1-color, .8);
+    }
+    [data-theme="theme2"] & {
+        background: rgba($font-theme2-color, .8);
+    }
+    [data-theme="theme3"] & {
+        background: rgba($font-theme3-color, .8);
+    }
+    [data-theme="theme4"] & {
+        background: rgba($font-theme4-color, .8);
+    }
+    [data-theme="theme5"] & {
+        background: rgba($font-theme5-color, .8);
+    }
+}
+
+
+//边框颜色
+@mixin br_color($color) {
+    border-color: $color;
+    [data-theme="theme1"] & {
+        border-color: $font-theme1-color;
+    }
+    [data-theme="theme2"] & {
+        border-color: $font-theme2-color;
+    }
+    [data-theme="theme3"] & {
+        border-color: $font-theme3-color;
+    }
+    [data-theme="theme4"] & {
+        border-color: $font-theme4-color;
+    }
+    [data-theme="theme5"] & {
+        border-color: $font-theme5-color;
+    }
+}
+
+//hover边框颜色
+@mixin hover_br_color($color) {
+    border-color: transparent;
+    [data-theme="theme1"] & {
+        border-color: transparent;
+    }
+    [data-theme="theme2"] & {
+        border-color: transparent;
+    }
+    [data-theme="theme3"] & {
+        border-color: transparent;
+    }
+    [data-theme="theme4"] & {
+        border-color: transparent;
+    }
+    [data-theme="theme5"] & {
+        border-color: transparent;
+    }
+}
+
+

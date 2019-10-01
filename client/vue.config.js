@@ -92,7 +92,7 @@ module.exports = {
         sourceMap: false,
         loaderOptions: {
             sass: {
-               prependData: `@import "@/assets/styles/variables.scss";` //全局变量
+               prependData: `@import "@/assets/styles/mixin.scss";` //全局变量
             }
         },
         modules: false 

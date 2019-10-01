@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="txt" :class="{'new': m.isNew}">
-                    <h3 class="ellipsis">{{m.fullName}}</h3>
+                    <h3 class="ellipsis transition">{{m.fullName}}</h3>
                     <time>{{m.pubDate}}</time>
                 </div>
             </li>
@@ -97,7 +97,7 @@ export default class extends Vue {
                         padding: 2px;
                         border: 1px solid $font-border-color;
                         &:hover {
-                            border-color: $font-red-color;
+                            @include br_color($font-theme1-color);
                         }
                     }
                 }
@@ -110,7 +110,10 @@ export default class extends Vue {
                     h3 {
                         line-height: 24px;
                         font-size: 13px;
-                        color: $font-red-color;
+                        @include font_color($font-theme1-color);
+                        &:hover {
+                            @include hover_font_color($font-theme1-color);
+                        }
                     }
                     time {
                         line-height: 16px;

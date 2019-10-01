@@ -1,5 +1,6 @@
 import {
     Button,
+    Dialog,
     Input,
     Message,
     Pagination,
@@ -9,6 +10,7 @@ import {
 export default {
     install(V:any) {
         V.use(Button)
+        V.use(Dialog)
         V.use(Input)
         V.use(Pagination)
         V.use(Backtop)

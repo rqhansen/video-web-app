@@ -27,13 +27,14 @@
         color: $font-footer-color;
         line-height: 22px;
         font-size: 12px;
-        border-top: 2px solid $font-theme-color;
+        border-top: 2px solid $font-theme1-color;
+        @include br_color($font-theme1-color);
         overflow: hidden;
         a {
             margin: 0 4px;
             cursor: pointer;
             &:hover {
-                color: $font-theme-color;
+                @include font_color($font-theme1-color);
             }
         }
     }

@@ -25,7 +25,6 @@
             border: 1px solid #bfe4ff;
             background-color: #f7f7ff;
             font-size: 12px;
-            color: #555;
             overflow: hidden;
         }
     }

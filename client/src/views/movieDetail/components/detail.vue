@@ -139,10 +139,10 @@ export default class extends Vue{
             padding: 0 20px;
             margin-bottom: 11px;
             line-height: 42px;
-            color: $font-blue-color;
             text-align: center;
             font-weight: bold;
             font-size: 16px;
+            @include font_color($font-theme1-color);
         }
         .info {
             text-align: center;
@@ -171,7 +171,7 @@ export default class extends Vue{
             }
         }
         .bot {
-            padding: 0 10px 20px;
+            padding: 0 10px 15px;
             font-size: 12px;
             h3 {
                 color: $font-red-color;
@@ -187,13 +187,13 @@ export default class extends Vue{
                 background-color: #ffb;
                 border: 1px #ff8c00 solid;
                 &:hover {
-                    color: $font-theme-color;
+                    @include font_color($font-theme1-color);
                 }
             }
             .down-tip {
                 color: $font-red-color;
                 a:hover{
-                    color: $font-theme-color;
+                    @include font_color($font-theme1-color);
                 }
             }
         }

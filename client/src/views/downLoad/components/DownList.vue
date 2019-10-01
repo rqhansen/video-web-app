@@ -46,10 +46,11 @@
             line-height: 62px;
             font-size: 20px;
             color: #fff;
-            background-color: $font-theme-color;
+            @include bg_color($font-theme1-color);
             font-weight: normal;
             &:hover {
-                background-color: rgba($font-theme-color,.9);
+                @include hover_bg_color($font-theme1-color);
+                color: #fff;
             }
         }
         i {
@@ -58,7 +59,7 @@
             width: 33px;
             height: 33px;
             margin-right: 15px;
-            background: url('../../../assets/images/downLoad/download.png') no-repeat;
+            background: url('~@imgs/downLoad/download.png') no-repeat;
         }
     }
 </style>

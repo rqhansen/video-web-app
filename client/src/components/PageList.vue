@@ -84,7 +84,7 @@
                     background-clip: content-box;
                     cursor: pointer;
                     &:hover {
-                        border-color: $font-red-color;
+                        @include br_color($font-theme1-color);
                     }
                 }
                 .txt {
@@ -99,7 +99,7 @@
                         font-size: 16px;
                         margin-bottom: 5px;
                         line-height: 30px;
-                        color: $font-blue-color;
+                        @include font_color($font-theme1-color);
                         font-weight: bold;
                         cursor: pointer;
                         &:hover {
@@ -128,7 +128,7 @@
                         position: absolute;
                         left: 0;
                         bottom: 0;
-                        color: #106492;
+                        @include font_color($font-theme1-color);
                         line-height: 30px;
                         &.new {
                             time {
@@ -141,7 +141,7 @@
                         span {
                             cursor: pointer;
                             &:hover {
-                                color: $font-theme-color;
+                                color: $font-red-color;
                             }
                         }
                     }

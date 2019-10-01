@@ -97,8 +97,8 @@ export default class extends Vue{
             height: 30px;
         }
         .m-detail {
-            border: 1px solid $font-theme-color;
-            /* min-height: 675px; */
+            border: 1px solid red;
+            @include br_color($font-theme1-color);
             /deep/ .nav-bg {
                 display: flex;
                 justify-content: flex-start;

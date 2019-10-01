@@ -39,16 +39,11 @@ export default class extends Vue{
 <style lang="scss" scoped>
 .crumbs-wp { 
     .crumbs {
-        .router-link-active {
-            &:hover {
-                color: $font-theme-color;
-            }
-        }
         .top {
             color: $font-blue-color;
             cursor: pointer;
             &:hover {
-                color: $font-theme-color;
+                @include font_color($font-theme1-color);
             }
         }
         .movie-name {

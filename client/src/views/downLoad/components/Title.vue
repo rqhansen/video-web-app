@@ -42,7 +42,7 @@
             a {
                 font-size: 16px;
                 &:hover {
-                    color: $font-theme-color;
+                    @include font_color($font-theme1-color);
                 }
             }
         }

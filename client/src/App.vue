@@ -27,7 +27,17 @@
       }
   })
 
-  export default class extends Vue {}
+  export default class extends Vue {
+    created() {
+      this.initCurrTheme();
+    }
+
+    //获取当前主题
+    private initCurrTheme() {
+      let themeIndex = localStorage.getItem('theme-index') || '1';
+      window.document.documentElement.setAttribute('data-theme',`theme${themeIndex}`);
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -70,6 +80,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  a {
+    &:hover {
+      @include font_color($font-theme1-color);
+    }
   }
   @Media (max-width:999px) {
     .section  {
