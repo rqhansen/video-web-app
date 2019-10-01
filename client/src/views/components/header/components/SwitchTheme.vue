@@ -1,5 +1,8 @@
 <template>
     <div class="switch-theme-wp">
+        <div class="switch-language" @click.stop="switchLanguage">
+            中文
+        </div>
         <div class="menu-wp" @click.stop="openSwitchTheme">
             <span class="txt transition">更换主题</span>
             <i class="el-icon-caret-bottom"></i>
@@ -77,6 +80,12 @@
         private cancelChoiceTheme() {
             this.closeThemeDialog();
             this.currThemeIndex = this.getCurrThemeIndex();
+        }
+
+        //切换语言
+        private switchLanguage() {
+            // this.$i18n.locale = 'en';
+            console.log(1);
         }
     }
 </script>
