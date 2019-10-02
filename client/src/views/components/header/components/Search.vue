@@ -1,13 +1,13 @@
 <template>
     <div class="search">
-        <el-input type="text" @keyup.native.enter.exact="search" v-model.trim="movieName" placeholder="输入电影名称搜索..." clearable></el-input>
+        <el-input type="text" @keyup.native.enter.exact="search" v-model.trim="movieName" :placeholder="$t('header.placeholder')" clearable></el-input>
         <div class="btn-wp">
             <el-button 
                 type="primary" 
                 size="middle" 
                 :round="false" 
                 icon="el-icon-search" 
-                @click.stop="search">搜索</el-button>
+                @click.stop="search">{{$t('header.search')}}</el-button>
         </div>
     </div>
 </template>

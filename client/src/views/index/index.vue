@@ -2,7 +2,7 @@
   <div class="home">
     <div class="section">
       <!-- 今日热门电影推荐 -->
-      <title-bar></title-bar>
+      <title-bar :title="$t('todayMovie.todayMovieIntroduce')"></title-bar>
       <!-- 今日电影列表 -->
       <movie-list :handleMovieFun="indexMoviesFun"></movie-list>
     </div>

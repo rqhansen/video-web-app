@@ -2,7 +2,7 @@
     <div class="logo">
         <h1>
             <div class="img-wp" :class="{'not-allowed': isHomePage}" @click="goHome">
-                <img src="@imgs/header/logo.jpg" title="万寻资源网">
+                <img src="@imgs/header/logo.jpg" :title="$t('header.title')">
             </div>
         </h1>
     </div>

@@ -28,7 +28,7 @@
                 <!-- 下载提示 -->
                 <div class="down-m-tip">
                     <div class="tip transition" @click.stop="goDownLoad">
-                        <span>下载无限制版迅雷</span>
+                        <span>{{$t('header.downLoadUnlimitThunder')}}</span>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
             .down-m-tip {
                 position: absolute;
                 bottom: 12px;
-                right: 396px;
+                left: 492px;
                 .tip {
                     color: $font-blue-color;
                     cursor: pointer;

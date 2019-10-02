@@ -1,14 +1,14 @@
 <template>
     <div class="switch-theme-wp">
         <div class="switch-language" @click.stop="switchLanguage">
-            中文
+            {{$t('header.language')}}
         </div>
         <div class="menu-wp" @click.stop="openSwitchTheme">
-            <span class="txt transition">更换主题</span>
+            <span class="txt transition">{{$t('header.switchTheme')}}</span>
             <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dialog
-            title="更换主题"
+            :title="$t('switchTheme.switchTheme')"
             :visible.sync="centerDialogVisible"
             width="445px"
             center
@@ -19,8 +19,8 @@
                 </ul>
             </div>
             <span slot="footer" class="dialog-footer">
-                <el-button @click.stop="cancelChoiceTheme">取 消</el-button>
-                <el-button type="primary" @click.stop="switchTheme">确 定</el-button>
+                <el-button @click.stop="cancelChoiceTheme">{{$t('switchTheme.cancelBtn')}}</el-button>
+                <el-button type="primary" @click.stop="switchTheme">{{$t('switchTheme.okBtn')}}</el-button>
             </span>
         </el-dialog>
     </div>
@@ -85,7 +85,6 @@
         //切换语言
         private switchLanguage() {
             this.$i18n.locale = 'zh';
-            console.log(1);
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="lesson-title">
         <div class="title">
-            <span>迅雷五下载教程</span>
+            <span>{{$t('downLoadLesson.title')}}</span>
         </div>
     </div>
 </template>

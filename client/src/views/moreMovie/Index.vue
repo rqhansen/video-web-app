@@ -1,7 +1,7 @@
 <template>
     <div class="more-movie-wp">
         <div class="section">
-            <title-bar :isShowMore="false"/>
+            <title-bar :isShowMore="false" :title="$t('todayMovie.todayMovieIntroduce')"/>
             <movie-list :handleMovieFun="moreMovieFun"/>
         </div>
     </div>

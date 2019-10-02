@@ -1,7 +1,7 @@
 <template>
     <div class="title-wp clearfix">
         <h2>{{title}}</h2>
-        <span v-if="isShowMore" class="more transition" @click.stop="more">更多...</span>
+        <span v-if="isShowMore" class="more transition" @click.stop="more">{{$t('titleBar.more')}}...</span>
     </div>  
 </template>
 
@@ -14,7 +14,7 @@
     })
 
     export default class extends Vue {
-      @Prop({default:'今日热门电影推荐'}) private title!: string
+      @Prop() private title!: string
       @Prop({default: '/moreMovie'}) private url!: string
       @Prop({default: true}) private isShowMore!: boolean
 

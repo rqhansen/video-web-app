@@ -10,8 +10,8 @@
                         :movieName="mDetail.pureName"
                         @get-index-page-data="getIndexPageData"></crumbs>
                     <div class="share">
-                        <span>分享本影片给朋友=》</span>
-                        <el-button size="small" type="primary" @click="copy">点次即可复制</el-button>
+                        <span>{{$t('titleBar.shareMovie')}}=》</span>
+                        <el-button size="small" type="primary" @click="copy">{{$t('titleBar.copy')}}</el-button>
                     </div>
                 </nav-bg>
                 <detail :mDetail="mDetail"/>

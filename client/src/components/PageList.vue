@@ -10,18 +10,18 @@
                 <div class="txt">
                     <p class="full-name ellipsis transition" @click.stop="goMovieDetail(m.type,m.id)"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
                     <div class="intro-wp">
-                        <p class="ellipsis"><span class="title">@年&nbsp;&nbsp;代</span>{{m.year}}({{m.country}})</p>
-                        <p class="ellipsis"><span class="title">@主&nbsp;&nbsp;演</span>{{m.actor[0]}}</p>
-                        <p class="intro title ellispis"><span class="title">@简&nbsp;&nbsp;介</span>{{m.shortIntro}}</p>
+                        <p class="ellipsis"><span class="title">@{{$t('pageList.year1')}}&nbsp;&nbsp;{{$t('pageList.year2')}}</span>{{m.year}}({{m.country}})</p>
+                        <p class="ellipsis"><span class="title">@{{$t('pageList.actor1')}}&nbsp;&nbsp;{{$t('pageList.actor2')}}</span>{{m.actor[0]}}</p>
+                        <p class="intro title ellispis"><span class="title">@{{$t('pageList.briefIntroduce1')}}&nbsp;&nbsp;{{$t("pageList.briefIntroduce2")}}</span>{{m.shortIntro}}</p>
                         <p class="update ellipsis" :class="{'new': m.isNew}">
-                            更新时间&nbsp;:
+                            {{$t('pageList.updateTime')}}&nbsp;:
                             <template v-if="!m.isNew">
                                 <time>{{m.pubDate}}</time>
-                                <span class="transition">点击下载</span>
+                                <span class="transition">{{$t('pageList.clickToDownLoad')}}</span>
                             </template>
                             <template v-else>
-                                <time>{{m.pubDate}}(今日推荐)</time>
-                                <span class="transition">点击下载</span>
+                                <time>{{m.pubDate}}({{$t('pageList.todayRecomment')}})</time>
+                                <span class="transition">{{$t('pageList.clickToDownLoad')}}</span>
                             </template>
                         </p>
                     </div>

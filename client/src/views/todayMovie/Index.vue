@@ -1,7 +1,7 @@
 <template>
     <div class="today-m-wp min-width">
         <div class="section">
-            <title-bar :isShowMore="false" title="今日最新电影推荐" url="/movie/more"></title-bar>
+            <title-bar :isShowMore="false" :title="$t('todayMovie.todayMovieIntroduce')" url="/movie/more"></title-bar>
             <!-- 今日热门电影 -->
             <movie-list :handleMovieFun="todayMovieFun"></movie-list>
         </div>

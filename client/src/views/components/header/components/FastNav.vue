@@ -28,10 +28,27 @@ const MENU = [
 
 import {Component,Vue} from 'vue-property-decorator';
 @Component({
-    name: 'FastNav'
+    name: 'FastNav',
+    computed: {
+        menus() {
+            return [
+                {
+                    title: this.$t('header.todayMovie'),
+                    routeName: 'todaymovie'
+                },
+                {
+                    title: this.$t('header.weekMovie'),
+                    routeName: 'weekmovie'
+                },
+                {
+                    title: this.$t('header.saveWebSite'),
+                }
+            ]
+        }
+    }
 })
 export default class extends Vue{
-    private menus = MENU;
+    // private menus = MENU;
 
     get currRouteName() {
         return this.$route.name;

@@ -12,65 +12,67 @@
 </template>
 
 <script lang="ts">
-const navMenus = [
-        {
-            title: '首页',
-            url: '/'
-        },
-        {
-            title: '动作片',
-            url: '/movie/action'
-        },
-        {
-            title: '喜剧片',
-            url: '/movie/comedy'
-        },
-        {
-            title: '爱情片',
-            url: '/movie/romance'
-        },
-        {
-            title: '科幻片',
-            url: '/movie/science'
-        },
-        {
-            title: '剧情片',
-            url: '/movie/drama'
-        },
-        {
-            title: '悬疑片',
-            url: '/movie/suspense'
-        },
-        {
-            title: '战争片',
-            url: '/movie/war'
-        },
-        {
-            title: '惊悚片',
-            url: '/movie/thrill'
-        },
-        {
-            title: '恐怖片',
-            url: '/movie/horror'
-        },
-        {
-            title: '灾难片',
-            url: '/movie/disaster'
-        },
-        {
-            title: '动画片',
-            url: '/movie/cartoon'
-        }
-    ]
 
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Watch, Vue } from 'vue-property-decorator';
 
 @Component({
     name: 'MovieNav',
+    computed:{
+        menus() {
+            return [
+                {
+                    title: this.$t('nav.home'),
+                    url: '/'
+                },
+                {
+                    title: this.$t('nav.action'),
+                    url: '/movie/action'
+                },
+                {
+                    title: this.$t('nav.comedy'),
+                    url: '/movie/comedy'
+                },
+                {
+                    title: this.$t('nav.romance'),
+                    url: '/movie/romance'
+                },
+                {
+                    title: this.$t('nav.science'),
+                    url: '/movie/science'
+                },
+                {
+                    title: this.$t('nav.drama'),
+                    url: '/movie/drama'
+                },
+                {
+                    title: this.$t('nav.suspense'),
+                    url: '/movie/suspense'
+                },
+                {
+                    title: this.$t('nav.war'),
+                    url: '/movie/war'
+                },
+                {
+                    title: this.$t('nav.thrill'),
+                    url: '/movie/thrill'
+                },
+                {
+                    title: this.$t('nav.horror'),
+                    url: '/movie/horror'
+                },
+                {
+                    title: this.$t('nav.disaster'),
+                    url: '/movie/disaster'
+                },
+                {
+                    title: this.$t('nav.cartoon'),
+                    url: '/movie/cartoon'
+                }
+    ]
+        }
+    }
 })
 export default class extends Vue{
-    private menus = navMenus;
-
     get currMovieType() {
         const { name, path, params, params: { id } } = this.$route;
         if(name === 'home') return '/';

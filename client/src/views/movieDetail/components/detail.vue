@@ -2,84 +2,84 @@
     <div class="m-text">
        <h1 class="ellipsis">{{mDetail.fullName}}</h1>
        <div class="info">
-           <span>片名&nbsp;:</span>
+           <span>{{$t('movieDetail.subPureName')}}&nbsp;:</span>
            <span class="ellipsis movie-name">{{mDetail.pureName}}</span>
-           <span>发布时间&nbsp;</span>
+           <span>{{$t('movieDetail.pubDate')}}&nbsp;</span>
            <time>{{mDetail.pubDate}}</time>
        </div>
        <div class="m-body">
             <p class="thunder-down">
-               <span>{{mDetail.pureName}}</span>迅雷下载地址和剧情：
+               <span>{{mDetail.pureName}}</span>{{$t('movieDetail.downLoadAddressAndDrama')}}：
             </p>
             <img  :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px" height="800px" max-height="800px"> 
             <p v-if="mDetail.transName && mDetail.transName!== ' '">
-                <span class="title">◎译&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span>{{mDetail.transName}}</span>
+                <span class="title">◎{{$t('movieDetail.transName1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.transName1')}}</span><span>{{mDetail.transName}}</span>
             </p>
             <p v-if="mDetail.subPureName && mDetail.subPureName!== ' '">
-                <span class="title">◎片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span>{{mDetail.subPureName}}</span>
+                <span class="title">◎{{$t('movieDetail.subPureName1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.subPureName2')}}</span><span>{{mDetail.subPureName}}</span>
             </p>
             <p v-if="mDetail.year && mDetail.year!==' '">
-                <span class="title">{{$t('pageList.year')}}</span><span>{{mDetail.year}}</span>
+                <span class="title">@{{$t('movieDetail.year1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@{{$t('movieDetail.year2')}}</span><span>{{mDetail.year}}</span>
             </p>
             <p v-if="mDetail.country && mDetail.country!=' '">
-                <span class="title">◎产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</span><span>{{mDetail.country}}</span>
+                <span class="title">◎{{$t('movieDetail.country1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.country2')}}</span><span>{{mDetail.country}}</span>
             </p>
             <p v-if="mDetail.types && mDetail.types!=' '">
-                <span class="title">◎类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</span><span>{{mDetail.types}}</span>
+                <span class="title">◎{{$t('movieDetail.type1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.type2')}}</span><span>{{mDetail.types}}</span>
             </p>
             <p v-if="mDetail.language && mDetail.language!=' '">
-                <span class="title">◎语&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言</span><span>{{mDetail.language}}</span>
+                <span class="title">◎{{$t('movieDetail.language1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.language2')}}</span><span>{{mDetail.language}}</span>
             </p>
             <p v-if="mDetail.caption && mDetail.caption!=' '">
-                <span class="title">◎字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幕</span><span>{{mDetail.caption}}</span>
+                <span class="title">◎{{$t('movieDetail.caption1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.caption2')}}</span><span>{{mDetail.caption}}</span>
             </p>
             <p v-if="mDetail.onDate && mDetail.onDate!=' '">
-                <span class="title">◎上映日期</span><span>{{mDetail.onDate}}</span>
+                <span class="title">◎{{$t('movieDetail.onDate')}}</span><span>{{mDetail.onDate}}</span>
             </p>
             <p v-if="mDetail.imdbScore && mDetail.imdbScore!=' '">
-                <span class="title">◎IMDb评分</span><span>{{mDetail.imdbScore}}</span>
+                <span class="title">◎{{$t('movieDetail.imdbScore')}}</span><span>{{mDetail.imdbScore}}</span>
             </p>
             <p v-if="mDetail.imdbLink && mDetail.imdbLink!=' '">
-                <span class="title">◎IMDb链接</span><span>{{mDetail.imdbLink}}</span>
+                <span class="title">◎{{$t('movieDetail.imdbLink')}}</span><span>{{mDetail.imdbLink}}</span>
             </p>
              <p v-if="mDetail.format && mDetail.format!=' '">
-                <span class="title">◎格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式</span><span>{{mDetail.format}}</span>
+                <span class="title">◎{{$t('movieDetail.formate1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.formate2')}}</span><span>{{mDetail.format}}</span>
             </p>
             <p v-if="mDetail.fileSize && mDetail.fileSize!=' '">
-                <span class="title">◎文件大小</span><span>{{mDetail.fileSize}}</span>
+                <span class="title">◎{{$t('movieDetail.filmSize')}}</span><span>{{mDetail.fileSize}}</span>
             </p>
             <p v-if="mDetail.videoSize && mDetail.videoSize!=' '">
-                <span class="title">◎视频尺寸</span><span>{{mDetail.videoSize}}</span>
+                <span class="title">◎{{$t('movieDetail.videoSize')}}</span><span>{{mDetail.videoSize}}</span>
             </p>
             <p v-if="mDetail.filmLength && mDetail.filmLength!=' '">
-                <span class="title">◎片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长</span><span>{{mDetail.filmLength}}</span>
+                <span class="title">◎{{$t('movieDetail.filmLength1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.filmLength2')}}</span><span>{{mDetail.filmLength}}</span>
             </p>
             <p v-if="mDetail.doubanScore && mDetail.doubanScore!=' '">
-                <span class="title">◎豆瓣评分</span><span>{{mDetail.doubanScore}}</span>
+                <span class="title">◎{{$t('movieDetail.doubanScore')}}</span><span>{{mDetail.doubanScore}}</span>
             </p>
             <p v-if="mDetail.doubanLink && mDetail.doubanLink!=' '">
-                <span class="title">◎豆瓣链接</span><span>{{mDetail.doubanLink}}</span>
+                <span class="title">◎{{$t('movieDetail.doubanLink')}}</span><span>{{mDetail.doubanLink}}</span>
             </p>
             <p v-if="mDetail.director && mDetail.director!=' '">
-                <span class="title">◎导&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演</span><span>{{mDetail.director}}</span>
+                <span class="title">◎{{$t('movieDetail.director1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.director2')}}</span><span>{{mDetail.director}}</span>
             </p>
             <p v-if="mDetail.editor && mDetail.editor!=' '">
-                <span class="title">◎编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;剧</span><span>{{mDetail.editor}}</span>
+                <span class="title">◎{{$t('movieDetail.editor1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.editor2')}}</span><span>{{mDetail.editor}}</span>
             </p>
             <template v-if="mDetail.actor && mDetail.actor!=' '">
                 <p>
-                    <span class="title">◎主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演</span><span>{{mDetail.actor[0]}}</span>
+                    <span class="title">◎{{$t('movieDetail.actor1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.actor2')}}</span><span>{{mDetail.actor[0]}}</span>
                 </p>
                 <p v-for="(item,idx) of mDetail.actor.slice(1)" :key="`actor${idx}`">
                     <span class="title"></span><span>{{item}}</span>
                 </p>
             </template>
             <p class="margin label" v-if="mDetail.label && mDetail.label!=' '">
-                <span class="title">◎标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签</span><span>{{mDetail.label}}</span>
+                <span class="title">◎{{$t('movieDetail.label1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.label2')}}</span><span>{{mDetail.label}}</span>
             </p>
             <template v-if="mDetail.shortIntro && mDetail.shortIntro!=' '">
                 <div class="margin">
-                    <span class="title" style="width: 68px;">◎简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介</span>
+                    <span class="title" style="width: 68px;">◎{{$t('movieDetail.briefIntro1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.briefIntro2')}}</span>
                 </div>
                  <p v-for="(item,idx) of mDetail.shortIntro" :key="`intro${idx}`">
                     <span class="title" style="width: 32px;"></span><span>{{item}}</span>
@@ -87,7 +87,7 @@
             </template>
             <template v-if="mDetail.getAward && mDetail.getAward!=' '">
                 <div class="margin">
-                    <span class="title" style="width: 60px;">◎获&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奖</span>
+                    <span class="title" style="width: 60px;">◎{{$t('movieDetail.getAward1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.getAward2')}}</span>
                 </div>
                  <p v-for="(item,idx) of mDetail.getAward" :key="`award${idx}`">
                     <span class="title" style="width: 32px;"></span><span>{{item}}</span>
@@ -95,7 +95,7 @@
             </template>
        </div>
        <div class="bot">
-           <h3>下载地址列表:</h3>
+           <h3>{{$t('movieDetail.downLoadUrl')}}:</h3>
            <a
                 v-for="(url,idx) of mDetail.downUrl" 
                 :key="`downUrl${idx}`" 
@@ -103,10 +103,10 @@
                 target="__self"
                 class="down-url transition ellipsis"
             >
-            {{url}}[www.wx520.net]下载
+            {{url}}[www.wx520.net]{{$t('movieDetail.downLoad')}}
             </a>
              <div class="down-tip">
-                <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<router-link to="/download" target="_blank">无限制版迅雷</router-link>
+                <span>{{$t('movieDetail.tip')}}:&nbsp;</span>{{$t('movieDetail.downLoadTip')}}<router-link to="/download" target="_blank">{{$t('movieDetail.noLimitThunder')}}</router-link>
             </div>
        </div>
     </div>  

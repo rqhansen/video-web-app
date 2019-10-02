@@ -1,7 +1,7 @@
 <template>
     <div class="m-list">
         <dl>
-            <dt><span>热门电影：</span></dt>
+            <dt><span>{{$t('header.hotMovie')}}：</span></dt>
             <dd>
                 <span v-for="(movie,idx) of movies" 
                         :key="idx" 
