@@ -6,9 +6,7 @@ import store from './store/index'
 import App from './App.vue'
 import './registerServiceWorker'
 
-Vue.use(elementUi,{
-  i18n: (key: any, value: any) => i18n.t(key, value)
-});
+Vue.use(elementUi);
 
 Vue.config.productionTip = false
 

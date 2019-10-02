@@ -84,7 +84,7 @@
 
         //切换语言
         private switchLanguage() {
-            // this.$i18n.locale = 'en';
+            this.$i18n.locale = 'zh';
             console.log(1);
         }
     }

@@ -39,8 +39,8 @@ export default  {
         shareMovie: '分享本影片给朋友',
         copy: '点此即可复制'
     },
-    movieList: {
-        year: '年代',
+    pageList: {
+        year: '@年&nbsp;&nbsp;代',
         actor: '主演',
         briefIntroduce: '简介',
         updateTime: '更新时间',
@@ -88,11 +88,6 @@ export default  {
         step5: '种子标题可选输入,点击确定按钮',
         step6: '开始下载'
     },
-    page: {
-        total: '共',
-        goHead: '前往',
-        page: '页',
-    },
     switchTheme: {
         switchTheme: '更换主题',
         cancelBtn: '取消',
@@ -103,4 +98,10 @@ export default  {
         switchThemeSuccess: '更换成功',
         copyUrl: '网址已复制,可以分享给好友了!'
     }
+    // pagination:{
+    //     go:'前往',
+    //     pagesize:'条/页',
+    //     total:'共{total}条',
+    //     pageClassifier:'页'
+    // }
 }

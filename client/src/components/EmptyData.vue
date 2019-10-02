@@ -1,7 +1,7 @@
 <template>
     <div class="empty-wp">
         <div class="empty">
-            <span>暂无资源</span>
+            <span>{{$t('search.searchResult')}}</span>
         </div>
     </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
     <div class="crumbs-wp">
         <div class="crumbs">
-            <span>当前位置：&nbsp;</span> 
-            <router-link to="/" class="transition">万寻电影>&nbsp;</router-link>
+            <span>{{$t('titleBar.currLocation')}}：&nbsp;</span> 
+            <router-link to="/" class="transition">{{$t('titleBar.siteName')}}>&nbsp;</router-link>
             <span class="top transition" @click.stop="goIndex">{{typeZhName}}>></span>
             <span class="ellipsis movie-name">{{downText}}</span>
         </div>

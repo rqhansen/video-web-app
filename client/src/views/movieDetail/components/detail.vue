@@ -19,7 +19,7 @@
                 <span class="title">◎片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span>{{mDetail.subPureName}}</span>
             </p>
             <p v-if="mDetail.year && mDetail.year!==' '">
-                <span class="title">◎年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代</span><span>{{mDetail.year}}</span>
+                <span class="title">{{$t('pageList.year')}}</span><span>{{mDetail.year}}</span>
             </p>
             <p v-if="mDetail.country && mDetail.country!=' '">
                 <span class="title">◎产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</span><span>{{mDetail.country}}</span>

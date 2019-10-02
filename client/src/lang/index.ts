@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
 // element-ui 内置的语言包
-
+// @ts-ignore
+import ElementLocale from 'element-ui/lib/locale'
 // @ts-ignore
 import elementEnLocale from 'element-ui/lib/locale/lang/en'
 // @ts-ignore
@@ -29,5 +30,8 @@ const i18n = new VueI18n({
     locale: 'en',
     messages
 })
+
+//实现element内部组件的国际化
+ElementLocale.i18n((key:any, value:any) => i18n.t(key, value))
 
 export default i18n;
