@@ -33,9 +33,6 @@ export default  {
         todayMovieIntroduce: '今日热门电影推荐',
         more: '更多'
     },
-    weekMovie: {
-        lastNew: '最新'
-    },
     titleBar: {
         currLocation: '当前位置',
         siteName: '万寻电影',
@@ -137,5 +134,5 @@ export default  {
     crumbs: {
         thunder: '迅雷',
         downLoad: '下载页面'
-    }
+    },
 }

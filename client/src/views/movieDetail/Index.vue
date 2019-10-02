@@ -1,17 +1,19 @@
 <template>
     <div class="m-detail-wp min-width">
-        <div class="section">
+        <div class="section"> 
             <div class="m-detail">
                 <nav-bg>
                     <crumbs 
                         v-if="mDetail.typeName"
                         :typeEnName="mDetail.filmType"
-                        :typeZhName="mDetail.typeName"
+                        :typeZhName="typeZhName"
                         :movieName="mDetail.pureName"
                         @get-index-page-data="getIndexPageData"></crumbs>
-                    <div class="share">
+                    <div class="share ellipsis">
                         <span>{{$t('titleBar.shareMovie')}}=》</span>
-                        <el-button size="small" type="primary" @click="copy">{{$t('titleBar.copy')}}</el-button>
+                        <el-button size="small" type="primary" 
+                            @click="copy"
+                            :class="{'large':$i18n.locale === 'en'}">{{$t('titleBar.copy')}}</el-button>
                     </div>
                 </nav-bg>
                 <detail :mDetail="mDetail"/>
@@ -39,7 +41,7 @@ import detail from './components/detail.vue';
 })
 
 export default class extends Vue{
-    private mDetail = {filmType: ''};
+    private mDetail = {filmType: '',typeName: ''};
     private movieType = '';
     private movieId = '';
 
@@ -53,6 +55,13 @@ export default class extends Vue{
             }
             this.getMovieDetail();
         }
+    }
+
+    get typeZhName() {
+        if(window.vm.$i18n.locale === 'en') {
+            return this.mDetail.filmType;
+        }
+        return this.mDetail.typeName;
     }
     created() {
         this.getMovieDetail()
@@ -79,7 +88,7 @@ export default class extends Vue{
        const flag = copyText(url);
         if (flag) {
             this.$message({
-                message: '网址已复制，可以分享给好友了!',
+                message: window.vm.$t('messages.copyUrl'),
                 center: true,
                 type: 'success',
                 showClose: true
@@ -113,8 +122,12 @@ export default class extends Vue{
                 padding: 0;
                 line-height: 20px;
                 font-size: 13px;
+                &.large {
+                    width: 120px;
+                }
             }
             .share {
+                max-width: 300px;
                 margin-left: 30px;
                 span {
                     color: $font-red-color;

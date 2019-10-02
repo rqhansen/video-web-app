@@ -2,24 +2,24 @@
     <div class="m-text">
        <h1 class="ellipsis">{{mDetail.fullName}}</h1>
        <div class="info">
-           <span>{{$t('movieDetail.subPureName')}}&nbsp;:</span>
+           <span>{{$t('movieDetail.subPureName1')}}{{$t('movieDetail.subPureName2')}}&nbsp;:</span>
            <span class="ellipsis movie-name">{{mDetail.pureName}}</span>
-           <span>{{$t('movieDetail.pubDate')}}&nbsp;</span>
+           <span>{{$t('movieDetail.pubDate')}}:&nbsp;</span>
            <time>{{mDetail.pubDate}}</time>
        </div>
-       <div class="m-body">
+       <div class="m-body"  :class="{'wild': $i18n.locale==='en'}">
             <p class="thunder-down">
-               <span>{{mDetail.pureName}}</span>{{$t('movieDetail.downLoadAddressAndDrama')}}：
+               <span>{{mDetail.pureName}}</span><span v-if="$i18n.locale === 'en'">&nbsp;</span>{{$t('movieDetail.downLoadAddressAndDrama')}}：
             </p>
-            <img  :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px" height="800px" max-height="800px"> 
+            <img  :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px"  max-height="800px" /> 
             <p v-if="mDetail.transName && mDetail.transName!== ' '">
-                <span class="title">◎{{$t('movieDetail.transName1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.transName1')}}</span><span>{{mDetail.transName}}</span>
+                <span class="title">◎{{$t('movieDetail.transName1')}}<span v-if="$i18n.locale!=='en'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span v-else>&nbsp;&nbsp;</span>{{$t('movieDetail.transName2')}}</span><span>{{mDetail.transName}}</span>
             </p>
             <p v-if="mDetail.subPureName && mDetail.subPureName!== ' '">
                 <span class="title">◎{{$t('movieDetail.subPureName1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.subPureName2')}}</span><span>{{mDetail.subPureName}}</span>
             </p>
             <p v-if="mDetail.year && mDetail.year!==' '">
-                <span class="title">@{{$t('movieDetail.year1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@{{$t('movieDetail.year2')}}</span><span>{{mDetail.year}}</span>
+                <span class="title">◎{{$t('movieDetail.year1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.year2')}}</span><span>{{mDetail.year}}</span>
             </p>
             <p v-if="mDetail.country && mDetail.country!=' '">
                 <span class="title">◎{{$t('movieDetail.country1')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$t('movieDetail.country2')}}</span><span>{{mDetail.country}}</span>
@@ -157,6 +157,11 @@ export default class extends Vue{
             padding: 0 10px;
             font-size: 12px;
             line-height: 22px;
+            &.wild {
+                .title {
+                    width: 120px;
+                }
+            }
             .thunder-down {
                 margin-bottom: 5px;
             }

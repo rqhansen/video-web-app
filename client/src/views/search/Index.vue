@@ -2,7 +2,7 @@
     <div class="search-wp min-width">
         <div class="section search">
             <nav-bg>
-                <div class="search-title"><span>{{movieName}}</span>{{$t('search.searchResult')}}</div>
+                <div class="search-title"><span>{{movieName}}</span><span v-if="$i18n.locale === 'en'">&nbsp;</span>{{$t('search.searchResult')}}</div>
             </nav-bg>
             <page-list 
                 :movie="movies"/>

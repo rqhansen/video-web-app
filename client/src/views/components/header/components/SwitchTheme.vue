@@ -63,7 +63,7 @@
             window.document.documentElement.setAttribute('data-theme',`theme${this.currThemeIndex}`);
             this.closeThemeDialog();
             this.$message({
-                message: '更换成功',
+                message: window.vm.$t('messages.switchThemeSuccess'),
                 center: true,
                 showClose: true,
                 type: 'success',

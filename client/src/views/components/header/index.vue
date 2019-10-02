@@ -24,11 +24,11 @@
                 </div>
                 <div class="search-wp">
                     <search/>
-                </div>
-                <!-- 下载提示 -->
-                <div class="down-m-tip">
-                    <div class="tip transition" @click.stop="goDownLoad">
-                        <span>{{$t('header.downLoadUnlimitThunder')}}</span>
+                     <!-- 下载提示 -->
+                    <div class="down-m-tip">
+                        <div class="tip transition" @click.stop="goDownLoad">
+                            <span>{{$t('header.downLoadUnlimitThunder')}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,13 +103,14 @@
                 overflow: hidden;
             }
             .search-wp {
+                position: relative;
                 float: right;
                 margin-top: 35px;
             }
             .down-m-tip {
                 position: absolute;
-                bottom: 12px;
-                left: 492px;
+                bottom: -25px;
+                left: 0;
                 .tip {
                     color: $font-blue-color;
                     cursor: pointer;
@@ -131,8 +132,8 @@
                     width: 30%;
                 }
                 .down-m-tip  {
-                    left: 30%;
-                    right: initial;
+                    /* left: 30%; */
+                    /* right: initial; */
                 }
             }
             .search-wp {

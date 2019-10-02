@@ -1,7 +1,7 @@
 <template>
     <div class="empty-wp">
         <div class="empty">
-            <span>{{$t('search.searchResult')}}</span>
+            <span>{{$t('search.emptyData')}}</span>
         </div>
     </div>
 </template>

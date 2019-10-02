@@ -4,7 +4,7 @@
             <nav-bg  v-if="movie.length">
                     <crumbs
                     :typeEnName="movieType"
-                    :typeZhName="movie[0].typeName"
+                    :typeZhName="movieTypeName"
                     @get-index-page-data="getIndexPageData"/>
             </nav-bg>
             <page-list 
@@ -39,6 +39,7 @@ import NavBg from '@/components/NavBg.vue';
 })
 export default class extends Vue {
     private movie = '';
+    private typeZhName = '';
     private totalPage = 0;
     private movieType = '';
     private currPage = 1;
@@ -56,6 +57,14 @@ export default class extends Vue {
                     page: 1,
                     type: id
                 });
+        }
+    }
+
+    get movieTypeName() {
+        if(window.vm.$i18n.locale === 'en') {
+            return this.movieType;
+        } else  {
+            return this.typeZhName;
         }
     }
     created() {
@@ -79,6 +88,7 @@ export default class extends Vue {
         const {data: {code,data: {total,typeMovie}}} = await getTypeMovie(params);
         if(code !== 0) return;
         this.movie = typeMovie;
+        this.typeZhName = typeMovie[0].typeName; 
         this.totalPage = total;
         this.currPage = params.page;
         this.movieType = params.type;

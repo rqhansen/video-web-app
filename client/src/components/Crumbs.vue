@@ -1,10 +1,10 @@
 <template>
     <div class="crumbs-wp">
-        <div class="crumbs">
+        <div class="crumbs ellipsis">
             <span>{{$t('titleBar.currLocation')}}：&nbsp;</span> 
             <router-link to="/" class="transition">{{$t('titleBar.siteName')}}>&nbsp;</router-link>
             <span class="top transition" @click.stop="goIndex">{{typeZhName}}>></span>
-            <span class="ellipsis movie-name">{{downText}}</span>
+            <span class="ellipsis movie-name">{{downText}} {{$t('crumbs.downLoad')}}</span>
         </div>
     </div>
 </template>
@@ -21,14 +21,17 @@ export default class extends Vue{
         default: 'action'
     }) private typeEnName!: string
     @Prop({ 
-        required: true, 
-        default: '动作片'
+        required: true
     }) private typeZhName!: string
     @Prop({}) private movieName!: string
 
     get downText() {
-        const des = this.movieName || '迅雷';
-        return `${des}下载页面`; 
+        // const des = this.movieName || '迅雷';
+        if(!this.movieName) {
+            return window.vm.$t('crumbs.thunder');
+        }
+        return this.movieName;
+        // return `${des}下载页面`; 
     }
     private goIndex() {
         this.$emit('get-index-page-data');
@@ -38,6 +41,7 @@ export default class extends Vue{
 
 <style lang="scss" scoped>
 .crumbs-wp { 
+    max-width: 450px;
     .crumbs {
         .top {
             color: $font-blue-color;

@@ -56,7 +56,7 @@ export default class extends Vue{
     private goPage(rName: string) {
         if(!rName) {
             this.$message({
-                message: '请使用Ctrl+D进行添加',
+                message: window.vm.$t('messages.save'),
                 center: true,
                 showClose: true,
                 type: 'success',

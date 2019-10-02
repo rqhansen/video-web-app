@@ -3,7 +3,9 @@
         <div class="section">
             <div
                 v-for="(m,idx) of movies" :key="idx">
-                <title-bar :title="`${$t('weekMovie.lastNew')}${m[0].typeName}`" :url="`/movie/${m[0].filmType}`" />
+                <title-bar v-if="$i18n.locale === 'en'" :title="`The latest ${m[0].filmType} movie`" :url="`/movie/${m[0].filmType}`"/>
+                <title-bar v-else :title="`最新${m[0].typeName}`" :url="`/movie/${m[0].filmType}`"/>
+                <!-- <title-bar :title="$t('weekMovie.lastNew')+${$i18n.locale==='en' ? m[0].filmType:m[0].typeName" :url="`/movie/${m[0].filmType}`" /> -->
                 <movie-list :fetchMovie="m"></movie-list>
             </div>
         </div>

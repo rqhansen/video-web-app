@@ -5,8 +5,8 @@
                 <img src="@/assets/images/downLoad/xunlei_icon.jpg" alt="" width="40" height="40">
             </dt>
             <dd>
-                <h1>{{$t('downLoad.thunder')}}5&nbsp;&nbsp;{{$t('downLoad.officeNoLimit')}}</h1>
-                <router-link to="/downloadlesson" class="transition">{{$t('downLoad.androidDownLoad')}}</router-link>
+                <h1>{{$t('downLoad.thunder')}}&nbsp;&nbsp;{{$t('downLoad.officeNoLimit')}}</h1>
+                <router-link to="/downloadlesson" class="transition">{{$t('downLoad.scanLesson')}}</router-link>
             </dd>
         </dl>
     </div>

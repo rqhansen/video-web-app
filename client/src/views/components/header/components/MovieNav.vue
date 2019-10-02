@@ -99,7 +99,7 @@ export default class extends Vue{
             float: left;
             height: 40px;
             line-height: 40px;
-            padding: 0 7px;
+            padding: 0 6px;
             color:#fff;
             cursor: pointer;
             &.active {

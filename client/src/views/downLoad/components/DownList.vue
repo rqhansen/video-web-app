@@ -1,5 +1,5 @@
 <template>
-    <div class="down-list-wp">
+    <div class="down-list-wp" :class="{tiny: $i18n.locale==='en'}">
         <ul>
             <li >
                 <a class="transition" href="http://www.wx520.net/public/files/xunlei5_pc.zip" download="xunlei5_pc"
@@ -33,6 +33,17 @@
 
 <style lang="scss" scoped>
     .down-list-wp {
+        &.tiny {
+            a {
+                font-size: 16px;
+            }
+            i {
+                width: 26px;
+                height: 26px;
+                margin-right: 4px;
+                background-size: cover;
+            }
+        }
         li {
             display: inline-block;
             margin-right: 10px;
