@@ -26,12 +26,10 @@ export default class extends Vue{
     @Prop({}) private movieName!: string
 
     get downText() {
-        // const des = this.movieName || '迅雷';
         if(!this.movieName) {
             return window.vm.$t('crumbs.thunder');
         }
         return this.movieName;
-        // return `${des}下载页面`; 
     }
     private goIndex() {
         this.$emit('get-index-page-data');
@@ -41,7 +39,7 @@ export default class extends Vue{
 
 <style lang="scss" scoped>
 .crumbs-wp { 
-    max-width: 450px;
+    margin-right: 30px;
     .crumbs {
         .top {
             color: $font-blue-color;

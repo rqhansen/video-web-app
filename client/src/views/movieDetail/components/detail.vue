@@ -106,7 +106,7 @@
             {{url}}[www.wx520.net]{{$t('movieDetail.downLoad')}}
             </a>
              <div class="down-tip">
-                <span>{{$t('movieDetail.tip')}}:&nbsp;</span>{{$t('movieDetail.downLoadTip')}}<router-link to="/download" target="_blank">{{$t('movieDetail.noLimitThunder')}}</router-link>
+                <span>{{$t('movieDetail.tip')}}:&nbsp;</span>{{$t('movieDetail.downLoadTip')}}<span v-if="$i18n.locale==='en'">&nbsp;</span><router-link to="/download" target="_blank">{{$t('movieDetail.noLimitThunder')}}</router-link>
             </div>
        </div>
     </div>  

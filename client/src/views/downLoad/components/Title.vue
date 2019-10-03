@@ -26,6 +26,7 @@
         line-height: 42px;
         font-size: 22px;
         border-bottom: 1px solid #ececec;
+        overflow: hidden;
         dt {
             display: inline-block;
             vertical-align: top;
@@ -34,12 +35,16 @@
         dd {
             display: inline-block;
             vertical-align: top;
+            height: 42px;
             h1 {
                 display: inline-block;
+                vertical-align: top;
                 margin: 0 10px;
                 font-size: 22px;
             }
             a {
+                display: inline-block;
+                line-height: initial;
                 font-size: 16px;
                 &:hover {
                     @include font_color($font-theme1-color);

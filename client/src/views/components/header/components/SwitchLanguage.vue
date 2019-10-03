@@ -16,6 +16,7 @@
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
+    import { getLanguage ,setLanguage } from '@/utils/localStorages'
     @Component({
         name: 'SwitchLanguage'
     })
@@ -23,6 +24,14 @@
         //切换语言
         private switchLanguage(languageType: string) {
             this.$i18n.locale = languageType;
+            const language = getLanguage();
+            if (!language) {
+                setLanguage(languageType);
+                return;
+            } 
+            if (language !== languageType) {
+                setLanguage(languageType);
+            }
         }
     }
 </script>

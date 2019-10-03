@@ -49,9 +49,9 @@ export default  {
         actor2: '',
         briefIntroduce1: 'Introduction',
         briefIntroduce2: '',
-        updateTime: 'Update Time',
+        updateTime: 'update time',
         downLoad: 'download',
-        todayRecomment: 'Today Recomment'
+        todayRecomment: 'today recomment'
     },
     movieDetail: {
         movieName: 'Movie name',

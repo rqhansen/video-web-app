@@ -9,7 +9,7 @@
                         :typeZhName="typeZhName"
                         :movieName="mDetail.pureName"
                         @get-index-page-data="getIndexPageData"></crumbs>
-                    <div class="share ellipsis">
+                    <div class="share">
                         <span>{{$t('titleBar.shareMovie')}}=》</span>
                         <el-button size="small" type="primary" 
                             @click="copy"
@@ -109,9 +109,10 @@ export default class extends Vue{
             border: 1px solid red;
             @include br_color($font-theme1-color);
             /deep/ .nav-bg {
+                min-height: 27px;
                 display: flex;
                 justify-content: flex-start;
-                align-items: center;
+                flex-wrap: wrap;
                 border-top: none;
                 border-left: none;
                 border-right: none;
@@ -127,8 +128,6 @@ export default class extends Vue{
                 }
             }
             .share {
-                max-width: 300px;
-                margin-left: 30px;
                 span {
                     color: $font-red-color;
                 }
