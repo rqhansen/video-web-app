@@ -17,11 +17,11 @@
                             {{$t('pageList.updateTime')}}&nbsp;:
                             <template v-if="!m.isNew">
                                 <time>{{m.pubDate}}</time>
-                                <span class="transition">{{$t('pageList.clickToDownLoad')}}</span>
+                                <span class="transition">{{$t('pageList.downLoad')}}</span>
                             </template>
                             <template v-else>
                                 <time>{{m.pubDate}}({{$t('pageList.todayRecomment')}})</time>
-                                <span class="transition">{{$t('pageList.clickToDownLoad')}}</span>
+                                <span class="transition">{{$t('pageList.downLoad')}}</span>
                             </template>
                         </p>
                     </div>

@@ -57,6 +57,7 @@
             line-height: 62px;
             font-size: 20px;
             color: #fff;
+            text-align: center;
             @include bg_color($font-theme1-color);
             font-weight: normal;
             &:hover {

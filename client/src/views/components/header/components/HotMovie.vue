@@ -46,14 +46,6 @@
                 {
                     title: '昆虫总动员2',
                     url:'/cartoon/14'
-                },  
-                {
-                    title: '银河补习班',
-                    url:'/drama/6080'
-                },
-                {
-                    title: '追龙2:贼王',
-                    url:'/drama/6079'
                 }
             ]
         }

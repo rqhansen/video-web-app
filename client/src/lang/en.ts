@@ -9,7 +9,7 @@ export default  {
         downLoadUnlimitThunder: 'Download unlimited edition thunder',
         search: 'search',
         title: 'Wan Xun Resource Website',
-        language: 'Chinese',
+        switchLanguage: 'Switch Language'
     },
     search: {
         searchResult: 'search results',
@@ -34,8 +34,8 @@ export default  {
         more: 'more'
     },
     titleBar: {
-        currLocation: 'Current position',
-        siteName: 'Wan Xun movie',
+        currLocation: 'current position',
+        siteName: 'Wan Xun Movie',
         thunderDownLoadPage: 'Thunder download page',
         DownLoadPage: 'Download page',
         shareMovie: 'Share this video to a friend',
@@ -50,7 +50,7 @@ export default  {
         briefIntroduce1: 'Introduction',
         briefIntroduce2: '',
         updateTime: 'Update Time',
-        clickToDownLoad: 'Click to Download',
+        downLoad: 'download',
         todayRecomment: 'Today Recomment'
     },
     movieDetail: {

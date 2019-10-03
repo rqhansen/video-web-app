@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import {getLanguage} from '@/utils/localStorages';
 
 // element-ui 内置的语言包
 // @ts-ignore
@@ -26,8 +27,24 @@ const messages = {
     }
 }
 
+export const getLocale = () => {
+    const localLanuage = getLanguage();
+    if(localLanuage) {
+        return localLanuage;
+    }
+    const language = navigator.language.toLowerCase();
+    const locales = Object.keys(messages);
+    for (const locale of locales) {
+        if (language.indexOf(locale) > -1) {
+            return locale;
+        }
+    }
+
+    return 'zh';
+}
+
 const i18n = new VueI18n({
-    locale: 'en',
+    locale: getLocale(),
     messages
 })
 

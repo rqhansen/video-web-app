@@ -2,6 +2,9 @@
 import {
     Button,
     Dialog,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
     Input,
     Message,
     Pagination,
@@ -11,6 +14,9 @@ import {
 export default {
     install(V:any) {
         V.use(Button)
+        V.use(Dropdown),
+        V.use(DropdownMenu),
+        V.use(DropdownItem)
         V.use(Dialog)
         V.use(Input)
         V.use(Pagination)

@@ -25,7 +25,7 @@
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
 import { Route } from 'vue-router';
-import {copyText} from '@/utils/utils';
+import {copyText} from '@/utils/copyText';
 import {getMovieDetail} from '@/apis/movieDetail';
 import NavBg from '@/components/NavBg.vue';
 import Crumbs from '@/components/Crumbs.vue';

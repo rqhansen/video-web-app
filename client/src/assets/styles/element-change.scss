@@ -2,6 +2,23 @@
     transition: .3s;
     @include font_color($font-theme1-color);
 }
+.el-dropdown {
+    color: $font-blue-color;
+    &:hover {
+        @include font_color($font-theme1-color);
+    }
+}
+.el-dropdown-menu__item {
+    color: $font-blue-color;
+    &:focus {
+        @include font_color($font-theme1-color);
+    }
+    &:not(.is-disabled) {
+        &:hover {
+            @include font_color($font-theme1-color);
+        }
+    }
+}
 .el-message--success {
     .el-message__content {
         @include font_color($font-theme1-color);

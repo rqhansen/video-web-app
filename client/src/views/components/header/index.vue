@@ -7,6 +7,8 @@
                     <hot-movie/>
                 </div>
                 <div class="rt">
+                    <switch-language/>
+                    &nbsp;&nbsp;
                     <switch-theme/>
                 </div>
             </div>
@@ -46,6 +48,7 @@
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator';
     import HotMovie from './components/HotMovie.vue';
+    import SwitchLanguage from './components/SwitchLanguage.vue';
     import SwitchTheme from './components/SwitchTheme.vue';
     import Logo from './components/Logo.vue';
     import Search from './components/Search.vue';
@@ -60,7 +63,8 @@
             Logo,
             Search,
             MovieNav,
-            FastNav
+            FastNav,
+            SwitchLanguage
         }
     })
 
@@ -82,6 +86,8 @@
             }
             .rt {
                 float: right;
+                display: flex;
+                align-items:center;
             }
         }
         .logo-search-wp {

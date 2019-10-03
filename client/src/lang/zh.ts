@@ -9,7 +9,7 @@ export default  {
         downLoadUnlimitThunder: '下载无限制版迅雷',
         search: '搜索',
         title: '万寻资源网',
-        language: '中文',
+        switchLanguage: '更换语言'
     },
     search: {
         searchResult: '搜索结果',
@@ -50,7 +50,7 @@ export default  {
         briefIntroduce1: '简',
         briefIntroduce2: '介',
         updateTime: '更新时间',
-        clickToDownLoad: '点击下载',
+        downLoad: '下载',
         todayRecomment: '今日推荐'
     },
     movieDetail: {

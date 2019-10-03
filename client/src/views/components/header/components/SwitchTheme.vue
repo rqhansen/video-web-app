@@ -1,11 +1,8 @@
 <template>
     <div class="switch-theme-wp">
-        <div class="switch-language" @click.stop="switchLanguage">
-            {{$t('header.language')}}
-        </div>
         <div class="menu-wp" @click.stop="openSwitchTheme">
             <span class="txt transition">{{$t('header.switchTheme')}}</span>
-            <i class="el-icon-caret-bottom"></i>
+            <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
         <el-dialog
             :title="$t('switchTheme.switchTheme')"
@@ -80,11 +77,6 @@
         private cancelChoiceTheme() {
             this.closeThemeDialog();
             this.currThemeIndex = this.getCurrThemeIndex();
-        }
-
-        //切换语言
-        private switchLanguage() {
-            this.$i18n.locale = 'zh';
         }
     }
 </script>
