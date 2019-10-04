@@ -115,13 +115,10 @@
                         word-break: break-all;
                     }
                     .intro {
-                        display:flex;
-                        display: -webkit-box;
+                        position: relative;
+                        width: 100%;
+                        height: 66px;
                         overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: pre-line;
-                        -webkit-line-clamp: 3;
-                        -webkit-box-orient: vertical;
                     }
                     .update {
                         position: absolute;

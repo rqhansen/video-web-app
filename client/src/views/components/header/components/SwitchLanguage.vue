@@ -2,7 +2,7 @@
     <div class="switch-language-wp">
         <div class="switch-language">
             <el-dropdown @command="switchLanguage">
-                    <span class="el-dropdown-link tansition">
+                    <span class="el-dropdown-link transition">
                         {{$t('header.switchLanguage')}}<i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">

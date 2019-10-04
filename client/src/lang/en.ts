@@ -13,7 +13,7 @@ export default  {
     },
     search: {
         searchResult: 'search results',
-        emptyData: 'No resources'
+        emptyData: 'No Resources'
     },
     nav: {
         home: 'Home',
@@ -96,7 +96,6 @@ export default  {
         getAward1: '',
         getAward2: '',
         downLoadUrl: 'download link list',
-        downLoad: 'download',
         tip: 'tips',
         downLoadTip: 'Tips, you can use the Thunder to broadcast next time, if you download the Thunder, you can use it',
         noLimitThunder: 'unlimited version of thunder'

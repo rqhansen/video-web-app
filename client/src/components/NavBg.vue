@@ -19,7 +19,7 @@
         width: 100%;
         margin-bottom: 30px;
         .nav-bg {
-            height: 27px;
+            min-height: 27px;
             line-height: 27px;
             padding: 0 10px;
             border: 1px solid #bfe4ff;

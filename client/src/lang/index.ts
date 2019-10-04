@@ -33,9 +33,8 @@ export const getLocale = () => {
         return localLanuage;
     }
     let language = '';
-    if (navigator.language) {
-        language = navigator.language.toLowerCase();
-    }
+    // @ts-ignore
+    language = navigator.language || navigator.systemLanguage;
     const locales = Object.keys(messages);
     for (const locale of locales) {
         if (language.indexOf(locale) > -1) {

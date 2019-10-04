@@ -7,9 +7,12 @@
                     <hot-movie/>
                 </div>
                 <div class="rt">
-                    <switch-language/>
-                    &nbsp;&nbsp;
-                    <switch-theme/>
+                    <div class="language">
+                        <switch-language/>
+                    </div>
+                    <div class="theme">
+                        <switch-theme/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,8 +89,18 @@
             }
             .rt {
                 float: right;
-                display: flex;
-                align-items:center;
+                height: 100%;
+                .language {
+                    display: inline-block;
+                    vertical-align: middle;
+                    height: 100%;
+                    margin-right: 10px;
+                }
+                .theme {
+                    display: inline-block;
+                    vertical-align: middle;
+                    height: 100%;
+                }
             }
         }
         .logo-search-wp {
@@ -136,10 +149,6 @@
             .logo-search-wp {
                 .logo-wp {
                     width: 30%;
-                }
-                .down-m-tip  {
-                    /* left: 30%; */
-                    /* right: initial; */
                 }
             }
             .search-wp {

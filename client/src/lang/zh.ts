@@ -96,7 +96,6 @@ export default  {
         getAward1: '获',
         getAward2: '奖',
         downLoadUrl: '下载地址列表:',
-        downLoad: '下载',
         tip: '温馨提示',
         downLoadTip: '使用迅雷您可以边下边播，如遇迅雷下载出错可换用',
         noLimitThunder: '无限制版迅雷'

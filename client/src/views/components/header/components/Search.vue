@@ -1,6 +1,8 @@
 <template>
     <div class="search">
-        <el-input type="text" @keyup.native.enter.exact="search" v-model.trim="movieName" :placeholder="$t('header.placeholder')" clearable></el-input>
+        <div class="input-wp">
+            <el-input type="text" @keyup.native.enter.exact="search" v-model.trim="movieName" :placeholder="$t('header.placeholder')" clearable></el-input>
+        </div>
         <div class="btn-wp">
             <el-button 
                 type="primary" 
@@ -21,7 +23,7 @@
 
     export default class extends Vue {
         private movieName = '';
-
+        
         get currentPage() {
             return SearchModule.searchInfo.page;
         }
@@ -56,15 +58,22 @@
 
 <style lang="scss" scoped>
     .search {
-        display: flex;
-        justify-content: flex-start;
+        .input-wp {
+            display: inline-block;
+            vertical-align: top;
+            width: 396px;
+        }
         .el-input {
             /deep/ .el-input__inner {
-                width: 396px;
+                width: 100%;
                 height: 38px;
                 border-radius: 0;
                 border-right: none;
             }
+        }
+        .btn-wp {
+            display: inline-block;
+            vertical-align: top;
         }
         .el-button {
             width: 112px;
@@ -73,26 +82,6 @@
             line-height: 38px;
             font-size: 16px;
             border-radius: 0;
-        }
-    }
-    @media (max-width: 767px) {
-        .search {
-            width: 100%;
-            .el-input {
-                width: 80%;
-                 /deep/ .el-input__inner {
-                    width: 100%;
-                    height: 38px;
-                    border-radius: 0;
-                    border-right: none;
-                }
-            }
-             .btn-wp {
-                    width: 20%;
-                }
-                .el-button {
-                    width: 100%;
-                }
         }
     }
 </style>
