@@ -38,7 +38,7 @@ export default  {
         siteName: 'Wan Xun Movie',
         thunderDownLoadPage: 'Thunder download page',
         DownLoadPage: 'Download page',
-        shareMovie: 'Share this video to a friend',
+        shareMovie: 'share this video to a friend',
         copy: 'Click here to copy',
         more: 'more'
     },

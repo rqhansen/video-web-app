@@ -4,7 +4,7 @@
             <span>{{$t('titleBar.currLocation')}}：&nbsp;</span> 
             <router-link to="/" class="transition">{{$t('titleBar.siteName')}}>&nbsp;</router-link>
             <span class="top transition" @click.stop="goIndex">{{typeZhName}}>></span>
-            <span class="ellipsis movie-name">{{downText}} {{$t('crumbs.downLoad')}}</span>
+            <span class="ellipsis movie-name">{{downText}}<span v-if="$i18n.locale==='en'">&nbsp;</span>{{$t('crumbs.downLoad')}}</span>
         </div>
     </div>
 </template>
