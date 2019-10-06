@@ -48,8 +48,6 @@ import {Component,Vue} from 'vue-property-decorator';
     }
 })
 export default class extends Vue{
-    // private menus = MENU;
-
     get currRouteName() {
         return this.$route.name;
     }

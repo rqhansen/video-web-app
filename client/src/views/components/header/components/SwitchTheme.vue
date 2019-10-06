@@ -4,30 +4,35 @@
             <span class="txt transition">{{$t('header.switchTheme')}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
-        <el-dialog
+        <ele-dialog
             :title="$t('switchTheme.switchTheme')"
-            :visible.sync="centerDialogVisible"
-            width="445px"
-            center
-            @close="cancelChoiceTheme">
+            :showDialog="centerDialogVisible"
+            :width="445"
+            customClass="swith-theme-dialog"
+            :cancelTxt="$t('switchTheme.cancelBtn')"
+            :okTxt="$t('switchTheme.okBtn')"
+            :center="true"
+            @cancel-dialog="cancelChoiceTheme"
+            @handle-dialog="switchTheme"
+            >
             <div class="theme-content-wp">
                 <ul>
                     <li v-for="i of 5" :key="i" class="transition" :class="{'active': currThemeIndex==i}" @click.stop="choiceTheme(i)"></li>
                 </ul>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click.stop="cancelChoiceTheme">{{$t('switchTheme.cancelBtn')}}</el-button>
-                <el-button type="primary" @click.stop="switchTheme">{{$t('switchTheme.okBtn')}}</el-button>
-            </span>
-        </el-dialog>
+        </ele-dialog>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
+    import EleDialog from '@/components/baseComponents/EleDialog.vue';
     import request from '@/utils/request';
     @Component({
-        name: 'SwitchTheme'
+        name: 'SwitchTheme',
+        components: {
+            EleDialog
+        }
     })
 
     export default class extends Vue {
@@ -96,12 +101,14 @@
         li {
             width: 395px;
             height: 53px;
-            margin-bottom: 15px;
             position: relative;
             border: 2px solid transparent;
             border-radius: 10px;
             box-shadow: 0 3px 5px 1px #999;
             cursor: pointer;
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
             &.active {
                 border-color: #be1204;
             }
@@ -111,12 +118,13 @@
                 background:url('~@imgs/theme/theme-#{$index}.png');
             }
         }
-    }
-    .el-dialog--center {
-        .el-dialog__body {
-            padding-top: 5px;
-            padding-bottom: 5px;
+    } 
+    /deep/.swith-theme-dialog {
+        .el-dialog__footer {
+            .el-button {
+                width: 95px;
+            }
         }
-    }
+    }   
 }
 </style>

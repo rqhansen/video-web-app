@@ -10,7 +10,7 @@ async function getMovieDetail(ctx) {
     let { movieType: type, id } = ctx.request.body;
     // let [type, id] = [urlSplit[2], urlSplit[3]];
     let result = await query(`select * from ${type} where id=${id}`); //查询出来的是一个数组
-    console.log(result);
+    // console.log(result);
     result = result[0];
     if(!result) {
         ctx.body = {

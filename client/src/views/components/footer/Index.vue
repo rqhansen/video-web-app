@@ -1,5 +1,5 @@
 <template>
-    <div class="footer-wp today-width">
+    <div class="footer-wp min-width">
         <div class="section">
             <p>
                 <span>Copyright © 2019</span>
@@ -14,7 +14,7 @@
 <script lang="ts">
     import {Component,Vue} from 'vue-property-decorator';
     @Component({
-        name: 'commonFooter',
+        name: 'Footer',
     })
 
     export default class extends Vue {}

@@ -4,11 +4,11 @@
     <Header/>
     <transition name="fade-move">
       <keep-alive>
-        <router-view class="main"/>
+        <router-view class="main min-width"/>
       </keep-alive>
     </transition>
     <!-- 尾部 -->
-    <common-footer/>
+    <Footer/>
     <!-- 回顶部 -->
     <el-backtop target=".app" :visibilityHeight="400" :bottom="100" :right="80"></el-backtop>
   </div>
@@ -17,13 +17,13 @@
 <script lang="ts">
   import {Component,Vue} from 'vue-property-decorator';
   import Header from '@components/header/Index.vue';
-  import CommonFooter from '@components/footer/Index.vue';
+  import Footer from '@components/footer/Index.vue';
 
   @Component({
       name: 'App',
       components: {
         Header,
-        CommonFooter
+        Footer
       }
   })
 

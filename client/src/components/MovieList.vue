@@ -2,30 +2,24 @@
     <div class="movie-list">
         <ul v-if="currentMovie.length">
             <li v-for="m of currentMovie" :key="m.pureName" @click.stop="goMovieDetail(m.filmType,m.id)">
-                <div class="poster">
-                    <a :title="m.pureName">
-                        <img class="transition" :src="`http://www.wx520.net/public/${m.indexImgSrc}`" :alt="m.fullName">
-                    </a>
-                </div>
-                <div class="txt" :class="{'new': m.isNew}">
-                    <h3 class="ellipsis transition">{{m.fullName}}</h3>
-                    <time>{{m.pubDate}}</time>
-                </div>
+                <movie-item :movie="m"/>
             </li>
         </ul>
-        <empty-data  v-else-if="currentMovie && !currentMovie.length"/>
+        <empty-data v-else-if="currentMovie && !currentMovie.length"/>
     </div>
 </template>
 
 <script lang="ts">
 import {Component,Prop,Vue} from 'vue-property-decorator';
+import MovieItem from './MovieItem.vue';
 import EmptyData from './EmptyData.vue';
 
 
 @Component({
     name: 'movieList',
     components: {
-        EmptyData
+        EmptyData,
+        MovieItem
     }
 })
 
@@ -82,44 +76,44 @@ export default class extends Vue {
                 text-align: center;
                 cursor: pointer;
                 overflow: hidden;
-                .poster {
-                    position: relative;
-                    height: 0;
-                    padding-top: 121.5%;
-                    margin-bottom: 3px;
-                    overflow: hidden;
-                    img {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        padding: 2px;
-                        border: 1px solid $font-border-color;
-                        &:hover {
-                            @include br_color($font-theme1-color);
-                        }
-                    }
-                }
-                .txt {
-                    &.new {
-                        time {
-                            color: $font-red-color;
-                        }
-                    }
-                    h3 {
-                        line-height: 24px;
-                        font-size: 13px;
-                        @include font_color($font-theme1-color);
-                        &:hover {
-                            @include hover_font_color($font-theme1-color);
-                        }
-                    }
-                    time {
-                        line-height: 16px;
-                        font-size: 12px;
-                    }
-                }
+                // .poster {
+                //     position: relative;
+                //     height: 0;
+                //     padding-top: 121.5%;
+                //     margin-bottom: 3px;
+                //     overflow: hidden;
+                //     img {
+                //         position: absolute;
+                //         left: 0;
+                //         top: 0;
+                //         width: 100%;
+                //         height: 100%;
+                //         padding: 2px;
+                //         border: 1px solid $font-border-color;
+                //         &:hover {
+                //             @include br_color($font-theme1-color);
+                //         }
+                //     }
+                // }
+                // .txt {
+                //     &.new {
+                //         time {
+                //             color: $font-red-color;
+                //         }
+                //     }
+                //     h3 {
+                //         line-height: 24px;
+                //         font-size: 13px;
+                //         @include font_color($font-theme1-color);
+                //         &:hover {
+                //             @include hover_font_color($font-theme1-color);
+                //         }
+                //     }
+                //     time {
+                //         line-height: 16px;
+                //         font-size: 12px;
+                //     }
+                // }
             }
         }
     }

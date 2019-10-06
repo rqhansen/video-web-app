@@ -47,8 +47,32 @@
 
 .el-input__inner {
     transition-duration: .3s;
+    &::-webkit-input-placeholder {
+        color: #666;
+    }
+    &:-moz-input-placeholder {
+        color: #666;
+    }
+    &::-moz-input-placeholder {
+        color: #666;
+    }
+    &:-ms-input-placeholder {
+        color: #666;
+    }
     &:focus {
-        @include br_color($font-theme1-color)
+        @include br_color($font-theme1-color);
+        &::-webkit-input-placeholder {
+            color: #999;
+        }
+        &:-moz-input-placeholder {
+            color: #999;
+        }
+        &::-moz-input-placeholder {
+            color: #999;
+        }
+        &:-ms-input-placeholder {
+            color: #999;
+        }
     }
     &:hover {
         @include br_color($font-theme1-color)
