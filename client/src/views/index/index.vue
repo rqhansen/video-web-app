@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts">
-import {getIndexMovies} from '@/apis/home';
 import { Component,Vue } from 'vue-property-decorator';
+import {getIndexMovies} from '@/apis/home';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
 
@@ -24,6 +24,10 @@ import MovieList from '@/components/MovieList.vue';
 })
 export default class extends Vue {
     private indexMoviesFun = getIndexMovies;
+
+    beforeRouteEnter () {
+      document.title = '万寻资源网_万寻迅雷电影下载网_最新电影_高清电影_迅雷免费电影下载';
+    }
 }
 </script>
 
