@@ -63,68 +63,24 @@ export default class extends Vue {
     .movie-list {
         width: 100%;
         padding-top: 10px;
-        ul {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            li {
-                flex: 0 0 16.666667%;
-                max-width: 16.666667%;
-                padding: 0 20px;
-                margin-bottom: 10px;
-                font-size: 0;
-                text-align: center;
-                cursor: pointer;
-                overflow: hidden;
-                // .poster {
-                //     position: relative;
-                //     height: 0;
-                //     padding-top: 121.5%;
-                //     margin-bottom: 3px;
-                //     overflow: hidden;
-                //     img {
-                //         position: absolute;
-                //         left: 0;
-                //         top: 0;
-                //         width: 100%;
-                //         height: 100%;
-                //         padding: 2px;
-                //         border: 1px solid $font-border-color;
-                //         &:hover {
-                //             @include br_color($font-theme1-color);
-                //         }
-                //     }
-                // }
-                // .txt {
-                //     &.new {
-                //         time {
-                //             color: $font-red-color;
-                //         }
-                //     }
-                //     h3 {
-                //         line-height: 24px;
-                //         font-size: 13px;
-                //         @include font_color($font-theme1-color);
-                //         &:hover {
-                //             @include hover_font_color($font-theme1-color);
-                //         }
-                //     }
-                //     time {
-                //         line-height: 16px;
-                //         font-size: 12px;
-                //     }
-                // }
-            }
+        li {
+            display: inline-block;
+            width: 16.666667%;
+            max-width: 16.666667%;
+            padding: 0 20px;
+            margin-bottom: 10px;
+            font-size: 0;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
         }
     }
     @media (max-width: 992px) {
         .movie-list {
-            ul {
-                li {
-                    flex: 0 0 25%;
-                    max-width: 25%;
-                    padding: 0 15px;
-                }
+            li {
+                width: 25%;
+                max-width: 25%;
+                padding: 0 15px;
             }
         } 
     }

@@ -112,14 +112,4 @@ export default class extends Vue {
         padding-top: 30px;
     }
 }   
-@media (max-width: 768px){
-        .section {
-            ul {
-                li {
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-            }
-        }
-}
 </style>

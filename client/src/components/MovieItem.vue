@@ -1,9 +1,7 @@
 <template>
     <div class="movie-item-wp">
-        <div class="poster">
-            <a :title="movie.pureName">
-                <img class="transition" :src="`http://www.wx520.net/public/${movie.indexImgSrc}`" :alt="movie.fullName">
-            </a>
+        <div class="item-poster transition">
+            <Poster :src="movie.indexImgSrc"/>
         </div>
         <div class="txt" :class="{'new': movie.isNew}">
             <h3 class="ellipsis transition">{{movie.fullName}}</h3>
@@ -14,9 +12,14 @@
 
 <script lang="ts">
 import { Component , Prop, Vue } from 'vue-property-decorator';
-import { movieItem } from '@/interface/movieItem'
+import { movieItem } from '@/interface/movieItem';
+import Poster from './poster.vue';
+
 @Component({
-    name: 'MovieItem'
+    name: 'MovieItem',
+    components: {
+        Poster
+    }
 })
 
 export default class extends Vue {
@@ -30,24 +33,14 @@ export default class extends Vue {
 .movie-item-wp {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    .poster {
-        position: relative;
-        height: 0;
-        padding-top: 121.5%;
+    .item-poster{
+        padding: 1px;
         margin-bottom: 3px;
+        border: 1px solid $font-border-color;
+        cursor: pointer;
         overflow: hidden;
-        img {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            padding: 2px;
-            border: 1px solid $font-border-color;
-            &:hover {
-                @include br_color($font-theme1-color);
-            }
+        &:hover {
+            @include br_color($font-theme1-color);
         }
     }
     .txt {

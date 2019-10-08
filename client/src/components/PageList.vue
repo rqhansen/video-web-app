@@ -3,9 +3,8 @@
         <empty-data v-if="movie && !movie.length"/>
         <ul v-else>
             <li v-for="(m,idx) of movie" :key="idx">
-                <div class="poster transition" 
-                    :style="`background-image:url(http://www.wx520.net/public/${m.indexImgSrc})`"
-                    @click.stop="goMovieDetail(m.type,m.id)">
+                <div class="item-poster transition" @click.stop="goMovieDetail(m.type,m.id)">
+                    <Poster :src="m.indexImgSrc"/>
                 </div>
                 <div class="txt">
                     <p class="full-name ellipsis transition" @click.stop="goMovieDetail(m.type,m.id)"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
@@ -15,14 +14,9 @@
                         <p class="intro title ellispis"><span class="title">@{{$t('pageList.briefIntroduce1')}}&nbsp;&nbsp;{{$t("pageList.briefIntroduce2")}}</span>{{m.shortIntro}}</p>
                         <p class="update" :class="{'new': m.isNew}">
                             {{$t('pageList.updateTime')}}&nbsp;:
-                            <template v-if="!m.isNew">
-                                <time>{{m.pubDate}}</time>
-                                <span class="transition">{{$t('pageList.downLoad')}}</span>
-                            </template>
-                            <template v-else>
-                                <time>{{m.pubDate}}({{$t('pageList.todayRecomment')}})</time>
-                                <span class="transition">{{$t('pageList.downLoad')}}</span>
-                            </template>
+                            <time v-if="!m.isNew">{{m.pubDate}}</time>
+                            <time v-else>{{m.pubDate}}({{$t('pageList.todayRecomment')}})</time>
+                            <span class="transition" @click="goMovieDetail(m.type,m.id)">{{$t('pageList.downLoad')}}</span>
                         </p>
                     </div>
                 </div>
@@ -33,10 +27,12 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
+    import Poster from './poster.vue';
     import EmptyData from './EmptyData.vue';
     @Component({
         name: 'pageList',
         components: {
+            Poster,
             EmptyData
         }
     })
@@ -60,28 +56,21 @@
         height: 100%;
         min-height: 638px;
         ul {
-            width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
             li {
-                flex: 0 0 50%;
+                display: inline-block;
+                width: 50%;
+                height: 174px;
                 max-width: 50%;
-                display: flex;
-                justify-content: flex-start;
                 padding: 0 10px 0 0;
                 margin-bottom: 24px;
                 p:not(.intro) {
                     width: 100%;
                 }
-                .poster {
+                .item-poster {
                     width: 140px;
-                    height: 174px;
+                    float: left;
                     padding: 2px;
-                    margin-right: 10px;
                     border: 1px solid $font-border-color;
-                    background-size: cover;
-                    background-clip: content-box;
                     cursor: pointer;
                     &:hover {
                         @include br_color($font-theme1-color);
@@ -89,6 +78,8 @@
                 }
                 .txt {
                     position: relative;
+                    float: right;
+                    height: 100%;
                     width: calc(100% - 150px);
                     overflow: hidden;
                     .title {
@@ -111,7 +102,7 @@
                     .intro-wp {
                         width: 100%;
                         font-size: 12px;
-                        line-height: 22px;
+                        line-height: 21px;
                         word-break: break-all;
                     }
                     .intro {
@@ -123,7 +114,7 @@
                     .update {
                         position: absolute;
                         left: 0;
-                        bottom: 0;
+                        bottom: 6px;
                         @include font_color($font-theme1-color);
                         line-height: 16px;
                         &.new {

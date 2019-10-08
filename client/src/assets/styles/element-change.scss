@@ -1,4 +1,6 @@
 .el-backtop {
+    line-height: 38px;
+    text-align: center;
     transition: .3s;
     @include font_color($font-theme1-color);
 }
