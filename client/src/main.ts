@@ -1,4 +1,5 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
 import i18n from '@/lang';
 import elementUi from '@/plugins/element';
 import router from './router'
@@ -9,6 +10,12 @@ import './registerServiceWorker'
 Vue.use(elementUi);
 
 Vue.config.productionTip = false
+
+Component.registerHooks([
+  'beforeRouteEnter'
+])
+
+
 
 window['vm'] = new Vue({
   router,

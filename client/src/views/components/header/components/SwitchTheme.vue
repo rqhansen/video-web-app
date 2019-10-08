@@ -17,7 +17,9 @@
             >
             <div class="theme-content-wp">
                 <ul>
-                    <li v-for="i of 5" :key="i" class="transition" :class="{'active': currThemeIndex==i}" @click.stop="choiceTheme(i)"></li>
+                    <li v-for="i of 5" :key="i" class="transition" :class="{'active': currThemeIndex==i}" @click.stop="choiceTheme(i)">
+                        <i class="el-icon-check transition"></i>
+                    </li>
                 </ul>
             </div>
         </ele-dialog>
@@ -109,8 +111,35 @@
             &:not(:last-child) {
                 margin-bottom: 15px;
             }
+            .el-icon-check {
+                position: absolute;
+                bottom: -2px;
+                right: 0;
+                opacity: 0;
+                color: #fff;
+                z-index:3;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            &:after {
+                transition: all .3s;
+            }
             &.active {
                 border-color: #be1204;
+                .el-icon-check {
+                    opacity: 1;
+                }
+                &:after {
+                    display: block;
+                    content: '';
+                    position: absolute;
+                    right: 0px;
+                    bottom: -2px;
+                    border: 12px solid $font-red-color;
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                    border-bottom-right-radius: 10px;
+                }
             }
         }
         @each $index in 1,2,3,4,5 {
