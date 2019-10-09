@@ -10,10 +10,13 @@
 </template>
 
 <script lang="ts">
-import { Component,Vue } from 'vue-property-decorator';
+import { Component, Watch, Vue } from 'vue-property-decorator';
+import {mixins} from 'vue-class-component';
+import Route from 'vue-router';
 import {getIndexMovies} from '@/apis/home';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
+import setTitleAndMetaMixin from '@/mixins/setTitle';
 
 @Component({
   name: 'home',
@@ -22,11 +25,29 @@ import MovieList from '@/components/MovieList.vue';
     MovieList
   },
 })
-export default class extends Vue {
+export default class extends mixins (setTitleAndMetaMixin) {
     private indexMoviesFun = getIndexMovies;
+    
+    @Watch('$i18n.locale')
+    private switchTitleAndMeta() {
+      this.changeIndexTitleAndMeta();
+    }
 
-    beforeRouteEnter () {
-      document.title = '万寻资源网_万寻迅雷电影下载网_最新电影_高清电影_迅雷免费电影下载';
+    // @ts-ignore
+    beforeRouteEnter (to,from,next) {
+      // @ts-ignore
+      next(vm => {
+        vm.changeIndexTitleAndMeta();
+      });
+    }
+
+    private changeIndexTitleAndMeta() {
+      const vm = window.vm;
+      this.changeTitleAndMeta(
+        vm.$t('title.indexTitle'),
+        vm.$t('title.indexKeyWords'),
+        vm.$t('title.indexDesription')
+      );
     }
 }
 </script>

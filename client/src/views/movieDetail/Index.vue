@@ -45,6 +45,11 @@ export default class extends Vue{
     private movieType = '';
     private movieId = '';
 
+    @Watch('$i18n.locale')
+    private changeTitle() {
+
+    }
+
     @Watch('$route')
     private handleRouteChange(to: Route,from: Route) {
         const {name,params } = to;

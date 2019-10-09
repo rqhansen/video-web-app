@@ -1,4 +1,9 @@
 export default  {
+    title: {
+        indexTitle: 'Wan Xun Resource Website_Wan Xun Thunder Movie download_Latest Movies_HD Movies_Thunder Free Movies Download',
+        indexKeyWords: 'Movie download, latest movie, movie network, Thunder movie, HD movie download',
+        indexDesription: 'Wanxun Movie Network - the latest movie, Thunder movie download - collect the latest Thunder free movie download every day. For the users of Thunder software, the latest free movie downloads, small movie downloads, high-definition movie downloads and other services are available.'
+    },
     header: {
         hotMovie: 'Popular Movie',
         switchTheme: 'Change Theme',

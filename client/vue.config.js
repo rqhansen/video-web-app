@@ -80,6 +80,7 @@ module.exports = {
             .set('@imgs',resolve('src/assets/images'))
             .set('@styles',resolve('src/assets/styles'))
             .set('@components',resolve('src/views/components'))
+            .set('@utils',resolve('src/utils'))
         config.module
             .rule('images')
                 .use('url-loader')

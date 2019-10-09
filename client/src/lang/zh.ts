@@ -1,4 +1,9 @@
 export default  {
+    title: {
+        indexTitle: '万寻资源网_万寻迅雷电影下载网_最新电影_高清电影_迅雷免费电影下载',
+        indexKeyWords: '电影下载,最新电影,电影网,迅雷电影,高清电影下载',
+        indexDesription: '万寻电影网－最新电影,迅雷电影下载-每天搜集最新迅雷免费电影下载。为使用迅雷软件的用户提供最新的免费电影下载、小电影下载、高清电影下载等服务。'
+    },
     header: {
         hotMovie: '热门电影',
         switchTheme: '更换主题',
