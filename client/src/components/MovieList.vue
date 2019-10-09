@@ -1,7 +1,7 @@
 <template>
     <div class="movie-list">
         <ul v-if="currentMovie.length">
-            <li v-for="m of currentMovie" :key="m.pureName" @click.stop="goMovieDetail(m.filmType,m.id)">
+            <li v-for="(m,idx) of currentMovie" :key="idx" @click.stop="goMovieDetail(m.filmType,m.id)">
                 <movie-item :movie="m"/>
             </li>
         </ul>

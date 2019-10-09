@@ -22,12 +22,14 @@
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
 import {Route} from 'vue-router';
+import { mixins } from 'vue-class-component';
 import {getTypeMovie} from '@/apis/typeMovie';
 import {Page} from '@/interface/page';
 import Crumbs from '@/components/Crumbs.vue';
 import PageList from '@/components/PageList.vue';
 import Pagination from '@/components/Page.vue';
 import NavBg from '@/components/NavBg.vue';
+import setTitleAndMetaMixin from '@/mixins/setTitle';
 @Component({
     name: 'classifyMovie',
     components: {
@@ -37,7 +39,7 @@ import NavBg from '@/components/NavBg.vue';
         Pagination
     }
 })
-export default class extends Vue {
+export default class extends mixins (setTitleAndMetaMixin) {
     private movie = '';
     private typeZhName = '';
     private totalPage = 0;
@@ -50,6 +52,7 @@ export default class extends Vue {
         const { path: toPath, params: toParams, name: toName } = to;
         if(toName === 'classifyMovie' ) { //跳到分类电影才开始请求
             if(this.movieType === toParams.id) {
+                this.setTitleAndMeta();
                 return;
             }
             const {id} = toParams;
@@ -57,6 +60,13 @@ export default class extends Vue {
                     page: 1,
                     type: id
                 });
+        }
+    }
+
+    @Watch('$i18n.locale') 
+    private resetTitleAndMeta() {
+        if(this.$route.name === 'classifyMovie') {
+            this.setTitleAndMeta();
         }
     }
 
@@ -92,6 +102,7 @@ export default class extends Vue {
         this.totalPage = total;
         this.currPage = params.page;
         this.movieType = params.type;
+        this.setTitleAndMeta();
     }
 
     //获取首页数据
@@ -102,7 +113,21 @@ export default class extends Vue {
             type: this.movieType
         })
     }
-    
+
+    //设置title和meta
+    private setTitleAndMeta() {
+        const vm = window.vm;
+        const language = vm.$i18n.locale;
+        let typeName = this.typeZhName;
+        if(language === 'en') {
+            typeName = this.movieType;
+        } 
+        this.changeTitleAndMeta(
+        vm.$t('title.classifyMovieTitle', {typeName : typeName}),
+        vm.$t('title.classifyMovieKeyWords', {typeName : typeName}),
+        vm.$t('title.classifyMovieDescription',{typeName : typeName})
+      );
+    }
 }
 </script>
 

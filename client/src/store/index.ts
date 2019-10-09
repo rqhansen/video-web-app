@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 // import {ISearchState} from './modules/search';
 import {ISearchState} from '@/interface/ISearchState'
 
+
 Vue.use(Vuex);
 
 export interface IRootState {

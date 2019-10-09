@@ -28,9 +28,12 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
 export default class extends mixins (setTitleAndMetaMixin) {
     private indexMoviesFun = getIndexMovies;
     
+    // @ts-ignore
     @Watch('$i18n.locale')
     private switchTitleAndMeta() {
-      this.changeIndexTitleAndMeta();
+      if(this.$route.name === 'home') {
+        this.changeIndexTitleAndMeta();
+      }
     }
 
     // @ts-ignore

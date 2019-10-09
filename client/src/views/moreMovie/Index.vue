@@ -8,10 +8,12 @@
 </template>
 
 <script lang="ts">
-import { Component,Vue } from 'vue-property-decorator';
+import { Component, Watch, Vue } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
 import { getMoreMovie } from '@/apis/moreMovie';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
+import setTitleAndMetaMixin from '@/mixins/setTitle';
 
 @Component({
     name: 'moreMovie',
@@ -21,9 +23,33 @@ import MovieList from '@/components/MovieList.vue';
     }
 })
 
-
-export default class extends Vue{
+export default class extends mixins (setTitleAndMetaMixin) {
     private moreMovieFun = getMoreMovie;
+
+    @Watch('$i18n.locale')
+    private changeMoreMovieTitleMeta() {
+        // @ts-ignore
+        if(this.$route.mame === 'moreMovie') {
+            this.changeMTitleAndMeta();
+        }
+    }
+    
+    // @ts-ignore
+    beforeRouteEnter(to,from, next) {
+        // @ts-ignore
+        next(vm => {
+            vm.changeMTitleAndMeta();
+        })
+    }
+
+    private changeMTitleAndMeta() {
+        const vm = window.vm;
+        this.changeTitleAndMeta(
+        vm.$t('title.indexTitle'),
+        vm.$t('title.indexKeyWords'),
+        vm.$t('title.indexDesription')
+      );
+    }
 }
 </script>
 
