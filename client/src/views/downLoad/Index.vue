@@ -8,10 +8,11 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+import {Component, Watch, Vue} from 'vue-property-decorator';
+import {mixins} from 'vue-class-component';
 import Title from './components/Title.vue';
 import DownLoadList from './components/DownList.vue';
-
+import setTitleAndMetaMixin from '@/mixins/setTitle';
 @Component({
     name: 'downLoad',
     components: {
@@ -19,9 +20,7 @@ import DownLoadList from './components/DownList.vue';
         DownLoadList
     }
 })
-export default class extends Vue {
-
-}
+export default class extends mixins (setTitleAndMetaMixin) {}
 </script>
 
 <style lang="scss" scoped>

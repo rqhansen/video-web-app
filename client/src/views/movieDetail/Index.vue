@@ -30,6 +30,7 @@ import {getMovieDetail} from '@/apis/movieDetail';
 import NavBg from '@/components/NavBg.vue';
 import Crumbs from '@/components/Crumbs.vue';
 import detail from './components/detail.vue';
+import { setTitle, setMeta } from '@/utils/setMeta';
 
 @Component({
     name: 'movieDetail',
@@ -41,13 +42,16 @@ import detail from './components/detail.vue';
 })
 
 export default class extends Vue{
-    private mDetail = {filmType: '',typeName: ''};
+    private mDetail = {filmType: '',typeName: '',pureName: ''};
     private movieType = '';
     private movieId = '';
 
     @Watch('$i18n.locale')
-    private changeTitle() {
-
+    private setTitleAndMeta() {
+        if (this.$route.name !== 'movieDetail') {
+            return;
+        }
+        this.resetTitleAndMeta();
     }
 
     @Watch('$route')
@@ -56,6 +60,7 @@ export default class extends Vue{
         if(name === 'movieDetail') {
             const {movie_type,id} = params;
             if(movie_type === this.movieType && id === this.movieId) {
+                this.resetTitleAndMeta();
                 return;
             }
             this.getMovieDetail();
@@ -81,6 +86,7 @@ export default class extends Vue{
         this.mDetail = movieDetail;
         this.movieType = movie_type;
         this.movieId = id;
+        this.resetTitleAndMeta();
     }
 
     private getIndexPageData() {
@@ -99,6 +105,13 @@ export default class extends Vue{
                 showClose: true
             });
         }
+    }
+
+    private resetTitleAndMeta() {
+        const vm = window.vm;
+        setTitle(vm.$t('title.movieDetailTitle',{movieName: this.mDetail.pureName}));
+        setMeta('keywords','keywords',vm.$t('title.movieDetailKeyWords',{movieName: this.mDetail.pureName}));
+        setMeta('description','description',vm.$t('title.movieDetailDescription',{movieName: this.mDetail.pureName}));
     }
 }
 </script>

@@ -8,17 +8,19 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator';
-    import Title from './components/Title.vue';
-    import LessonDetail from './components/LessonDetail.vue'
-    @Component({
-        name: 'downLoadLesson',
-        components: {
-            Title,
-            LessonDetail
-        }
-    })
-    export default class extends Vue {}
+import { Component, Vue } from 'vue-property-decorator';
+import {mixins} from 'vue-class-component';
+import Title from './components/Title.vue';
+import LessonDetail from './components/LessonDetail.vue';
+import setTitleAndMetaMixin from '@/mixins/setTitle';
+@Component({
+    name: 'downLoadLesson',
+    components: {
+        Title,
+        LessonDetail
+    }
+})
+export default class extends mixins (setTitleAndMetaMixin) {}
 </script>
 
 <style lang="scss" scoped>

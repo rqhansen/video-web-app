@@ -25,31 +25,6 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
 
 export default class extends mixins (setTitleAndMetaMixin) {
     private moreMovieFun = getMoreMovie;
-
-    @Watch('$i18n.locale')
-    private changeMoreMovieTitleMeta() {
-        // @ts-ignore
-        if(this.$route.mame === 'moreMovie') {
-            this.changeMTitleAndMeta();
-        }
-    }
-    
-    // @ts-ignore
-    beforeRouteEnter(to,from, next) {
-        // @ts-ignore
-        next(vm => {
-            vm.changeMTitleAndMeta();
-        })
-    }
-
-    private changeMTitleAndMeta() {
-        const vm = window.vm;
-        this.changeTitleAndMeta(
-        vm.$t('title.indexTitle'),
-        vm.$t('title.indexKeyWords'),
-        vm.$t('title.indexDesription')
-      );
-    }
 }
 </script>
 

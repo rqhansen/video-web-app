@@ -113,7 +113,7 @@ module.exports = {
             // ws: false
           }
         },
-        open: "chrome",
+        // open: "chrome",
         hotOnly: true,
         compress: false,
         overlay: {

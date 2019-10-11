@@ -22,14 +22,13 @@
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
 import {Route} from 'vue-router';
-import { mixins } from 'vue-class-component';
+import { setTitle, setMeta } from '@/utils/setMeta';
 import {getTypeMovie} from '@/apis/typeMovie';
 import {Page} from '@/interface/page';
 import Crumbs from '@/components/Crumbs.vue';
 import PageList from '@/components/PageList.vue';
 import Pagination from '@/components/Page.vue';
 import NavBg from '@/components/NavBg.vue';
-import setTitleAndMetaMixin from '@/mixins/setTitle';
 @Component({
     name: 'classifyMovie',
     components: {
@@ -39,7 +38,7 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
         Pagination
     }
 })
-export default class extends mixins (setTitleAndMetaMixin) {
+export default class extends Vue{
     private movie = '';
     private typeZhName = '';
     private totalPage = 0;
@@ -57,9 +56,9 @@ export default class extends mixins (setTitleAndMetaMixin) {
             }
             const {id} = toParams;
             this.getCurMovie({
-                    page: 1,
-                    type: id
-                });
+                page: 1,
+                type: id
+            });
         }
     }
 
@@ -122,11 +121,9 @@ export default class extends mixins (setTitleAndMetaMixin) {
         if(language === 'en') {
             typeName = this.movieType;
         } 
-        this.changeTitleAndMeta(
-        vm.$t('title.classifyMovieTitle', {typeName : typeName}),
-        vm.$t('title.classifyMovieKeyWords', {typeName : typeName}),
-        vm.$t('title.classifyMovieDescription',{typeName : typeName})
-      );
+        setTitle(vm.$t('title.classifyMovieKeyWords', {typeName : typeName}));
+        setMeta('keywords','keywords',vm.$t('title.classifyMovieKeyWords', {typeName : typeName}));
+        setMeta('description','description',vm.$t('title.classifyMovieDescription',{typeName : typeName}));
     }
 }
 </script>

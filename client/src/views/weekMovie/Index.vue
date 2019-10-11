@@ -13,9 +13,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import {mixins} from 'vue-class-component';
 import { getWeekMovies } from '@/apis/weekMovie';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
+import setTitleAndMetaMixin from '@/mixins/setTitle';
 
 @Component({
     name: 'weekMovie',
@@ -25,7 +27,7 @@ import MovieList from '@/components/MovieList.vue';
     }
 })
 
-export default class extends Vue {
+export default class extends mixins (setTitleAndMetaMixin) {
     private movies = [];
 
     async created() {

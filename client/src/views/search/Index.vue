@@ -22,6 +22,7 @@ import {search} from '@/apis/search';
 import NavBg from '@/components/NavBg.vue';
 import PageList from '@/components/PageList.vue';
 import Pagination from '@/components/Page.vue';
+import { setTitle, setMeta } from '@/utils/setMeta';
 
 @Component({
     name: 'search',
@@ -40,6 +41,21 @@ export default class extends Vue {
     @Watch('$route')
     private handleOnRouteChange(nRoute: Route) {
         this.onSearch(nRoute);
+    }
+
+    @Watch('$i18n.locale')
+    private setTitleAndMeta() {
+        if(this.$route.name === 'search') {
+            this.resetTitleAndMeta();
+        }
+    }
+
+    // @ts-ignore
+    beforeRouteEnter(to,from,next) {
+        // @ts-ignore
+        next(vm => {
+            vm.resetTitleAndMeta();
+        })
     }
 
     get preSearchPage() {
@@ -89,6 +105,14 @@ export default class extends Vue {
         }
         return flag;
     }
+
+    private resetTitleAndMeta() {
+        const vm = window.vm;
+        setTitle(vm.$t('title.searchTitle'));
+        setMeta('keywords','keywords',vm.$t('title.searchKeyWords'));
+        setMeta('description','description',vm.$t('title.searchDescription'));
+    }
+
 }
 </script>
 

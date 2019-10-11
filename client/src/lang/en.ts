@@ -5,7 +5,13 @@ export default  {
         indexDesription: 'Wanxun Movie Network - the latest movie, Thunder movie download - collect the latest Thunder free movie download every day. For the users of Thunder software, the latest free movie downloads, small movie downloads, high-definition movie downloads and other services are available.',
         classifyMovieTitle: '{typeName} move_thunder download_free download_Wan Xun Resource website',
         classifyMovieKeyWords: '{typeName} moive thunder download,free download,Gvod HD online play',
-        classifyMovieDescription: '{typeName} movie thunder download, free download, action movie Gvod HD online play, plot introduction, etc.'
+        classifyMovieDescription: '{typeName} movie thunder download, free download, action movie Gvod HD online play, plot introduction, etc.',
+        searchTitle: 'Wan Xun HD movie download network _Wan Xun thunder movie download station_search for the latest movie free download',
+        searchKeyWords: 'Thunder download, free movie download, poster plot',
+        searchDescription: 'This site collects the latest movie thunder download every day.',
+        movieDetailTitle: '{movieName} download_thunder download_free_download_Wan Xun Resource Website',
+        movieDetailKeyWords: '{movieName} thunder download,{movieName} download, download address',
+        movieDetailDescription: '{movieName} thunder download、{movieName} free download,in Wan Xun Resource Website you can get {movieName} for free, stills and thunder high speed free download address.'
     },
     header: {
         hotMovie: 'Popular Movie',  

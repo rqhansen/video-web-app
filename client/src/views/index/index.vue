@@ -27,31 +27,7 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
 })
 export default class extends mixins (setTitleAndMetaMixin) {
     private indexMoviesFun = getIndexMovies;
-    
-    // @ts-ignore
-    @Watch('$i18n.locale')
-    private switchTitleAndMeta() {
-      if(this.$route.name === 'home') {
-        this.changeIndexTitleAndMeta();
-      }
-    }
-
-    // @ts-ignore
-    beforeRouteEnter (to,from,next) {
-      // @ts-ignore
-      next(vm => {
-        vm.changeIndexTitleAndMeta();
-      });
-    }
-
-    private changeIndexTitleAndMeta() {
-      const vm = window.vm;
-      this.changeTitleAndMeta(
-        vm.$t('title.indexTitle'),
-        vm.$t('title.indexKeyWords'),
-        vm.$t('title.indexDesription')
-      );
-    }
+  
 }
 </script>
 

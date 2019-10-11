@@ -5,7 +5,13 @@ export default  {
         indexDesription: '万寻电影网－最新电影,迅雷电影下载-每天搜集最新迅雷免费电影下载。为使用迅雷软件的用户提供最新的免费电影下载、小电影下载、高清电影下载等服务。',
         classifyMovieTitle: '{typeName}_迅雷下载_免费下载_万寻电影网',
         classifyMovieKeyWords: '{typeName}迅雷下载,免费下载，Gvod高清在线播放',
-        classifyDescription: '{typeName}迅雷下载、免费下载，动作片Gvod高清在线播放，剧情介绍等'
+        classifyMovieDescription: '{typeName}迅雷下载、免费下载，动作片Gvod高清在线播放，剧情介绍等',
+        searchTitle: '万寻高清电影下载网_万寻迅雷电影下载站_搜索最新电影免费下载',
+        searchKeyWords: '迅雷下载,免费电影下载,海报剧情',
+        searchDescription: '本站每天搜集最新电影迅雷下载',
+        movieDetailTitle: '{movieName}下载_迅雷下载_免费下载_万寻电影网',
+        movieDetailKeyWords: '{movieName}迅雷下载,你失去的部分下载,下载地址',
+        movieDetailDescription: '{movieName}迅雷下载、你失去的部分免费下载，在万寻网您可以免费获得你失去的部分的详细剧情介绍,剧照和迅雷高速免费下载地址'
     },
     header: {
         hotMovie: '热门电影',

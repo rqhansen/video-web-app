@@ -10,9 +10,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import {mixins} from 'vue-class-component';
 import { getTodayMovies } from '@/apis/todayMovie';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
+import setTitleAndMetaMixin from '@/mixins/setTitle';
 
 @Component({
     name: 'todayMovie',
@@ -21,7 +23,7 @@ import MovieList from '@/components/MovieList.vue';
         MovieList
     }
 })
-export default class extends Vue{
+export default class extends mixins (setTitleAndMetaMixin){
     private todayMovieFun = getTodayMovies;
 }
 </script>
