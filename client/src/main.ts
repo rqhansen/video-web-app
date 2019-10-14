@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import i18n from '@/lang';

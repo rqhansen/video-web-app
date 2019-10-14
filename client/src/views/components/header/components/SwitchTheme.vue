@@ -106,7 +106,7 @@
             position: relative;
             border: 2px solid transparent;
             border-radius: 10px;
-            box-shadow: 0 3px 5px 1px #999;
+            box-shadow: 0 0 5px  #999;
             cursor: pointer;
             &:not(:last-child) {
                 margin-bottom: 15px;

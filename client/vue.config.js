@@ -1,5 +1,5 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
@@ -11,6 +11,7 @@ module.exports = {
     publicPath:'/', //history模式时配置
     outputDir: 'dist',
     assetsDir: './static',
+    transpileDependencies: ['strip-ansi','ansi-regex'],
     //configureWebpack配置
     configureWebpack: config => {
         if(process.env.NODE_ENV === 'production') {
@@ -87,7 +88,7 @@ module.exports = {
                     .loader('url-loader')
                     .tap(options => Object.assign(options,{limit: 10240}))
                     //
-        config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin).end();
+        // config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin).end();
     },
     css: {
         sourceMap: false,
