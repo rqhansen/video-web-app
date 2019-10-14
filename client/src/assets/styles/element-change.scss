@@ -61,6 +61,9 @@
     &:-ms-input-placeholder {
         color: #666;
     }
+    &::placeholder { //firefox
+        color: #666;
+    }
     &:focus {
         @include br_color($font-theme1-color);
         &::-webkit-input-placeholder {
@@ -73,6 +76,9 @@
             color: #999;
         }
         &:-ms-input-placeholder {
+            color: #999;
+        }
+        &::placeholder { //firefox
             color: #999;
         }
     }
