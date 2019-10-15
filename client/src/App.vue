@@ -31,7 +31,7 @@
 
   export default class extends Vue {
     private container = '';
-    private throttledScrollHandler = '';
+    private throttledScrollHandler: () => void = () => () => {};
 
     created() {
       this.initCurrTheme();
@@ -39,7 +39,6 @@
 
     mounted() {
       this.init();
-      // @ts-ignore
       this.throttledScrollHandler = throttle(this.onScroll,100);
       // @ts-ignore
       this.container.addEventListener('scroll',this.throttledScrollHandler,false);

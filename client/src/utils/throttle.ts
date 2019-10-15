@@ -1,36 +1,34 @@
 /**
  * 节流函数
  */
-// @ts-ignore
-export const throttle = (fn,delay) => {
+export const throttle = (fn:() => any,delay:number) => {
+
     delay = delay || 200;
-    // @ts-ignore
-    let timer, current, past, context, args;
+    let timer: number = 0;
+    let current: number = 0;
+    let past:number = 0;
+    let context: any = '';
+    let args: any = '';
 
     function execute() {
         // @ts-ignore
         fn.call(context, args);
-        // @ts-ignore
         past = current;
     }
 
     return function () {
-    // @ts-ignore
+        // @ts-ignore
         context = this;
         args = arguments;
-        // @ts-ignore
         if (timer) { //清除上一次的定时任务
-            // @ts-ignore
             clearTimeout(timer);
-            timer = null;
+            timer = 0;
         }
 
         current = +new Date();
-        // @ts-ignore
         if (!past) { //一开始执行一次
             execute()
         } else {
-            // @ts-ignore
             let diff = delay - (current - past);
             if (diff <= 0) {
                 execute();
