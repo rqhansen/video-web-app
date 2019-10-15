@@ -2,13 +2,6 @@ import { VuexModule, Module, Mutation, Action, getModule} from 'vuex-module-deco
 import store from '@/store';
 import {ISearchState} from '@/interface/ISearchState'
 
-// export interface ISearchState {
-//     searchInfo: {
-//         page: string, 
-//         movieName: string
-//     }
-// }
-
 @Module({dynamic: true, store, name: 'searchState'})
 class SearchState extends VuexModule implements ISearchState {
     public searchInfo = {

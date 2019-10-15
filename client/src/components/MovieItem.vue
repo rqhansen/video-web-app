@@ -1,7 +1,7 @@
 <template>
     <div class="movie-item-wp">
         <div class="item-poster transition">
-            <Poster :src="movie.indexImgSrc"/>
+            <Poster :src="movie.indexImgSrc" :mName="movie.pureName"/>
         </div>
         <div class="txt" :class="{'new': movie.isNew}">
             <h3 class="ellipsis transition">{{movie.fullName}}</h3>

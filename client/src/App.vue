@@ -18,7 +18,9 @@
   import {Component,Vue} from 'vue-property-decorator';
   import Header from '@components/header/Index.vue';
   import Footer from '@components/footer/Index.vue';
-
+  import {throttle} from '@/utils/throttle';
+  import {ScrollTopModule} from '@/store/modules/scrollTop';
+  
   @Component({
       name: 'App',
       components: {
@@ -28,8 +30,30 @@
   })
 
   export default class extends Vue {
+    private container = '';
+    private throttledScrollHandler = '';
+
     created() {
       this.initCurrTheme();
+    }
+
+    mounted() {
+      this.init();
+      // @ts-ignore
+      this.throttledScrollHandler = throttle(this.onScroll,100);
+      // @ts-ignore
+      this.container.addEventListener('scroll',this.throttledScrollHandler,false);
+    }
+
+    private onScroll() {
+      // @ts-ignore
+      let scrollTop = this.container.scrollTop;
+      ScrollTopModule.changeScrollTop(scrollTop);
+    }
+
+    private init() {
+      // @ts-ignore
+      this.container = document.getElementById('app');
     }
 
     //获取当前主题

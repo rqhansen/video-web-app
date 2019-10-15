@@ -4,7 +4,7 @@
         <ul v-else>
             <li v-for="(m,idx) of movie" :key="idx">
                 <div class="item-poster transition" @click.stop="goMovieDetail(m.type,m.id)">
-                    <Poster :src="m.indexImgSrc"/>
+                    <Poster :src="m.indexImgSrc" :mName="m.pureName"/>
                 </div>
                 <div class="txt">
                     <p class="full-name ellipsis transition" @click.stop="goMovieDetail(m.type,m.id)"><span>{{m.pureName}}</span>{{m.sharpness}}</p>
