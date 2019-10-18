@@ -11,5 +11,6 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))
+      .set('@styles',resolve('src/assets/styles'))
   }
 }

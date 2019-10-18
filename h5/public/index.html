@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!-- 不让百度转码 -->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" user-scalable="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="author" content="1412288533@qq.com">
     <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
     <!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） -->
@@ -69,5 +69,14 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <!-- <script src="./js/flexible.js"></script> -->
+    <script src="./js/viewport-units-buggyfill.min.js"></script>
+    <script>
+       window.onload = function () {
+        window.viewportUnitsBuggyfill.init({
+          hacks: window.viewportUnitsBuggyfillHacks
+        });
+       }
+    </script>
   </body>
 </html>
