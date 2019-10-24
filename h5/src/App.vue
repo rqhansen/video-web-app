@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="ignore">
+  <div id="app">
     万寻资源网
     <mt-button type="default">default</mt-button>
   </div>
@@ -12,13 +12,20 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import '~@styles/index.less';
+<style lang="scss">
+@import '~@styles/index.scss';
 #app {
-  width: 750px;
+  width: 375px;
+  margin-left: 40px;
+  margin-top: 40px;
   height: 200px;
+  padding-top: 20px;
+  font-size: 30px;
   border: 1px solid black;
-  font-size: 28px;
   border-radius: 20px;
+  text-align: center;
+}
+img {
+  content: normal !important;
 }
 </style>
