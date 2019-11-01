@@ -15,15 +15,9 @@ export default {
 <style lang="scss">
 @import '~@styles/index.scss';
 #app {
-  width: 375px;
-  margin-left: 40px;
-  margin-top: 40px;
-  height: 200px;
-  padding-top: 20px;
-  font-size: 30px;
-  border: 1px solid black;
-  border-radius: 20px;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 img {
   content: normal !important;
