@@ -60,7 +60,6 @@ export default class extends Vue {
     }
 
     private loadImg() {
-        console.log('加载了');
         const img = this.$refs['img'];
         // @ts-ignore
         img.src = img.getAttribute('data-src');

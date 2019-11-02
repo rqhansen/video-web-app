@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    万寻资源网
-    <mt-button type="default">default</mt-button>
   </div>
 </template>
 

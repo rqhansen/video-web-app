@@ -69,6 +69,14 @@ module.exports = {
               .loader('url-loader')
               .tap(options => Object.assign(options,{limit: 10240}))
   },
+  css: {
+    sourceMap: false,
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/assets/styles/mixin.scss";`
+      }
+    }
+  },
   productionSourceMap: false,
   devServer: {
     port: 9090,
