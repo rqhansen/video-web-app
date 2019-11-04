@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+      <!-- 头部 -->
+      <Header/>
   </div>
 </template>
 
 <script>
-
+import Header from '@busComponents/header';
 export default {
-  name: 'app',
+  name: 'App',
+  components: {
+    Header
+  }
 }
 </script>
 
@@ -19,5 +24,9 @@ export default {
 }
 img {
   content: normal !important;
+}
+
+.iconfont {
+  font-size: 32px;
 }
 </style>

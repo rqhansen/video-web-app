@@ -1,12 +1,7 @@
 
-@mixin ellipsis() {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
 @mixin flex($contentPos: center,$alignPos: center) {
     display: flex;
     justify-content: $contentPos;
     align-items: $alignPos;
 }
+

@@ -62,7 +62,10 @@ module.exports = {
     });
     config.resolve.alias
       .set('@', resolve('src'))
-      .set('@styles',resolve('src/assets/styles'));
+      .set('@images',resolve('src/assets/images'))
+      .set('@styles',resolve('src/assets/styles'))
+      .set('@baseComponents',resolve('src/components/baseComponents'))
+      .set('@busComponents',resolve('src/components/businessComponents'));
       config.module
         .rule('images')
           .use('url-loader')
@@ -80,6 +83,7 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     port: 9090,
+    hot: true,
     hotOnly: true
   }
 }

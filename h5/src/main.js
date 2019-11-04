@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import './registerServiceWorker'
+import './assets/iconfont/iconfont.css';
 // 按需引入mint-ui
 import mint from '@/plugins/mint.js';
 Vue.use(mint);
