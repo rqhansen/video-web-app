@@ -2,11 +2,12 @@
   <div id="app">
       <!-- 头部 -->
       <Header/>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Header from '@busComponents/header';
+import Header from '@/views/common/header';
 export default {
   name: 'App',
   components: {
