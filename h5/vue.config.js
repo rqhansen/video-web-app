@@ -64,8 +64,6 @@ module.exports = {
       .set('@', resolve('src'))
       .set('@images',resolve('src/assets/images'))
       .set('@styles',resolve('src/assets/styles'))
-      .set('@baseComponents',resolve('src/components/baseComponents'))
-      .set('@busComponents',resolve('src/components/businessComponents'));
       config.module
         .rule('images')
           .use('url-loader')
@@ -82,8 +80,18 @@ module.exports = {
   },
   productionSourceMap: false,
   devServer: {
-    port: 9090,
-    hot: true,
-    hotOnly: true
+    publicPath: "/",
+        host: "0.0.0.0",
+        port: 9090,
+        useLocalIp: true,
+        proxy: {
+          "/api": { //我的接口是'/client'开头的才使用代理
+            target: 'http://localhost:82',
+            changeOrigin: true,
+            pathRewrite: {'^/api': '/api'},    //这里重写路径(接口路径里有api字段)
+            // pathRewrite: {‘^/api’: '/'} //这里重写路径(接口路径里无api字段)
+            // ws: false
+          }
+        },
   }
 }

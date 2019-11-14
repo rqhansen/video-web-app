@@ -34,10 +34,12 @@ export default {
 
 <style lang="scss" scoped>
 .home-hd {
+    position: relative;
     @include flex(space-between);
     height: 90px;
-    padding: 0 24px;
+    padding: 0 16px;
     box-shadow: 0 0 20px #888;
+    z-index: 20;
     .logo {
         margin-left: -20px;
         img {

@@ -1,8 +1,8 @@
 <template>
     <header class="title-bar">
         <main>
-            <span>{{title}}</span>
-            <span>{{canShowMore}}</span>
+            <h2 class="title">{{title}}</h2>
+            <slot />
         </main>
     </header>
 </template>
@@ -12,12 +12,25 @@ export default {
     name: 'TitleBar',
     props: {
         title: {
-            required: true
-        },
-        canShowMore: {
-            required: true,
-            default: trueS
+            default: '今日热门电影推荐'
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.title-bar {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    > main {
+        width: 100%;
+        height: 100%;
+        @include flex(space-between);
+        .title {
+            color: #000;
+            font-size: 30px;
+        }
+    }
+} 
+</style>
