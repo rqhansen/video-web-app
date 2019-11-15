@@ -2,7 +2,10 @@
   <div id="app">
       <!-- 头部 -->
       <Header/>
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+
   </div>
 </template>
 

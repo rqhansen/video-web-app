@@ -61,6 +61,7 @@ export default  {
         background-color: #f7f7f7;
         .more {
             font-size: 24px;
+            font-weight: bold;
         }
     }
     .movies-wp {

@@ -1,24 +1,24 @@
 <template>
     <header class="home-hd">
-        <div class="logo">
-            <h1>
-                <a href="/" target="_self">
-                    <img src="@/assets/images/header/logo.jpg" alt="万寻资源网">
-                </a>
-            </h1>
-        </div>  
-        <div class="more" :class="{'block':showDropMenu}" @click="switchDropMenu">
-            <b></b>
-            <b></b>
-            <b></b>
-        </div>
+        <!-- logo -->
+        <logo/>
+        <!-- logo结束 -->
+        <!-- 右侧菜单 -->
+        <more @switch-drop-menu="switchDropMenu"/>
+        <!-- 右侧菜单结束 -->
+        <!-- 下拉菜单 -->
+        <drop-menu :showMenu="showDropMenu"/>
+        <!-- 下拉菜单结束 -->
     </header>
 </template>
 
 <script>
-
+import Logo from './component/logo'
+import More from './component/more'
+import DropMenu from './component/dropMenu'
 export default {
     name: 'Header',
+    components: { Logo, More, DropMenu },
     data() {
         return {
             showDropMenu: false
@@ -40,45 +40,5 @@ export default {
     padding: 0 16px;
     box-shadow: 0 0 20px #888;
     z-index: 20;
-    .logo {
-        margin-left: -20px;
-        img {
-            width: 200px;
-            height: 70px;
-        }
-    }
-    .more {
-        width: 50px;
-        height: 35px;
-        > b {
-            display: block;
-            width: 52px;
-            height: 5px;
-            background-color: #004a84;
-            margin: 10px 0 ;
-            transition: all .3s linear; 
-            &:first-child {
-                margin-top: 0;
-            }
-        }
-    }
-    .block {
-        position: relative;
-        >b {
-            position: absolute;
-            right: 4px;
-            top: 13px;
-            &:first-child {
-                transform: rotate(45deg);
-            }
-            &:nth-child(2) {
-                display: none;
-            }
-            &:last-child {
-                top: 3px;
-                transform: rotate(-45deg);
-            }
-        }
-    }
 }
 </style>
