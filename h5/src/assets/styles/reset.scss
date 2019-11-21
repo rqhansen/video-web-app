@@ -38,9 +38,36 @@ a {
     color: #106492;
     text-decoration: none;
 }
-button {
+button,input,textarea,select {
+    display: inline-block;
     outline: none;
+    border: none;
 }
+
+::-webkit-input-placeholder {
+    color:#666;
+  }
+  ::-moz-placeholder {
+    color:#666;
+  }
+  :-moz-placeholder {
+    color:#666;
+  }
+  ::-ms-input-placeholder{
+    color:#666;
+  }
+  input:focus::-webkit-input-placeholder{
+      color:#999;
+  }
+  input:focus::-moz-placeholder{
+      color:#999;
+  }
+  input:focus:-moz-placeholder{
+      color:#999;
+  }
+  input:focus:-ms-input-placeholder{
+      color:#999;
+  }
 
 img {
     border: none;

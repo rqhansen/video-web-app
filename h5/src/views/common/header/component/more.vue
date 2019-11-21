@@ -43,7 +43,7 @@ export default  {
         margin-top: 4px;
         >b {
             position: absolute;
-            right: 4px;
+            right: -6px;
             top: 14px;
             &:first-child {
                 transform: rotate(45deg);
