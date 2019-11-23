@@ -3,7 +3,7 @@
       <!-- 头部 -->
       <Header/>
       <keep-alive>
-        <router-view></router-view>
+        <router-view class="content"></router-view>
       </keep-alive>
   </div>
 </template>
@@ -31,5 +31,8 @@ img {
 
 .iconfont {
   font-size: 32px;
+}
+.content {
+  height: calc(100% - 90px);
 }
 </style>

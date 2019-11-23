@@ -13,6 +13,7 @@
                     </li>
                 </ul>   
             </div>
+            <Footer/>
         </main>
     </section>
 </template>
@@ -20,12 +21,14 @@
 <script>
 import TitleBar from '@/views/common/titleBar';
 import MovieItem from '@/views/common/movieItem';
+import Footer from '@/views/common/footer';
 import { getHomeMovies } from '@/apis/home.js';
 export default  {
     name: 'Home',
     components: {
         TitleBar,
-        MovieItem
+        MovieItem,
+        Footer
     },
     data (){
         return  {
@@ -47,7 +50,6 @@ export default  {
 
 <style lang="scss" scoped>
 .home {
-    height: calc(100% - 90px);
     z-index:1;
     > main {
         height: 100%;

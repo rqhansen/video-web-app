@@ -2,7 +2,7 @@
     <section class="drop-menu-wp" :class="{'block':showMenu}">
         <!-- 搜索 -->
         <section class="search-bar">
-            <input class="transition" placeholder="输入电影名称搜索..." type="text"/>
+            <input class="transition" placeholder="输入电影名称搜索..." type="text" v-model="movieName"/>
             <button class="transition">影视搜索</button>
         </section>
         <!-- 搜索结束 -->
@@ -28,9 +28,16 @@ export default {
         }
     },
     components: {menuItem},
+    watch: {
+        showMenu(nVal) {
+            if(!nVal) {
+                this.movieName && (this.movieName = null);
+            }
+        }
+    },
     data() {
         return {
-            value: '',
+            movieName: null,
             classifyMoive: classifyMoive,
             hotMovie: hotMovie,
             lastMovie: lastMovie

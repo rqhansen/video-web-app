@@ -44,7 +44,7 @@
         padding-left: 10px;
         line-height: 72px;
         font-size: 30px; 
-        border-bottom: 1px dashed #fff;
+        border-bottom: 1px solid #fff;
     }
     li {
         display:inline-block;
