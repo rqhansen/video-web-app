@@ -6,8 +6,9 @@ function resolve (dir) {
   return path.join(__dirname, dir);
 }
 module.exports = {
-  publicPath: '/',
-  assetsDir: 'static',
+  publicPath:'/',
+  outputDir: 'dist',
+  assetsDir: './static',
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {
       config.optimization = {
@@ -81,17 +82,23 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     publicPath: "/",
-        host: "0.0.0.0",
-        port: 9090,
-        useLocalIp: true,
-        proxy: {
-          "/api": { //我的接口是'/client'开头的才使用代理
-            target: 'http://localhost:82',
-            changeOrigin: true,
-            pathRewrite: {'^/api': '/api'},    //这里重写路径(接口路径里有api字段)
-            // pathRewrite: {‘^/api’: '/'} //这里重写路径(接口路径里无api字段)
-            // ws: false
-          }
-        },
+    host: "0.0.0.0",
+    port: 9090,
+    useLocalIp: true,
+    proxy: {
+      "/api": { //我的接口是'/client'开头的才使用代理
+        target: 'http://localhost:82',
+        changeOrigin: true,
+        pathRewrite: {'^/api': '/api'},    //这里重写路径(接口路径里有api字段)
+        // pathRewrite: {‘^/api’: '/'} //这里重写路径(接口路径里无api字段)
+        // ws: false
+      }
+    },
+    hotOnly: true,
+    compress: false,
+    overlay: {
+        warnings: true,
+        errors: true
+    }
   }
 }

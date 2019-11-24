@@ -1,6 +1,6 @@
 <template>
     <section class="movie-item-wp">
-        <router-link :to="`/html/${movie.filmType}/${movie.id}`">
+        <router-link :to="`/${movie.filmType}/${movie.id}`">
             <div class="poster">
                 <img v-lazy="`http://www.wx520.net/public/${movie.indexImgSrc}`" :alt="movie.pureName">
             </div>

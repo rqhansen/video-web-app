@@ -25,9 +25,23 @@
 
 <script>
 import Current from './components/current.vue';
+import { getMovieDetail } from '@/apis/movieDetail.js';
 export default {
-    name: 'movieDetail',
-    components: { Current }
+    name: 'MovieDetail',
+    components: { Current },
+    methods: {
+        async getMovieDetail() {
+            const { movie_type,id } = this.$route.params;
+            const { data : { code, data:  { movieDetail } } } = await getMovieDetail({
+                movieType: movie_type,
+                id: id
+            });
+            console.log(movieDetail);
+        }
+    },
+    created() {
+        this.getMovieDetail();
+    }
 }
 </script>
 
