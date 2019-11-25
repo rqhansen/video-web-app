@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-const Home = () => import(/* webpackChunkName: "home" */ './views/home/index.vue');
-const MovieDetail = () => import(/* webpackChunkName: "movieDetail" */ './views/movieDetail/index.vue');
+const Home = () => import(/* webpackChunkName: "home" */ './views/home/Index.vue');
+const MovieDetail = () => import(/* webpackChunkName: "movieDetail" */ './views/movieDetail/Index.vue');
 
 Vue.use(Router);
 

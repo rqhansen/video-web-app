@@ -59,7 +59,7 @@ export default {
     height: 0;
     background:rgba(0, 0, 0, .8);
     box-shadow: 1px 2px 5px #888;
-    transition: all .3s ease-out;
+    transition: all .3s;
     overflow: hidden;
     &.block {
         height: 730px;
@@ -82,6 +82,7 @@ export default {
         color: #666;
         font-size: 28px;
         background-color: #f7f7f7;
+        border-radius: 0;
     }
     button {
         display: block;
