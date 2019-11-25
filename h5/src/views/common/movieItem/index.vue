@@ -39,7 +39,6 @@ export default {
             width: 100%;
             padding: 0 5px;
             line-height: 50px;
-            font-size: 26px;
             color: #ff0000;
         }
         > time {

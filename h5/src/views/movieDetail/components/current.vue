@@ -2,14 +2,19 @@
     <header class="curr-bar ellipsis">
         <span class="curr-txt">当前位置：</span>
         <router-link to="/" target="_self">万寻电影></router-link>
-        <router-link to="/">djjss</router-link>
-        <span>>>下载页面</span>
+        <router-link :to="`/movie/${currMovieInfo.filmType}`">{{currMovieInfo.typeName}}</router-link>
+        <span>>>{{currMovieInfo.pureName}}下载页面</span>
     </header>
 </template>
 
 <script>
 export default {
-    name: 'Current'
+    name: 'Current',
+    props: {
+        currMovieInfo: {
+            required: true
+        }
+    }
 }
 </script>
 
