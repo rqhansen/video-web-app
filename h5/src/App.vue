@@ -3,7 +3,7 @@
       <!-- 头部 -->
       <Header/>
       <keep-alive>
-        <router-view class="content"></router-view>
+        <router-view class="content" :key="$route.fullPath"></router-view>
       </keep-alive>
   </div>
 </template>
