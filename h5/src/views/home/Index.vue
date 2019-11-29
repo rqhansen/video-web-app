@@ -37,9 +37,8 @@ export default  {
     },
     methods: {
         async getTodayHotMovie() {
-            const { data:{ code,data: { movies } } } = await getHomeMovies();
+            const { data:{ code,data: { movies } } } = await getHomeMovies({},{loading: true});
             this.movies = movies;
-            console.log(movies);
         }
     },
     created() {

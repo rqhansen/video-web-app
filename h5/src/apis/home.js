@@ -1,8 +1,10 @@
 import request from '@/utils/request';
 
 //今日热门电影
-export const getHomeMovies = () => 
+export const getHomeMovies = (data,config) => 
 request({
     url: '/api/homeMovieList',
-    method: 'get'
+    method: 'get',
+    data,
+    headers: { ...config }
 })

@@ -42,9 +42,6 @@ export default {
             hotMovie: hotMovie,
             lastMovie: lastMovie
         }
-    },
-    created() {
-        console.log(classifyMoive);
     }
 }
 </script>

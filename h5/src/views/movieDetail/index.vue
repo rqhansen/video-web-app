@@ -130,17 +130,16 @@ export default {
     methods: {
         async getMovieDetail() {
             const { movie_type,id } = this.$route.params;
-            const { data : { code, data:  { movieDetail } } } = await getMovieDetail({
-                movieType: movie_type,
-                id: id
-            });
+            const { data : { code, data:  { movieDetail } } } = await getMovieDetail(
+                { movieType: movie_type,id: id},
+                { loading: true }
+            );
             this.mDetail = movieDetail;
             this.currBarInfo = {
                 typeName: movieDetail.typeName,
                 filmType: movieDetail.filmType,
                 pureName: movieDetail.pureName
             };
-            console.log(movieDetail);
         }
     },
     created() {

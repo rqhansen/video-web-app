@@ -1,5 +1,13 @@
-.mint-button {
-    font-size: 30px;
-    width: 180px;
-    height: 80px;
+/** loading **/
+.mint-indicator-wrapper {
+    padding: 30px!important;
+    .mint-spinner-snake{
+        width: 44px!important;
+        height: 44px!important;
+    }
+    .mint-indicator-text {
+        font-size: 28px;
+    }
 }
+/** loading 结束 **/
+
