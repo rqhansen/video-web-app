@@ -6,10 +6,12 @@ const service = axios.create({
     timeout: 10000
 });
 
+service.CancelToken = axios.CancelToken;
+
 //添加请求拦截器
 service.interceptors.request.use(config => {
     const { headers: { loading } } = config;
-    if(loading) {
+    if(loading === undefined) {
         Indicator.open('加载中...');
     }
     //在发送请求前做些什么
@@ -23,9 +25,10 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
     //对相应请求做些什么
     const { config: { headers: { loading } } } = response;
-    if(loading) {
+    if(loading === undefined) {
         Indicator.close();
     }
+    // Indicator.close();
     return response;
 },(error) => {
     //对响应请求做些什么

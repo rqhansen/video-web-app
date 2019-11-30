@@ -5,3 +5,7 @@
     align-items: $alignPos;
 }
 
+@mixin transition($name: all,$duration: .3s,$way: linear) {
+    transition: $name $duration $way;
+}
+

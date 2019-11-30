@@ -12,7 +12,7 @@
                 </div>
                 <div class="m-intro-wp">
                     <p>{{mDetail.pureName}}迅雷下载地址和剧情：<span class="share">点此分享本影片</span></p>
-                    <img class="poster" :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" alt="电影海报">
+                    <img class="poster" :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" alt="">
                     <p v-if="mDetail.transName && mDetail.transName!== ' '">
                         <span class="title">◎译&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span>{{mDetail.transName}}</span>
                     </p>
@@ -131,8 +131,7 @@ export default {
         async getMovieDetail() {
             const { movie_type,id } = this.$route.params;
             const { data : { code, data:  { movieDetail } } } = await getMovieDetail(
-                { movieType: movie_type,id: id},
-                { loading: true }
+                { movieType: movie_type,id: id}
             );
             this.mDetail = movieDetail;
             this.currBarInfo = {
@@ -144,6 +143,10 @@ export default {
     },
     created() {
         this.getMovieDetail();
+        if(' '.trim()) {
+            console.log(1);
+        }
+
     }
 }
 </script>

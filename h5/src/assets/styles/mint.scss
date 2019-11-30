@@ -11,3 +11,19 @@
 }
 /** loading 结束 **/
 
+/**下拉刷新文字 **/
+.mint-loadmore-top {
+    height: 60px!important;
+    line-height: 40px!important;
+    .mint-loadmore-top {
+        font-size: 28px;
+    }
+    .mint-loadmore-spinner {
+        width: 30px!important;
+        height: 30px!important;
+    }
+}
+/** 下拉刷新结束 **/
+
+
+

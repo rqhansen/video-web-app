@@ -32,6 +32,12 @@ export default {
         display: block;
         width: 351px;
         height: 432px;
+        padding: 2px;
+        border: 2px solid transparent;
+        @include transition(border);
+        &:active {
+            border-color: #be1204;
+        }
     }
     .movie-desc {
         text-align: center;

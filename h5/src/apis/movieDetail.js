@@ -1,10 +1,9 @@
 import request from '@/utils/request';
 
-export const getMovieDetail = (data,config) =>
+export const getMovieDetail = (data) =>
 request({
     url: '/api/getMovieDetail',
     method: 'post',
-    data,
-    headers: { ...config }
+    data
 })
 

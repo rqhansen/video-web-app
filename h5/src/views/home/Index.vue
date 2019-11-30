@@ -6,12 +6,14 @@
                     <router-link class="more" to="/more">更多</router-link>
                 </title-bar>
             </div>
-            <div class="movies-wp">   
-                <ul>
-                    <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
-                        <movie-item :movie="movie"/>
-                    </li>
-                </ul>   
+            <div class="movies-wp">
+                <mt-loadmore :top-method="refresh" ref="loadmore">  
+                    <ul>
+                        <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
+                            <movie-item :movie="movie"/>
+                        </li>
+                    </ul>
+                </mt-loadmore>    
             </div>
             <Footer/>
         </main>
@@ -32,17 +34,22 @@ export default  {
     },
     data (){
         return  {
-            movies: []
+            movies: [],
+            cancel: ''
         }
     },
     methods: {
-        async getTodayHotMovie() {
-            const { data:{ code,data: { movies } } } = await getHomeMovies({},{loading: true});
+        async getTodayHotMovie(params) {
+            const { data:{ code,data: { movies } } } = await getHomeMovies(params);
             this.movies = movies;
+        },
+        async refresh() {
+            await this.getTodayHotMovie({loading: false});
+            this.$refs.loadmore.onTopLoaded();
         }
     },
     created() {
-        this.getTodayHotMovie();
+        this.getTodayHotMovie({context: this});
     }
 }
 </script>
