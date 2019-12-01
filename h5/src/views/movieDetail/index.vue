@@ -143,10 +143,6 @@ export default {
     },
     created() {
         this.getMovieDetail();
-        if(' '.trim()) {
-            console.log(1);
-        }
-
     }
 }
 </script>

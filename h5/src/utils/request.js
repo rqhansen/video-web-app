@@ -6,8 +6,6 @@ const service = axios.create({
     timeout: 10000
 });
 
-service.CancelToken = axios.CancelToken;
-
 //添加请求拦截器
 service.interceptors.request.use(config => {
     const { headers: { loading } } = config;
