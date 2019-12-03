@@ -2,8 +2,8 @@
     <section class="drop-menu-wp" :class="{'block':showMenu}">
         <!-- 搜索 -->
         <section class="search-bar">
-            <input class="transition" placeholder="输入电影名称搜索..." type="text" v-model="movieName"/>
-            <button class="transition">影视搜索</button>
+            <input class="transition" placeholder="输入电影名称搜索..." type="text" v-model.trim="movieName"/>
+            <button class="transition" @click="search">影视搜索</button>
         </section>
         <!-- 搜索结束 -->
         <section class="m-menu">
@@ -41,6 +41,12 @@ export default {
             classifyMoive: classifyMoive,
             hotMovie: hotMovie,
             lastMovie: lastMovie
+        }
+    },
+    methods: {
+        search() {
+            if(!this.movieName) return;
+            this.$router.push(`/search?keyword=${this.movieName}&page=${1}`)
         }
     }
 }

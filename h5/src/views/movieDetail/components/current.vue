@@ -1,15 +1,19 @@
 <template>
-    <header class="curr-bar ellipsis">
-        <span class="curr-txt">当前位置：</span>
-        <router-link to="/" target="_self">万寻电影></router-link>
-        <router-link :to="`/movie/${currMovieInfo.filmType}`">{{currMovieInfo.typeName}}</router-link>
-        <span>>>{{currMovieInfo.pureName}}下载页面</span>
-    </header>
+    <curr-bg class="curr-bar ellipsis">
+        <template slot="currWp">
+            <span class="curr-txt">当前位置：</span>
+            <router-link to="/" target="_self">万寻电影></router-link>
+            <router-link :to="`/movie/${currMovieInfo.filmType}`">{{currMovieInfo.typeName}}</router-link>
+            <span>>>{{currMovieInfo.pureName}}下载页面</span>
+        </template> 
+    </curr-bg>
 </template>
 
 <script>
+import CurrBg from '@/views/common/current'
 export default {
     name: 'Current',
+    components: { CurrBg },
     props: {
         currMovieInfo: {
             required: true
@@ -20,12 +24,7 @@ export default {
 
 <style lang="scss">
 .curr-bar{
-    height: 60px;
-    padding: 0 15px;
     border-bottom: 1px solid #bfe4ff;
-    background-color: #f7f7f7;
-    line-height: 60px;
-    color: #333;
     .curr-txt {
         margin-right: 5px;
     }

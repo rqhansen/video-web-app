@@ -1,6 +1,6 @@
 <template>
-    <section class="m-detail">
-        <section class="detail-wp">
+    <page-wrap>
+        <div slot="main" class="detail-wp">
             <current :currMovieInfo="currBarInfo"/>
             <div class="m-text">
                 <h1>{{mDetail.fullName}}</h1>
@@ -43,7 +43,7 @@
                     <p v-if="mDetail.imdbLink && mDetail.imdbLink!=' '">
                         <span class="title">◎IMDb链接</span><span>{{mDetail.imdbLink}}</span>
                     </p>
-                     <p v-if="mDetail.format && mDetail.format!=' '">
+                    <p v-if="mDetail.format && mDetail.format!=' '">
                         <span class="title">◎格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式</span><span>{{mDetail.format}}</span>
                     </p>
                     <p v-if="mDetail.fileSize && mDetail.fileSize!=' '">
@@ -82,7 +82,7 @@
                         <div class="margin">
                             <span class="title">◎简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介</span>
                         </div>
-                         <p v-for="(item,idx) of mDetail.shortIntro" :key="`intro${idx}`">
+                        <p v-for="(item,idx) of mDetail.shortIntro" :key="`intro${idx}`">
                             <span class="title brief-intro"></span><span>{{item}}</span>
                         </p>
                     </template>
@@ -90,7 +90,7 @@
                         <div class="margin">
                             <span class="title award-tit">◎获&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奖</span>
                         </div>
-                         <p v-for="(item,idx) of mDetail.getAward" :key="`award${idx}`">
+                        <p v-for="(item,idx) of mDetail.getAward" :key="`award${idx}`">
                             <span class="title award-list"></span><span>{{item}}</span>
                         </p>
                     </template>
@@ -98,29 +98,30 @@
                 <div class="bot">
                     <h3>下载地址:</h3>
                     <a
-                         v-for="(url,idx) of mDetail.downUrl" 
-                         :key="`downUrl${idx}`" 
-                         :href="url"
-                         target="__self"
-                         class="down-url transition ellipsis"
-                     >
-                     {{url}}
-                     </a>
-                      <div class="down-tip">
-                         <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<router-link to="/download" target="_blank">无限制版迅雷</router-link>
-                     </div>
+                        v-for="(url,idx) of mDetail.downUrl" 
+                        :key="`downUrl${idx}`" 
+                        :href="url"
+                        target="__self"
+                        class="down-url transition ellipsis"
+                    >
+                    {{url}}
+                    </a>
+                    <div class="down-tip">
+                        <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<router-link to="/download" target="_blank">无限制版迅雷</router-link>
+                    </div>
                 </div>
             </div>
-        </section>
-    </section>
+        </div>
+    </page-wrap>
 </template>
 
 <script>
+import PageWrap from '@/views/common/pageWrap.vue';
 import Current from './components/current.vue';
 import { getMovieDetail } from '@/apis/movieDetail.js';
 export default {
     name: 'MovieDetail',
-    components: { Current },
+    components: { Current,PageWrap },
     data() {
         return {
             mDetail: {},
@@ -148,15 +149,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.m-detail {
-    padding-top: 30px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    .detail-wp {
-        margin: 0 16px;
-        border: 1px solid #4da6ff;
-    }
+.detail-wp {
+    border: 1px solid #4da6ff;
+    overflow: hidden;
     .m-text {
         h1 {
             margin: 20px 0 22px;
