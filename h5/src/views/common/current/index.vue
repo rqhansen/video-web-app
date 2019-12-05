@@ -1,5 +1,5 @@
 <template>
-    <nav class="curr-wp">
+    <nav class="curr-box">
         <slot name="currWp"></slot>
     </nav>
 </template>
@@ -11,7 +11,7 @@ export default  {
 </script>
 
 <style lang="scss" scoped>
-.curr-wp {
+.curr-box {
     height: 60px;
     padding: 0 15px;
     background-color: #f7f7f7;

@@ -1,5 +1,5 @@
 <template>
-    <header class="title-bar">
+    <header class="m-title">
         <main>
             <h2 class="title">{{title}}</h2>
             <slot />
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title-bar {
+.m-title {
     width: 100%;
     height: 100%;
     overflow: hidden;

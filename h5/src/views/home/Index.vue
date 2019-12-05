@@ -1,14 +1,14 @@
 <template>
     <section class="home">
         <main>
-            <div class="title-wp">
+            <div class="m-title-bar">
                 <title-bar>
                     <router-link class="more" to="/more">更多</router-link>
                 </title-bar>
             </div>
             <div class="movies-wp">
                 <mt-loadmore :top-method="refresh" ref="loadmore">  
-                    <ul>
+                    <ul class="m-pic-list">
                         <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
                             <movie-item :movie="movie"/>
                         </li>
@@ -63,7 +63,7 @@ export default  {
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
     }
-    .title-wp {
+    .m-title-bar{
         height: 80px;
         padding: 0 16px;
         background-color: #f7f7f7;
@@ -74,7 +74,7 @@ export default  {
     }
     .movies-wp {
         padding: 16px 8px 0;
-        ul {
+        .m-pic-list {
             width: 100%;
             @include flex(flex-start);
             flex-wrap: wrap;

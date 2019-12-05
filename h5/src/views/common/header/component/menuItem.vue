@@ -1,10 +1,10 @@
 <template>
-    <section class="m-item">
+    <section class="channel-item">
         <dl>
-            <dt>{{title}}</dt>
+            <dt class="channel-title">{{title}}</dt>
             <dd>
                 <ul>
-                    <li class="ellipsis" v-for="(item,idx) of menuList">
+                    <li class="channel-list-link ellipsis" v-for="(item,idx) of menuList">
                         <router-link :to="item.url">{{item.name}}</router-link>
                     </li>
                 </ul>
@@ -29,7 +29,7 @@
 </script>
 
 <style lang="scss" scoped>
-.m-item {
+.channel-item {
     color: #fff;
     &:not(:last-child) {
         margin-bottom: 6px;
@@ -39,14 +39,14 @@
             width: 50%;
         }
     }
-    dt {
+    .channel-title {
         height: 72px;
         padding-left: 10px;
         line-height: 72px;
         font-size: 30px; 
         border-bottom: 1px solid #fff;
     }
-    li {
+    .channel-list-link{
         display:inline-block;
         width: 25%;
         height: 72px;

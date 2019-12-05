@@ -1,5 +1,5 @@
 <template>
-    <header class="home-hd">
+    <header class="m-header">
         <!-- logo -->
         <logo/>
         <!-- logo结束 -->
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home-hd {
+.m-header {
     position: relative;
     @include flex(space-between);
     height: 90px;

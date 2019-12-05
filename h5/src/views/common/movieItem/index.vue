@@ -1,10 +1,10 @@
 <template>
-    <section class="movie-item-wp">
+    <section class="m-item-wp">
         <router-link :to="`/${movie.filmType}/${movie.id}`">
-            <div class="poster">
+            <div class="m-list-pic">
                 <img v-lazy="`http://www.wx520.net/public/${movie.indexImgSrc}`" :alt="movie.pureName">
             </div>
-            <div class="movie-desc">
+            <div class="m-list-title">
                 <h3 class="ellipsis">{{movie.fullName}}</h3>
                 <time :class="{'new': movie.isNew}">{{movie.pubDate}}</time>
             </div>
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.movie-item-wp {
+.m-item-wp {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -39,12 +39,12 @@ export default {
             border-color: #be1204;
         }
     }
-    .movie-desc {
+    .m-list-title {
         text-align: center;
         h3 {
             width: 100%;
             padding: 0 5px;
-            line-height: 50px;
+            line-height: 54px;
             color: #ff0000;
         }
         > time {

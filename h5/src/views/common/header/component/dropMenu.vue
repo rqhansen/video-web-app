@@ -1,19 +1,20 @@
 <template>
-    <section class="drop-menu-wp" :class="{'block':showMenu}">
-        <!-- 搜索 -->
-        <section class="search-bar">
+<div class="h-more-box" :class="{'block':showMenu}">
+    <div class="box-full">
+    <!-- 搜索 -->
+        <section class="h-search-wrap">
             <input class="transition" placeholder="输入电影名称搜索..." type="text" v-model.trim="movieName"/>
             <button class="transition" @click="search">影视搜索</button>
         </section>
         <!-- 搜索结束 -->
-        <section class="m-menu">
+        <section class="h-channel">
             <menu-item :title="classifyMoive.title" :menuList="classifyMoive.menus"/>
             <menu-item :title="hotMovie.title" :menuList="hotMovie.menus"/>
             <menu-item class="last-movie" :title="lastMovie.title" :menuList="lastMovie.menus"/>
         </section>
         <!-- 电影分类结束 -->
-        <!--  -->
-    </section>
+    </div>
+</div>
 </template>
 
 <script>
@@ -53,12 +54,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.drop-menu-wp {
+.h-more-box {
     position: absolute;
     left: 0;
     top: 90px;
     width: 100%;
-    padding: 0 16px;
     height: 0;
     background:rgba(0, 0, 0, .8);
     box-shadow: 1px 2px 5px #888;
@@ -72,7 +72,10 @@ export default {
             align-items: center;
         }
     }
-    .search-bar {
+    .box-full {
+        padding: 0 16px;
+    }
+    .h-search-wrap {
         width: 100%;
         display: flex;
         align-items: center;
@@ -99,7 +102,7 @@ export default {
             background:rgba(77,166,255,.9);
         }
     }
-    .m-menu {
+    .h-channel {
         padding-top: 10px;
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="more" :class="{'block':showDropMenu}" @click="switchDropMenu">
+    <div class="h-link-more" :class="{'block':showDropMenu}" @click="switchDropMenu">
         <b></b>
         <b></b>
         <b></b>
@@ -24,7 +24,7 @@ export default  {
 </script>
 
 <style lang="scss" scoped>
-.more {
+.h-link-more {
     width: 50px;
     height: 35px;
     > b {

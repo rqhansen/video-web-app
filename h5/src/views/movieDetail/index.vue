@@ -1,16 +1,16 @@
 <template>
     <page-wrap>
-        <div slot="main" class="detail-wp">
+        <div slot="main" class="m-detail-box">
             <current :currMovieInfo="currBarInfo"/>
             <div class="m-text">
                 <h1>{{mDetail.fullName}}</h1>
-                <div class="m-name-wp">
+                <div class="m-name-box">
                     <span>片名：</span>
                     <span class="m-name">{{mDetail.pureName}}</span>
                     <span>发布时间：</span>
                     <time class="pub-date">{{mDetail.pubDate}}</time>
                 </div>
-                <div class="m-intro-wp">
+                <div class="m-intro-box">
                     <p>{{mDetail.pureName}}迅雷下载地址和剧情：<span class="share">点此分享本影片</span></p>
                     <img class="poster" :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" alt="">
                     <p v-if="mDetail.transName && mDetail.transName!== ' '">
@@ -149,7 +149,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.detail-wp {
+.m-detail-box {
     border: 1px solid #4da6ff;
     overflow: hidden;
     .m-text {
@@ -161,7 +161,7 @@ export default {
             font-weight: bold;
             font-size: 32px;
         }
-        .m-name-wp {
+        .m-name-box {
             text-align: center;
             color: #333;
             line-height: 28px;
@@ -172,7 +172,7 @@ export default {
                 margin-left: 10px;
             }
         }
-        .m-intro-wp {
+        .m-intro-box {
             margin: 20px 0;
             padding: 0 15px;
             line-height: 44px;
