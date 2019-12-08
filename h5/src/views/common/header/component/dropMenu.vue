@@ -47,6 +47,7 @@ export default {
     methods: {
         search() {
             if(!this.movieName) return;
+            this.$emit('update:showMenu',false);
             this.$router.push(`/search?keyword=${this.movieName}&page=${1}`)
         }
     }

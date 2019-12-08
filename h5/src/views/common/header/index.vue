@@ -4,10 +4,10 @@
         <logo/>
         <!-- logo结束 -->
         <!-- 右侧菜单 -->
-        <more @switch-drop-menu="switchDropMenu"/>
+        <more :showMenu.sync="showDropMenu"/>
         <!-- 右侧菜单结束 -->
         <!-- 下拉菜单 -->
-        <drop-menu :showMenu="showDropMenu"/>
+        <drop-menu :showMenu.sync="showDropMenu"/>
         <!-- 下拉菜单结束 -->
     </header>
 </template>
@@ -22,11 +22,6 @@ export default {
     data() {
         return {
             showDropMenu: false
-        }
-    },
-    methods: {
-        switchDropMenu() {
-            this.showDropMenu = !this.showDropMenu;
         }
     }
 }

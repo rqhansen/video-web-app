@@ -1,5 +1,5 @@
 <template>
-    <div class="h-link-more" :class="{'block':showDropMenu}" @click="switchDropMenu">
+    <div class="h-link-more" :class="{'block':showMenu}" @click="switchDropMenu">
         <b></b>
         <b></b>
         <b></b>
@@ -9,15 +9,14 @@
 <script>
 export default  {
     name: 'More',
-    data() {
-        return {
-            showDropMenu: false
+    props: {
+        showMenu: {
+            required: true
         }
     },
     methods: {
         switchDropMenu() {
-            this.showDropMenu = !this.showDropMenu;
-            this.$emit('switch-drop-menu',this.showDropMenu);
+            this.$emit('update:showMenu',!this.showMenu);
         }
     }
 }
