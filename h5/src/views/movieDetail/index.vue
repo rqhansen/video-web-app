@@ -112,16 +112,18 @@
                 </div>
             </div>
         </div>
+        <Footer slot="bottom"/>
     </page-wrap>
 </template>
 
 <script>
 import PageWrap from '@/views/common/pageWrap.vue';
 import Current from './components/current.vue';
+import Footer from '@/views/common/footer';
 import { getMovieDetail } from '@/apis/movieDetail.js';
 export default {
     name: 'MovieDetail',
-    components: { Current,PageWrap },
+    components: { Current,PageWrap,Footer },
     data() {
         return {
             mDetail: {},

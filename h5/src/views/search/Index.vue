@@ -8,23 +8,27 @@
             </curr-bg>
             <section class="m-pic-list">
                 <ul>
-                    <li v-for="item of movies" :key="item.id">
+                    <li v-for="(item,idx) of movies" :key="`${item.id}${idx}`">
                         <single-movie :movie="item"/>
                     </li>
                 </ul>
             </section>
+            <pagination :total="total"/>
         </div>
+        <Footer slot="bottom"/>
     </page-wrap>
 </template>
 
 <script>
 import PageWrap from '@/views/common/pageWrap.vue';
-import CurrBg from '@/views/common/current'
+import CurrBg from '@/views/common/current';
+import Pagination from '@/views/common/pagination';
 import SingleMovie from '@/views/common/singleMovie';
+import Footer from '@/views/common/footer';
 import { search } from '@/apis/search';
  export default {
     name: 'Search',
-    components: { CurrBg,PageWrap,SingleMovie },
+    components: { CurrBg,PageWrap,SingleMovie,Pagination,Footer },
     data() {
         return {
             movies: [],
@@ -68,6 +72,9 @@ import { search } from '@/apis/search';
                 margin-bottom: 48px;
             }
         }
+    }
+    .pagination-bar {
+        margin-top: 48px;
     }
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
-<div class="m-list-pic">
+<div class="m-list-pic" @click="goMovieDetail">
     <div class="pic">
-        <!-- <a :title="movie.pureName"> -->
-            <img :src="`http://www.wx520.net/public/${movie.indexImgSrc}`" alt="movie.pureName" width="auto" height="auto">
-        <!-- </a> -->
+        <img class="transition" :src="`http://www.wx520.net/public/${movie.indexImgSrc}`" alt="movie.pureName" width="auto" height="auto">
     </div>
     <div class="m-intro-box">
         <p class="m-name ellipsis transition" @click.stop="goMovieDetail(movie.type,movie.id)"><span>{{movie.pureName}}</span><b>{{movie.sharpness}}</b></p>
@@ -30,7 +28,8 @@ export default {
     },
     methods: {
         goMovieDetail() {
-
+            const { type,id } = this.movie;
+            this.$router.push(`/${type}/${id}`);
         }
     }
 }
@@ -49,6 +48,11 @@ export default {
         > img {
             width: 100%;
             height: 100%;
+            padding: 2px;
+            border: 2px solid transparent;
+            &:active {
+                border-color: #be1204;
+            }
         }
     }
     .m-intro-box {

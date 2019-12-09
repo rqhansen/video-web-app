@@ -1,9 +1,11 @@
 <template>
     <section class="page-wp">
         <div class="main">
+            <div class="m-content">
                 <slot name="main"></slot>
+            </div>
+            <slot name="bottom"></slot>
         </div>
-
     </section>
 </template>
 
@@ -17,10 +19,12 @@
 .page-wp {
     .main {
         height: 100%;
-        padding: 60px 16px 0;
         overflow-x: hidden;
         overflow-y: auto;   
         -webkit-overflow-scrolling: touch;
+        .m-content {
+            padding: 60px 16px 20px;
+        }
     }
 }
 </style>
