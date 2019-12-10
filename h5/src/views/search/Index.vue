@@ -2,9 +2,9 @@
     <page-wrap>
         <div slot="main" class="search-wp">
             <curr-bg  class="curr-wp">
-                <template slot="currWp">
+                <div slot="currWp">
                     <span class="m-result">{{movieName}}</span>搜索结果
-                </template>
+                </div>
             </curr-bg>
             <section class="m-pic-list">
                 <ul>

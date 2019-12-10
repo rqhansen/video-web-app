@@ -1,5 +1,5 @@
 <template>
-<div class="h-more-box" :class="{'block':showMenu}">
+<div class="h-more-box">
     <div class="box-full">
     <!-- 搜索 -->
         <section class="h-search-wrap">
@@ -22,20 +22,7 @@ import { classifyMoive, lastMovie, hotMovie } from '../const';
 import menuItem from './menuItem';
 export default {
     name: 'DropMenu',
-    props: {
-        showMenu: {
-            required: true,
-            default: false
-        }
-    },
     components: {menuItem},
-    watch: {
-        showMenu(nVal) {
-            if(!nVal) {
-                this.movieName && (this.movieName = null);
-            }
-        }
-    },
     data() {
         return {
             movieName: null,
@@ -47,7 +34,7 @@ export default {
     methods: {
         search() {
             if(!this.movieName) return;
-            this.$emit('update:showMenu',false);
+            this.$emit('hide-drop-menu');
             this.$router.push(`/search?keyword=${this.movieName}&page=${1}`)
         }
     }
@@ -60,19 +47,12 @@ export default {
     left: 0;
     top: 90px;
     width: 100%;
-    height: 0;
+    height: 730px;
+    padding-top: 16px;
     background:rgba(0, 0, 0, .8);
     box-shadow: 1px 2px 5px #888;
     transition: all .3s;
     overflow: hidden;
-    &.block {
-        height: 730px;
-        padding-top: 16px;
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-    }
     .box-full {
         padding: 0 16px;
     }

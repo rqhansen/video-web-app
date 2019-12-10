@@ -7,7 +7,9 @@
         <more :showMenu.sync="showDropMenu"/>
         <!-- 右侧菜单结束 -->
         <!-- 下拉菜单 -->
-        <drop-menu :showMenu.sync="showDropMenu"/>
+        <transition name="fade-down">
+            <drop-menu v-if="showDropMenu" @hide-drop-menu="showDropMenu=false;"/>
+        </transition>
         <!-- 下拉菜单结束 -->
     </header>
 </template>
@@ -35,5 +37,12 @@ export default {
     padding: 0 16px;
     box-shadow: 0 0 20px #888;
     z-index: 20;
+    .fade-down-enter,.fade-down-leave-to {
+        height:0;
+        padding-top: 0;
+    }
+    .fade-down-enter-active,.fade-down-leave-active {
+        transition: height padding-top .3s cubic-bezier(.97,-0.07,.04,1.09);
+    }
 }
 </style>

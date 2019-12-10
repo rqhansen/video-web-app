@@ -1,7 +1,7 @@
 <template>
 <div class="m-list-pic" @click="goMovieDetail">
     <div class="pic">
-        <img class="transition" :src="`http://www.wx520.net/public/${movie.indexImgSrc}`" alt="movie.pureName" width="auto" height="auto">
+        <img class="transition" v-lazy="`http://www.wx520.net/public/${movie.indexImgSrc}`" alt="movie.pureName" width="auto" height="auto">
     </div>
     <div class="m-intro-box">
         <p class="m-name ellipsis transition" @click.stop="goMovieDetail(movie.type,movie.id)"><span>{{movie.pureName}}</span><b>{{movie.sharpness}}</b></p>
