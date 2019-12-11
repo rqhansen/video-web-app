@@ -5,15 +5,19 @@
       <keep-alive>
         <router-view class="content" :key="$route.fullPath"></router-view>
       </keep-alive>
+      <!-- 回顶部 -->
+      <back-top />
   </div>
 </template>
 
 <script>
 import Header from '@/views/common/header';
+import BackTop from '@/views/common/backTop';
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    BackTop
   }
 }
 </script>
@@ -31,7 +35,10 @@ img {
 }
 
 .iconfont {
-  font-size: 32px;
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 .content {
   height: calc(100% - 90px);
