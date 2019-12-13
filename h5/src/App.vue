@@ -65,4 +65,10 @@ img {
 .content {
   height: calc(100% - 90px);
 }
+.scroll-wrap {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
 </style>

@@ -1,10 +1,8 @@
 <template>
-    <section class="home">
+    <section class="more-movie-box">
         <main class="scroll-wrap">
-            <div class="m-title-bar">
-                <title-bar>
-                    <router-link class="more" to="/moremovie">更多</router-link>
-                </title-bar>
+            <div class="m-title-bar"> 
+                <title-bar />
             </div>
             <div class="movies-wp">
                 <mt-loadmore :top-method="refresh" ref="loadmore">  
@@ -24,14 +22,10 @@
 import TitleBar from '@/views/common/titleBar';
 import MovieItem from '@/views/common/movieItem';
 import Footer from '@/views/common/footer';
-import { getHomeMovies } from '@/apis/home.js';
+import { getMoreMovie } from '@/apis/moreMovie.js';
 export default  {
     name: 'Home',
-    components: {
-        TitleBar,
-        MovieItem,
-        Footer
-    },
+    components: { TitleBar,MovieItem,Footer },
     data (){
         return  {
             movies: [],
@@ -39,29 +33,25 @@ export default  {
         }
     },
     methods: {
-        async getTodayHotMovie(params) {
-            const { data:{ code,data: { movies } } } = await getHomeMovies(params);
+        async getMoreMovie(params={}) {
+            const { data:{ code,data: { movies } } } = await getMoreMovie(params);
             this.movies = movies;
         },
         async refresh() {
-            await this.getTodayHotMovie({loading: false});
+            await this.getMoreMovie({loading: false});
             this.$refs.loadmore.onTopLoaded();
         }
     },
     created() {
-        this.getTodayHotMovie({context: this});
+        this.getMoreMovie();
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.home {
+.more-movie-box {
     .m-title-bar{
         height: 80px;
-        .more {
-            font-size: 24px;
-            font-weight: bold;
-        }
     }
     .movies-wp {
         padding: 16px 8px 0;

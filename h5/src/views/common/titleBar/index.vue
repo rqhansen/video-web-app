@@ -22,6 +22,8 @@ export default {
 .m-title {
     width: 100%;
     height: 100%;
+    padding: 0 16px;
+    background-color: #f7f7f7;
     overflow: hidden;
     > main {
         width: 100%;
