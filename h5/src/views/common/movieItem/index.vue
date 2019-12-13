@@ -1,10 +1,10 @@
 <template>
     <section class="m-item-wp">
         <router-link :to="`/${movie.filmType}/${movie.id}`">
-            <div class="m-list-pic">
+            <div>
                 <img v-lazy="`http://www.wx520.net/public/${movie.indexImgSrc}`" :alt="movie.pureName">
             </div>
-            <div class="m-list-title">
+            <div class="m-title">
                 <h3 class="ellipsis">{{movie.fullName}}</h3>
                 <time :class="{'new': movie.isNew}">{{movie.pubDate}}</time>
             </div>
@@ -39,7 +39,7 @@ export default {
             border-color: #be1204;
         }
     }
-    .m-list-title {
+    .m-title {
         text-align: center;
         h3 {
             width: 100%;

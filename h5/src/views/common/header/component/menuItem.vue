@@ -4,7 +4,7 @@
             <dt class="channel-title">{{title}}</dt>
             <dd>
                 <ul>
-                    <li class="channel-list-link ellipsis" v-for="(item,idx) of menuList">
+                    <li class="channel-list-link ellipsis" v-for="(item,idx) of menuList" :key="idx">
                         <router-link :to="item.url">{{item.name}}</router-link>
                     </li>
                 </ul>

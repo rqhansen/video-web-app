@@ -7,47 +7,47 @@ export const classifyMoive = {
         },
         {
             name: '动作片',
-            url: '/html/action/index'
+            url: '/movie/action'
         },
         {
             name: '喜剧片',
-            url: '/html/comedy/index'
+            url: '/movie/comedy'
         },
         {
             name: '爱情片',
-            url: '/html/romance/index'
+            url: '/movie/romance'
         },
         {
             name: '科幻片',
-            url: '/html/science/index'
+            url: '/movie/science'
         },
         {
             name: '剧情片',
-            url: '/html/drama/index'
+            url: '/movie/drama'
         },
         {
             name: '悬疑片',
-            url: '/html/suspense/index'
+            url: '/movie/suspense'
         },
         {
             name: '战争片',
-            url: '/html/war/index'
+            url: '/movie/war'
         },
         {
             name: '惊悚片',
-            url: '/html/thrill/index'
+            url: '/movie/thrill'
         },
         {
             name: '恐怖片',
-            url: '/html/horror/index'
+            url: '/movie/horror'
         },
         {
             name: '灾难片',
-            url: '/html/disaster/index'
+            url: '/movie/disaster'
         },
         {
             name: '动画片',
-            url: '/html/cartoon/index'
+            url: '/movie/cartoon'
         }  
     ]
 }

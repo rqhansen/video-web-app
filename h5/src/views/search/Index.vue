@@ -53,24 +53,14 @@ import { search } from '@/apis/search';
 
 <style lang="scss" scoped>
 .search-wp {
-    .curr-wp {
-        border: 1px solid #bfe4ff;
-        margin-bottom: 40px;
-    }
     .m-result{
         color: #be1204;
     }
     .m-pic-list {
         overflow: hidden;
-        >ul {
-            width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
             li {
-                width: 100%;
-                margin-bottom: 48px;
-            }
+            width: 100%;
+            margin-bottom: 48px;
         }
     }
     .pagination-bar {
