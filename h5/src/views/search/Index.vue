@@ -13,11 +13,14 @@
                     </li>
                 </ul>
             </section>
-            <pagination :total="total"/>
+            <pagination :total="total" :currPage="currPage"
+                @get-home-data="search"
+                @get-prev-data="search"
+                @get-next-data="search"
+                @get-end-data="search"/>
         </div>
         <Footer slot="bottom"/>
         <!-- 回顶部 -->
-        <back-top target=".scroll-wrap"/>
     </page-wrap>
 </template>
 
@@ -31,20 +34,29 @@ import { search } from '@/apis/search';
         return {
             movies: [],
             total: 0,
-            movieName: ''
+            movieName: '',
+            currPage:'',
+            keyWord: ''
         }
     },
     methods: {
-       async search() {
-            const { query: { keyword, page } } = this.$route;
+        search(page) {
+            if(!this.keyWord) return;
+            if(this.currPage === page) return;
+            this.$router.push(`/search?keyword=${this.keyWord}&page=${page}`);
+        },
+       async getData() {
+            const { query: { keyword,page } } = this.$route;
             const { data: { code, data: { keyword: movieName,movies,total } } } = await search({keyword,page});
             this.movies = movies;
             this.total = total;
             this.movieName = movieName;
+            this.currPage = page * 1;
+            this.keyWord = keyword;
         }
     },
     created() {
-        this.search();
+        this.getData();
     }
  }
 </script>

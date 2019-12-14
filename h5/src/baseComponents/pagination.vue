@@ -22,14 +22,14 @@ export default {
     props: {
         total: {
             required: true
+        },
+        currPage: {
+            required: true
         }
     },
     computed: {
         totalPage() {
-            return Math.ceil(this.total / 10);
-        },
-        currPage() {
-            return +this.$route.query.page;
+            return Math.ceil(this.total / 14);
         },
         keyWord() {
             return this.$route.query.keyword;
@@ -47,23 +47,19 @@ export default {
     methods: {
         home() {
             if(this.currPage === 1) return;
-            this.search(1);
+            this.$emit('get-home-data',1);
         },
         prev() {
             const page = this.currPage - 1;
-            this.search(page);
+            this.$emit('get-prev-data',page);
         },
         next() {
             const page = this.currPage + 1;
-            this.search(page);
+            this.$emit('get-next-data',page);
         },
         end() {
             if(this.currPage === this.totalPage) return;
-            this.search(this.totalPage);
-        },
-        search(page) {
-            if(!this.keyWord) return;
-            this.$router.push(`/search?keyword=${this.keyWord}&page=${page}`);
+            this.$emit('get-end-data',this.totalPage);
         }
     }
 }

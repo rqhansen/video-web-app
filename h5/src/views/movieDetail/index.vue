@@ -1,5 +1,5 @@
 <template>
-    <page-wrap class="scroll-wrap">
+    <page-wrap>
         <div slot="main" class="m-detail-box">
             <current :currMovieInfo="currBarInfo"/>
             <div class="m-text">

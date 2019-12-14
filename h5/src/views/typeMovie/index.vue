@@ -16,9 +16,13 @@
                 </li>
             </ul>
         </section>
+        <pagination :total="totalPage" :currPage="currPage"
+            @get-home-data="getTypeMovie"
+            @get-prev-data="getTypeMovie"
+            @get-next-data="getTypeMovie"
+            @get-end-data="getTypeMovie"/>
+        <Footer slot="bottom"/>
     </div>
-    <!-- 回顶部 -->
-    <back-top target=".scroll-wrap"/>
 </page-wrap>
 </template>
 
@@ -33,11 +37,13 @@ export default {
             movies: [],
             typeCnName: '',
             totalPage: 0,
-            movieType: ''
+            movieType: '',
+            currPage: ''
         }
     },
     methods: {
         async getTypeMovie(page) {
+            if(this.currPage === page) return;
             const { params: { id } } = this.$route;
             const {data: {code,data: {total,typeMovie}}}  = await getTypeMovie({
                 page: page,
@@ -47,7 +53,7 @@ export default {
             this.movies = typeMovie;
             this.typeCnName = typeMovie[0].typeName; 
             this.totalPage = total;
-            this.currPage = page;
+            this.currPage = page * 1;
             this.movieType = id;
         }
     },
