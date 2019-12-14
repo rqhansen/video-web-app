@@ -17,19 +17,17 @@
             </ul>
         </section>
     </div>
+    <!-- 回顶部 -->
+    <back-top target=".scroll-wrap"/>
 </page-wrap>
 </template>
 
 <script>
-import PageWrap from '@/views/common/pageWrap.vue';
-import CurrBg from '@/views/common/current';
-import Pagination from '@/views/common/pagination';
 import SingleMovie from '@/views/common/singleMovie';
-import Footer from '@/views/common/footer';
 import { getTypeMovie } from '@/apis/typeMovie.js';
 export default {
     name: 'typeMovie',
-    components: { CurrBg,PageWrap,SingleMovie,Pagination,Footer },
+    components: { SingleMovie },
     data() {
         return {
             movies: [],

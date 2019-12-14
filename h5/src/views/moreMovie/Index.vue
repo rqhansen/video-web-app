@@ -15,17 +15,19 @@
             </div>
             <Footer/>
         </main>
+        <!-- 回顶部 -->
+        <back-top target=".scroll-wrap"/>
     </section>
 </template>
 
 <script>
-import TitleBar from '@/views/common/titleBar';
 import MovieItem from '@/views/common/movieItem';
-import Footer from '@/views/common/footer';
 import { getMoreMovie } from '@/apis/moreMovie.js';
 export default  {
     name: 'Home',
-    components: { TitleBar,MovieItem,Footer },
+    components: { 
+        MovieItem
+    },
     data (){
         return  {
             movies: [],

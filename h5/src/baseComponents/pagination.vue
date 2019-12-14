@@ -17,10 +17,8 @@
 </template>
 
 <script>
-import CurrBg from '../current';
 export default {
     name: 'Pagination',
-    components: { CurrBg },
     props: {
         total: {
             required: true

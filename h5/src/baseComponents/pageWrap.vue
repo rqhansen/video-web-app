@@ -6,6 +6,8 @@
             </div>
             <slot name="bottom"></slot>
         </div>
+                <!-- 回顶部 -->
+        <back-top target=".main"/>
     </section>
 </template>
 

@@ -16,19 +16,17 @@
             <pagination :total="total"/>
         </div>
         <Footer slot="bottom"/>
+        <!-- 回顶部 -->
+        <back-top target=".scroll-wrap"/>
     </page-wrap>
 </template>
 
 <script>
-import PageWrap from '@/views/common/pageWrap.vue';
-import CurrBg from '@/views/common/current';
-import Pagination from '@/views/common/pagination';
 import SingleMovie from '@/views/common/singleMovie';
-import Footer from '@/views/common/footer';
 import { search } from '@/apis/search';
  export default {
     name: 'Search',
-    components: { CurrBg,PageWrap,SingleMovie,Pagination,Footer },
+    components: { SingleMovie },
     data() {
         return {
             movies: [],

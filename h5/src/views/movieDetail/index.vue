@@ -1,5 +1,5 @@
 <template>
-    <page-wrap>
+    <page-wrap class="scroll-wrap">
         <div slot="main" class="m-detail-box">
             <current :currMovieInfo="currBarInfo"/>
             <div class="m-text">
@@ -117,13 +117,11 @@
 </template>
 
 <script>
-import PageWrap from '@/views/common/pageWrap.vue';
-import Current from './components/current.vue';
-import Footer from '@/views/common/footer';
+import current from './components/current';
 import { getMovieDetail } from '@/apis/movieDetail.js';
 export default {
     name: 'MovieDetail',
-    components: { Current,PageWrap,Footer },
+    components: { current },
     data() {
         return {
             mDetail: {},

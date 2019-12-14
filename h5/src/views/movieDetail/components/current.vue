@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import CurrBg from '@/views/common/current'
 export default {
     name: 'Current',
-    components: { CurrBg },
     props: {
         currMovieInfo: {
             required: true
