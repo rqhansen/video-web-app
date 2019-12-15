@@ -4,27 +4,26 @@
         <logo/>
         <!-- logo结束 -->
         <!-- 右侧菜单 -->
-        <more :showMenu.sync="showDropMenu"/>
+        <more/>
         <!-- 右侧菜单结束 -->
         <!-- 下拉菜单 -->
         <transition name="fade-down">
-            <drop-menu v-if="showDropMenu" @hide-drop-menu="showDropMenu=false;"/>
+            <drop-menu v-if="showDropMenu"/>
         </transition>
         <!-- 下拉菜单结束 -->
     </header>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Logo from './component/logo'
 import More from './component/more'
 import DropMenu from './component/dropMenu'
 export default {
     name: 'Header',
     components: { Logo, More, DropMenu },
-    data() {
-        return {
-            showDropMenu: false
-        }
+    computed: {
+        ...mapGetters(['showDropMenu'])
     }
 }
 </script>

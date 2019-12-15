@@ -1,5 +1,5 @@
 <template>
-    <div class="h-link-more" :class="{'block':showMenu}" @click="switchDropMenu">
+    <div class="h-link-more" :class="{'block':showDropMenu}" @click="switchDropMenu">
         <b></b>
         <b></b>
         <b></b>
@@ -7,16 +7,16 @@
 </template>
 
 <script>
+import { mapMutations,mapGetters } from 'vuex';
 export default  {
     name: 'More',
-    props: {
-        showMenu: {
-            required: true
-        }
+    computed: {
+        ...mapGetters(['showDropMenu'])
     },
     methods: {
+        ...mapMutations(['SET_DROP_MENU_VISIBLE']),
         switchDropMenu() {
-            this.$emit('update:showMenu',!this.showMenu);
+            this.SET_DROP_MENU_VISIBLE(!this.showDropMenu);
         }
     }
 }

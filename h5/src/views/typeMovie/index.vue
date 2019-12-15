@@ -17,10 +17,7 @@
             </ul>
         </section>
         <pagination :total="totalPage" :currPage="currPage"
-            @get-home-data="getTypeMovie"
-            @get-prev-data="getTypeMovie"
-            @get-next-data="getTypeMovie"
-            @get-end-data="getTypeMovie"/>
+            @get-page-data="getTypeMovie"/>
         <Footer slot="bottom"/>
     </div>
 </page-wrap>

@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapGetters,mapMutations } from 'vuex';
 export default {
     name: 'Pagination',
     props: {
@@ -28,6 +29,7 @@ export default {
         }
     },
     computed: {
+        ...mapGetters(['showDropMenu']),
         totalPage() {
             return Math.ceil(this.total / 14);
         },
@@ -45,21 +47,42 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['SET_DROP_MENU_VISIBLE']),
         home() {
             if(this.currPage === 1) return;
-            this.$emit('get-home-data',1);
+            this.search(1);
+            if(this.showDropMenu) {
+                this.hideDropMenu();
+            }
         },
         prev() {
             const page = this.currPage - 1;
-            this.$emit('get-prev-data',page);
+            this.search(page);
+            if(this.showDropMenu) {
+                this.hideDropMenu();
+            }
+
         },
         next() {
             const page = this.currPage + 1;
-            this.$emit('get-next-data',page);
+            this.search(page);
+            if(this.showDropMenu) {
+                this.hideDropMenu();
+            }
         },
         end() {
             if(this.currPage === this.totalPage) return;
-            this.$emit('get-end-data',this.totalPage);
+            this.search(this.totalPage);
+            if(this.showDropMenu) {
+                this.hideDropMenu();
+            }
+        },
+        search(page) {
+            this.$emit('get-page-data',page);
+        },
+        hideDropMenu() {
+            if(!this.showDropMenu) return;
+            this.SET_DROP_MENU_VISIBLE(false);
         }
     }
 }

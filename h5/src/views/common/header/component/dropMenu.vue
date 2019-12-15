@@ -8,7 +8,7 @@
         </section>
         <!-- 搜索结束 -->
         <section class="h-channel">
-            <menu-item :title="classifyMoive.title" :menuList="classifyMoive.menus"/>
+            <menu-item :title="classifyMoive.title" :menuList="classifyMoive.menus" />
             <menu-item :title="hotMovie.title" :menuList="hotMovie.menus"/>
             <menu-item class="last-movie" :title="lastMovie.title" :menuList="lastMovie.menus"/>
         </section>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import { classifyMoive, lastMovie, hotMovie } from '../const';
 import menuItem from './menuItem';
 export default {
@@ -32,10 +33,14 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['SET_DROP_MENU_VISIBLE']),
         search() {
             if(!this.movieName) return;
-            this.$emit('hide-drop-menu');
+            this.hideDropMenu();
             this.$router.push(`/search?keyword=${this.movieName}&page=${1}`)
+        },
+        hideDropMenu() {
+            this.SET_DROP_MENU_VISIBLE(false);
         }
     }
 }

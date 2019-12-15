@@ -14,10 +14,7 @@
                 </ul>
             </section>
             <pagination :total="total" :currPage="currPage"
-                @get-home-data="search"
-                @get-prev-data="search"
-                @get-next-data="search"
-                @get-end-data="search"/>
+                @get-page-data="search"/>
         </div>
         <Footer slot="bottom"/>
         <!-- 回顶部 -->
