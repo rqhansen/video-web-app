@@ -57,19 +57,19 @@ export const hotMovie = {
     menus: [
         {
             name: '哆啦A梦：大雄的月球探险记',
-            url: '/html/cartoon/23'
+            url: '/cartoon/23'
         },
         {
             name: '拾芳',
-            url: '/html/drama/6164'
+            url: '/drama/6164'
         },
         {
             name: '锅盖头4：回归法制',
-            url: '/html/war/397'
+            url: '/war/397'
         },
         {
             name: '狮子王',
-            url: '/html/cartoon/7'
+            url: '/cartoon/7'
         }
     ]
 }
@@ -79,11 +79,11 @@ export const lastMovie = {
     menus: [
         {
             name: '今日最新电影',
-            url: '/html/todayMovie'
+            url: '/todayMovie'
         },
         {
             name: '近一周最新电影',
-            url: '/html/weekMovie'
+            url: '/weekMovie'
         }
     ]
 }

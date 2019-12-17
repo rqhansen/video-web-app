@@ -67,7 +67,7 @@ export default {
     opacity: 0;
 }
 .pull-up-enter-active,.pull-up-leave-active {
-    transition: all .2s cubic-bezier(1,.04,.06,.97);
+    transition: all .4s cubic-bezier(1,.04,.06,.97);
 }
 .back-top-box {
     position: fixed;
