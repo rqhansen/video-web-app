@@ -6,7 +6,9 @@ requireComponent.keys().forEach(fileName => {
     let componentName = fileName
         .split('/')
         .pop()
-        .replace(/\.\w+$/,'');
-    const nName = componentName[0].toUpperCase() + componentName.slice(1);
-    Vue.component(nName,componentConfig.default || componentConfig);
+        .replace(/\.\w+$/,'')
+        .replace(/\b\w+\b/,(word) => {
+            return word.substring(0,1).toUpperCase() + word.substring(1);
+        });
+    Vue.component(componentName,componentConfig.default || componentConfig);
 })
