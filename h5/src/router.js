@@ -4,9 +4,9 @@ import Router from 'vue-router';
 const Home = () => import(/* webpackChunkName: "home" */ './views/home/Index.vue');
 const MovieDetail = () => import(/* webpackChunkName: "movieDetail" */ './views/movieDetail/Index.vue');
 const Search = () => import(/* webpackChunkName: "search" */ './views/search/Index.vue');
-const MoreMovie = () => import(/* webpackChunkName: "MoreMovie" */ './views/moreMovie/Index.vue');
-const TypeMovie = () => import(/* webpackChunkName: "TypeMovie" */ './views/typeMovie/Index.vue');
-const WeekMovie = () => import(/* webpackChunkName: "WeekMovie" */ './views/weekMovie/Index.vue');
+const MoreMovie = () => import(/* webpackChunkName: "moreMovie" */ './views/moreMovie/Index.vue');
+const TypeMovie = () => import(/* webpackChunkName: "typeMovie" */ './views/typeMovie/Index.vue');
+const WeekMovie = () => import(/* webpackChunkName: "weekMovie" */ './views/weekMovie/Index.vue');
 Vue.use(Router);
 
 export default new Router({
