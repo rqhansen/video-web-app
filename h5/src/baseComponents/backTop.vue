@@ -72,7 +72,7 @@ export default {
 .back-top-box {
     position: fixed;
     right: 30px;
-    bottom: 150px;
+    bottom: 80px;
     z-index:999;
     .iconfont {
         position: relative;

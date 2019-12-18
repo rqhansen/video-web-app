@@ -3,18 +3,18 @@
         <main class="scroll-wrap">
             <mt-loadmore :top-method="refresh" ref="loadmore"> 
                 <div v-for="(movie,idx) of movies" :key="idx">
-                        <div class="m-title-bar">
-                            <title-bar :title="`最新${movie[0].typeName}`">
-                                <router-link class="more" :to="`/movie/${movie[0].filmType}`">更多</router-link>
-                            </title-bar>
-                        </div>
-                        <div class="movies-wp">
-                            <ul class="m-pic-list">
-                                <li v-for="m of movie" :key="`${m.typeId}`+m.id">
-                                    <movie-item :movie="m"/>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="m-title-bar">
+                        <title-bar :title="`最新${movie[0].typeName}`">
+                            <router-link class="more" :to="`/movie/${movie[0].filmType}`">更多</router-link>
+                        </title-bar>
+                    </div>
+                    <div class="movies-wp">
+                        <ul class="m-pic-list">
+                            <li v-for="m of movie" :key="`${m.typeId}`+m.id">
+                                <movie-item :movie="m"/>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <Footer/>
             </mt-loadmore>
@@ -53,10 +53,11 @@ export default {
 
 <style lang="scss" scoped>
 .week-movie-box {
-    /deep/.mint-loadmore-top {
-        line-height: 55px!important;
+    /deep/ .mint-loadmore-top {
+        height: 80px!important;
+        line-height: 106px!important;
+        margin-top: -66px!important;
     }
-    
     .m-title-bar{
         height: 80px;
         .more {

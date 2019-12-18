@@ -6,15 +6,17 @@
                     <router-link class="more" to="/moremovie">更多</router-link>
                 </title-bar>
             </div>
-            <div class="movies-wp">
-                <mt-loadmore :top-method="refresh" ref="loadmore">  
-                    <ul class="m-pic-list">
-                        <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
-                            <movie-item :movie="movie"/>
-                        </li>
-                    </ul>
-                </mt-loadmore>    
-            </div>
+            <mt-loadmore :top-method="refresh" ref="loadmore">  
+                <div class="movies-wp">
+
+                        <ul class="m-pic-list">
+                            <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
+                                <movie-item :movie="movie"/>
+                            </li>
+                        </ul>
+
+                </div>
+            </mt-loadmore>    
             <Footer/>
         </main>
         <!-- 回顶部 -->

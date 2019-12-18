@@ -10,8 +10,10 @@
 
 <script>
 import Header from '@/views/common/header';
+import orientationchange from '@/mixins/orientationchange';
 export default {
   name: 'App',
+  mixins: [orientationchange],
   components: {
     Header
   }

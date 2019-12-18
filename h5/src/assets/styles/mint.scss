@@ -25,5 +25,32 @@
 }
 /** 下拉刷新结束 **/
 
+/** MessageBox */
+.mint-msgbox {
+    .mint-msgbox-header {
+        padding: 30px 0 0;
+        .mint-msgbox-title {
+            font-size: 32px;
+        }
+    }
+    .mint-msgbox-content {
+        min-height: 72px;
+        padding: 20px 40px 30px;
+        .mint-msgbox-message {
+            line-height: 72px;
+            font-size: 28px;
+        }
+    }
+    .mint-msgbox-btns {
+        height: 80px;
+        line-height: 80px;
+        .mint-msgbox-btn {
+            line-height: 70px;
+            font-size: 28px;
+        }
+    }
+}
+/** MessageBox结束 */
+
 
 
