@@ -1,10 +1,12 @@
 <template>
 <section class="down-load-thunder-box">
-    <header class="down-load-title">
-        <div class="thunder-icon"></div>
-        <h1>迅雷5&nbsp;官方无限制版</h1>
-        <router-link to="/downLesson">查看教程</router-link>
-    </header>
+    <thunder-title>
+        <header  class="down-load-title">
+            <div class="thunder-icon"></div>
+            <h1>迅雷5&nbsp;官方无限制版</h1>
+            <router-link to="/downLoadLesson">查看教程</router-link>
+        </header>
+    </thunder-title>
     <div class="down-list-box">
         <div class="down-list">
             <ul>
@@ -16,12 +18,17 @@
             </ul>
         </div>
     </div>
+    <Footer/>
 </section>
 </template>
 
 <script>
+import ThunderTitle from '@/views/common/thunderTitle';
 export default {
     name: 'DownLoadThunder',
+    components: {
+        ThunderTitle
+    },
     data() {
         return {
             downList: [
@@ -42,15 +49,15 @@ export default {
 <style lang="scss" scoped>
 $url: '~@images/downLoad';
 .down-load-thunder-box {
+    .thunder-title-box {
+        margin-bottom: 20px;
+    }
     .down-load-title {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        font-size: 32px;
-        padding: 0 16px;
+        height: 100%;
         margin-bottom: 15px;
-        height: 84px;
-        border-bottom: 1px solid #ececec;
         .thunder-icon {
             width: 60px;
             height: 60px;

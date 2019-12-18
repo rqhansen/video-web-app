@@ -8,13 +8,11 @@
             </div>
             <mt-loadmore :top-method="refresh" ref="loadmore">  
                 <div class="movies-wp">
-
-                        <ul class="m-pic-list">
-                            <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
-                                <movie-item :movie="movie"/>
-                            </li>
-                        </ul>
-
+                    <ul class="m-pic-list">
+                        <li v-for="movie of movies" :key="`${movie.typeId}`+movie.id">
+                            <movie-item :movie="movie"/>
+                        </li>
+                    </ul>
                 </div>
             </mt-loadmore>    
             <Footer/>

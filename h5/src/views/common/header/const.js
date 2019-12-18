@@ -78,10 +78,6 @@ export const lastMovie = {
     title: '近期电影',
     menus: [
         {
-            name: '今日最新电影',
-            url: '/todayMovie'
-        },
-        {
             name: '近一周最新电影',
             url: '/weekMovie'
         }

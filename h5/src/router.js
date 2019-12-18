@@ -8,6 +8,7 @@ const MoreMovie = () => import(/* webpackChunkName: "moreMovie" */ './views/more
 const TypeMovie = () => import(/* webpackChunkName: "typeMovie" */ './views/typeMovie/Index.vue');
 const WeekMovie = () => import(/* webpackChunkName: "weekMovie" */ './views/weekMovie/Index.vue');
 const downLoadThunder = () =>import(/* webpackChunkName: "downLoadThunder" */ './views/downLoadThunder/Index.vue');
+const downLoadLesson = () => import(/* webpackChunkName: "downLoadLesson" */ './views/downLoadLesson/Index.vue')
 
 Vue.use(Router);
 
@@ -49,6 +50,11 @@ export default new Router({
             path: '/downLoadThunder',
             name: 'downLoadThunder',
             component: downLoadThunder
+        },
+        {
+            path: '/downLoadLesson',
+            name: 'downLoadLesson',
+            component: downLoadLesson
         }
     ]
 })
