@@ -2,7 +2,7 @@
     <div class="logo">
         <h1>
             <a href="/" target="_self">
-                <img src="@/assets/images/header/logo.jpg" alt="万寻资源网">
+                <img src="/common/images/logo.jpg" alt="万寻资源网">
             </a>
         </h1>
     </div>

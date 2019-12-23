@@ -34,11 +34,11 @@ export default {
             downList: [
                 {
                     title: '迅雷5PC版下载',
-                    url: 'public/files/xunlei5_pc.zip'
+                    url: '/common/files/xunlei5_pc.zip'
                 },
                 {
                     title: '迅雷5安卓APK下载',
-                    url: 'public/files/xunlei5_pc.zip'
+                    url: '/common/files/xunlei5_pc.zip'
                 }
             ]
         }

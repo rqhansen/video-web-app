@@ -2,7 +2,7 @@
     <section class="m-item-wp">
         <router-link :to="`/${movie.filmType}/${movie.id}`">
             <div>
-                <img v-lazy="`http://www.wx520.net/public/${movie.indexImgSrc}`" :alt="movie.pureName">
+                <img v-lazy="`/common/${movie.indexImgSrc}`" :alt="movie.pureName">
             </div>
             <div class="m-title">
                 <h3 class="ellipsis">{{movie.fullName}}</h3>

@@ -12,7 +12,7 @@
                 </div>
                 <div class="m-intro-box">
                     <p>{{mDetail.pureName}}迅雷下载地址和剧情：<span class="share" @click="shareMovie">点此分享本影片</span></p>
-                    <img class="poster" :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" alt="">
+                    <img class="poster" :src="`/common/${mDetail.detailImgSrc}`" alt="">
                     <p v-if="mDetail.transName && mDetail.transName!== ' '">
                         <span class="title">◎译&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><span>{{mDetail.transName}}</span>
                     </p>
@@ -107,7 +107,7 @@
                     {{url}}
                     </a>
                     <div class="down-tip">
-                        <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<router-link to="/downLoadThunder" target="_blank">无限制版迅雷</router-link>
+                        <span>温馨提示:&nbsp;</span>使用迅雷您可以边下边播，如遇迅雷下载出错可换用<router-link to="/downLoadThunder">无限制版迅雷</router-link>
                     </div>
                 </div>
             </div>
