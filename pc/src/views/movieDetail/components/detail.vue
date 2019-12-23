@@ -11,7 +11,7 @@
             <p class="thunder-down">
                <span>{{mDetail.pureName}}</span><span v-if="$i18n.locale === 'en'">&nbsp;</span>{{$t('movieDetail.downLoadAddressAndDrama')}}：
             </p>
-            <img  :src="`http://www.wx520.net/public/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px"  max-height="800px" /> 
+            <img  :src="`/common/${mDetail.detailImgSrc}`" :alt="mDetail.pureName" width="600px"  max-height="800px" /> 
             <p v-if="mDetail.transName && mDetail.transName!== ' '">
                 <span class="title">◎{{$t('movieDetail.transName1')}}<span v-if="$i18n.locale!=='en'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span v-else>&nbsp;&nbsp;</span>{{$t('movieDetail.transName2')}}</span><span>{{mDetail.transName}}</span>
             </p>
@@ -106,7 +106,7 @@
             {{url}}
             </a>
              <div class="down-tip">
-                <span>{{$t('movieDetail.tip')}}:&nbsp;</span>{{$t('movieDetail.downLoadTip')}}<span v-if="$i18n.locale==='en'">&nbsp;</span><router-link to="/download" target="_blank">{{$t('movieDetail.noLimitThunder')}}</router-link>
+                <span>{{$t('movieDetail.tip')}}:&nbsp;</span>{{$t('movieDetail.downLoadTip')}}<span v-if="$i18n.locale==='en'">&nbsp;</span><router-link to="/downLoadThunder">{{$t('movieDetail.noLimitThunder')}}</router-link>
             </div>
        </div>
     </div>  

@@ -53,7 +53,7 @@ export default new Router({
       component: Search
     },
     {
-      path: '/download',
+      path: '/downLoadThunder',
       name: 'downLoad',
       component: DownLoad
     },

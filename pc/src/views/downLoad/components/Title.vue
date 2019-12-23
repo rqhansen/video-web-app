@@ -2,7 +2,7 @@
     <div class="down-load-title">
         <dl>
             <dt>
-                <img src="@/assets/images/downLoad/xunlei_icon.jpg" alt="" width="40" height="40">
+                <img src="/common/images/downLoad/xunlei_icon.jpg" alt="" width="40" height="40">
             </dt>
             <dd>
                 <h1>{{$t('downLoad.thunder')}}&nbsp;&nbsp;{{$t('downLoad.officeNoLimit')}}</h1>

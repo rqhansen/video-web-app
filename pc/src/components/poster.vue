@@ -4,7 +4,7 @@
             <a class="img-wp" :title="mName">
                 <img ref="img" class="lazy-img" width="auto" height="auto" 
                     src="~@imgs/common/lazy-load.jpg"
-                    :data-src="`http://www.wx520.net/public/${src}`"
+                    :data-src="`/common/${src}`"
                     @load.stop="firstLoadImg"
                 />
             </a>

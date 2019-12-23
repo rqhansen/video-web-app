@@ -121,5 +121,11 @@ module.exports = {
             warnings: true,
             errors: true
         }
-      },
+    },
+    pwa: {
+        iconPaths: {
+          favicon16: "common/icons/favicon-16x16.png",
+          favicon32: "common/icons/favicon-32x32.png",
+        }
+    }
 }

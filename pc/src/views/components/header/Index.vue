@@ -74,7 +74,7 @@
     export default class extends Vue {
 
         private goDownLoad() {
-            this.$router.push('/download')
+            this.$router.push('/downLoadThunder')
         }
     }
 </script> 
