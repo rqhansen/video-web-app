@@ -27,13 +27,6 @@ function handleMovieList(movies) {
     return movies;
 }
 
-/**
- * 下载文件
- */
-// function downLoadFile(fileUrl, fileName, callback) {
-//     let stream = fs.createWriteStream(fileName);
-//     request(fileUrl).pipe(stream).on('close', callback);
-// }
 
 module.exports = {
     formatDate,

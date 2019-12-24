@@ -54,6 +54,6 @@ app.on('error', (err, ctx) => {
 });
 
 app.use(history());
-app.listen(process.env.PORT || 6666);
+app.listen(process.env.PORT || 6667);
 
 module.exports = app

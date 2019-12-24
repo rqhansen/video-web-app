@@ -9,10 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
     "connect-history-api-fallback": "^1.6.0",
     "debug": "^2.6.3",
-    "ejs": "^2.6.1",
     "images": "^3.0.2",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
@@ -23,8 +21,7 @@
     "koa-router": "^7.1.1",
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
-    "mysql": "^2.17.1",
-    "superagent": "^5.0.5"
+    "mysql": "^2.17.1"
   },
   "devDependencies": {
     "nodemon": "^1.8.1"
