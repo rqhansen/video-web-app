@@ -7,8 +7,9 @@ const MoreMovie = () => import(/* webpackChunkName: "moreMovie" */ './views/more
 const ClassifyMovie = () => import(/*webpackChunkName: "classifyMovie" */ './views/classifyMovie/Index.vue');
 const MovieDetail = () => import(/*webpackChunkName: "movieDetail" */ './views/movieDetail/Index.vue');
 const Search = () => import(/*webpackChunkName: "search" */ './views/search/Index.vue');
-const DownLoad = () => import(/*webpackChunkName: "search" */ './views/downLoad/Index.vue');
+const DownLoad = () => import(/*webpackChunkName: "downLoad" */ './views/downLoad/Index.vue');
 const DownLoadLesson = () => import(/*webpackChunkName: "downLoadLesson" */ './views/downLoadLesson/Index.vue');
+const NotFind = () => import(/* webpackChunkName: "notFind" */ './views/notFind/Index.vue');
 
 Vue.use(Router)
 
@@ -55,6 +56,11 @@ export default new Router({
       path: '/downloadlesson',
       name: 'downLoadLesson',
       component: DownLoadLesson
+    },
+    {
+      path: '*',
+      name: 'notFind',
+      component: NotFind
     }
   ],
   scrollBehavior () {
