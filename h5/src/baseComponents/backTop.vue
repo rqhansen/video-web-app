@@ -73,12 +73,20 @@ export default {
     position: fixed;
     right: 30px;
     bottom: 80px;
+    width: 100px;
+    height: 101px;
     z-index:999;
     .iconfont {
         position: relative;
         z-index: 1;
-        font-size: 120px;
+        width: 100%;
+        height: 100%;
+        font-size: 100px;
         color: #106482;
+    }
+    .back-top {
+        width: 100%;
+        height: 100%;
     }
     .bg {
         position: absolute;
@@ -86,7 +94,7 @@ export default {
         top: 50%;
         transform: translate(-50%,-50%);
         z-index: 0;
-        width: 50%;
+        width: 55%;
         height: 50%;
         background-color:#fff;
     }
