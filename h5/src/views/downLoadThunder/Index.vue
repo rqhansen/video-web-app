@@ -10,8 +10,8 @@
     <div class="down-list-box">
         <div class="down-list">
             <ul>
-                <li v-for="item of downList" :key="item.title">
-                    <router-link :to="`http://www.wx520.net/${item.url}`" download="xunlei5_pc" class="transition">
+                <li v-for="(item,idx) of downList" :key="item.title">
+                    <router-link :to="item.url" :download="idx===0?'xunlei5.zip':'xunlei5.apk'" class="transition">
                         <i></i><span>{{item.title}}</span>
                     </router-link>
                 </li>
@@ -34,11 +34,11 @@ export default {
             downList: [
                 {
                     title: '迅雷5PC版下载',
-                    url: '/common/files/xunlei5_pc.zip'
+                    url: '/common/files/xunlei5.zip'
                 },
                 {
                     title: '迅雷5安卓APK下载',
-                    url: '/common/files/xunlei5_pc.zip'
+                    url: '/common/files/xunlei5.apk'
                 }
             ]
         }
