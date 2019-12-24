@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '6667');
+var port = normalizePort(process.env.PORT || 80); // 和 app.js不能是同一个端口值
 // app.set('port', port);
 
 /**
