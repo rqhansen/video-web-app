@@ -18,8 +18,8 @@
         </section>
         <pagination :total="totalPage" :currPage="currPage"
             @get-page-data="getTypeMovie"/>
+        </div>
         <Footer slot="bottom"/>
-    </div>
 </page-wrap>
 </template>
 
