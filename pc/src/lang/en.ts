@@ -16,7 +16,6 @@ export default  {
     header: {
         hotMovie: 'Popular Movie',  
         switchTheme: 'Change Theme',
-        todayMovie: "Today's latest movie",
         weekMovie: 'Latest movie of the past week',
         saveWebSite: 'Bookmark our website',
         placeholder: 'enter movie name search',

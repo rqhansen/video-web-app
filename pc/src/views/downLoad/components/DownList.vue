@@ -2,14 +2,14 @@
     <div class="down-list-wp" :class="{tiny: $i18n.locale==='en'}">
         <ul>
             <li >
-                <a class="transition" href="/common/files/xunlei5_pc.zip" download="xunlei5_pc"
+                <a class="transition" href="/common/files/xunlei5.zip" download="xunlei5.zip"
                 target="_self">
                 <i></i>
                 <span>{{$t('downLoad.pcDownLoad')}}</span>
                 </a>
             </li>
             <li>
-                <a class="transition" href="/common/files/xunlei5.32.2_apk.zip" download="xunlei5.32.2_apk"
+                <a class="transition" href="/common/files/xunlei5.apk" download="xunlei5.apk"
                      target="_self">
                     <i></i>
                     <span>{{$t('downLoad.androidDownLoad')}}</span>

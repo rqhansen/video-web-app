@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Home  = () => import(/* webpackChunkName: "home" */ './views/index/Index.vue');
-const TodayMovie = () => import(/* webpackChunkName: "todayMovie" */ './views/todayMovie/Index.vue');
 const WeekMovie = () => import(/* webpackChunkName: "weekMovie" */ './views/weekMovie/Index.vue');
 const MoreMovie = () => import(/* webpackChunkName: "moreMovie" */ './views/moreMovie/Index.vue');
 const ClassifyMovie = () => import(/*webpackChunkName: "classifyMovie" */ './views/classifyMovie/Index.vue');
@@ -21,11 +20,6 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    },
-    {
-      path: '/todaymovie',
-      name: 'todayMovie',
-      component: TodayMovie
     },
     {
       path: '/weekmovie',

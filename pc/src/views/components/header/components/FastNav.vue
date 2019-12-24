@@ -14,10 +14,6 @@
 <script lang="ts">
 const MENU = [
         {
-            title: '今日最新电影',
-            routeName: 'todaymovie'
-        },
-        {
             title: '近一周最新电影',
             routeName: 'weekmovie'
         },
@@ -32,10 +28,6 @@ import {Component,Vue} from 'vue-property-decorator';
     computed: {
         menus() {
             return [
-                {
-                    title: this.$t('header.todayMovie'),
-                    routeName: 'todaymovie'
-                },
                 {
                     title: this.$t('header.weekMovie'),
                     routeName: 'weekmovie'
