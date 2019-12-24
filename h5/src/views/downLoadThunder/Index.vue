@@ -18,7 +18,7 @@
             </ul>
         </div>
     </div>
-    <Footer/>
+    <Footer class="footer"/>
 </section>
 </template>
 
@@ -49,6 +49,7 @@ export default {
 <style lang="scss" scoped>
 $url: '~@images/downLoad';
 .down-load-thunder-box {
+    position: relative;
     .thunder-title-box {
         margin-bottom: 20px;
     }
@@ -70,6 +71,7 @@ $url: '~@images/downLoad';
     }
     .down-list-box {
         .down-list {
+            height: 200px;
             padding: 0 16px;
         }
         li {
@@ -91,6 +93,11 @@ $url: '~@images/downLoad';
                 background-color: rgba(81, 147, 199, .9);
             }
         }
+    }
+    .footer{
+        position: absolute;
+        left: 0;
+        bottom: 0;
     }
 }
 </style>

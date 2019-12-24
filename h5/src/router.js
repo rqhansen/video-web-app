@@ -7,9 +7,9 @@ const Search = () => import(/* webpackChunkName: "search" */ './views/search/Ind
 const MoreMovie = () => import(/* webpackChunkName: "moreMovie" */ './views/moreMovie/Index.vue');
 const TypeMovie = () => import(/* webpackChunkName: "typeMovie" */ './views/typeMovie/Index.vue');
 const WeekMovie = () => import(/* webpackChunkName: "weekMovie" */ './views/weekMovie/Index.vue');
-const downLoadThunder = () =>import(/* webpackChunkName: "downLoadThunder" */ './views/downLoadThunder/Index.vue');
-const downLoadLesson = () => import(/* webpackChunkName: "downLoadLesson" */ './views/downLoadLesson/Index.vue')
-
+const DownLoadThunder = () =>import(/* webpackChunkName: "downLoadThunder" */ './views/downLoadThunder/Index.vue');
+const DownLoadLesson = () => import(/* webpackChunkName: "downLoadLesson" */ './views/downLoadLesson/Index.vue')
+const notFind = () =>import(/* webpackChunkName: "notFind" */ './views/notFind/Index.vue');
 Vue.use(Router);
 
 export default new Router({
@@ -49,12 +49,17 @@ export default new Router({
         {
             path: '/downLoadThunder',
             name: 'downLoadThunder',
-            component: downLoadThunder
+            component: DownLoadThunder
         },
         {
             path: '/downLoadLesson',
             name: 'downLoadLesson',
-            component: downLoadLesson
+            component: DownLoadLesson
+        },
+        {
+            path: '*',
+            name: 'notFind',
+            component: notFind
         }
     ]
 })

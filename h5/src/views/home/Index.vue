@@ -59,6 +59,9 @@ export default  {
             font-weight: bold;
         }
     }
+    /deep/ .mint-loadmore-top {
+        // margin-top: -55px;
+    }
     .movies-wp {
         padding: 16px 8px 0;
         .m-pic-list {
