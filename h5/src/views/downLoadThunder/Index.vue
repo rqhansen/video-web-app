@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$url: '~@images/downLoad';
+// $url: '~@images/downLoad';
 .down-load-thunder-box {
     position: relative;
     .thunder-title-box {
@@ -62,7 +62,7 @@ $url: '~@images/downLoad';
         .thunder-icon {
             width: 60px;
             height: 60px;
-            background: url('#{$url}/xunlei_icon.jpg') no-repeat ;
+            background: url('/common/images/downLoad/xunlei_icon.jpg') no-repeat ;
         }
         h1 {
             font-weight: normal;
