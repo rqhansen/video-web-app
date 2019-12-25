@@ -8,6 +8,7 @@
                     @get-index-page-data="getIndexPageData"/>
             </nav-bg>
             <page-list 
+            class="classify-movie-list"
                 :movie="movie"
             />
             <pagination 
@@ -130,6 +131,9 @@ export default class extends Vue{
 
 <style lang="scss" scoped>
 .classify-m-wp {
+    .classify-movie-list{
+        min-height: 576px;
+    }
     .classify-m {
         padding-top: 30px;
     }

@@ -5,6 +5,7 @@
                 <div class="search-title"><span>{{movieName}}</span><span v-if="$i18n.locale === 'en'">&nbsp;</span>{{$t('search.searchResult')}}</div>
             </nav-bg>
             <page-list 
+            class="search-page-list"
                 :movie="movies"/>
             <pagination 
                 :totalPage="total"
@@ -124,6 +125,9 @@ export default class extends Vue {
             span {
                 color: $font-red-color;
             }
+        }
+        .search-page-list {
+            min-height: 564px;
         }
     }
 }
