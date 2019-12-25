@@ -71,7 +71,7 @@
             width: 33px;
             height: 33px;
             margin-right: 15px;
-            background: url('~@imgs/downLoad/download.png') no-repeat;
+            background: url('/common/images/downLoad/download.png') no-repeat;
         }
     }
 </style>
