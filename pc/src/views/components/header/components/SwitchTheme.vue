@@ -144,7 +144,7 @@
         }
         @each $index in 1,2,3,4,5 {
             li:nth-child(#{$index}) {
-                background:url('~@imgs/theme/theme-#{$index}.png');
+                background: url('/common/images/theme/theme-#{$index}.png');
             }
         }
     } 

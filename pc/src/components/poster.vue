@@ -3,7 +3,7 @@
         <div class="poster">
             <a class="img-wp" :title="mName">
                 <img ref="img" class="lazy-img" width="auto" height="auto" 
-                    src="~@imgs/common/lazy-load.jpg"
+                    src="/common/images/lazy-load.jpg"
                     :data-src="`/common/${src}`"
                     @load.stop="firstLoadImg"
                 />
