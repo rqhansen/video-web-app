@@ -38,10 +38,10 @@ export default class extends Vue {
     private total = 0;
     private currPage = 1;
 
-    @Watch('$route')
-    private handleOnRouteChange(nRoute: Route) {
-        this.onSearch(nRoute);
-    }
+    // @Watch('$route')
+    // private handleOnRouteChange(nRoute: Route) {
+    //     this.onSearch(nRoute);
+    // }
 
     @Watch('$i18n.locale')
     private setTitleAndMeta() {

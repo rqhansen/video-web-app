@@ -54,18 +54,18 @@ export default class extends Vue{
         this.resetTitleAndMeta();
     }
 
-    @Watch('$route')
-    private handleRouteChange(to: Route,from: Route) {
-        const {name,params } = to;
-        if(name === 'movieDetail') {
-            const {movie_type,id} = params;
-            if(movie_type === this.movieType && id === this.movieId) {
-                this.resetTitleAndMeta();
-                return;
-            }
-            this.getMovieDetail();
-        }
-    }
+    // @Watch('$route')
+    // private handleRouteChange(to: Route,from: Route) {
+    //     const {name,params } = to;
+    //     if(name === 'movieDetail') {
+    //         const {movie_type,id} = params;
+    //         if(movie_type === this.movieType && id === this.movieId) {
+    //             this.resetTitleAndMeta();
+    //             return;
+    //         }
+    //         this.getMovieDetail();
+    //     }
+    // }
 
     get typeZhName() {
         if(window.vm.$i18n.locale === 'en') {

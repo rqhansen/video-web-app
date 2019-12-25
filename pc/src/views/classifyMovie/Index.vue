@@ -45,22 +45,22 @@ export default class extends Vue{
     private movieType = '';
     private currPage = 1;
 
-    @Watch('$route')
-    private handleRouteChange(to: Route,from: Route) {
-        const { path: fromPath } = from;
-        const { path: toPath, params: toParams, name: toName } = to;
-        if(toName === 'classifyMovie' ) { //跳到分类电影才开始请求
-            if(this.movieType === toParams.id) {
-                this.setTitleAndMeta();
-                return;
-            }
-            const {id} = toParams;
-            this.getCurMovie({
-                page: 1,
-                type: id
-            });
-        }
-    }
+    // @Watch('$route')
+    // private handleRouteChange(to: Route,from: Route) {
+    //     const { path: fromPath } = from;
+    //     const { path: toPath, params: toParams, name: toName } = to;
+    //     if(toName === 'classifyMovie' ) { //跳到分类电影才开始请求
+    //         if(this.movieType === toParams.id) {
+    //             this.setTitleAndMeta();
+    //             return;
+    //         }
+    //         const {id} = toParams;
+    //         this.getCurMovie({
+    //             page: 1,
+    //             type: id
+    //         });
+    //     }
+    // }
 
     @Watch('$i18n.locale') 
     private resetTitleAndMeta() {

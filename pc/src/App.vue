@@ -2,9 +2,10 @@
   <div id="app" class="app">
     <!-- 头部 -->
     <Header/>
+    <!-- $route.fullPath-->
     <transition name="fade-move">
       <keep-alive>
-        <router-view class="main min-width"/>
+        <router-view class="main min-width" :key="$route.fullPath"/>
       </keep-alive>
     </transition>
     <!-- 尾部 -->
