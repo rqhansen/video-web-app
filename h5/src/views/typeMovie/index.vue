@@ -1,5 +1,5 @@
 <template>
-<page-wrap>
+<page-wrap class="type-movie-box">
     <div slot="main" class="type-m-wp">
         <curr-bg class="curr-wp">
             <div slot="currWp">
@@ -16,10 +16,12 @@
                 </li>
             </ul>
         </section>
-        <pagination :total="totalPage" :currPage="currPage"
-            @get-page-data="getTypeMovie"/>
+      
         </div>
-        <Footer slot="bottom"/>
+        <div slot="bottom">
+            <pagination :total="totalPage" :currPage="currPage" @get-page-data="getTypeMovie"/>
+            <Footer/>
+        </div>
 </page-wrap>
 </template>
 
@@ -61,12 +63,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.type-movie-box {
+    /deep/ .m-content {
+        min-height: calc(100% - 298px);
+    }
+    .m-content {
+        height: calc(100% - 318px);
+    }
+}
 .type-m-wp {
     .m-pic-list {
         li {
             margin-bottom: 48px;
         }
     }
+}
+.pagination-bar {
+    width: 96%;
+    margin: 0 auto 20px;
 }
 
 </style>

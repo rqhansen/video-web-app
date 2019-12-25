@@ -1,5 +1,5 @@
 <template>
-    <page-wrap>
+    <page-wrap class="search-page-box">
         <div slot="main" class="search-wp">
             <curr-bg  class="curr-wp">
                 <div slot="currWp">
@@ -13,10 +13,12 @@
                     </li>
                 </ul>
             </section>
-            <pagination :total="total" :currPage="currPage"
-                @get-page-data="search"/>
+
         </div>
-        <Footer slot="bottom"/>
+        <div slot="bottom">
+            <pagination :total="total" :currPage="currPage" @get-page-data="search"/>
+            <Footer/>
+        </div>
         <!-- 回顶部 -->
     </page-wrap>
 </template>
@@ -59,19 +61,27 @@ import { search } from '@/apis/search';
 </script>
 
 <style lang="scss" scoped>
+.search-page-box {
+    /deep/ .m-content {
+        min-height: calc(100% - 298px);
+    }
+}
 .search-wp {
     .m-result{
         color: #be1204;
     }
     .m-pic-list {
         overflow: hidden;
-            li {
+        li {
             width: 100%;
-            margin-bottom: 48px;
+            &:not(:last-child) {
+                margin-bottom: 48px;
+            }
         }
     }
-    .pagination-bar {
-        margin-top: 48px;
-    }
+}
+.pagination-bar {
+    width: 96%;
+    margin: 0 auto 20px;
 }
 </style>
