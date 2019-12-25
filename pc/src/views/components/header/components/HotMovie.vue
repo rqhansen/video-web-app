@@ -32,16 +32,20 @@
         private getMovieList() {
             this.movies = [
                 {
+                    title: '古田军号',
+                    url:'/drama/6229'
+                },
+                {
+                    title: '我和我的祖国',
+                    url:'/drama/6221'
+                },
+                {
                     title: '宝莱坞双雄之战',
                     url:'/action/4677'
                 },
                 {
                     title: '法外之徒',
                     url:'/action/4678'
-                },
-                {
-                    title: '我和我的祖国',
-                    url:'/drama/6221'
                 },
                 {
                     title: '狱中龙',
