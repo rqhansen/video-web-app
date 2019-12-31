@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:video_app/utils/adapt.dart';
 
 /// 自定义appBar,
 /// appBar 高度从外部传入
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
-
+  /// appBar 高度
   final double barHeight;
-  CustomAppBar({Key key,this.barHeight}) : super(key: key);
-//  CustomAppBar({Key key}) : preferredSize = Size.fromHeight(kToolbarHeight);
+  CustomAppBar({Key key,@required this.barHeight}) : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(barHeight);
@@ -25,18 +25,18 @@ class _CustomAppBarState extends State<CustomAppBar> {
       titleSpacing: -3.0,
       title:Image(
           image: AssetImage('images/logo.jpg'),
-          width: 102,
-          height: 36
+          width: Adapt.px(204),
+          height: Adapt.px(72),
       ),
       actions: <Widget>[
         InkWell(
-          borderRadius: BorderRadius.all(Radius.circular(100),),
+          borderRadius: BorderRadius.all(Radius.circular(Adapt.px(100)),),
           onTap: () {
             // code...
           },
           child: SizedBox(
-            width: 45,
-            child:   Icon(Icons.menu,color: Color.fromRGBO(0, 74, 132, 1),size: 40,),
+            width: Adapt.px(90),
+            child:   Icon(Icons.menu,color: Color.fromRGBO(0, 74, 132, 1),size: Adapt.px(80),),
           ),
         ),
       ],

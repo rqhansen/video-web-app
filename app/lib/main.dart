@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'commonWidgets/appBar.dart';
+import 'package:video_app/utils/adapt.dart';
+import 'widgets/appBar.dart';
+import 'page/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,9 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Rq's app of downLoading film",
       theme: ThemeData(
-        primaryColor: Colors.blueAccent,
+        primaryColor: Color.fromRGBO(16, 100, 146, 1),
         backgroundColor: Colors.white,
         fontFamily: 'Georgia',
+        accentColor: Color.fromRGBO(16, 100, 146, 1),
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
@@ -27,32 +30,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(barHeight:45.0),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
+      appBar: CustomAppBar(barHeight: Adapt.px(90),),
+      body: Home()
     );
   }
 }
