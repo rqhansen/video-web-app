@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
 import 'widgets/appBar.dart';
 import 'page/home.dart';
 
-void main() => runApp(MyApp());
-
+//void main() => runApp(MyApp());
+void main() {
+  /// 初始化请求模块
+  HttpUtil();
+  runApp(MyApp());
+}
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
