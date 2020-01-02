@@ -9,7 +9,7 @@ class Adapt {
   static double _botBarH = mediaQuery.padding.bottom;
   static double _pixelRatio = mediaQuery.devicePixelRatio;
 
-  /// 设备宽和ui的设备宽度之比
+  // 设备宽和ui的设备宽度之比
   static var _ratio;
 
   static init(int number) {
@@ -17,7 +17,7 @@ class Adapt {
       _ratio = _width / uiWidth;
   }
 
-  /// fontSize,width.height,margin
+  // fontSize,width.height,margin
   static px(number) {
       if(!(_ratio is double || _ratio is int)) {
         Adapt.init(750);

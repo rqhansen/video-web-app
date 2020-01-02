@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_app/utils/adapt.dart';
+import 'package:video_app/constant/Colors.dart';
 
+/// widget的包装类，长按出现边框，带动画过渡
 class TapAnimateWidget extends StatefulWidget {
   final Widget child;
   final Function onTap;
@@ -21,7 +23,7 @@ class _TapAnimateWidgetState extends State<TapAnimateWidget> {
         decoration: BoxDecoration(
           border: new Border.all(
             width: Adapt.onePx(),
-            color: isDown ? Color.fromRGBO(190, 18, 4, 1) : Colors.transparent,
+            color: isDown ? CustomColors.redText : Colors.transparent,
           ),
         ),
         child: widget.child,

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:video_app/constant/netConfig.dart';
 
 class HttpUtil {
   static HttpUtil instance;
@@ -7,7 +8,7 @@ class HttpUtil {
 
   CancelToken cancelToken = CancelToken();
 
-  /// 获取Dio实例
+  // 获取Dio实例
   static HttpUtil getInstance() {
     if(instance == null) {
       instance = HttpUtil();
@@ -17,17 +18,17 @@ class HttpUtil {
 
   HttpUtil() {
     options = BaseOptions(
-      baseUrl: 'http://www.wx520.net',
-      connectTimeout: 6000,
-      receiveTimeout: 6000,
+      baseUrl: NetConfig.baseUrl,
+      connectTimeout: NetConfig.connectTimeout,
+      receiveTimeout: NetConfig.receiveTimeout,
       headers: {
         'version':'1.0.0',
       },
-      contentType: 'application/json',
-      responseType: ResponseType.json
+      contentType: NetConfig.contentType,
+      responseType: NetConfig.responseType,
     );
     dio = Dio(options);
-    /// 添加拦截
+    // 添加拦截
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options) async{
         return options;
@@ -42,7 +43,7 @@ class HttpUtil {
     ));
   }
 
-  /// get请求
+  // get请求
   get(url,{data,options,cancelToken}) async{
     Response response;
     try {
@@ -55,7 +56,7 @@ class HttpUtil {
     return response;
   }
 
-  /// post
+  // post
   post(url,{data,options,cancelToken}) async{
       Response response;
       try {
@@ -67,7 +68,7 @@ class HttpUtil {
       return response;
   }
 
-  /// 处理error
+  // 处理error
   void formatError(DioError e) {
     switch (e.type) {
       case DioErrorType.CONNECT_TIMEOUT:
@@ -90,9 +91,7 @@ class HttpUtil {
     }
   }
 
-  /*
-   * 取消请求
-   */
+  // 取消请求
   void cancelRequests(CancelToken token) {
       token.cancel('cancelled');
   }

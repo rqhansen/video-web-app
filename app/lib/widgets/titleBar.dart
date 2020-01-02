@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_app/utils/adapt.dart';
+import 'package:video_app/constant/Colors.dart';
 class TitleBar extends StatelessWidget {
 
   TitleBar({
@@ -8,9 +9,10 @@ class TitleBar extends StatelessWidget {
     this.actionTitle = ''
   }) :  assert(headTitle != null),
         super(key : key);
-  /// 大字标题
+
+  // 大字标题
   final String headTitle;
-  /// 更多
+  // 更多
   final String actionTitle;
 
 
@@ -20,7 +22,7 @@ class TitleBar extends StatelessWidget {
         height: Adapt.px(80),
         padding: EdgeInsets.symmetric(horizontal: Adapt.px(20.0)),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 247, 1),
+            color: CustomColors.titleBarBackground,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +37,7 @@ class TitleBar extends StatelessWidget {
                   child: InkWell(
                     onTap: () {},
                     child: Text(actionTitle,style: TextStyle(
-                        color: Color.fromRGBO(16, 100, 146, 1)
+                        color: Theme.of(context).primaryColor,
                     ),),
                   )
               ),
