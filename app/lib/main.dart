@@ -40,7 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(barHeight: Adapt.px(90),),
-      body: Home()
+      body: Home(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_upward),
+        onPressed: () {},
+      ),
     );
   }
 }
