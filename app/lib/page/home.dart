@@ -28,10 +28,10 @@ class _HomeState extends State<Home> {
               TitleBar(headTitle: '今日热门电影推荐', actionTitle: '更多'),
               Expanded(
                  child: GridView.builder(
-                     padding: EdgeInsets.only(left:Adapt.px(8.0),top: Adapt.px(32.0),right: Adapt.px(16.0),bottom:0),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                     crossAxisCount: 2,
-                     childAspectRatio: 0.71,
+                    padding: EdgeInsets.only(left:Adapt.px(8.0),top: Adapt.px(32.0),right: Adapt.px(16.0),bottom:0),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.71,
                    ),
                    itemCount: (todayMovieList.length / 2 ).ceil(),
                    itemBuilder: (BuildContext context, int index) {
