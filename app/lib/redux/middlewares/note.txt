@@ -1,0 +1,4 @@
+一个中间件，在Store初始化的时候可以初始化多个Middleware,
+执行时机是action之后，reducer函数之前，
+可以把从服务器获取数据的逻辑放在一个Meddleware中，
+等Middleward处理完毕后，再发出一个action更新state数据
