@@ -1,7 +1,7 @@
 
 /// 切换显示dropMenu的action,构造函数带参数的好处：我再触发action的地方可以动态的传入数据，用起来更加的灵活。
 class SwitchShowDropMenuAction {
-  bool showDropMenu;
+  final bool showDropMenu;
   SwitchShowDropMenuAction(this.showDropMenu);
 }
 
@@ -10,3 +10,7 @@ class SwitchShowDropMenuAction {
 // class FetchShowDropMenu {
 
 // }
+
+//bool changeShowDropMenu(bool showDropMenu,action) {
+//
+//}

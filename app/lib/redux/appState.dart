@@ -21,5 +21,11 @@ AppState appReducer(AppState state,action) {
   );
 }
 
+/// 步骤
+/// 1. 先创建AppState
+/// 2. 创建单个action，和单个action对应的reducer
+/// 3. 将单个action和单个action对应的reducer先关联
+/// 4. 将关联后的与AppState相关联
+
 
 

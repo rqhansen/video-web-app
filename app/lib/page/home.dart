@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:load/load.dart';
+import 'package:video_app/redux/appState.dart';
+import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
 import 'package:video_app/constant/Colors.dart';
@@ -27,8 +31,8 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    // 获取今日热门电影
-    getTodayMovies();
+    // 初始化数据
+    initData();
     // 监听页面的滚动
     handlePageScroll();
   }
@@ -48,6 +52,20 @@ class _HomeState extends State<Home> {
     });
   }
 
+  // 初始化数据
+  void initData() async{
+    showLoadingDialog();
+    await getTodayMovies();
+    hideLoadingDialog();
+  }
+  // 下拉刷新函数
+  Future<void> _onRefresh(bool showDropMenu) async {
+    if(!showDropMenu) { /// 如果下拉菜单显示了，则隐藏
+      StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(!showDropMenu));
+    }
+    await getTodayMovies();
+  }
+
   // 监听滚动位置
   void handlePageScroll() {
     _controller.addListener((){
@@ -63,88 +81,93 @@ class _HomeState extends State<Home> {
     });
   }
 
-  // 下拉刷新函数
-  Future<void> _onRefresh() async {
-    await getTodayMovies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(barHeight: Adapt.px(90),),
-      body: RefreshIndicator(
-        onRefresh: _onRefresh,
-        child: Stack(
-          children: <Widget>[
-            Container(
-                child: Column(children: <Widget>[
-                  TitleBar(headTitle: '今日热门电影推荐', actionTitle: '更多',),
-                  Expanded(
-                    child: Scrollbar(
-                      child: CustomScrollView(
-                        controller: _controller,
-                        slivers: <Widget>[
-                          SliverPadding(
-                            padding: EdgeInsets.only(left: Adapt.px(8.0),top: Adapt.px(32.0),right: Adapt.px(16.0),bottom: 0,),
-                            sliver: new SliverGrid(
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 0.7,),
-                              delegate: new SliverChildBuilderDelegate(
-                                    (BuildContext context, int index) {
-                                  var item = todayMovieList[index];
-                                  var isNew = item['isNew'];
-                                  return Container(
-                                    padding: EdgeInsets.only(left: Adapt.px(16),top: 0,right: Adapt.px(8.0),bottom: Adapt.px(20),),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Poster( width: Adapt.screenW() * 0.46, height: Adapt.screenH() * 0.34, imgUrl: item['indexImgSrc'],),
-                                        Container(
-                                          padding: EdgeInsets.only(left: 0,top: Adapt.px(12.0),bottom: Adapt.px(8.0),),
-                                          child: Text(
-                                            '${item['fullName']}',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(fontWeight: FontWeight.w600,color: CustomColors.redText,),
+      body: new StoreConnector<AppState,bool>(
+        builder:(context,showDropMenu) {
+          return  RefreshIndicator(
+//            onRefresh: _onRefresh,
+            onRefresh: () => _onRefresh(showDropMenu),
+            child: Stack(
+              children: <Widget>[
+                Container(
+                    child: Column(children: <Widget>[
+                      TitleBar(headTitle: '今日热门电影推荐', actionTitle: '更多',),
+                      Expanded(
+                          child: CustomScrollView(
+                            controller: _controller,
+                            slivers: <Widget>[
+                              SliverPadding(
+                                  padding: EdgeInsets.symmetric(vertical: Adapt.px(20.0)),
+                                  sliver: SliverGrid(
+                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisSpacing: 10.0,crossAxisSpacing: 0.0,crossAxisCount: 2,childAspectRatio: 0.72,),
+                                    delegate: new SliverChildBuilderDelegate(
+                                          (BuildContext context, int index) {
+                                        var item = todayMovieList[index];
+                                        var isNew = item['isNew'];
+                                        var isOdd = (index % 2 == 0);
+                                        return  Container(
+                                          padding: isOdd ? EdgeInsets.only(left: Adapt.px(5.0)) : EdgeInsets.only(right: Adapt.px(5.0)),
+                                          child:     Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              Expanded(
+                                                flex: 1,
+                                                child:  Poster( width: Adapt.screenW() * 0.46, height: Adapt.screenH() * 0.34, imgUrl: item['indexImgSrc'],),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(4.0),right: Adapt.px(10.0),bottom: Adapt.px(6.0)),
+                                                child: Text(
+                                                  '${item['fullName']}',
+                                                  overflow: TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(fontWeight: FontWeight.w600,color: CustomColors.redText),
+                                                ),
+                                              ),
+                                              Text(
+                                                '${item['pubDate']}',
+                                                style: TextStyle(
+                                                  color: isNew ? CustomColors.redText : Colors.black,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        Text(
-                                          '${item['pubDate']}',
-                                          style: TextStyle(
-                                            color: isNew ? CustomColors.redText : Colors.black,
-                                          ),
-                                        ),
-                                      ],
+                                        );
+                                      },
+                                      childCount: todayMovieList.length,
                                     ),
-                                  );
-                                },
-                                childCount: todayMovieList.length,
+                                  ),
                               ),
-                            ),
+                              SliverToBoxAdapter(
+                                child: Footer(),
+                              ),
+                            ],
                           ),
-                          SliverToBoxAdapter(
-                            child: Footer(),
-                          ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      ]
+                    )
+                ),
+                Positioned(
+                  top: Adapt.px(0),
+                  left: 0,
+                  width: Adapt.screenW(),
+                  height: MediaQuery.of(context).size.height - Adapt.px(90),
+                  child: Offstage(
+                    offstage: showDropMenu,
+                    child: DropMenu(),
                   ),
-                ]
                 )
+              ],
             ),
-            Positioned(
-              top: Adapt.px(0),
-              left: 0,
-              width: Adapt.screenW(),
-              child: Offstage(
-                offstage: true,
-                child: DropMenu(),
-              ),
-            )
-          ],
-        ),
+          );
+        },
+        converter: (store) => store.state.showDropMenu,
       ),
-        floatingActionButton: !showToTopBtn ? null : floatActionButton(),
-      );
+      floatingActionButton: !showToTopBtn ? null : floatActionButton(),
+    );
   }
 
   // 指示器

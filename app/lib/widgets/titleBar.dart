@@ -20,7 +20,7 @@ class TitleBar extends StatelessWidget {
   Widget build(BuildContext context) {
       return Container(
         height: Adapt.px(80),
-        padding: EdgeInsets.symmetric(horizontal: Adapt.px(20.0)),
+        padding: EdgeInsets.symmetric(horizontal: Adapt.px(18.0)),
         decoration: BoxDecoration(
             color: CustomColors.titleBarBackground,
         ),

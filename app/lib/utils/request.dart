@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:load/load.dart';
 import 'package:video_app/constant/netConfig.dart';
 
 class HttpUtil {
@@ -37,6 +38,7 @@ class HttpUtil {
         return response;
       },
       onError: (DioError e) async{
+        hideLoadingDialog();
         print(e);
           return e;
       }
