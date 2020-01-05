@@ -48,12 +48,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
                               child: Ink(
                                 child:   InkWell(
                                   onTap: () {
-                                    StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(!showDropMenu));
-                                  },
+                                      StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(!showDropMenu));
+                                      /// 使软键盘失焦
+                                      FocusScope.of(context).requestFocus(FocusNode());
+                                    },
                                   child: SizedBox(
                                     width: Adapt.px(90),
                                     child: AnimatedSwitcher(
-                                        duration: const Duration(milliseconds: 300),
+                                      duration: const Duration(milliseconds: 300),
                                       transitionBuilder: (Widget child,Animation<double> animation) {
                                           return ScaleTransition(child: child,scale: animation,);
                                       },

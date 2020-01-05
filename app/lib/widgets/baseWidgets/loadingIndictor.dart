@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:video_app/utils/adapt.dart';
 
-/// 自定义的loading
+/// 自定义loading
 class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

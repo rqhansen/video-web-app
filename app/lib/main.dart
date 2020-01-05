@@ -43,22 +43,29 @@ class IndexPage extends StatelessWidget {
   final Store<AppState> store = initStore();
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
-      store: store,
-      child: StoreBuilder<AppState>(builder: (context,store) {
-        return MaterialApp(
-          title: "Rq's app of downLoading film",
-          theme: ThemeData(
-            primaryColor: Color.fromRGBO(16, 100, 146, 1),
-            backgroundColor: Colors.white,
-            fontFamily: 'Georgia',
-            accentColor: Color.fromRGBO(16, 100, 146, 1),
-          ),
-          /// 去掉debuger
-          debugShowCheckedModeBanner: false,
-          home: Home(),
-        );
-      }),
+    return GestureDetector( /// 点击空白处收起软键盘
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+        // 触摸收起键盘
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: StoreProvider(
+        store: store,
+        child: StoreBuilder<AppState>(builder: (context,store) {
+          return MaterialApp(
+              title: "Rq's app of downLoading film",
+              theme: ThemeData(
+              primaryColor: Color.fromRGBO(16, 100, 146, 1),
+              backgroundColor: Colors.white,
+              fontFamily: 'Georgia',
+              accentColor: Color.fromRGBO(16, 100, 146, 1),
+              ),
+              /// 去掉debuger
+              debugShowCheckedModeBanner: false,
+              home: Home(),
+            );
+        }),
+      ),
     );
   }
 }

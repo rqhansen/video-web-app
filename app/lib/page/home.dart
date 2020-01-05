@@ -62,6 +62,9 @@ class _HomeState extends State<Home> {
   Future<void> _onRefresh(bool showDropMenu) async {
     if(!showDropMenu) { /// 如果下拉菜单显示了，则隐藏
       StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(!showDropMenu));
+      if(FocusScope.of(context).hasFocus) { /// 失焦
+        FocusScope.of(context).requestFocus(FocusNode());
+      }
     }
     await getTodayMovies();
   }
@@ -88,7 +91,6 @@ class _HomeState extends State<Home> {
       body: new StoreConnector<AppState,bool>(
         builder:(context,showDropMenu) {
           return  RefreshIndicator(
-//            onRefresh: _onRefresh,
             onRefresh: () => _onRefresh(showDropMenu),
             child: Stack(
               children: <Widget>[
@@ -103,8 +105,7 @@ class _HomeState extends State<Home> {
                                   padding: EdgeInsets.symmetric(vertical: Adapt.px(20.0)),
                                   sliver: SliverGrid(
                                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisSpacing: 10.0,crossAxisSpacing: 0.0,crossAxisCount: 2,childAspectRatio: 0.72,),
-                                    delegate: new SliverChildBuilderDelegate(
-                                          (BuildContext context, int index) {
+                                    delegate: new SliverChildBuilderDelegate((BuildContext context, int index) {
                                         var item = todayMovieList[index];
                                         var isNew = item['isNew'];
                                         var isOdd = (index % 2 == 0);
@@ -148,16 +149,20 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ]
-                    )
+                    ),
                 ),
                 Positioned(
                   top: Adapt.px(0),
                   left: 0,
                   width: Adapt.screenW(),
-                  height: MediaQuery.of(context).size.height - Adapt.px(90),
+                  height: Adapt.screenH() - Adapt.px(90.0),
                   child: Offstage(
                     offstage: showDropMenu,
-                    child: DropMenu(),
+                    child: AnimatedOpacity(
+                      opacity: showDropMenu ? 0.0 : 1.0,
+                      duration: Duration(milliseconds: 300),
+                      child: DropMenu(),
+                    ),
                   ),
                 )
               ],

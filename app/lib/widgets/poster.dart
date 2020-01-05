@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_app/utils/adapt.dart';
-import 'package:video_app/widgets/baseWidgets/TapAnimateWidget.dart';
+import 'package:video_app/widgets/baseWidgets/tapAnimateWidget.dart';
 import 'package:video_app/constant/netConfig.dart';
 
 /// 图片的包装类
