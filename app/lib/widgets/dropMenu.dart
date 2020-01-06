@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/constant/hotMovies.dart';
 import 'package:video_app/redux/appState.dart';
 import 'package:video_app/utils/adapt.dart';
@@ -36,12 +37,10 @@ class _DropMenuState extends State<DropMenu> {
       _movieNameController.clear();
     }
     /// 手动失焦
-    if(focusNode.hasFocus) {
-      FocusScope.of(context).requestFocus(FocusNode());
-    }
+    loseFocus();
   }
 
-  /// 关闭下拉菜单
+  /// 关闭下拉菜单时清空输入框的值
   void handleCloseDropMenu(showDropMenu) {
     if(showDropMenu) { /// 关闭下拉框了
       if(_movieNameController.text.isNotEmpty) {
@@ -50,9 +49,20 @@ class _DropMenuState extends State<DropMenu> {
     }
   }
 
+  // 手动失焦
+  void loseFocus() {
+    if(focusNode.hasFocus) {
+      FocusScope.of(context).requestFocus(FocusNode());
+    }
+  }
+
+  /// 去其它页面通知关闭当前下拉菜单
+  void closeDropMenu(showDropMenu) {
+      StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(!showDropMenu));
+  }
+
   @override
   Widget build(BuildContext context) {
-    var duration = Duration(milliseconds: 300);
     return StoreConnector<AppState,bool>(
         builder: (context,showDropMenu) {
             /// showDropMenu状态变化后，清空输入框的值
@@ -143,7 +153,8 @@ class _DropMenuState extends State<DropMenu> {
 //                                    return Center(child: Text('$item'));
                                       return TapTextAnimateWidget(
                                         child: Center(child: Text('$item',overflow: TextOverflow.ellipsis,),),
-                                        onTap: () {},
+                                        onTap: () {
+                                        },
                                       );
                                   }).toList(),
                                 ),
@@ -159,9 +170,13 @@ class _DropMenuState extends State<DropMenu> {
                                   children: HotMovies.hotMovies.map((hotMovie) {
                                     return TapTextAnimateWidget(
                                       child: Center(
-                                        child: Text('$hotMovie', overflow: TextOverflow.ellipsis,),
+                                        child: Text('${hotMovie["movieName"]}', overflow: TextOverflow.ellipsis,),
                                       ),
-                                      onTap: () {}
+                                      onTap: () {
+                                        closeDropMenu(showDropMenu);
+                                        loseFocus();
+                                        Navigator.pushNamed(context, 'movie_detail',arguments: hotMovie['url']);
+                                      }
                                     );
                                     }
                                   ).toList(),

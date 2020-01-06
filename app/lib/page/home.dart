@@ -1,17 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:load/load.dart';
-import 'package:video_app/redux/appState.dart';
-import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
+import 'package:video_app/redux/appState.dart';
+import 'package:load/load.dart';
+import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/widgets/appBar.dart';
 import 'package:video_app/widgets/titleBar.dart';
 import 'package:video_app/widgets/dropMenu.dart';
 import 'package:video_app/widgets/footer.dart';
 import 'package:video_app/widgets/poster.dart';
+import 'package:video_app/widgets/indicatorButton.dart';
 
 class Home extends StatefulWidget {
   
@@ -21,7 +22,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home>{
   // 电影列表
   List todayMovieList = [];
   ScrollController _controller = new ScrollController();
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
     HttpUtil httpClient = HttpUtil.getInstance();
     var res = await httpClient.get('/api/homeMovieList');
     setState(() {
-      todayMovieList = todayMovieList = res.data['data']['movies'];
+      todayMovieList = res.data['data']['movies'];
     });
   }
 
@@ -112,11 +113,12 @@ class _HomeState extends State<Home> {
                                         return  Container(
                                           padding: isOdd ? EdgeInsets.only(left: Adapt.px(5.0)) : EdgeInsets.only(right: Adapt.px(5.0)),
                                           child:     Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+//                                            mainAxisAlignment: MainAxisAlignment.center,
+//                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: <Widget>[
                                               Expanded(
                                                 flex: 1,
+//                                                child:  Poster( width: Adapt.px(352.0), height: Adapt.px(432.0), imgUrl: item['indexImgSrc'],),
                                                 child:  Poster( width: Adapt.screenW() * 0.46, height: Adapt.screenH() * 0.34, imgUrl: item['indexImgSrc'],),
                                               ),
                                               Padding(
@@ -164,28 +166,28 @@ class _HomeState extends State<Home> {
                       child: DropMenu(),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           );
         },
         converter: (store) => store.state.showDropMenu,
       ),
-      floatingActionButton: !showToTopBtn ? null : floatActionButton(),
+      floatingActionButton: !showToTopBtn ? null : CustomFloatButton(controller: _controller,)
     );
   }
 
   // 指示器
-  Widget floatActionButton() {
-    return SizedBox(
-      width: Adapt.px(80.0),
-      height: Adapt.px(80.0),
-      child: FloatingActionButton(
-        child: Icon(Icons.arrow_upward,size: Adapt.px(60.0),),
-        onPressed: () {
-          _controller.animateTo(.0,duration: Duration(milliseconds: 400,),curve:Curves.ease);
-        },
-      ),
-    );
-  }
+//  Widget floatActionButton() {
+//    return SizedBox(
+//      width: Adapt.px(80.0),
+//      height: Adapt.px(80.0),
+//      child: FloatingActionButton(
+//        child: Icon(Icons.arrow_upward,size: Adapt.px(60.0),),
+//        onPressed: () {
+//          _controller.animateTo(.0,duration: Duration(milliseconds: 400,),curve:Curves.ease);
+//        },
+//      ),
+//    );
+//  }
 }

@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:video_app/routes/index.dart';
 import 'package:load/load.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -54,15 +54,17 @@ class IndexPage extends StatelessWidget {
         child: StoreBuilder<AppState>(builder: (context,store) {
           return MaterialApp(
               title: "Rq's app of downLoading film",
+              initialRoute: '/',
               theme: ThemeData(
-              primaryColor: Color.fromRGBO(16, 100, 146, 1),
-              backgroundColor: Colors.white,
-              fontFamily: 'Georgia',
-              accentColor: Color.fromRGBO(16, 100, 146, 1),
+                primaryColor: Color.fromRGBO(16, 100, 146, 1),
+                backgroundColor: Colors.white,
+                fontFamily: 'Georgia',
+                accentColor: Color.fromRGBO(16, 100, 146, 1),
               ),
+              routes: routers,
               /// 去掉debuger
               debugShowCheckedModeBanner: false,
-              home: Home(),
+//              home: Home(),
             );
         }),
       ),

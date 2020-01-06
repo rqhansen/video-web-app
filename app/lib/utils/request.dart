@@ -62,7 +62,7 @@ class HttpUtil {
   post(url,{data,options,cancelToken}) async{
       Response response;
       try {
-        response = await dio.post(url,queryParameters: data,options: options,cancelToken: cancelToken);
+        response = await dio.post(url,data: data,options: options,cancelToken: cancelToken);
       } on DioError catch (e) {
         print('报错信息为：——————————————————————————');
         formatError(e);
