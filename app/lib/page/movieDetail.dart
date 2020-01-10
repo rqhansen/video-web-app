@@ -86,26 +86,25 @@ class _MovieDetailState extends State<MovieDetail> {
       ),
       body: StoreConnector<AppState,bool>(
         builder: (context,showDropMenu) {
-          return SingleChildScrollView(
-            controller: _controller,
-            child: Offstage(
-              offstage: !(movieInfo['fullName'] != null),
-              child: Container(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
+          return Offstage(
+            offstage: !(movieInfo['fullName'] != null),
+            child: Container(
+              child: Stack(
+                children: <Widget>[
+                  SingleChildScrollView(
+                    child:  Container(
                       child: Column(
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(left: Adapt.px(16.0),top: Adapt.px(30.0),right: Adapt.px(16.0),bottom: Adapt.px(20.0),),
                             child: Container(
                               decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: Adapt.onePx(),
-                                style: BorderStyle.solid,
+                                border: Border.all(
+                                  color: Theme.of(context).primaryColor,
+                                  width: Adapt.onePx(),
+                                  style: BorderStyle.solid,
+                                ),
                               ),
-                            ),
                               child: Column(
                                 children: <Widget>[
                                   Container(
@@ -120,7 +119,9 @@ class _MovieDetailState extends State<MovieDetail> {
                                         Text('当前位置: '),
                                         GestureDetector(
                                           child: Text('万寻电影>',style: TextStyle(color: Theme.of(context).primaryColor),),
-                                          onTap: () {},
+                                          onTap: () {
+                                              Navigator.pushNamed(context, '/');
+                                          },
                                         ),
                                         Text('>'),
                                         GestureDetector(
@@ -137,7 +138,7 @@ class _MovieDetailState extends State<MovieDetail> {
                                     height: Adapt.onePx(),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(15.0),right: Adapt.px(10.0),bottom: Adapt.px(20.0)),
+                                    padding: EdgeInsets.only(left: Adapt.px(15.0),top: Adapt.px(15.0),right: Adapt.px(15.0),bottom: Adapt.px(15.0)),
                                     child: Column(
                                       children: <Widget>[
                                         Center(
@@ -173,41 +174,41 @@ class _MovieDetailState extends State<MovieDetail> {
                                           padding: EdgeInsets.only(bottom: Adapt.px(15.0),),
                                           child: Image.network(
                                             '${NetConfig.baseUrl}/common/${movieInfo['detailImgSrc']}',
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fill,
                                             width: Adapt.screenW(),
                                             height: Adapt.px(789),
                                           ),
                                         ),
                                         Container(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                sigleRowIntro(!(movieInfo['transName']!=null),'◎译 名',movieInfo['transName']),
-                                                sigleRowIntro(!(movieInfo['subPureName']!=null),'◎片 名',movieInfo['subPureName']),
-                                                sigleRowIntro(!(movieInfo['year']!=null),'◎年 代',movieInfo['year']),
-                                                sigleRowIntro(!(movieInfo['country']!=null),'◎产 地',movieInfo['country']),
-                                                sigleRowIntro(!(movieInfo['types']!=null),'◎类 别',movieInfo['types']),
-                                                sigleRowIntro(!(movieInfo['language']!=null),'◎语 言',movieInfo['language']),
-                                                sigleRowIntro(!(movieInfo['caption']!=null),'◎字 幕',movieInfo['caption']),
-                                                sigleRowIntro(!(movieInfo['onDate']!=null),'◎上映日期',movieInfo['onDate']),
-                                                sigleRowIntro(!(movieInfo['imdbScore']!=null),'◎IMDb评分',movieInfo['imdbScore']),
-                                                sigleRowIntro(!(movieInfo['imdbLink']!=null),'◎IMDb链接',movieInfo['imdbLink']),
-                                                sigleRowIntro(!(movieInfo['format']!=null),'◎格 式',movieInfo['format']),
-                                                sigleRowIntro(!(movieInfo['fileSize']!=null),'◎文件大小',movieInfo['fileSize']),
-                                                sigleRowIntro(!(movieInfo['videoSize']!=null),'◎视频尺寸',movieInfo['videoSize']),
-                                                sigleRowIntro(!(movieInfo['filmLength']!=null),'◎片 长',movieInfo['filmLength']),
-                                                sigleRowIntro(!(movieInfo['doubanScore']!=null),'◎豆瓣评分',movieInfo['doubanScore']),
-                                                sigleRowIntro(!(movieInfo['doubanLink']!=null),'◎豆瓣链接',movieInfo['doubanLink']),
-                                                sigleRowIntro(!(movieInfo['director']!=null),'◎导 演',movieInfo['director']),
-                                                sigleRowIntro(!(movieInfo['editor']!=null),'◎编 剧',movieInfo['editor']),
-                                                sigleRowIntro(!(movieInfo['actor']!=null),'◎主 演',movieInfo['actor']),
-                                                sigleRowIntro(!(movieInfo['label']!=null),'◎标 签',movieInfo['label']),
-                                                sigleRowIntro(!(movieInfo['shortIntro']!=null),'◎简 介',movieInfo['shortIntro']),
-                                                sigleRowIntro(!(movieInfo['getAward']!=null),'◎获 奖',movieInfo['getAward']),
-                                                downLoadWidget(movieInfo['downUrl'][0]),
-                                                tipWidget()
-                                              ],
-                                            ),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              sigleRowIntro(!(movieInfo['transName']!=null),'◎译 名',movieInfo['transName']),
+                                              sigleRowIntro(!(movieInfo['subPureName']!=null),'◎片 名',movieInfo['subPureName']),
+                                              sigleRowIntro(!(movieInfo['year']!=null),'◎年 代',movieInfo['year']),
+                                              sigleRowIntro(!(movieInfo['country']!=null),'◎产 地',movieInfo['country']),
+                                              sigleRowIntro(!(movieInfo['types']!=null),'◎类 别',movieInfo['types']),
+                                              sigleRowIntro(!(movieInfo['language']!=null),'◎语 言',movieInfo['language']),
+                                              sigleRowIntro(!(movieInfo['caption']!=null),'◎字 幕',movieInfo['caption']),
+                                              sigleRowIntro(!(movieInfo['onDate']!=null),'◎上映日期',movieInfo['onDate']),
+                                              sigleRowIntro(!(movieInfo['imdbScore']!=null),'◎IMDb评分',movieInfo['imdbScore']),
+                                              sigleRowIntro(!(movieInfo['imdbLink']!=null),'◎IMDb链接',movieInfo['imdbLink']),
+                                              sigleRowIntro(!(movieInfo['format']!=null),'◎格 式',movieInfo['format']),
+                                              sigleRowIntro(!(movieInfo['fileSize']!=null),'◎文件大小',movieInfo['fileSize']),
+                                              sigleRowIntro(!(movieInfo['videoSize']!=null),'◎视频尺寸',movieInfo['videoSize']),
+                                              sigleRowIntro(!(movieInfo['filmLength']!=null),'◎片 长',movieInfo['filmLength']),
+                                              sigleRowIntro(!(movieInfo['doubanScore']!=null),'◎豆瓣评分',movieInfo['doubanScore']),
+                                              sigleRowIntro(!(movieInfo['doubanLink']!=null),'◎豆瓣链接',movieInfo['doubanLink']),
+                                              sigleRowIntro(!(movieInfo['director']!=null),'◎导 演',movieInfo['director']),
+                                              sigleRowIntro(!(movieInfo['editor']!=null),'◎编 剧',movieInfo['editor']),
+                                              sigleRowIntro(!(movieInfo['actor']!=null),'◎主 演',movieInfo['actor']),
+                                              sigleRowIntro(!(movieInfo['label']!=null),'◎标 签',movieInfo['label']),
+                                              sigleRowIntro(!(movieInfo['shortIntro']!=null),'◎简 介',movieInfo['shortIntro']),
+                                              sigleRowIntro(!(movieInfo['getAward']!=null),'◎获 奖',movieInfo['getAward']),
+                                              downLoadWidget(movieInfo['downUrl'][0]),
+                                              tipWidget()
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -220,22 +221,22 @@ class _MovieDetailState extends State<MovieDetail> {
                         ],
                       ),
                     ),
-                    Positioned(
-                      top: Adapt.px(0),
-                      left: 0,
-                      width: Adapt.screenW(),
-                      height: Adapt.screenH() - Adapt.px(90.0),
-                      child: Offstage(
-                        offstage: showDropMenu,
-                        child: AnimatedOpacity(
-                          opacity: showDropMenu ? 0.0 : 1.0,
-                          duration: Duration(milliseconds: 300),
-                          child: DropMenu(),
-                        ),
+                  ),
+                  Positioned(
+                    top: Adapt.px(0),
+                    left: 0,
+                    width: Adapt.screenW(),
+                    height: Adapt.screenH() - Adapt.px(90.0),
+                    child: Offstage(
+                      offstage: showDropMenu,
+                      child: AnimatedOpacity(
+                        opacity: showDropMenu ? 0.0 : 1.0,
+                        duration: Duration(milliseconds: 300),
+                        child: DropMenu(),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );
