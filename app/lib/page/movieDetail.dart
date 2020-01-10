@@ -1,7 +1,9 @@
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:load/load.dart';
 import 'package:video_app/constant/netConfig.dart';
+import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/widgets/appBar.dart';
 import 'package:video_app/utils/adapt.dart';
@@ -23,6 +25,7 @@ class MovieDetail extends StatefulWidget {
 
 class _MovieDetailState extends State<MovieDetail> {
   ScrollController _controller = new ScrollController();
+  TapGestureRecognizer _tapGestureRecognizer = new TapGestureRecognizer();
   Map movieInfo = {};
   bool showToTopBtn = false;
 
@@ -35,6 +38,14 @@ class _MovieDetailState extends State<MovieDetail> {
     /// 监听滚动
     ///
   }
+
+  @override
+  void dispose() {
+      _tapGestureRecognizer.dispose();
+      super.dispose();
+  }
+
+
 
   Future<void> getMovieDetail() async{
     showLoadingDialog();
@@ -86,7 +97,7 @@ class _MovieDetailState extends State<MovieDetail> {
                       child: Column(
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.only(left: Adapt.px(16.0),top: Adapt.px(30.0),right: Adapt.px(16.0),bottom: Adapt.px(10.0),),
+                            padding: EdgeInsets.only(left: Adapt.px(16.0),top: Adapt.px(30.0),right: Adapt.px(16.0),bottom: Adapt.px(20.0),),
                             child: Container(
                               decoration: BoxDecoration(
                               border: Border.all(
@@ -126,7 +137,7 @@ class _MovieDetailState extends State<MovieDetail> {
                                     height: Adapt.onePx(),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(15.0),right: Adapt.px(10.0),bottom: Adapt.px(30.0)),
+                                    padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(15.0),right: Adapt.px(10.0),bottom: Adapt.px(20.0)),
                                     child: Column(
                                       children: <Widget>[
                                         Center(
@@ -191,6 +202,10 @@ class _MovieDetailState extends State<MovieDetail> {
                                                 sigleRowIntro(!(movieInfo['editor']!=null),'◎编 剧',movieInfo['editor']),
                                                 sigleRowIntro(!(movieInfo['actor']!=null),'◎主 演',movieInfo['actor']),
                                                 sigleRowIntro(!(movieInfo['label']!=null),'◎标 签',movieInfo['label']),
+                                                sigleRowIntro(!(movieInfo['shortIntro']!=null),'◎简 介',movieInfo['shortIntro']),
+                                                sigleRowIntro(!(movieInfo['getAward']!=null),'◎获 奖',movieInfo['getAward']),
+                                                downLoadWidget(movieInfo['downUrl'][0]),
+                                                tipWidget()
                                               ],
                                             ),
                                         ),
@@ -232,7 +247,7 @@ class _MovieDetailState extends State<MovieDetail> {
   }
 
   /// 每一行的介绍
-  Widget sigleRowIntro(offState,title,content) {
+  Widget sigleRowIntro(bool offState,String title,[ content]) {
     var direction = Axis.horizontal;
     List<Widget> items = [Text('$content')];
     switch(title) {
@@ -246,15 +261,47 @@ class _MovieDetailState extends State<MovieDetail> {
           ),
         ];
         break;
+      case '◎简 介':
+      case '◎获 奖':
+        var introList = movieInfo['shortIntro'];
+        introList = introList.map<Widget>((intro) {
+            return Wrap(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(bottom: Adapt.px(8.0)),
+                child: Text('           $intro'),
+              ),
+            ],
+        );
+        });
+        var totalList = <Widget>[];
+        totalList.add(
+          Container(
+            margin: EdgeInsets.only(bottom: Adapt.px(20.0),),
+            child: Text('$title:'),) ,
+          );
+        totalList.addAll(introList);
+        return Offstage(
+          offstage: offState,
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:totalList
+            ),
+          ),
+        );
+        break;
+      default:
+        break;
     }
     return Offstage(
       offstage: offState,
         child:   Stack(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(left: Adapt.px(200.0)),
+              margin: EdgeInsets.only(left: Adapt.px(200.0),bottom: Adapt.px(15.0)),
               constraints: BoxConstraints(
-                minHeight: Adapt.px(55.0),
+                minHeight: Adapt.px(36.0),
               ),
               child: Wrap(
                 direction: direction,
@@ -266,7 +313,7 @@ class _MovieDetailState extends State<MovieDetail> {
             ),
             Positioned(
               left: Adapt.px(0.0),
-              top: 0,
+              top: Adapt.px(0.0),
               child: Container(
                 width: Adapt.px(200.0),
                 height: Adapt.px(55.0),
@@ -275,6 +322,66 @@ class _MovieDetailState extends State<MovieDetail> {
             ),
           ],
         ),
+    );
+  }
+  
+  /// 下载UI
+  Widget downLoadWidget(downLoadUrl) {
+      return Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('下载地址:',style: TextStyle(color: CustomColors.redText),),
+            Container(
+              padding: EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(255, 255, 187, 1),
+                border: Border.all(
+                  color: Color.fromRGBO(255, 140, 0, 1),
+                  width: Adapt.onePx(),
+                ),
+              ),
+
+              child:   Wrap(
+                direction: Axis.horizontal,
+                children: <Widget>[
+                  Text('$downLoadUrl',softWrap: false,maxLines: 1,style: TextStyle(fontSize: Adapt.px(24.0),)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+  }
+
+  /// 温馨提示
+  Widget tipWidget() {
+    TextStyle _style = new TextStyle(color: CustomColors.redText);
+    return Container(
+      margin: EdgeInsets.only(top:Adapt.px(10.0),),
+      child: Wrap(
+        children: <Widget>[
+          DefaultTextStyle(
+              style: TextStyle(fontSize: Adapt.px(24.0),),
+              child: Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '温馨提示: 使用迅雷您可以边下边播，如遇迅雷下载出错可换用',
+                        style: TextStyle(color: Theme.of(context).primaryColor),
+                      ),
+                      TextSpan(
+                          text: '无限制版迅雷',
+                          style: _style,
+                          recognizer: _tapGestureRecognizer
+                            ..onTap = () {}
+                      ),
+                    ],
+                  )
+              ),
+          ),
+        ],
+      ),
     );
   }
 }
