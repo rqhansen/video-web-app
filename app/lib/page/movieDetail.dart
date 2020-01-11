@@ -1,6 +1,7 @@
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/gestures.dart';
 import 'package:load/load.dart';
 import 'package:video_app/constant/netConfig.dart';
 import 'package:video_app/constant/Colors.dart';
@@ -12,6 +13,7 @@ import 'package:video_app/redux/appState.dart';
 import 'package:video_app/widgets/dropMenu.dart';
 import 'package:video_app/widgets/footer.dart';
 import 'package:video_app/widgets/indicatorButton.dart';
+import 'package:video_app/widgets/baseWidgets/tapTextAnimateWidget.dart';
 
 class MovieDetail extends StatefulWidget {
   /// 电影的url
@@ -63,6 +65,7 @@ class _MovieDetailState extends State<MovieDetail> {
     });
   }
 
+  /// 监听页面滚动
   void handlePageScroll() {
     _controller.addListener((){
       if(_controller.offset < Adapt.px(800.0) && showToTopBtn == true) {
@@ -75,6 +78,16 @@ class _MovieDetailState extends State<MovieDetail> {
         });
       }
     });
+  }
+
+  /// 打开
+  void _openThunder(String thunderUrl) async{
+    var res = await canLaunch(thunderUrl);
+      if(res) { // 判断当前手机是否安装了app，能否正常跳转
+        await launch(thunderUrl);
+      } else{
+        throw 'Could not launch $thunderUrl';
+    }
   }
 
   @override
@@ -162,11 +175,26 @@ class _MovieDetailState extends State<MovieDetail> {
                                           child: Wrap(
                                             alignment: WrapAlignment.start,
                                             children: <Widget>[
-                                              Text('${movieInfo['pureName']}迅雷下载地址和剧情: '),
-                                              GestureDetector(
-                                                child: Text('点此分享本影片',style: TextStyle(color: Theme.of(context).primaryColor),),
-                                                onTap: () {},
-                                              ),
+                                                Text.rich(
+                                                  TextSpan(
+                                                    children: [
+                                                      TextSpan(text: '${movieInfo['pureName']}迅雷下载地址和剧情: '),
+                                                      TextSpan(
+                                                        text: '点此分享本影片',
+                                                        style: TextStyle(color: Theme.of(context).primaryColor),
+                                                        recognizer: TapGestureRecognizer()
+                                                            ..onTap = () {
+                                                              print(1);
+                                                            }
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+//                                              Text('${movieInfo['pureName']}迅雷下载地址和剧情: '),
+//                                              GestureDetector(
+//                                                child: Text('点此分享本影片',style: TextStyle(color: Theme.of(context).primaryColor),),
+//                                                onTap: () {},
+//                                              ),
                                             ],
                                           ),
                                         ),
@@ -335,6 +363,7 @@ class _MovieDetailState extends State<MovieDetail> {
             Text('下载地址:',style: TextStyle(color: CustomColors.redText),),
             Container(
               padding: EdgeInsets.all(5.0),
+              margin: EdgeInsets.symmetric(vertical: Adapt.px(10.0),),
               decoration: BoxDecoration(
                 color: Color.fromRGBO(255, 255, 187, 1),
                 border: Border.all(
@@ -346,7 +375,13 @@ class _MovieDetailState extends State<MovieDetail> {
               child:   Wrap(
                 direction: Axis.horizontal,
                 children: <Widget>[
-                  Text('$downLoadUrl',softWrap: false,maxLines: 1,style: TextStyle(fontSize: Adapt.px(24.0),)),
+                  TapTextAnimateWidget(
+                      textColor: Theme.of(context).primaryColor,
+                      child: Text('$downLoadUrl',softWrap: false,maxLines: 1,style: TextStyle(fontSize: Adapt.px(24.0),),),
+                      onTap: () {
+                      _openThunder(downLoadUrl);
+                    },
+                  ),
                 ],
               ),
             ),
@@ -359,7 +394,6 @@ class _MovieDetailState extends State<MovieDetail> {
   Widget tipWidget() {
     TextStyle _style = new TextStyle(color: CustomColors.redText);
     return Container(
-      margin: EdgeInsets.only(top:Adapt.px(10.0),),
       child: Wrap(
         children: <Widget>[
           DefaultTextStyle(

@@ -7,8 +7,10 @@ class TapTextAnimateWidget extends StatefulWidget {
   final Widget child;
   /// 点击回调函数
   final Function onTap;
+  /// 文本初始颜色
+  final Color textColor;
 
-  const TapTextAnimateWidget({Key key,this.child,this.onTap}) : super(key : key);
+  const TapTextAnimateWidget({Key key,this.child,this.onTap,this.textColor = Colors.white}) : super(key : key);
 
   @override
   _TapTextAnimateWidgetState createState() => _TapTextAnimateWidgetState();
@@ -23,7 +25,7 @@ class _TapTextAnimateWidgetState extends State<TapTextAnimateWidget> {
       child:  AnimatedDefaultTextStyle(
         duration: Duration(milliseconds: 300),
         child: widget.child,
-        style: isDown ? TextStyle(color: CustomColors.redText) : TextStyle(color: Colors.white,),
+        style: isDown ? TextStyle(color: CustomColors.redText) : TextStyle(color: widget.textColor,),
       ),
       onTap: widget.onTap,
       onTapDown: (d) => setState(() => this.isDown = true),
