@@ -38,7 +38,7 @@ class _MovieDetailState extends State<MovieDetail> {
     /// 获取电影详情
     getMovieDetail();
     /// 监听滚动
-    ///
+    handlePageScroll();
   }
 
   @override
@@ -68,11 +68,11 @@ class _MovieDetailState extends State<MovieDetail> {
   /// 监听页面滚动
   void handlePageScroll() {
     _controller.addListener((){
-      if(_controller.offset < Adapt.px(800.0) && showToTopBtn == true) {
+      if(_controller.offset < Adapt.px(2000.0) && showToTopBtn == true) {
         setState(() {
           showToTopBtn = false;
         });
-      } else if(_controller.offset >= Adapt.px(800.0) && showToTopBtn == false){
+      } else if(_controller.offset >= Adapt.px(2000.0) && showToTopBtn == false){
         setState(() {
           showToTopBtn = true;
         });
@@ -105,6 +105,7 @@ class _MovieDetailState extends State<MovieDetail> {
               child: Stack(
                 children: <Widget>[
                   SingleChildScrollView(
+                    controller: _controller,
                     child:  Container(
                       child: Column(
                         children: <Widget>[
@@ -183,9 +184,7 @@ class _MovieDetailState extends State<MovieDetail> {
                                                         text: '点此分享本影片',
                                                         style: TextStyle(color: Theme.of(context).primaryColor),
                                                         recognizer: TapGestureRecognizer()
-                                                            ..onTap = () {
-                                                              print(1);
-                                                            }
+                                                            ..onTap = () {}
                                                       ),
                                                     ],
                                                   ),

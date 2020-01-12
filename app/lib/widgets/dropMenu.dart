@@ -32,41 +32,58 @@ class _DropMenuState extends State<DropMenu> {
 
   /// 去搜索
   void handleSearch() {
-    var searchText = _movieNameController.text;
+    String inputValue = getInputValue();
+    if(inputValue.isEmpty) {
+      /// 提示不能为空
+      return;
+    }
+    loseFocus();
+    clearInputValue();
+    showHideDropMenu(true);
+    print(inputValue);
+  }
+
+  /// 获取输入框的值
+  String getInputValue() {
+    return _movieNameController.text;
+  }
+  ///  清空输入框的值
+  void clearInputValue() {
+    var searchText = getInputValue();
     if(searchText.isNotEmpty) {
       _movieNameController.clear();
     }
-    /// 手动失焦
-    loseFocus();
   }
 
-  /// 关闭下拉菜单时清空输入框的值
-  void handleCloseDropMenu(showDropMenu) {
+  /// 清空输入框的值
+  void handleCloseDropMenu(bool showDropMenu) {
     if(showDropMenu) { /// 关闭下拉框了
-      if(_movieNameController.text.isNotEmpty) {
-        _movieNameController.clear();
+      clearInputValue();
+    }
+  }
+
+    /// 输入框失焦
+    void loseFocus() {
+      if(focusNode.hasFocus) {
+          focusNode.unfocus();
       }
     }
-  }
 
-  // 手动失焦
-  void loseFocus() {
-    if(focusNode.hasFocus) {
-      FocusScope.of(context).requestFocus(FocusNode());
+    /// 显示隐藏下拉菜单
+    void showHideDropMenu(bool showDropMenu) {
+      StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(showDropMenu));
     }
-  }
-
-  /// 去其它页面通知关闭当前下拉菜单
-  void closeDropMenu(showDropMenu) {
-      StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(!showDropMenu));
-  }
 
   @override
   Widget build(BuildContext context) {
+    /// hint颜色
+    var _hintColor = Color.fromRGBO(102, 102, 102, 1);
     return StoreConnector<AppState,bool>(
         builder: (context,showDropMenu) {
             /// showDropMenu状态变化后，清空输入框的值
-            handleCloseDropMenu(showDropMenu);
+            if(showDropMenu) {
+              clearInputValue();
+            }
             return Stack(
               children: <Widget>[
                 Positioned(
@@ -104,7 +121,8 @@ class _DropMenuState extends State<DropMenu> {
                                   contentPadding: EdgeInsets.only(left: Adapt.px(20.0)),
                                   hintText: '输入电影名称搜索...',
                                   hintStyle: TextStyle(
-                                    color: Color.fromRGBO(102, 102, 102, 1),
+//                                    color: Color.fromRGBO(102, 102, 102, 1),
+                                      color: _hintColor,
                                   ),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide.none,
@@ -173,7 +191,7 @@ class _DropMenuState extends State<DropMenu> {
                                         child: Text('${hotMovie["movieName"]}', overflow: TextOverflow.ellipsis,),
                                       ),
                                       onTap: () {
-                                        closeDropMenu(showDropMenu);
+                                        showHideDropMenu(true);
                                         loseFocus();
                                         Navigator.pushNamed(context, 'movie_detail',arguments: hotMovie['url']);
                                       }
