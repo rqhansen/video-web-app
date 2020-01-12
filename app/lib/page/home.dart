@@ -5,14 +5,16 @@ import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
 import 'package:video_app/redux/appState.dart';
 import 'package:load/load.dart';
+import 'package:video_app/widgets/baseWidgets/tapAnimateWidget.dart';
 import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/widgets/appBar.dart';
 import 'package:video_app/widgets/titleBar.dart';
 import 'package:video_app/widgets/dropMenu.dart';
 import 'package:video_app/widgets/footer.dart';
-import 'package:video_app/widgets/poster.dart';
+//import 'package:video_app/widgets/poster.dart';
 import 'package:video_app/widgets/indicatorButton.dart';
+import 'package:video_app/constant/netConfig.dart';
 
 class Home extends StatefulWidget {
   
@@ -85,6 +87,11 @@ class _HomeState extends State<Home>{
     });
   }
 
+  /// 去电影详情
+  void goMovieDetail(BuildContext context,Map movie) {
+    Navigator.pushNamed(context,'movie_detail', arguments: "${movie['filmType']}/${movie['id']}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,34 +117,46 @@ class _HomeState extends State<Home>{
                                         var item = todayMovieList[index];
                                         var isNew = item['isNew'];
                                         var isOdd = (index % 2 == 0);
-                                        return  Container(
-                                          padding: isOdd ? EdgeInsets.only(left: Adapt.px(5.0)) : EdgeInsets.only(right: Adapt.px(5.0)),
-                                          child:     Column(
-//                                            mainAxisAlignment: MainAxisAlignment.center,
-//                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              Expanded(
-                                                flex: 1,
-//                                                child:  Poster( width: Adapt.px(352.0), height: Adapt.px(432.0), imgUrl: item['indexImgSrc'],),
-                                                child:  Poster( width: Adapt.screenW() * 0.46, height: Adapt.screenH() * 0.34, imgUrl: item['indexImgSrc'],),
+                                        return TapAnimateWidget(
+                                            child: Container(
+                                              padding: isOdd ? EdgeInsets.only(left: Adapt.px(5.0)) : EdgeInsets.only(right: Adapt.px(5.0)),
+                                              child: Column(
+                                                children: <Widget>[
+                                                  Expanded(
+                                                    flex: 1,
+//                                                  child:  Poster( width: Adapt.screenW() * 0.46, height: Adapt.screenH() * 0.34, imgUrl: item['indexImgSrc'],),
+                                                    child: Padding(
+                                                      padding: EdgeInsets.all(Adapt.px(2.0)),
+                                                      child: Image.network(
+                                                        "${NetConfig.baseUrl}/common/${item['indexImgSrc']}",
+                                                        width: Adapt.screenW() * 0.46,
+                                                        height: Adapt.screenH() * 0.34,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(4.0),right: Adapt.px(10.0),bottom: Adapt.px(6.0)),
+                                                    child: Text(
+                                                      '${item['fullName']}',
+                                                      overflow: TextOverflow.ellipsis,
+                                                      textAlign: TextAlign.center,
+                                                      style: TextStyle(fontWeight: FontWeight.w600,color: CustomColors.redText),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '${item['pubDate']}',
+                                                    style: TextStyle(
+                                                      color: isNew ? CustomColors.redText : Colors.black,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              Padding(
-                                                padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(4.0),right: Adapt.px(10.0),bottom: Adapt.px(6.0)),
-                                                child: Text(
-                                                  '${item['fullName']}',
-                                                  overflow: TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(fontWeight: FontWeight.w600,color: CustomColors.redText),
-                                                ),
-                                              ),
-                                              Text(
-                                                '${item['pubDate']}',
-                                                style: TextStyle(
-                                                  color: isNew ? CustomColors.redText : Colors.black,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+//                                          );
+                                            ),
+                                            onTap: () {
+                                              goMovieDetail(context,item);
+                                            },
                                         );
                                       },
                                       childCount: todayMovieList.length,
@@ -176,18 +195,4 @@ class _HomeState extends State<Home>{
       floatingActionButton: !showToTopBtn ? null : CustomFloatButton(controller: _controller,)
     );
   }
-
-  // 指示器
-//  Widget floatActionButton() {
-//    return SizedBox(
-//      width: Adapt.px(80.0),
-//      height: Adapt.px(80.0),
-//      child: FloatingActionButton(
-//        child: Icon(Icons.arrow_upward,size: Adapt.px(60.0),),
-//        onPressed: () {
-//          _controller.animateTo(.0,duration: Duration(milliseconds: 400,),curve:Curves.ease);
-//        },
-//      ),
-//    );
-//  }
 }

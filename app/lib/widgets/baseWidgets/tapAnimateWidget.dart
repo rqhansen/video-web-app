@@ -19,12 +19,13 @@ class _TapAnimateWidgetState extends State<TapAnimateWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 500),
+        duration: Duration(milliseconds: 600),
         decoration: BoxDecoration(
-          border: new Border.all(
-            width: Adapt.onePx(),
-            color: isDown ? CustomColors.redText : Colors.transparent,
-          ),
+          color: isDown ? Color.fromRGBO(245, 245, 245, .1) : Colors.transparent,
+//          border: new Border.all(
+//            width: Adapt.onePx(),
+//            color: isDown ? CustomColors.redText : Colors.transparent,
+//          ),
         ),
         child: widget.child,
       ),

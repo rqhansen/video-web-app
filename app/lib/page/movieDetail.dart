@@ -210,28 +210,28 @@ class _MovieDetailState extends State<MovieDetail> {
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: <Widget>[
-                                              sigleRowIntro(!(movieInfo['transName']!=null),'◎译 名',movieInfo['transName']),
-                                              sigleRowIntro(!(movieInfo['subPureName']!=null),'◎片 名',movieInfo['subPureName']),
-                                              sigleRowIntro(!(movieInfo['year']!=null),'◎年 代',movieInfo['year']),
-                                              sigleRowIntro(!(movieInfo['country']!=null),'◎产 地',movieInfo['country']),
-                                              sigleRowIntro(!(movieInfo['types']!=null),'◎类 别',movieInfo['types']),
-                                              sigleRowIntro(!(movieInfo['language']!=null),'◎语 言',movieInfo['language']),
-                                              sigleRowIntro(!(movieInfo['caption']!=null),'◎字 幕',movieInfo['caption']),
-                                              sigleRowIntro(!(movieInfo['onDate']!=null),'◎上映日期',movieInfo['onDate']),
-                                              sigleRowIntro(!(movieInfo['imdbScore']!=null),'◎IMDb评分',movieInfo['imdbScore']),
-                                              sigleRowIntro(!(movieInfo['imdbLink']!=null),'◎IMDb链接',movieInfo['imdbLink']),
-                                              sigleRowIntro(!(movieInfo['format']!=null),'◎格 式',movieInfo['format']),
-                                              sigleRowIntro(!(movieInfo['fileSize']!=null),'◎文件大小',movieInfo['fileSize']),
-                                              sigleRowIntro(!(movieInfo['videoSize']!=null),'◎视频尺寸',movieInfo['videoSize']),
-                                              sigleRowIntro(!(movieInfo['filmLength']!=null),'◎片 长',movieInfo['filmLength']),
-                                              sigleRowIntro(!(movieInfo['doubanScore']!=null),'◎豆瓣评分',movieInfo['doubanScore']),
-                                              sigleRowIntro(!(movieInfo['doubanLink']!=null),'◎豆瓣链接',movieInfo['doubanLink']),
-                                              sigleRowIntro(!(movieInfo['director']!=null),'◎导 演',movieInfo['director']),
-                                              sigleRowIntro(!(movieInfo['editor']!=null),'◎编 剧',movieInfo['editor']),
-                                              sigleRowIntro(!(movieInfo['actor']!=null),'◎主 演',movieInfo['actor']),
-                                              sigleRowIntro(!(movieInfo['label']!=null),'◎标 签',movieInfo['label']),
-                                              sigleRowIntro(!(movieInfo['shortIntro']!=null),'◎简 介',movieInfo['shortIntro']),
-                                              sigleRowIntro(!(movieInfo['getAward']!=null),'◎获 奖',movieInfo['getAward']),
+                                              sigleRowIntro(!(null!=movieInfo['transName']&&movieInfo['transName']!=' '&&movieInfo['transName']!=''),'◎译 名',movieInfo['transName']),
+                                              sigleRowIntro(!(null!=movieInfo['subPureName']&&movieInfo['subPureName']!=' '&&movieInfo['subPureName']!=''),'◎片 名',movieInfo['subPureName']),
+                                              sigleRowIntro(!(null!=movieInfo['year']&&movieInfo['year']!=' '&&movieInfo['year']!=''),'◎年 代',movieInfo['year']),
+                                              sigleRowIntro(!(null!=movieInfo['country']&&movieInfo['country']!=' '&&movieInfo['country']!=''),'◎产 地',movieInfo['country']),
+                                              sigleRowIntro(!(null!=movieInfo['types']&&movieInfo['types']!=' '&&movieInfo['types']!=''),'◎类 别',movieInfo['types']),
+                                              sigleRowIntro(!(null!=movieInfo['language']&&movieInfo['language']!=' '&&movieInfo['language']!=''),'◎语 言',movieInfo['language']),
+                                              sigleRowIntro(!(null!=movieInfo['caption']&&movieInfo['caption']!=' '&&movieInfo['caption']!=''),'◎字 幕',movieInfo['caption']),
+                                              sigleRowIntro(!(null!=movieInfo['onDate']&&movieInfo['onDate']!=' '&&movieInfo['onDate']!=''),'◎上映日期',movieInfo['onDate']),
+                                              sigleRowIntro(!(null!=movieInfo['imdbScore']&&movieInfo['imdbScore']!=' '&&movieInfo['imdbScore']!=''),'◎IMDb评分',movieInfo['imdbScore']),
+                                              sigleRowIntro(!(null!=movieInfo['imdbLink']&&movieInfo['imdbLink']!=' '&&movieInfo['imdbLink']!=''),'◎IMDb链接',movieInfo['imdbLink']),
+                                              sigleRowIntro(!(null!=movieInfo['format']&&movieInfo['format']!=' '&&movieInfo['format']!=''),'◎格 式',movieInfo['format']),
+                                              sigleRowIntro(!(null!=movieInfo['fileSize']&&movieInfo['fileSize']!=' '&&movieInfo['fileSize']!=''),'◎文件大小',movieInfo['fileSize']),
+                                              sigleRowIntro(!(null!=movieInfo['videoSize']&&movieInfo['videoSize']!=' '&&movieInfo['videoSize']!=''),'◎视频尺寸',movieInfo['videoSize']),
+                                              sigleRowIntro(!(null!=movieInfo['filmLength']&&movieInfo['filmLength']!=' '&&movieInfo['filmLength']!=''),'◎片 长',movieInfo['filmLength']),
+                                              sigleRowIntro(!(null!=movieInfo['doubanScore']&&movieInfo['doubanScore']!=' '&&movieInfo['doubanScore']!=''),'◎豆瓣评分',movieInfo['doubanScore']),
+                                              sigleRowIntro(!(null!=movieInfo['doubanLink']&&movieInfo['doubanLink']!=' '&&movieInfo['doubanLink']!=''),'◎豆瓣链接',movieInfo['doubanLink']),
+                                              sigleRowIntro(!(null!=movieInfo['director']&&movieInfo['director']!=' '&&movieInfo['director']!=''),'◎导 演',movieInfo['director']),
+                                              sigleRowIntro(!(null!=movieInfo['editor']&&movieInfo['editor']!=' '&&movieInfo['editor']!=''),'◎编 剧',movieInfo['editor']),
+                                              sigleRowIntro(!(null!=movieInfo['actor']&&movieInfo['actor']!=' '&&movieInfo['actor']!=''&&movieInfo['actor'].length!=0),'◎主 演',movieInfo['actor']),
+                                              sigleRowIntro(!(null!=movieInfo['label']&&movieInfo['label']!=' '&&movieInfo['label']!=''),'◎标 签',movieInfo['label']),
+                                              sigleRowIntro(!(null!=movieInfo['shortIntro']&&movieInfo['shortIntro']!=' '&&movieInfo['shortIntro']!=''&&movieInfo['shortIntro'].length!=0),'◎简 介',movieInfo['shortIntro']),
+                                              sigleRowIntro(!(null!=movieInfo['getAward']&&movieInfo['getAward']!=' '&&movieInfo['getAward']!=''&&movieInfo['getAward']!=0),'◎获 奖',movieInfo['getAward']),
                                               downLoadWidget(movieInfo['downUrl'][0]),
                                               tipWidget()
                                             ],
@@ -275,49 +275,53 @@ class _MovieDetailState extends State<MovieDetail> {
   }
 
   /// 每一行的介绍
-  Widget sigleRowIntro(bool offState,String title,[ content]) {
+  Widget sigleRowIntro( bool offState,String title,[ content]) {
     var direction = Axis.horizontal;
     List<Widget> items = [Text('$content')];
     switch(title) {
       case '◎主 演' :
-        direction = Axis.vertical;
-        var content2 = content.map<Widget>((item)=> Text('$item'));
-        items =<Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: content2.toList(),
-          ),
-        ];
+        if(!offState) {
+          direction = Axis.vertical;
+          var content2 = content.map<Widget>((item)=> Text('$item'));
+          items =<Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: content2.toList(),
+            ),
+          ];
+        }
         break;
       case '◎简 介':
       case '◎获 奖':
-        var introList = movieInfo['shortIntro'];
-        introList = introList.map<Widget>((intro) {
+        if(!offState) {
+          var introList = movieInfo['shortIntro'];
+          introList = introList.map<Widget>((intro) {
             return Wrap(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(bottom: Adapt.px(8.0)),
-                child: Text('           $intro'),
-              ),
-            ],
-        );
-        });
-        var totalList = <Widget>[];
-        totalList.add(
-          Container(
-            margin: EdgeInsets.only(bottom: Adapt.px(20.0),),
-            child: Text('$title:'),) ,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(bottom: Adapt.px(8.0)),
+                  child: Text('           $intro'),
+                ),
+              ],
+            );
+          });
+          var totalList = <Widget>[];
+          totalList.add(
+            Container(
+              margin: EdgeInsets.only(bottom: Adapt.px(20.0),),
+              child: Text('$title:'),),
           );
-        totalList.addAll(introList);
-        return Offstage(
-          offstage: offState,
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:totalList
+          totalList.addAll(introList);
+          return Offstage(
+            offstage: offState,
+            child: Container(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: totalList
+              ),
             ),
-          ),
-        );
+          );
+        }
         break;
       default:
         break;
