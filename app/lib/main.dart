@@ -6,7 +6,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:video_app/redux/appState.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
-import 'page/home.dart';
 import 'package:video_app/widgets/baseWidgets/loadingIndictor.dart';
 
 void main() {

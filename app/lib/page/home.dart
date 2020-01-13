@@ -12,7 +12,6 @@ import 'package:video_app/widgets/appBar.dart';
 import 'package:video_app/widgets/titleBar.dart';
 import 'package:video_app/widgets/dropMenu.dart';
 import 'package:video_app/widgets/footer.dart';
-//import 'package:video_app/widgets/poster.dart';
 import 'package:video_app/widgets/indicatorButton.dart';
 import 'package:video_app/constant/netConfig.dart';
 
@@ -92,6 +91,10 @@ class _HomeState extends State<Home>{
     Navigator.pushNamed(context,'movie_detail', arguments: "${movie['filmType']}/${movie['id']}");
   }
 
+  /// 去更多电影
+  void goMoreMovie(BuildContext context) {
+      Navigator.pushNamed(context, 'more_movie');
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +107,13 @@ class _HomeState extends State<Home>{
               children: <Widget>[
                 Container(
                     child: Column(children: <Widget>[
-                      TitleBar(headTitle: '今日热门电影推荐', actionTitle: '更多',),
+                      TitleBar(
+                        headTitle: '今日热门电影推荐',
+                        actionTitle: '更多',
+                        action:() {
+                          goMoreMovie(context);
+                        },
+                      ),
                       Expanded(
                           child: CustomScrollView(
                             controller: _controller,

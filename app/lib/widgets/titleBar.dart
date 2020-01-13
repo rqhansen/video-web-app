@@ -6,7 +6,8 @@ class TitleBar extends StatelessWidget {
   TitleBar({
     Key key,
     @required this.headTitle,
-    this.actionTitle = ''
+    this.actionTitle = '',
+    this.action,
   }) :  assert(headTitle != null),
         super(key : key);
 
@@ -14,6 +15,8 @@ class TitleBar extends StatelessWidget {
   final String headTitle;
   // 更多
   final String actionTitle;
+  // action
+  final Function action;
 
 
   @override
@@ -35,7 +38,7 @@ class TitleBar extends StatelessWidget {
             Material(
               child: Ink(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: action,
                     child: Text(actionTitle,style: TextStyle(
                         color: Theme.of(context).primaryColor,
                     ),),
