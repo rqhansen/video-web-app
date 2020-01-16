@@ -189,11 +189,6 @@ class _MovieDetailState extends State<MovieDetail> {
                                                     ],
                                                   ),
                                                 ),
-//                                              Text('${movieInfo['pureName']}迅雷下载地址和剧情: '),
-//                                              GestureDetector(
-//                                                child: Text('点此分享本影片',style: TextStyle(color: Theme.of(context).primaryColor),),
-//                                                onTap: () {},
-//                                              ),
                                             ],
                                           ),
                                         ),
@@ -294,7 +289,7 @@ class _MovieDetailState extends State<MovieDetail> {
       case '◎简 介':
       case '◎获 奖':
         if(!offState) {
-          var introList = movieInfo['shortIntro'];
+          var introList = title == '◎简 介' ? movieInfo['shortIntro'] : movieInfo['getAward'];
           introList = introList.map<Widget>((intro) {
             return Wrap(
               children: <Widget>[

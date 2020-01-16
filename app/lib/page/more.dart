@@ -105,7 +105,6 @@ class _MoreMovieState extends State<MoreMovie> {
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisSpacing: 10.0,crossAxisSpacing: 0.0,crossAxisCount: 2,childAspectRatio: 0.72,),
                                 delegate: new SliverChildBuilderDelegate((BuildContext context, int index) {
                                   var item = moreMovieList[index];
-                                  print(item);
                                   var isNew = item['isNew'];
                                   var isOdd = (index % 2 == 0);
                                   return TapAnimateWidget(

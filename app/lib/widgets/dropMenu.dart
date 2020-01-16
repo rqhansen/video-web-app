@@ -43,6 +43,24 @@ class _DropMenuState extends State<DropMenu> {
     print(inputValue);
   }
 
+  /// 去类型电影
+  void goTypeMovie(BuildContext context,String movieTypeMame) {
+    showHideDropMenu(true);
+    loseFocus();
+    if(movieTypeMame.isEmpty) {
+      Navigator.pushNamed(context, '/');
+      return;
+    }
+    Navigator.pushNamed(context, 'type_movie',arguments: movieTypeMame);
+  }
+
+  /// 去电影详情
+  void goMovieDetail(BuildContext context,String url) {
+    showHideDropMenu(true);
+    loseFocus();
+    Navigator.pushNamed(context, 'movie_detail',arguments: url);
+  }
+
   /// 获取输入框的值
   String getInputValue() {
     return _movieNameController.text;
@@ -170,8 +188,10 @@ class _DropMenuState extends State<DropMenu> {
                                   children: TypeMovies.movieList.map((item) {
 //                                    return Center(child: Text('$item'));
                                       return TapTextAnimateWidget(
-                                        child: Center(child: Text('$item',overflow: TextOverflow.ellipsis,),),
+                                        child: Center(child: Text('${item['title']}',overflow: TextOverflow.ellipsis,),),
                                         onTap: () {
+                                          var movieTypeName = item['value'];
+                                          goTypeMovie(context,movieTypeName);
                                         },
                                       );
                                   }).toList(),
@@ -191,9 +211,8 @@ class _DropMenuState extends State<DropMenu> {
                                         child: Text('${hotMovie["movieName"]}', overflow: TextOverflow.ellipsis,),
                                       ),
                                       onTap: () {
-                                        showHideDropMenu(true);
-                                        loseFocus();
-                                        Navigator.pushNamed(context, 'movie_detail',arguments: hotMovie['url']);
+                                          var url = hotMovie['url'];
+                                          goMovieDetail(context, url);
                                       }
                                     );
                                     }

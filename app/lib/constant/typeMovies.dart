@@ -1,17 +1,53 @@
 
 class TypeMovies {
   static final movieList = [
-    '首页',
-    '动作片',
-    '喜剧片',
-    '爱情片',
-    '科幻片',
-    '剧情片',
-    '悬疑片',
-    '战争片',
-    '惊悚片',
-    '恐怖片',
-    '灾难片',
-    '动画片'
+    {
+      'title': '首页',
+      'value': ''
+    },
+    {
+      'title': '动作片',
+      'value': 'action'
+    },
+    {
+      'title': '喜剧片',
+      'value': 'comedy'
+    },
+    {
+      'title': '爱情片',
+      'value': 'romantic'
+    },
+    {
+      'title': '科幻片',
+      'value': 'science'
+    },
+    {
+      'title': '剧情片',
+      'value': 'drama'
+    },
+    {
+      'title': '悬疑片',
+      'value': 'suspect'
+    },
+    {
+      'title': '战争片',
+      'value': 'war'
+    },
+    {
+      'title': '惊悚片',
+      'value': 'thrill'
+    },
+    {
+      'title': '恐怖片',
+      'value': 'horror'
+    },
+    {
+      'title': '灾难片',
+      'value': 'disaster'
+    },
+    {
+      'title': '动画片',
+      'value': 'cartoon'
+    },
   ];
 }

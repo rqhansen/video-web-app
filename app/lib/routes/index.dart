@@ -7,6 +7,6 @@ import 'package:video_app/page/movieDetail.dart';
 final routers = {
    '/': (context) => Home(),
    'movie_detail': (context) => MovieDetail(url: ModalRoute.of(context).settings.arguments),
-   'type_movie': (context) => TypeMovie(),
+   'type_movie': (context) => TypeMovie(movieTypeName: ModalRoute.of(context).settings.arguments),
    'more_movie': (context) => MoreMovie()
 };
