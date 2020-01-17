@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:video_app/utils/adapt.dart';
+import 'package:video_app/widgets/baseWidgets/tapTextAnimateWidget.dart';
 
 class Page extends StatefulWidget {
   /// 总页数
   final int total;
   /// 当前页数
   final int currPage;
+  /// 首页
+  Function goFirstPage;
+  /// 上一页
+  Function goPrevPage;
+  /// 下一页
+  Function goNextPage;
+  /// 末页
+  Function goEndPage;
 
-  Page({Key key,@required this.total,@required this.currPage}) : super(key : key);
+  Page({
+    Key key,
+    @required this.total,
+    @required this.currPage,
+    @required this.goFirstPage,
+    @required this.goPrevPage,
+    @required this.goNextPage,
+    @required this.goEndPage,
+  }) : super(key : key);
   _PageState createState() => _PageState();
 }
 
@@ -41,53 +58,55 @@ class _PageState extends State<Page> {
               child: DefaultTextStyle(
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
+                    fontSize: Adapt.px(26.0),
                   ),
                   child: Container(
                     child: Row(
                       children: <Widget>[
-                        GestureDetector(
-                          child: Text('首页'),
-                          onTap: () {
-
-                          },
+                        TapTextAnimateWidget(
+                          textColor: Theme.of(context).primaryColor,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: Adapt.px(10.0),),
+                            child: Text('首页'),
+                          ),
+                          onTap: widget.goFirstPage,
                         ),
                         Offstage(
                           offstage: showPrePage!=true,
-                          child: GestureDetector(
-                            child: Text('上一页'),
-                            onTap: () {},
+                          child: TapTextAnimateWidget(
+                            textColor: Theme.of(context).primaryColor,
+                            child: Container(
+                              margin: EdgeInsets.only(right: Adapt.px(10.0),),
+                              child: Text('上一页'),
+                            ),
+                            onTap: widget.goPrevPage,
                           ),
                         ),
                         Offstage(
                           offstage: showNextPage != true,
-                          child: Container(
-                            margin: EdgeInsets.symmetric(
-                              horizontal: Adapt.px(16.0),
-                            ),
-                            child: GestureDetector(
-                              child: Text('下一页'),
-                              onTap: () {},
-                            ),
-                          )
+                          child: TapTextAnimateWidget(
+                            textColor: Theme.of(context).primaryColor,
+                            child: Text('下一页'),
+                            onTap: widget.goNextPage,
+                          ),
                         ),
-                       GestureDetector(
-                         child: Text('末页'),
-                         onTap: () {},
-                       )
+                       TapTextAnimateWidget(
+                         textColor: Theme.of(context).primaryColor,
+                         child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: Adapt.px(10.0),),
+                            child: Text('末页'),
+                         ),
+                         onTap: widget.goEndPage,
+                       ),
                       ]
                     ),
                   ),
               ),
             ),
+            Text('共找到'),
             Padding(
-                padding: EdgeInsets.only(
-                  left: Adapt.px(10.0),
-                ),
-                child: Text('共找到'),
-            ),
-            Padding(
-                padding: EdgeInsets.symmetric(horizontal: Adapt.px(16.0),),
-                child: Text('19'),
+                padding: EdgeInsets.symmetric(horizontal: Adapt.px(10.0),),
+                child: Text('${widget.total}'),
             ),
             Text('条记录'),
           ],

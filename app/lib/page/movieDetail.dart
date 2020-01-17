@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:video_app/redux/appState.dart';
 import 'package:flutter/gestures.dart';
 import 'package:load/load.dart';
 import 'package:video_app/constant/netConfig.dart';
@@ -8,9 +10,8 @@ import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/widgets/appBar.dart';
 import 'package:video_app/utils/adapt.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:video_app/redux/appState.dart';
 import 'package:video_app/widgets/dropMenu.dart';
+import 'package:video_app/widgets/breadCrumbs.dart';
 import 'package:video_app/widgets/footer.dart';
 import 'package:video_app/widgets/indicatorButton.dart';
 import 'package:video_app/widgets/baseWidgets/tapTextAnimateWidget.dart';
@@ -122,29 +123,10 @@ class _MovieDetailState extends State<MovieDetail> {
                               child: Column(
                                 children: <Widget>[
                                   Container(
-                                    height: Adapt.px(60.0),
-                                    padding: EdgeInsets.symmetric(horizontal: Adapt.px(10.0)),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(247, 247, 247, 1),
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text('当前位置: '),
-                                        GestureDetector(
-                                          child: Text('万寻电影>',style: TextStyle(color: Theme.of(context).primaryColor),),
-                                          onTap: () {
-                                              Navigator.pushNamed(context, '/');
-                                          },
-                                        ),
-                                        Text('>'),
-                                        GestureDetector(
-                                          child: Text('${movieInfo['typeName']}',style: TextStyle(color: Theme.of(context).primaryColor),),
-                                        ),
-                                        Expanded(
-                                          child: Text('>>${movieInfo['pureName']}下载页面',overflow: TextOverflow.ellipsis,),
-                                        ),
-                                      ],
+                                    child: BreadCrumbs(
+                                        movieTypeName: '${movieInfo['typeName']}',
+                                        movieType: '${movieInfo['filmType']}',
+                                        titleName: '${movieInfo['pureName']}',
                                     ),
                                   ),
                                   Divider(

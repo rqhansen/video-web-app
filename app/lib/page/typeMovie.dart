@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:video_app/constant/netConfig.dart';
@@ -11,6 +10,7 @@ import 'package:video_app/widgets/baseWidgets/tapAnimateWidget.dart';
 import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/widgets/appBar.dart';
 import 'package:video_app/widgets/dropMenu.dart';
+import 'package:video_app/widgets/breadCrumbs.dart';
 import 'package:video_app/widgets/footer.dart';
 import 'package:video_app/widgets/indicatorButton.dart';
 import 'package:video_app/widgets/baseWidgets/page.dart';
@@ -25,9 +25,12 @@ class TypeMovie extends StatefulWidget {
 class _TypeMovieState extends State<TypeMovie> {
   List movieList = [];
   String movieType = '';
-  int totalPage = 0;
+  int total = 0;
+  int currPage = 0;
   ScrollController _controller = new ScrollController();
   bool showToTopBtn = false;
+
+  int get totalPage => (total / 14).ceil();
   
   @override
   void initState() {
@@ -61,15 +64,73 @@ class _TypeMovieState extends State<TypeMovie> {
       }
     });
   }
+
+  /// 去首页
+  void goFirstPage() async{
+    if(currPage == 1) return;
+    showLoadingDialog();
+    await getMovieList(1);
+    hideLoadingDialog();
+    scrollToTop();
+  }
+
+  /// 去上一页
+  void goPrevPage() async{
+      showLoadingDialog();
+      await getMovieList(--currPage);
+      hideLoadingDialog();
+      scrollToTop();
+  }
+
+  /// 去下一页
+  void goNextPage() async{
+    showLoadingDialog();
+    await getMovieList(++currPage);
+    hideLoadingDialog();
+    scrollToTop();
+  }
+  
+  /// 末页
+  void goEndPage() async{
+    if(currPage == totalPage) {
+      return;
+    }
+    showLoadingDialog();
+    await getMovieList(totalPage);
+    hideLoadingDialog();
+    scrollToTop();
+  }
+
+  /// 滚动到顶部
+  void scrollToTop() {
+    _controller.animateTo(.0,duration: Duration(milliseconds: 400,),curve:Curves.ease);
+  }
+
+  /// 去首页
+  void goTypeMovieHome() async{
+    if(currPage == 1) return;
+    showLoadingDialog();
+    await getMovieList(1);
+    hideLoadingDialog();
+    if(_controller.offset >0) {
+        scrollToTop();
+    }
+    setState(() {
+      currPage = 1;
+    });
+  }
+
+
   Future<void> getMovieList(int page) async{
       HttpUtil httpClient = HttpUtil.getInstance();
       var res = await httpClient.post('/api/typeMovie',data: {'page': page,'type': widget.movieTypeName});
       var data = res.data['data'];
       print(data['typeMovie'][0]['typeName']);
       setState(() {
-        totalPage = data['total'];
+        total = data['total'];
         movieList = data['typeMovie'];
         movieType = data['typeMovie'][0]['typeName'];
+        currPage = page;
       });
   }
 
@@ -92,42 +153,12 @@ class _TypeMovieState extends State<TypeMovie> {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          height: Adapt.px(60.0),
-                          padding: EdgeInsets.symmetric(horizontal: Adapt.px(10.0)),
                           margin: EdgeInsets.only(left: Adapt.px(16.0),top: Adapt.px(30.0),right: Adapt.px(16.0),),
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(247, 247, 247, 1),
-                            border: Border.all(
-                              color: Color.fromRGBO(191, 228, 255, 1),
-                              width: Adapt.onePx(),
-                              style: BorderStyle.solid,
-                            ),
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                                Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(text: '当前位置：'),
-                                        TextSpan(
-                                          text: '万寻资源网',
-                                          style: _style,
-                                          recognizer: new TapGestureRecognizer()
-                                            ..onTap = () {
-                                              Navigator.pushNamed(context, '/');
-                                            }
-                                        ),
-                                        TextSpan(text: '>'),
-                                        TextSpan(
-                                          text: movieType,
-                                          style: _style,
-//                                          recognizer:
-                                        ),
-                                        TextSpan(text: '>>迅雷下载页面'),
-                                      ]
-                                    )
-                                ),
-                            ],
+                          child: BreadCrumbs(
+                            movieTypeName: '$movieType',
+                            movieType: widget.movieTypeName,
+                            titleName: '迅雷',
+                            canClick: currPage != 1,
                           ),
                         ),
                         Expanded(
@@ -270,7 +301,22 @@ class _TypeMovieState extends State<TypeMovie> {
                                 ),
                               ),
                               SliverToBoxAdapter(
-                                child: Page(total: 16,currPage: 1,),
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                    left: Adapt.px(16.0),
+                                    top: Adapt.px(30.0),
+                                    right: Adapt.px(16.0),
+                                    bottom: Adapt.px(20.0),
+                                  ),
+                                  child: Page(
+                                    total: total,
+                                    currPage: currPage,
+                                    goFirstPage: goFirstPage ,
+                                    goPrevPage: goPrevPage,
+                                    goNextPage: goNextPage,
+                                    goEndPage: goEndPage,
+                                  ),
+                                ),
                               ),
                               SliverToBoxAdapter(
                                 child: Footer(),
