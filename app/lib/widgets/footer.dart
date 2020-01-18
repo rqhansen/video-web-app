@@ -7,6 +7,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: Adapt.px(195.0),
       padding: EdgeInsets.symmetric(horizontal: Adapt.px(24.0),vertical: Adapt.px(20.0)),
       decoration: BoxDecoration(
         border: Border(
@@ -18,7 +19,7 @@ class Footer extends StatelessWidget {
           DefaultTextStyle(
             style: TextStyle(
               color: CustomColors.tinyText,
-              fontSize: Adapt.px(24.0)
+              fontSize: Adapt.px(24.0),
             ),
             child: Text.rich(
               TextSpan(

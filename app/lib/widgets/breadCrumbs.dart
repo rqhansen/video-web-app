@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:video_app/utils/adapt.dart';
 import 'package:video_app/widgets/baseWidgets/tapTextAnimateWidget.dart';
 

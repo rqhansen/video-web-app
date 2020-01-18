@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
 import 'package:video_app/redux/appState.dart';
-import 'package:load/load.dart';
 import 'package:video_app/widgets/baseWidgets/tapAnimateWidget.dart';
 import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/constant/Colors.dart';
@@ -37,9 +37,7 @@ class _MoreMovieState extends State<MoreMovie> {
   }
 
   void initData() async{
-    showLoadingDialog();
     await getMoreMovie();
-    hideLoadingDialog();
   }
 
   // 下拉刷新函数
@@ -50,7 +48,7 @@ class _MoreMovieState extends State<MoreMovie> {
         FocusScope.of(context).requestFocus(FocusNode());
       }
     }
-    await getMoreMovie();
+    await getMoreMovie(cusOptions: Options(extra: {'loading':false}));
   }
 
   // 监听滚动位置
@@ -73,9 +71,10 @@ class _MoreMovieState extends State<MoreMovie> {
     Navigator.pushNamed(context,'movie_detail', arguments: "${movie['filmType']}/${movie['id']}");
   }
 
-  Future<void> getMoreMovie() async{
+  /// 获取电影详情数据
+  Future<void> getMoreMovie({Options cusOptions}) async{
     HttpUtil httpClient = HttpUtil.getInstance();
-    var res = await httpClient.get('/api/moreMovie');
+    var res = await httpClient.get('/api/moreMovie',options: cusOptions);
     setState(() {
       moreMovieList = res.data['data']['movies'];
     });

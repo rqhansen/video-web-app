@@ -32,9 +32,18 @@ class HttpUtil {
     // 添加拦截
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options) async{
+        var extra = options.extra;
+        /// loading不为false时显示loading
+        if(false!=extra['loading']) {
+          showLoadingDialog();
+        }
         return options;
       },
       onResponse: (Response response) async{
+        var extra = response.request.extra;
+        if(false!=extra['loading']) {
+          hideLoadingDialog();
+        }
         return response;
       },
       onError: (DioError e) async{

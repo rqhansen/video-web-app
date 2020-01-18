@@ -1,10 +1,10 @@
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:video_app/redux/appState.dart';
 import 'package:flutter/gestures.dart';
-import 'package:load/load.dart';
 import 'package:video_app/constant/netConfig.dart';
 import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/utils/request.dart';
@@ -48,18 +48,14 @@ class _MovieDetailState extends State<MovieDetail> {
       super.dispose();
   }
 
-
-
-  Future<void> getMovieDetail() async{
-    showLoadingDialog();
+  Future<void> getMovieDetail({Options cusOptions}) async{
     var splitMovieInfo = widget.url.split('/');
     var data = <String,String>{
       'movieType': splitMovieInfo[0],
       'id': splitMovieInfo[1]
     };
     HttpUtil httpClient = HttpUtil.getInstance();
-    var res = await httpClient.post('/api/getMovieDetail',data: data);
-    hideLoadingDialog();
+    var res = await httpClient.post('/api/getMovieDetail',data: data,options: cusOptions);
     var movieDetail = res.data['data']['movieDetail'];
     setState(() {
       movieInfo =  movieDetail;

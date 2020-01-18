@@ -15,7 +15,7 @@ class TypeMovies {
     },
     {
       'title': '爱情片',
-      'value': 'romantic'
+      'value': 'romance'
     },
     {
       'title': '科幻片',
@@ -27,7 +27,7 @@ class TypeMovies {
     },
     {
       'title': '悬疑片',
-      'value': 'suspect'
+      'value': 'suspense'
     },
     {
       'title': '战争片',

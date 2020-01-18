@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:video_app/utils/request.dart';
 import 'package:video_app/utils/adapt.dart';
 import 'package:video_app/redux/appState.dart';
-import 'package:load/load.dart';
 import 'package:video_app/widgets/baseWidgets/tapAnimateWidget.dart';
 import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/constant/Colors.dart';
@@ -45,20 +45,9 @@ class _HomeState extends State<Home>{
     super.dispose();
   }
 
-  // 获取首页数据
-  Future<void> getTodayMovies() async {
-    HttpUtil httpClient = HttpUtil.getInstance();
-    var res = await httpClient.get('/api/homeMovieList');
-    setState(() {
-      todayMovieList = res.data['data']['movies'];
-    });
-  }
-
   // 初始化数据
   void initData() async{
-    showLoadingDialog();
     await getTodayMovies();
-    hideLoadingDialog();
   }
   // 下拉刷新函数
   Future<void> _onRefresh(bool showDropMenu) async {
@@ -68,7 +57,7 @@ class _HomeState extends State<Home>{
         FocusScope.of(context).requestFocus(FocusNode());
       }
     }
-    await getTodayMovies();
+    await getTodayMovies(cusOptions: Options(extra: {'loading': false}));
   }
 
   // 监听滚动位置
@@ -95,6 +84,16 @@ class _HomeState extends State<Home>{
   void goMoreMovie(BuildContext context) {
       Navigator.pushNamed(context, 'more_movie');
   }
+
+  // 获取首页数据
+  Future<void> getTodayMovies({Options cusOptions}) async {
+    HttpUtil httpClient = HttpUtil.getInstance();
+    var res = await httpClient.get('/api/homeMovieList',options: cusOptions);
+    setState(() {
+      todayMovieList = res.data['data']['movies'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

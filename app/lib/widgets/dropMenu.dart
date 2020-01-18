@@ -40,7 +40,17 @@ class _DropMenuState extends State<DropMenu> {
     loseFocus();
     clearInputValue();
     showHideDropMenu(true);
-    print(inputValue);
+  }
+
+  // 点击软键盘的完成
+  void editComplete() {
+      String inputValue = getInputValue();
+      loseFocus();
+      if(inputValue.isEmpty) {
+        return;
+      }
+      clearInputValue();
+      showHideDropMenu(true);
   }
 
   /// 去类型电影
@@ -139,7 +149,6 @@ class _DropMenuState extends State<DropMenu> {
                                   contentPadding: EdgeInsets.only(left: Adapt.px(20.0)),
                                   hintText: '输入电影名称搜索...',
                                   hintStyle: TextStyle(
-//                                    color: Color.fromRGBO(102, 102, 102, 1),
                                       color: _hintColor,
                                   ),
                                   border: OutlineInputBorder(
@@ -152,7 +161,7 @@ class _DropMenuState extends State<DropMenu> {
                                 inputFormatters: [ /// 不准输入空格
                                   BlacklistingTextInputFormatter(RegExp('\\s')),
                                 ],
-                                onEditingComplete: handleSearch,
+                                onEditingComplete: editComplete,
                               ),
                             ),
                           ),
