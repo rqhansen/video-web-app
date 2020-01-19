@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:video_app/constant/Colors.dart';
 import 'package:video_app/redux/actions/dropMenu.dart';
 import 'package:video_app/constant/hotMovies.dart';
 import 'package:video_app/redux/appState.dart';
@@ -31,7 +32,7 @@ class _DropMenuState extends State<DropMenu> {
   }
 
   /// 去搜索
-  void handleSearch() {
+  void handleSearch(BuildContext context) {
     String inputValue = getInputValue();
     if(inputValue.isEmpty) {
       /// 提示不能为空
@@ -40,10 +41,11 @@ class _DropMenuState extends State<DropMenu> {
     loseFocus();
     clearInputValue();
     showHideDropMenu(true);
+    goSearch(context,inputValue);
   }
 
   // 点击软键盘的完成
-  void editComplete() {
+  void editComplete(BuildContext context) {
       String inputValue = getInputValue();
       loseFocus();
       if(inputValue.isEmpty) {
@@ -51,24 +53,33 @@ class _DropMenuState extends State<DropMenu> {
       }
       clearInputValue();
       showHideDropMenu(true);
+      goSearch(context, inputValue);
   }
 
-  /// 去类型电影
-  void goTypeMovie(BuildContext context,String movieTypeMame) {
+  /// 去搜索页面
+  void goSearch(BuildContext context,String movieName) {
+      Navigator.pushNamed(context, 'search',arguments: movieName);
+  }
+
+  /// 跳转页面
+  void goPage(BuildContext context,String routeName,String arguments,bool isCurrent) {
     showHideDropMenu(true);
     loseFocus();
-    if(movieTypeMame.isEmpty) {
-      Navigator.pushNamed(context, '/');
-      return;
+    if(isCurrent) return;
+    switch(routeName) {
+      case 'type_movie':
+        if(arguments==null) {
+          Navigator.pushNamed(context, '/');
+          return;
+        }
+        Navigator.pushNamed(context, 'type_movie',arguments: arguments);
+        break;
+      case 'movie_detail':
+        Navigator.pushNamed(context, 'movie_detail',arguments: arguments);
+        break;
+      case 'week_movie':
+        Navigator.pushNamed(context, routeName);
     }
-    Navigator.pushNamed(context, 'type_movie',arguments: movieTypeMame);
-  }
-
-  /// 去电影详情
-  void goMovieDetail(BuildContext context,String url) {
-    showHideDropMenu(true);
-    loseFocus();
-    Navigator.pushNamed(context, 'movie_detail',arguments: url);
   }
 
   /// 获取输入框的值
@@ -90,22 +101,25 @@ class _DropMenuState extends State<DropMenu> {
     }
   }
 
-    /// 输入框失焦
-    void loseFocus() {
-      if(focusNode.hasFocus) {
-          focusNode.unfocus();
-      }
+  /// 输入框失焦
+  void loseFocus() {
+    if(focusNode.hasFocus) {
+        focusNode.unfocus();
     }
+  }
 
-    /// 显示隐藏下拉菜单
-    void showHideDropMenu(bool showDropMenu) {
-      StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(showDropMenu));
-    }
+  /// 显示隐藏下拉菜单
+  void showHideDropMenu(bool showDropMenu) {
+    StoreProvider.of<AppState>(context).dispatch(new SwitchShowDropMenuAction(showDropMenu));
+  }
 
   @override
   Widget build(BuildContext context) {
     /// hint颜色
     var _hintColor = Color.fromRGBO(102, 102, 102, 1);
+    var settings = ModalRoute.of(context).settings;
+    var routeName = settings.name;
+    var arguments = settings.arguments;
     return StoreConnector<AppState,bool>(
         builder: (context,showDropMenu) {
             /// showDropMenu状态变化后，清空输入框的值
@@ -161,7 +175,9 @@ class _DropMenuState extends State<DropMenu> {
                                 inputFormatters: [ /// 不准输入空格
                                   BlacklistingTextInputFormatter(RegExp('\\s')),
                                 ],
-                                onEditingComplete: editComplete,
+                                onEditingComplete: () {
+                                  editComplete(context);
+                                },
                               ),
                             ),
                           ),
@@ -173,7 +189,9 @@ class _DropMenuState extends State<DropMenu> {
                                 textColor: Colors.white,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
                                 child: Text('影视搜索',style: TextStyle(fontSize: Adapt.px(32.0)),),
-                                onPressed: handleSearch,
+                                onPressed: () {
+                                  handleSearch(context);
+                                }
                             ),
                           ),
                         ],
@@ -195,12 +213,21 @@ class _DropMenuState extends State<DropMenu> {
                                   childAspectRatio: 2.4,
                                   crossAxisSpacing:0,
                                   children: TypeMovies.movieList.map((item) {
-//                                    return Center(child: Text('$item'));
+                                      var title = item['title'];
+                                      var movieTypeName = item['value'];
+                                      var isCurrent = ((routeName == '/'|| routeName == 'type_movie') && arguments == movieTypeName);
                                       return TapTextAnimateWidget(
-                                        child: Center(child: Text('${item['title']}',overflow: TextOverflow.ellipsis,),),
+                                        child: Center(
+                                          child: Text(
+                                            '$title',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              color: isCurrent ? CustomColors.redText : Colors.white,
+                                            ),
+                                          ),
+                                        ),
                                         onTap: () {
-                                          var movieTypeName = item['value'];
-                                          goTypeMovie(context,movieTypeName);
+                                          goPage(context,'type_movie',movieTypeName,isCurrent);
                                         },
                                       );
                                   }).toList(),
@@ -215,13 +242,19 @@ class _DropMenuState extends State<DropMenu> {
                                   childAspectRatio: 2.5,
                                   crossAxisSpacing: 0,
                                   children: HotMovies.hotMovies.map((hotMovie) {
+                                    var url = hotMovie['url'];
+                                    var movieName = hotMovie["movieName"];
+                                    var isCurrent = (routeName == 'movie_detail' && arguments == url);
                                     return TapTextAnimateWidget(
                                       child: Center(
-                                        child: Text('${hotMovie["movieName"]}', overflow: TextOverflow.ellipsis,),
+                                        child: Text(
+                                          '$movieName',
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(color: isCurrent ? CustomColors.redText : Colors.white,),
+                                        ),
                                       ),
                                       onTap: () {
-                                          var url = hotMovie['url'];
-                                          goMovieDetail(context, url);
+                                        goPage(context,'movie_detail',url,isCurrent);
                                       }
                                     );
                                     }
@@ -238,12 +271,18 @@ class _DropMenuState extends State<DropMenu> {
                                   childAspectRatio:5,
                                   crossAxisSpacing: 0,
                                   children: RecentMovies.recentMovies.map((recentMovie) {
+                                      var title = recentMovie["title"];
+                                      var movieRouteName = recentMovie["routeName"];
+                                      var isCurrent = routeName == movieRouteName;
                                       return TapTextAnimateWidget(
                                         child: Center(
-                                          child: Text('$recentMovie',
+                                          child: Text('$title',
+                                            style: TextStyle(color: isCurrent ? CustomColors.redText:Colors.white),
                                             overflow: TextOverflow.visible,),
                                         ),
-                                        onTap: () {},
+                                        onTap: () {
+                                          goPage(context,movieRouteName,movieRouteName,isCurrent);
+                                        },
                                       );
                                     }).toList(),
                                 ),

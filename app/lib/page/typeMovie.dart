@@ -46,8 +46,7 @@ class _TypeMovieState extends State<TypeMovie> {
 
   /// 去电影详情
   void goMovieDetail(BuildContext context,Map item) {
-    Navigator.pushNamed(
-        context, 'movie_detail', arguments: '${item['type']}/${item["id"]}');
+    Navigator.pushNamed(context, 'movie_detail', arguments: '${item['type']}/${item["id"]}');
   }
 
   /// 去首页
@@ -71,9 +70,7 @@ class _TypeMovieState extends State<TypeMovie> {
   
   /// 末页
   void goEndPage() async{
-    if(currPage == totalPage) {
-      return;
-    }
+    if(currPage == totalPage) return;
     await getMovieList(totalPage);
     scrollToTop();
   }
@@ -134,6 +131,8 @@ class _TypeMovieState extends State<TypeMovie> {
 
   @override
   Widget build(BuildContext context) {
+    Color _redText = CustomColors.redText;
+    TextStyle _style = TextStyle(color: Theme.of(context).primaryColor,);
     return Scaffold(
       appBar: CustomAppBar(barHeight: Adapt.px(90.0),),
       body: new StoreConnector<AppState,bool>(
@@ -153,135 +152,97 @@ class _TypeMovieState extends State<TypeMovie> {
                           children: <Widget>[
                             Container(
                               margin: EdgeInsets.only(left: Adapt.px(16.0),top: Adapt.px(30.0),right: Adapt.px(16.0),),
-                              child: BreadCrumbs(
-                                movieTypeName: '$movieType',
-                                movieType: widget.movieTypeName,
-                                titleName: '迅雷',
-                                canClick: currPage != 1,
-                              ),
+                              child: BreadCrumbs(movieTypeName: '$movieType', movieType: widget.movieTypeName, titleName: '迅雷', canClick: currPage != 1,),
                             ),
                             Expanded(
                               child: CustomScrollView(
                                 controller: _controller,
                                 slivers: <Widget>[
                                   SliverPadding(
-                                    padding: EdgeInsets.only(
-                                      left: Adapt.px(16.0),
-                                      top: Adapt.px(30.0),
-                                      right: Adapt.px(16.0),
-                                    ),
+                                    padding: EdgeInsets.only(left: Adapt.px(16.0), top: Adapt.px(30.0), right: Adapt.px(16.0),),
                                     sliver:  SliverFixedExtentList(
                                       itemExtent: Adapt.px(348.0),
-                                      delegate: new SliverChildBuilderDelegate(
-                                            (BuildContext context,int index) {
+                                      delegate: new SliverChildBuilderDelegate((BuildContext context,int index) {
                                           return TapAnimateWidget(
                                             child: Container(
                                                 margin: EdgeInsets.only(bottom: Adapt.px(30.0)),
                                                 child: Row(
                                                   children: <Widget>[
-                                                    Container(
-                                                      margin: EdgeInsets.only(right: Adapt.px(30.0)),
-                                                      child: Image.network(
-                                                        '${NetConfig.baseUrl}/common/${movieList[index]['indexImgSrc']}',
-                                                        width: Adapt.px(272.0),
-                                                        height: Adapt.px(348.0),
-                                                        fit: BoxFit.fill,
-                                                      ),
-                                                    ),
+                                                    imageWidget(movieList[index]['indexImgSrc']),
                                                     Expanded(
                                                       flex: 1,
                                                       child: Container(
                                                         child: Column(
                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: <Widget>[
-                                                            Padding(
-                                                              padding: EdgeInsets.only(bottom: Adapt.px(15.0)),
-                                                              child: DefaultTextStyle(
+                                                            DefaultTextStyle(
                                                                 style: TextStyle(
                                                                   fontSize: Adapt.px(32.0),
                                                                 ),
-                                                                child: Text.rich(TextSpan(children: [
-                                                                  TextSpan(
-                                                                    text: '${movieList[index]['pureName']}',
-                                                                    style: TextStyle(
-                                                                      color: CustomColors.redText,
+                                                                child: Text.rich(
+                                                                    TextSpan(
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text: '${movieList[index]['pureName']}',
+                                                                          style: TextStyle(color: _redText,),
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text: '${movieList[index]['sharpness']}',
+                                                                          style: _style,
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                  ),
-                                                                  TextSpan(
-                                                                    text: '${movieList[index]['sharpness']}',
-                                                                    style: TextStyle(
-                                                                      color: Theme.of(context).primaryColor,
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                                ),
                                                                   overflow: TextOverflow.ellipsis,
                                                                 ),
                                                               ),
-                                                            ),
                                                             Container(
-                                                              child: Row(
+                                                              margin: EdgeInsets.only(top: Adapt.px(15.0),bottom: Adapt.px(10.0),),
+                                                              child: Column(
                                                                 children: <Widget>[
-                                                                  Text('@年 代  '),
-                                                                  Text('${movieList[index]['year']}'),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Row(
-                                                                children: <Widget>[
-                                                                  Text('@主 演  '),
-                                                                  Expanded(
-                                                                    child: Text('${movieList[index]['actor'][0]}',overflow: TextOverflow.ellipsis,),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Row(
-                                                                children: <Widget>[
-                                                                  Expanded(
-                                                                    child: Text(
-                                                                      "@简 介  ${movieList[index]['shortIntro']}",
-                                                                      maxLines: 3,
-                                                                      overflow: TextOverflow.ellipsis,
+                                                                  Container(
+                                                                    child: Row(
+                                                                      children: <Widget>[
+                                                                        Text('@年 代  '),
+                                                                        Text('${movieList[index]['year']}'),
+                                                                      ],
                                                                     ),
                                                                   ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                                margin: EdgeInsets.only(top: Adapt.px(10.0)),
-                                                                child: Row(
-                                                                  children: <Widget>[
-                                                                    DefaultTextStyle(
-                                                                      style: TextStyle(
-                                                                        color: Theme.of(context).primaryColor,
-                                                                      ),
-                                                                      child: Expanded(
-                                                                        child: Text.rich(
-                                                                          TextSpan(
-                                                                              children: [
-                                                                                TextSpan(
-                                                                                  text: '更新时间 : ',
-                                                                                ),
-                                                                                TextSpan(
-                                                                                  text: '${movieList[index]['pubDate']}',
-                                                                                  style: TextStyle(
-                                                                                    color: CustomColors.redText,
-                                                                                  ),
-                                                                                ),
-                                                                                TextSpan(
-                                                                                    text: '  点击下载'
-                                                                                ),
-                                                                              ]
+                                                                  Container(
+                                                                    child: Row(
+                                                                      children: <Widget>[
+                                                                        Text('@主 演  '),
+                                                                        Expanded(child: Text('${movieList[index]['actor'][0]}',overflow: TextOverflow.ellipsis,),),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Container(
+                                                                    child: Row(
+                                                                      children: <Widget>[
+                                                                        Expanded(
+                                                                          child: Text(
+                                                                            "@简 介  ${movieList[index]['shortIntro']}",
+                                                                            maxLines: 3,
+                                                                            overflow: TextOverflow.ellipsis,
                                                                           ),
-                                                                          overflow: TextOverflow.ellipsis,
                                                                         ),
-                                                                      ),
+                                                                      ],
                                                                     ),
-                                                                  ],
-                                                                )
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            DefaultTextStyle(
+                                                              style: _style,
+                                                              child: Text.rich(
+                                                                TextSpan(
+                                                                  children: [
+                                                                    TextSpan(text: '更新时间 : ',),
+                                                                    TextSpan(text: '${movieList[index]['pubDate']}',style: TextStyle(color: _redText,),),
+                                                                    TextSpan(text: '  点击下载',)
+                                                                  ]
+                                                                ),
+                                                                overflow: TextOverflow.ellipsis,
+                                                              ),
                                                             ),
                                                           ],
                                                         ),
@@ -301,20 +262,8 @@ class _TypeMovieState extends State<TypeMovie> {
                                   ),
                                   SliverToBoxAdapter(
                                     child: Container(
-                                      margin: EdgeInsets.only(
-                                        left: Adapt.px(16.0),
-                                        top: Adapt.px(30.0),
-                                        right: Adapt.px(16.0),
-                                        bottom: Adapt.px(20.0),
-                                      ),
-                                      child: Page(
-                                        total: total,
-                                        currPage: currPage,
-                                        goFirstPage: goFirstPage ,
-                                        goPrevPage: goPrevPage,
-                                        goNextPage: goNextPage,
-                                        goEndPage: goEndPage,
-                                      ),
+                                      margin: EdgeInsets.only(left: Adapt.px(16.0), top: Adapt.px(30.0), right: Adapt.px(16.0), bottom: Adapt.px(20.0),),
+                                      child: Page(total: total, currPage: currPage, goFirstPage: goFirstPage , goPrevPage: goPrevPage, goNextPage: goNextPage, goEndPage: goEndPage,),
                                     ),
                                   ),
                                   SliverToBoxAdapter(
@@ -350,6 +299,19 @@ class _TypeMovieState extends State<TypeMovie> {
         converter: (store) => store.state.showDropMenu,
       ),
       floatingActionButton: !showToTopBtn ? null : CustomFloatButton(controller: _controller,),
+    );
+  }
+
+  // 图片部分
+  Widget imageWidget(String url) {
+    return Container(
+      margin: EdgeInsets.only(right: Adapt.px(30.0)),
+      child: Image.network(
+        '${NetConfig.baseUrl}/common/$url',
+        width: Adapt.px(272.0),
+        height: Adapt.px(348.0),
+        fit: BoxFit.fill,
+      ),
     );
   }
 }

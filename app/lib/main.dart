@@ -55,6 +55,7 @@ class IndexPage extends StatelessWidget {
               title: "Rq's app of downLoading film",
               initialRoute: '/',
               theme: ThemeData(
+                brightness: Brightness.light,
                 primaryColor: Color.fromRGBO(16, 100, 146, 1),
                 backgroundColor: Colors.white,
                 fontFamily: 'Georgia',
@@ -63,7 +64,6 @@ class IndexPage extends StatelessWidget {
               routes: routers,
               /// 去掉debuger
               debugShowCheckedModeBanner: false,
-//              home: Home(),
             );
         }),
       ),

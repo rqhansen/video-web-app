@@ -34,7 +34,6 @@ class _MovieDetailState extends State<MovieDetail> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     /// 获取电影详情
     getMovieDetail();
@@ -99,6 +98,9 @@ class _MovieDetailState extends State<MovieDetail> {
           return Offstage(
             offstage: !(movieInfo['fullName'] != null),
             child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
               child: Stack(
                 children: <Widget>[
                   SingleChildScrollView(

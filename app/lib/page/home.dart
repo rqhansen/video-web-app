@@ -105,14 +105,9 @@ class _HomeState extends State<Home>{
             child: Stack(
               children: <Widget>[
                 Container(
+                    decoration: BoxDecoration(color: Colors.white,),
                     child: Column(children: <Widget>[
-                      TitleBar(
-                        headTitle: '今日热门电影推荐',
-                        actionTitle: '更多',
-                        action:() {
-                          goMoreMovie(context);
-                        },
-                      ),
+                      titleBar(context),
                       Expanded(
                           child: CustomScrollView(
                             controller: _controller,
@@ -132,7 +127,6 @@ class _HomeState extends State<Home>{
                                                 children: <Widget>[
                                                   Expanded(
                                                     flex: 1,
-//                                                  child:  Poster( width: Adapt.screenW() * 0.46, height: Adapt.screenH() * 0.34, imgUrl: item['indexImgSrc'],),
                                                     child: Padding(
                                                       padding: EdgeInsets.all(Adapt.px(2.0)),
                                                       child: Image.network(
@@ -143,8 +137,8 @@ class _HomeState extends State<Home>{
                                                       ),
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(4.0),right: Adapt.px(10.0),bottom: Adapt.px(6.0)),
+                                                  Container(
+                                                    margin: EdgeInsets.symmetric(vertical: Adapt.px(6.0),),
                                                     child: Text(
                                                       '${item['fullName']}',
                                                       overflow: TextOverflow.ellipsis,
@@ -201,6 +195,17 @@ class _HomeState extends State<Home>{
         converter: (store) => store.state.showDropMenu,
       ),
       floatingActionButton: !showToTopBtn ? null : CustomFloatButton(controller: _controller,)
+    );
+  }
+
+  /// titleBar
+  Widget titleBar(BuildContext context) {
+    return TitleBar(
+      headTitle: '今日热门电影推荐',
+      actionTitle: '更多',
+      action:() {
+        goMoreMovie(context);
+      },
     );
   }
 }

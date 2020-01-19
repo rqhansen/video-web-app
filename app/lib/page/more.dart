@@ -92,6 +92,9 @@ class _MoreMovieState extends State<MoreMovie> {
               child: Stack(
                 children: <Widget>[
                   Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
                     child: Column(children: <Widget>[
                       TitleBar(headTitle: '今日热门电影推荐'),
                       Expanded(
@@ -123,8 +126,8 @@ class _MoreMovieState extends State<MoreMovie> {
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding: EdgeInsets.only(left: Adapt.px(10.0),top: Adapt.px(4.0),right: Adapt.px(10.0),bottom: Adapt.px(6.0)),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(vertical: Adapt.px(6.0),),
                                             child: Text(
                                               '${item['fullName']}',
                                               overflow: TextOverflow.ellipsis,

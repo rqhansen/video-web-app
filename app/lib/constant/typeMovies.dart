@@ -3,7 +3,6 @@ class TypeMovies {
   static final movieList = [
     {
       'title': '首页',
-      'value': ''
     },
     {
       'title': '动作片',

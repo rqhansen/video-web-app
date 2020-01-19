@@ -1,6 +1,9 @@
 
 class RecentMovies {
   static final recentMovies = [
-    '近一周最新电影',
+    {
+      'title': '近一周最新电影',
+      'routeName': 'week_movie'
+    }
   ];
 }
