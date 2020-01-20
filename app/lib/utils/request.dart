@@ -78,6 +78,20 @@ class HttpUtil {
       }
       return response;
   }
+  
+  /// 下载
+  download(urlPath,savePath) async{
+      Response response;
+      try {
+        response = await dio.download(urlPath, savePath,onReceiveProgress: (int count,int total) {
+          print('$count$total');
+        }) ;
+      } on DioError catch (e) {
+        print(e);
+        formatError(e);
+    }
+    return response;
+  }
 
   // 处理error
   void formatError(DioError e) {

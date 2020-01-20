@@ -21,7 +21,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List movieList = [];
+  dynamic movieList = '';
   int total = 0;
   int currPage = 0;
   bool showToTopBtn = false;
@@ -106,12 +106,13 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     Color _redText = CustomColors.redText;
     TextStyle _style = TextStyle(color: Theme.of(context).primaryColor,);
+    bool showContent = movieList is List;
     return Scaffold(
       appBar: CustomAppBar(barHeight: Adapt.px(90.0),),
       body: new StoreConnector<AppState,bool>(
         builder: (context,showDropMenu) {
           return Offstage(
-              offstage: movieList.length == 0,
+              offstage: !showContent,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,

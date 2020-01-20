@@ -387,7 +387,9 @@ class _MovieDetailState extends State<MovieDetail> {
                           text: '无限制版迅雷',
                           style: _style,
                           recognizer: _tapGestureRecognizer
-                            ..onTap = () {}
+                            ..onTap = () {
+                              Navigator.pushNamed(context, 'down_load_thunder');
+                            }
                       ),
                     ],
                   )

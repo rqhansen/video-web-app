@@ -6,8 +6,16 @@ import 'package:video_app/constant/Colors.dart';
 class TapAnimateWidget extends StatefulWidget {
   final Widget child;
   final Function onTap;
+  final Color initColor;
+  final Color tapDownColor;
 
-  const TapAnimateWidget({Key key,this.child,this.onTap}) : super(key : key);
+  const TapAnimateWidget({
+    Key key,
+    this.child,
+    this.initColor = Colors.transparent,
+    this.tapDownColor = const Color.fromRGBO(245, 245, 245, .1),
+    this.onTap
+  }) : super(key : key);
 
   @override
   _TapAnimateWidgetState createState() => _TapAnimateWidgetState();
@@ -21,7 +29,7 @@ class _TapAnimateWidgetState extends State<TapAnimateWidget> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 600),
         decoration: BoxDecoration(
-          color: isDown ? Color.fromRGBO(245, 245, 245, .1) : Colors.transparent,
+          color: isDown ? widget.tapDownColor : widget.initColor,
 //          border: new Border.all(
 //            width: Adapt.onePx(),
 //            color: isDown ? CustomColors.redText : Colors.transparent,
