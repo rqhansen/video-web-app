@@ -3,6 +3,7 @@
     <!-- 头部 -->
     <Header/>
     <!-- $route.fullPath-->
+    <!-- ceshi -->
     <transition name="fade-move">
       <keep-alive>
         <router-view class="main min-width" :key="$route.fullPath"/>
