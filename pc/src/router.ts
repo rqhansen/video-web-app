@@ -92,22 +92,22 @@ const router = new Router({
   ]
 })
 
-// 返回时上一个页面滚动到指定位置
+// 即将进到一个新的页面时保存上一个页面的滚动位置,在上一个页面的生命周期函数activated中取值
 router.beforeEach((to,from,next) => {
   // @ts-ignore
   const routeName = from.name;
   const toRouteName = to.name;
   if(routeName) {
     const routeNames = ['movieDetail','search','notFind','downLoad','downLoadLesson'];
-    if(routeNames.indexOf(routeName) == -1) {
-      if(toRouteName === 'classifyMovie' && routeName === 'classifyMovie') {
+    if(routeNames.indexOf(routeName) == -1) { // 需要保存滚动位置的路由
+      if(toRouteName === 'classifyMovie' && routeName === 'classifyMovie') { // 相同路由跳转
         from.meta.scrollTop = 0;
       } else {
         // @ts-ignore
         const scrollTop = document.getElementById('app').scrollTop;
         from.meta.scrollTop = scrollTop;
       }
-    } else {
+    } else { // 不需要保存滚动位置的路由
       from.meta.scrollTop = 0;
     }
   }
