@@ -31,7 +31,7 @@ import NavBg from '@/components/NavBg.vue';
 import Crumbs from '@/components/Crumbs.vue';
 import detail from './components/detail.vue';
 import { setTitle, setMeta } from '@/utils/setMeta';
-
+import { ScrollTopModule } from '@/store/modules/scrollTop';
 @Component({
     name: 'movieDetail',
     components: {
@@ -74,7 +74,7 @@ export default class extends Vue{
         return this.mDetail.typeName;
     }
     created() {
-        this.getMovieDetail()
+        this.getMovieDetail();
     }
 
     private async getMovieDetail () {

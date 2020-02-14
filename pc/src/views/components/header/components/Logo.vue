@@ -1,7 +1,7 @@
 <template>
     <div class="logo">
         <h1>
-            <div class="img-wp" :class="{'not-allowed': isHomePage}" @click="goHome">
+            <div class="img-wp" @click="goHome">
                 <img src="/common/images/logo.jpg" :title="$t('header.title')">
             </div>
         </h1>
@@ -16,16 +16,10 @@
     })
 
     export default class extends Vue {
-        
-        get isHomePage() {
-            const {name} = this.$route;
-            return name === 'home';
-        }
 
-        //去首页
+        //点击logo
         private goHome() {
-            if(this.isHomePage) return;
-            this.$router.push('/');
+            window.open('/','_blank');
         }
     }
 </script>
@@ -43,9 +37,6 @@
                 width:100%;
                 height: 100%;
                 cursor: pointer;
-                &.not-allowed {
-                    cursor: initial;
-                }
             }
         }
         img {

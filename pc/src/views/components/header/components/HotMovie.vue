@@ -31,25 +31,25 @@
 
         private getMovieList() {
             this.movies = [
-                {
-                    title: '古田军号',
-                    url:'/drama/6229'
+               {
+                    title: '囧妈',
+                    url:'/comedy/3906'
                 },
                 {
-                    title: '我和我的祖国',
-                    url:'/drama/6221'
+                    title: '叶问4：完结篇',
+                    url:'/action/4689'
                 },
                 {
-                    title: '宝莱坞双雄之战',
-                    url:'/action/4677'
+                    title: '只有芸知道',
+                    url:'/romance/2004'
                 },
                 {
-                    title: '法外之徒',
-                    url:'/action/4678'
+                    title: '肥龙过江',
+                    url:'/comedy/3908'
                 },
                 {
-                    title: '狱中龙',
-                    url:'/action/4645'
+                    title: '决战中途岛',
+                    url: '/war/401'
                 }
             ]
         }

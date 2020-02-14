@@ -63,8 +63,12 @@ export default new Router({
       component: NotFind
     }
   ],
-  scrollBehavior () {
+  scrollBehavior (to,from,savedPosition) {
     //期望滚动到哪个位置
-    return { x: 0, y: 0 }
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
   }
 })

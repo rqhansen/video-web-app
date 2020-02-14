@@ -41,8 +41,10 @@
         <!-- logo、搜索结束 -->
         <!-- 导航菜单 -->
         <div class="movie-nav-wp">
-            <div class="section">
-                <movie-nav/>
+            <div class="nav-box" :class="{'sticky': isSticky}">
+                <div class="section">
+                    <movie-nav/>
+                </div>
             </div>
         </div>
     </div>
@@ -57,6 +59,7 @@
     import Search from './components/Search.vue';
     import MovieNav from './components/MovieNav.vue';
     import FastNav from './components/FastNav.vue';
+    import { ScrollTopModule } from '@/store/modules/scrollTop';
     
     @Component({
         name:'Header',
@@ -72,7 +75,10 @@
     })
 
     export default class extends Vue {
-
+            //判断吸顶
+        get isSticky() {
+            return ScrollTopModule.scrollTop >= 138;
+        }
         private goDownLoad() {
             this.$router.push('/downLoadThunder')
         }
@@ -80,6 +86,14 @@
 </script> 
 
 <style lang="scss" scoped>
+    @keyframes sticky-animation {
+        from  {
+            top: -50px;
+        }
+        to {
+            top: 0;
+        }
+    }
     .header {
         .header-top-wp {
             box-shadow: 0 1px 10px 0 #d9d9d9;
@@ -116,7 +130,7 @@
             }
             .logo-wp {
                 float: left;
-                width: 220px;
+                width: 200px;
                 height: 66px;
                 margin-top: 21px;
                 overflow: hidden;
@@ -141,6 +155,17 @@
         }
         .movie-nav-wp {
             @include bg_color($font-theme1-color);
+            .nav-box {
+                &.sticky {
+                    position: fixed;
+                    top: 0;
+                    width: 100%;
+                    @include bg_color($font-theme1-color);
+                    box-shadow: 0 1px 10px 0 #d9d9d9;
+                    animation: sticky-animation .5s ease-in-out;
+                    z-index: 2;
+                }
+            }
         }
     }
 
