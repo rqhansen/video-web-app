@@ -91,6 +91,8 @@ export default class extends Vue{
             page: page,
             type: this.movieType
         })
+        // @ts-ignore
+        document.getElementById('app').scrollTop = 0;
     }
 
     //获取当前页数据

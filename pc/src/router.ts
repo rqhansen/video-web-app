@@ -13,7 +13,7 @@ const NotFind = () => import(/* webpackChunkName: "notFind" */ './views/notFind/
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -62,13 +62,19 @@ export default new Router({
       name: 'notFind',
       component: NotFind
     }
-  ],
-  scrollBehavior (to,from,savedPosition) {
-    //期望滚动到哪个位置
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
-  }
+  ]
 })
+
+// 使滚动到顶部
+router.beforeEach((to,from,next) => {
+  // @ts-ignore
+  const app = document.getElementById('app');
+  // @ts-ignore
+  if(app.scrollTop) {
+    // @ts-ignore
+    app.scrollTop = 0;
+  }
+  next();
+})
+
+export default router;

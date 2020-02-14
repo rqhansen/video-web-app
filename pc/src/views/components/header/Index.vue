@@ -161,7 +161,7 @@
                     top: 0;
                     width: 100%;
                     @include bg_color($font-theme1-color);
-                    box-shadow: 0 1px 10px 0 #d9d9d9;
+                    box-shadow: 0 1px 1px 0 #d9d9d9;
                     animation: sticky-animation .5s ease-in-out;
                     z-index: 2;
                 }
