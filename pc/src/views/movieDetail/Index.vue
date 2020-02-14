@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
 import { Route } from 'vue-router';
 import {copyText} from '@/utils/copyText';
 import {getMovieDetail} from '@/apis/movieDetail';
@@ -32,6 +33,7 @@ import Crumbs from '@/components/Crumbs.vue';
 import detail from './components/detail.vue';
 import { setTitle, setMeta } from '@/utils/setMeta';
 import { ScrollTopModule } from '@/store/modules/scrollTop';
+import scrollBackMixin from '@/mixins/scrollBack.ts';
 @Component({
     name: 'movieDetail',
     components: {
@@ -41,7 +43,7 @@ import { ScrollTopModule } from '@/store/modules/scrollTop';
     }
 })
 
-export default class extends Vue{
+export default class extends mixins (scrollBackMixin){
     private mDetail = {filmType: '',typeName: '',pureName: ''};
     private movieType = '';
     private movieId = '';

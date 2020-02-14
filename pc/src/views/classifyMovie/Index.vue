@@ -22,6 +22,7 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
 import {Route} from 'vue-router';
 import { setTitle, setMeta } from '@/utils/setMeta';
 import {getTypeMovie} from '@/apis/typeMovie';
@@ -30,6 +31,8 @@ import Crumbs from '@/components/Crumbs.vue';
 import PageList from '@/components/PageList.vue';
 import Pagination from '@/components/Page.vue';
 import NavBg from '@/components/NavBg.vue';
+import scrollBackMixin from '@/mixins/scrollBack';
+
 @Component({
     name: 'classifyMovie',
     components: {
@@ -39,7 +42,7 @@ import NavBg from '@/components/NavBg.vue';
         Pagination
     }
 })
-export default class extends Vue{
+export default class extends mixins (scrollBackMixin){
     private movie = '';
     private typeZhName = '';
     private totalPage = 0;

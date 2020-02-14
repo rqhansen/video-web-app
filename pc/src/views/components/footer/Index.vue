@@ -3,7 +3,7 @@
         <div class="section">
             <p>
                 <span>Copyright © 2019</span>
-                <router-link to="/" target="_self" class="transition">{{$t('footer.webName')}}</router-link>
+                <router-link @click.native="goIndex" to="/" target="_self" class="transition">{{$t('footer.webName')}}</router-link>
                 <span>Powered by wx520.net</span>
             </p>
             <p>{{$t('footer.explain')}}</p>
@@ -17,7 +17,11 @@
         name: 'Footer',
     })
 
-    export default class extends Vue {}
+    export default class extends Vue {
+        private goIndex() {
+            window.open('/','_blank');
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

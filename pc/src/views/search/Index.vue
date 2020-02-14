@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import {Component,Watch,Vue} from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
 import {Route} from 'vue-router';
 import {SearchModule} from '@/store/modules/search';
 import {search} from '@/apis/search';
@@ -24,6 +25,7 @@ import NavBg from '@/components/NavBg.vue';
 import PageList from '@/components/PageList.vue';
 import Pagination from '@/components/Page.vue';
 import { setTitle, setMeta } from '@/utils/setMeta';
+import scrollBackMixin from '@/mixins/scrollBack';
 
 @Component({
     name: 'search',
@@ -33,7 +35,7 @@ import { setTitle, setMeta } from '@/utils/setMeta';
         Pagination
     }
 })
-export default class extends Vue {
+export default class extends mixins(scrollBackMixin) {
     private movies = [];
     private movieName = '';
     private total = 0;

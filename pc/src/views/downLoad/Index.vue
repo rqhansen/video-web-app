@@ -13,6 +13,7 @@ import {mixins} from 'vue-class-component';
 import Title from './components/Title.vue';
 import DownLoadList from './components/DownList.vue';
 import setTitleAndMetaMixin from '@/mixins/setTitle';
+import scrollBackMixin from "@/mixins/scrollBack";
 @Component({
     name: 'downLoad',
     components: {
@@ -20,7 +21,7 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
         DownLoadList
     }
 })
-export default class extends mixins (setTitleAndMetaMixin) {}
+export default class extends mixins (setTitleAndMetaMixin,scrollBackMixin) {}
 </script>
 
 <style lang="scss" scoped>

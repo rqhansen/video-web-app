@@ -14,6 +14,7 @@ import { getMoreMovie } from '@/apis/moreMovie';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
 import setTitleAndMetaMixin from '@/mixins/setTitle';
+import scrollBackMixin from '@/mixins/scrollBack';
 
 @Component({
     name: 'moreMovie',
@@ -23,7 +24,7 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
     }
 })
 
-export default class extends mixins (setTitleAndMetaMixin) {
+export default class extends mixins (setTitleAndMetaMixin,scrollBackMixin) {
     private moreMovieFun = getMoreMovie;
 }
 </script>

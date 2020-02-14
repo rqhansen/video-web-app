@@ -17,6 +17,7 @@ import {getIndexMovies} from '@/apis/home';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
 import setTitleAndMetaMixin from '@/mixins/setTitle';
+import scrollBackMixin from '@/mixins/scrollBack';
 
 @Component({
   name: 'home',
@@ -25,9 +26,8 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
     MovieList
   },
 })
-export default class extends mixins (setTitleAndMetaMixin) {
+export default class extends mixins (setTitleAndMetaMixin,scrollBackMixin) {
     private indexMoviesFun = getIndexMovies;
-  
 }
 </script>
 

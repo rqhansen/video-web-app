@@ -8,6 +8,18 @@
 </div>
 </template>
 
+<script lang='ts'>
+import { Component,Vue } from 'vue-property-decorator';
+import { mixins } from 'vue-class-component';
+import scrollBackMixin from '@/mixins/scrollBack';
+
+@Component({
+    name: 'notFind'
+})
+
+export default class extends mixins(scrollBackMixin) {}
+</script>
+
 <style lang="scss" scoped>
 .not-find {
     .section {

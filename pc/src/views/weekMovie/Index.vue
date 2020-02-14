@@ -18,6 +18,7 @@ import { getWeekMovies } from '@/apis/weekMovie';
 import TitleBar from '@/components/TitleBar.vue';
 import MovieList from '@/components/MovieList.vue';
 import setTitleAndMetaMixin from '@/mixins/setTitle';
+import scrollBackMixin from '@/mixins/scrollBack';
 
 @Component({
     name: 'weekMovie',
@@ -27,7 +28,7 @@ import setTitleAndMetaMixin from '@/mixins/setTitle';
     }
 })
 
-export default class extends mixins (setTitleAndMetaMixin) {
+export default class extends mixins (setTitleAndMetaMixin,scrollBackMixin) {
     private movies = [];
 
     async created() {
