@@ -3,11 +3,8 @@ import VueI18n from 'vue-i18n'
 import {getLanguage} from '@/utils/localStorages';
 
 // element-ui 内置的语言包
-// @ts-ignore
 import ElementLocale from 'element-ui/lib/locale'
-// @ts-ignore
 import elementEnLocale from 'element-ui/lib/locale/lang/en'
-// @ts-ignore
 import elementZhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
 // 项目本地定义的语言
@@ -33,8 +30,7 @@ export const getLocale = () => {
         return localLanuage;
     }
     let language = '';
-    // @ts-ignore
-    language = navigator.language || navigator.systemLanguage;
+    language = navigator.language;
     const locales = Object.keys(messages);
     for (const locale of locales) {
         if (language.indexOf(locale) > -1) {

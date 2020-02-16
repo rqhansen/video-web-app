@@ -10,17 +10,15 @@ export default class extends Vue {
 
     @Watch('$i18n.locale')
     private setTitleAndMeta() {
-        // @ts-ignore
-        if(!this.allRouteNames.includes(this.$route.name)) {
+        if(!this.allRouteNames.includes(<string>this.$route.name)) {
             return;
         }
         this.resetTitleAndMeta();
     }
 
-     // @ts-ignore
-     beforeRouteEnter (to,from,next) {
-        // @ts-ignore
-        next(vm => {
+
+     private beforeRouteEnter (to: any, form: any, next: (param: Function) => void) {
+        next((vm:any) => {
           vm.resetTitleAndMeta();
         });
       }

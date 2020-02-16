@@ -49,23 +49,6 @@ export default class extends mixins (scrollBackMixin){
     private movieType = '';
     private currPage = 1;
 
-    // @Watch('$route')
-    // private handleRouteChange(to: Route,from: Route) {
-    //     const { path: fromPath } = from;
-    //     const { path: toPath, params: toParams, name: toName } = to;
-    //     if(toName === 'classifyMovie' ) { //跳到分类电影才开始请求
-    //         if(this.movieType === toParams.id) {
-    //             this.setTitleAndMeta();
-    //             return;
-    //         }
-    //         const {id} = toParams;
-    //         this.getCurMovie({
-    //             page: 1,
-    //             type: id
-    //         });
-    //     }
-    // }
-
     @Watch('$i18n.locale') 
     private resetTitleAndMeta() {
         if(this.$route.name === 'classifyMovie') {
@@ -94,8 +77,8 @@ export default class extends mixins (scrollBackMixin){
             page: page,
             type: this.movieType
         })
-        // @ts-ignore
-        document.getElementById('app').scrollTop = 0;
+        const app = <HTMLElement>document.getElementById('app');
+        app.scrollTop = 0;
     }
 
     //获取当前页数据

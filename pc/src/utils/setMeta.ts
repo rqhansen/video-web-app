@@ -7,7 +7,7 @@ function getHttpEquiv() {
     return document.getElementById('httpEquiv');
 }
 
-function hasMeta(id:string) {
+function getMeta(id:string) {
     return document.getElementById(id);
 }
 
@@ -25,7 +25,7 @@ export const setTitle = (content: string) => {
 
 export const setMeta = ( name:string,id:string,content:string ) => {
     const head = getHead();
-    const meta = hasMeta(id);
+    const meta = getMeta(id);
     if(meta) {
         // @ts-ignore
         meta.content = content;

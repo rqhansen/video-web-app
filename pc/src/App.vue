@@ -31,7 +31,7 @@
   })
 
   export default class extends Vue {
-    private container = '';
+    private container = document.body;
     private throttledScrollHandler: () => void = () => () => {};
 
     created() {
@@ -41,19 +41,16 @@
     mounted() {
       this.init();
       this.throttledScrollHandler = throttle(this.onScroll,100);
-      // @ts-ignore
       this.container.addEventListener('scroll',this.throttledScrollHandler,false);
     }
 
     private onScroll() {
-      // @ts-ignore
       let scrollTop = this.container.scrollTop;
       ScrollTopModule.changeScrollTop(scrollTop);
     }
 
     private init() {
-      // @ts-ignore
-      this.container = document.getElementById('app');
+      this.container = <HTMLElement>document.getElementById('app');
     }
 
     //获取当前主题

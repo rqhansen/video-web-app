@@ -34,8 +34,7 @@ export default class extends Vue {
     private handleScrollTop() {
         const flag = this.isCanLoadImg();
         if(flag) {
-            const img = this.$refs['img'];
-            // @ts-ignore
+            const img = <HTMLImageElement>this.$refs['img'];
             if(!img.hasAttribute('data-src')) return;
             this.loadImg();
         }
@@ -43,8 +42,8 @@ export default class extends Vue {
 
     //第一次进来加载图片
     private firstLoadImg() {
-        // @ts-ignore
-        if(!this.$refs['img'].hasAttribute('data-src')) return;
+        const img = <HTMLImageElement>this.$refs['img'];
+        if(!img.hasAttribute('data-src')) return;
         const flag = this.isCanLoadImg();
         if(flag) {
             this.loadImg();
@@ -52,18 +51,15 @@ export default class extends Vue {
     }
 
     private isCanLoadImg() {
-        // @ts-ignore
         const clientHeight = getClientHeight();
-        // @ts-ignore
-        const scrollTop = this.$refs['posterWp'].getBoundingClientRect().top;
+        const posterWp = <Element>this.$refs['posterWp'];
+        const scrollTop = posterWp.getBoundingClientRect().top;
         return scrollTop <= clientHeight;
     }
 
     private loadImg() {
-        const img = this.$refs['img'];
-        // @ts-ignore
-        img.src = img.getAttribute('data-src');
-        // @ts-ignore
+        const img = <HTMLImageElement>this.$refs['img'];
+        img.src = <string>img.getAttribute('data-src');
         img.removeAttribute('data-src');
     }
 }

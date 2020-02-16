@@ -6,9 +6,3 @@ export const getHotMovie = (params: any) => {
         url: '/hotMovie'
     })
 }
-
-//搜索
-
-// export const search = () => {
-
-// }

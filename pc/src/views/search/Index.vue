@@ -41,11 +41,6 @@ export default class extends mixins(scrollBackMixin) {
     private total = 0;
     private currPage = 1;
 
-    // @Watch('$route')
-    // private handleOnRouteChange(nRoute: Route) {
-    //     this.onSearch(nRoute);
-    // }
-
     @Watch('$i18n.locale')
     private setTitleAndMeta() {
         if(this.$route.name === 'search') {
@@ -54,7 +49,7 @@ export default class extends mixins(scrollBackMixin) {
     }
 
     // @ts-ignore
-    beforeRouteEnter(to,from,next) {
+    beforeRouteEnter(to:Route,from:Route,next) {
         // @ts-ignore
         next(vm => {
             vm.resetTitleAndMeta();
