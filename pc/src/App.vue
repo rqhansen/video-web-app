@@ -1,17 +1,22 @@
 <template>
   <div id="app" class="app">
-    <!-- 头部 -->
-    <Header/>
-    <!-- $route.fullPath-->
-    <transition name="fade-move">
-      <keep-alive>
-        <router-view class="main min-width" :key="$route.fullPath"/>
-      </keep-alive>
-    </transition>
-    <!-- 尾部 -->
-    <Footer/>
-    <!-- 回顶部 -->
-    <el-backtop target=".app" :visibilityHeight="400" :bottom="100" :right="80"></el-backtop>
+    <template v-if="$route.name!='adminLogin'">
+      <!-- 头部 -->
+      <Header/>
+      <!-- $route.fullPath-->
+      <transition name="fade-move">
+        <keep-alive>
+          <router-view class="main min-width" :key="$route.fullPath"/>
+        </keep-alive>
+      </transition>
+      <!-- 尾部 -->
+      <Footer/>
+      <!-- 回顶部 -->
+      <el-backtop target=".app" :visibilityHeight="400" :bottom="100" :right="80"></el-backtop>
+    </template>
+    <template v-else>
+      <router-view/>
+    </template>
   </div>
 </template>
 
@@ -21,7 +26,7 @@
   import Footer from '@components/footer/Index.vue';
   import {throttle} from '@/utils/throttle';
   import {ScrollTopModule} from '@/store/modules/scrollTop';
-  
+
   @Component({
       name: 'App',
       components: {

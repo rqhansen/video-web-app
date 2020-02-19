@@ -10,6 +10,8 @@ const Search = () => import(/*webpackChunkName: "search" */ './views/search/Inde
 const DownLoad = () => import(/*webpackChunkName: "downLoad" */ './views/downLoad/Index.vue');
 const DownLoadLesson = () => import(/*webpackChunkName: "downLoadLesson" */ './views/downLoadLesson/Index.vue');
 const NotFind = () => import(/* webpackChunkName: "notFind" */ './views/notFind/Index.vue');
+// 后台登录界面
+const adminLogin = () => import(/*webpackChunkName: "adminLogin"*/ './views/admin/login/Index.vue');
 
 Vue.use(Router)
 
@@ -82,6 +84,11 @@ const router = new Router({
       meta: {
         scrollTop: 0
       }
+    },
+    { //后台部分
+      path: '/admin-login',
+      name: 'adminLogin',
+      component: adminLogin
     },
     {
       path: '*',
