@@ -1,16 +1,16 @@
-export const movieTypes = [ //电影类型
-    { '1': 'action' },
-    { '2': 'comedy' },
-    { '3': 'romance' },
-    { '4': 'science' },
-    { '5': 'drama' },
-    { '6': 'suspense' },
-    { '7': 'war' },
-    { '8': 'thrill' },
-    { '9': 'horror' },
-    { '10': 'disaster' },
-    { '11': 'cartoon' }
-];
+// export const movieTypes = [ //电影类型
+//     { '1': 'action' },
+//     { '2': 'comedy' },
+//     { '3': 'romance' },
+//     { '4': 'science' },
+//     { '5': 'drama' },
+//     { '6': 'suspense' },
+//     { '7': 'war' },
+//     { '8': 'thrill' },
+//     { '9': 'horror' },
+//     { '10': 'disaster' },
+//     { '11': 'cartoon' }
+// ];
 
 export const typeEnName = [
     { '动作片': 'action' },

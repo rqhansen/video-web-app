@@ -39,6 +39,7 @@
 
 <style lang="scss" scoped>
 .page-wp {
+    height: 52px;
     padding: 10px 0;
     text-align: center;
     .el-pagination {

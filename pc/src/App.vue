@@ -50,7 +50,7 @@
     }
 
     private init() {
-      this.container = <HTMLElement>document.getElementById('app');
+      this.container = document.getElementById('app') as HTMLElement;
     }
 
     //获取当前主题
@@ -85,7 +85,7 @@
     opacity: 0;
   }
   .main {
-    min-height: 725px;
+    min-height: calc(100vh - 243px);
   }
   .min-width {
     min-width: 768px;

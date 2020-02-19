@@ -159,11 +159,12 @@
                 &.sticky {
                     position: fixed;
                     top: 0;
-                    width: 100%;
+                    width: calc(100% - 16px);
+                    min-width: 767px;
                     @include bg_color($font-theme1-color);
                     box-shadow: 0 1px 1px 0 #d9d9d9;
                     animation: sticky-animation .5s ease-in-out;
-                    z-index: 2;
+                    z-index: 999;
                 }
             }
         }

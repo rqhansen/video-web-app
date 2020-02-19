@@ -1,12 +1,10 @@
 <template>
     <div class="search-wp min-width">
-        <div class="section search">
+        <div class="section search main">
             <nav-bg>
                 <div class="search-title"><span>{{movieName}}</span><span v-if="$i18n.locale === 'en'">&nbsp;</span>{{$t('search.searchResult')}}</div>
             </nav-bg>
-            <page-list 
-            class="search-page-list"
-                :movie="movies"/>
+            <page-list :movie="movies"/>
             <pagination 
                 :totalPage="total"
                 :currentPage="currPage"
@@ -118,13 +116,11 @@ export default class extends mixins(scrollBackMixin) {
 .search-wp {
     .search {
         padding: 25px 0;
+        overflow: hidden;
         .search-title {
             span {
                 color: $font-red-color;
             }
-        }
-        .search-page-list {
-            min-height: 564px;
         }
     }
 }

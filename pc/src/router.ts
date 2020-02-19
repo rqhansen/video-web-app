@@ -13,6 +13,8 @@ const NotFind = () => import(/* webpackChunkName: "notFind" */ './views/notFind/
 
 Vue.use(Router)
 
+const allTypeMovieId = 'action|comedy|romance|science|drama|suspense|war|thrill|horror|disaster|cartoon';
+
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -42,7 +44,7 @@ const router = new Router({
       }
     },
     {
-      path: '/movie/:id',
+      path: `/movie/:id(${allTypeMovieId})`,
       name: 'classifyMovie',
       component: ClassifyMovie,
       meta: {
@@ -50,7 +52,7 @@ const router = new Router({
       }
     },
     {
-      path: '/:movie_type/:id',
+      path: '/:movie_type/:id(\\d+)',
       name: 'movieDetail',
       component: MovieDetail,
       meta: {
@@ -94,17 +96,15 @@ const router = new Router({
 
 // 即将进到一个新的页面时保存上一个页面的滚动位置,在上一个页面的生命周期函数activated中取值
 router.beforeEach((to,from,next) => {
-  // @ts-ignore
   const routeName = from.name;
   const toRouteName = to.name;
   if(routeName) {
     const routeNames = ['movieDetail','search','notFind','downLoad','downLoadLesson'];
-    if(routeNames.indexOf(routeName) == -1) { // 需要保存滚动位置的路由
+    if(!routeNames.includes(routeName)) { // 需要保存滚动位置的路由
       if(toRouteName === 'classifyMovie' && routeName === 'classifyMovie') { // 相同路由跳转
         from.meta.scrollTop = 0;
       } else {
-        // @ts-ignore
-        const scrollTop = document.getElementById('app').scrollTop;
+        const scrollTop = (document.getElementById('app') as HTMLElement).scrollTop;
         from.meta.scrollTop = scrollTop;
       }
     } else { // 不需要保存滚动位置的路由

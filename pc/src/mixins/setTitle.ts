@@ -16,8 +16,8 @@ export default class extends Vue {
         this.resetTitleAndMeta();
     }
 
-
-     private beforeRouteEnter (to: any, form: any, next: (param: Function) => void) {
+    // 可使用 ts-ignore
+     private beforeRouteEnter (to: any, from: any, next: (param: Function) => void) {
         next((vm:any) => {
           vm.resetTitleAndMeta();
         });

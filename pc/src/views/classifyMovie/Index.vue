@@ -7,10 +7,7 @@
                     :typeZhName="movieTypeName"
                     @get-index-page-data="getIndexPageData"/>
             </nav-bg>
-            <page-list 
-            class="classify-movie-list"
-                :movie="movie"
-            />
+            <page-list :movie="movie"/>
             <pagination 
                 v-if="movie"
                 :totalPage="totalPage"
@@ -77,7 +74,7 @@ export default class extends mixins (scrollBackMixin){
             page: page,
             type: this.movieType
         })
-        const app = <HTMLElement>document.getElementById('app');
+        const app = document.getElementById('app') as HTMLElement;
         app.scrollTop = 0;
     }
 
@@ -119,9 +116,6 @@ export default class extends mixins (scrollBackMixin){
 
 <style lang="scss" scoped>
 .classify-m-wp {
-    .classify-movie-list{
-        min-height: 576px;
-    }
     .classify-m {
         padding-top: 30px;
     }

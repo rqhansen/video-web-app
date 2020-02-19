@@ -26,7 +26,8 @@
 
 <style lang="scss" scoped>
     .footer-wp {
-        padding: 10px;
+        height: 65px;
+        padding: 9px;
         text-align: center;
         color: $font-footer-color;
         line-height: 22px;

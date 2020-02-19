@@ -53,8 +53,7 @@
 <style lang="scss" scoped>
     .page-m-list-wp {
         width: 100%;
-        height: 100%;
-        min-height: 638px;
+        min-height: calc(100vh - 404px);
         ul {
             li {
                 display: inline-block;

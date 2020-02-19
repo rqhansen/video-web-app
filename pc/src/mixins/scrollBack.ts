@@ -7,7 +7,7 @@ import { Component,Watch,Vue} from 'vue-property-decorator';
 export default class extends Vue {
     activated() {
         setTimeout(() => {
-            (<HTMLElement>document.getElementById('app')).scrollTop = this.$route.meta.scrollTop;
+            (document.getElementById('app') as HTMLElement).scrollTop = this.$route.meta.scrollTop;
         },20);
     }
 }
