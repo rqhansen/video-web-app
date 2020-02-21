@@ -7,9 +7,14 @@ import {
     DropdownItem,
     Input,
     Message,
+    MessageBox,
     Pagination,
     Backtop,
     Icon,
+    Form,
+    FormItem,
+    Option,
+    Select
 } from 'element-ui';
 export default {
     install(V:any) {
@@ -21,7 +26,15 @@ export default {
         V.use(Input)
         V.use(Pagination)
         V.use(Backtop)
-        V.use(Icon)
+        V.use(Icon),
+        V.use(Form),
+        V.use(FormItem),
+        V.use(Option),
+        V.use(Select),
         V.prototype.$message = Message;
+        V.prototype.$msgbox = MessageBox;
+        V.prototype.$alert = MessageBox.alert;
+        V.prototype.$confirm = MessageBox.confirm;
+        V.prototype.$prompt = MessageBox.prompt;
     }
 }

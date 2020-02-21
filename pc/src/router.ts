@@ -12,8 +12,9 @@ const DownLoadLesson = () => import(/*webpackChunkName: "downLoadLesson" */ './v
 const NotFind = () => import(/* webpackChunkName: "notFind" */ './views/notFind/Index.vue');
 // 后台登录界面
 const adminLogin = () => import(/*webpackChunkName: "adminLogin"*/ './views/admin/login/Index.vue');
+const adminIndex = () => import(/*webpackChunkName: "adminIndex"*/ './views/admin/index/Index.vue');
 
-Vue.use(Router)
+Vue.use(Router);
 
 const allTypeMovieId = 'action|comedy|romance|science|drama|suspense|war|thrill|horror|disaster|cartoon';
 
@@ -91,6 +92,14 @@ const router = new Router({
       component: adminLogin
     },
     {
+      path: '/admin-index',
+      name: 'adminIndex',
+      component: adminIndex,
+      meta: {
+        auth: true
+      }
+    },
+    {
       path: '*',
       name: 'notFind',
       component: NotFind,
@@ -103,6 +112,18 @@ const router = new Router({
 
 // 即将进到一个新的页面时保存上一个页面的滚动位置,在上一个页面的生命周期函数activated中取值
 router.beforeEach((to,from,next) => {
+  const toMeta = to.meta; 
+  // 后台部分
+  const token = localStorage.getItem('token');
+  if(token) {
+    if(to.path==='/admin-login') {
+      router.replace('/admin-index');
+    }
+  } else {
+    if(toMeta.auth) { // 需要权限才能进入的页面
+      router.replace('/admin-login');
+    }
+  }
   const routeName = from.name;
   const toRouteName = to.name;
   if(routeName) {

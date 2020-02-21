@@ -41,7 +41,7 @@
         }) private width!: number
 
         @Prop({
-            required: true
+            required: false
         }) private cancelTxt!: string
         
         @Prop({

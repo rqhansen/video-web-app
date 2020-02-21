@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="app">
-    <template v-if="$route.name!='adminLogin'">
+    <template v-if="!isAdminPage">
       <!-- 头部 -->
       <Header/>
       <!-- $route.fullPath-->
@@ -15,7 +15,9 @@
       <el-backtop target=".app" :visibilityHeight="400" :bottom="100" :right="80"></el-backtop>
     </template>
     <template v-else>
-      <router-view/>
+      <keep-alive>
+        <router-view class="min-width"/>
+      </keep-alive>
     </template>
   </div>
 </template>
@@ -38,9 +40,15 @@
   export default class extends Vue {
     private container = document.body;
     private throttledScrollHandler: () => void = () => () => {};
+    //后台所有的路由
+    private adminRouteNames = ['adminLogin','adminIndex'];
 
     created() {
       this.initCurrTheme();
+    }
+
+    get isAdminPage() {
+      return this.adminRouteNames.includes(this.$route.name as string);
     }
 
     mounted() {
@@ -117,5 +125,11 @@
       width: 95%;
     }
   }
+}
+
+.confirm-dialog-wp {
+    .el-button--primary {
+        color: #fff;
+    }
 }
 </style>
