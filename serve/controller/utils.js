@@ -1,5 +1,17 @@
+const jwt = require('jsonwebtoken');
 const { movieTypes, limitSeconds } = require('../config/index');
-
+const { handleTokenParams: { secret } } = require('../config/index');
+/**
+ * 生成token
+ */
+const tokenUtils = {
+    createToken() {
+        return jwt.sign({adminName: 'rqhansen',time: Date.now(),timeout: 1000*60*60*2},secret);
+    },
+    verifyToken(token) {
+        return jwt.verify(token,secret);
+    }
+}
 
 /**
  * 日期转为2019-07-03格式
@@ -30,7 +42,8 @@ function handleMovieList(movies) {
 
 module.exports = {
     formatDate,
-    handleMovieList
+    handleMovieList,
+    tokenUtils
 }
 
 

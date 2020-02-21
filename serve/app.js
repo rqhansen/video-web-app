@@ -9,6 +9,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 //配置vue的history模式
 const history = require('connect-history-api-fallback'); 
+const { tokenUtils } = require('./controller/utils.js');
 // const logger = require('koa-logger')
 
 
@@ -22,6 +23,36 @@ app.use(static(path.join(__dirname, '/')));
 app.use(async (ctx, next) => {
   await next();
   ctx.set('X-Powered-By', 'koa2');
+})
+
+// 验证token是否过期
+app.use(async (ctx,next) => {
+  const { url,header: { token } } = ctx.request;
+  // 添加电影的请求需要校验token
+  if(url === '/api/addMovie' || url === '/api/getLastImgSrc') {
+    const result = tokenUtils.verifyToken(token);
+    const unValidRes = {
+      code: -1,
+      data: {
+        code: 100,
+        message: '登录凭证过期，请重新登录'
+      }
+    };
+    if(result) {
+      const { time,timeout } = result;
+      const unValid = Date.now() - time > timeout;
+      if(unValid) { // 凭证过期
+        ctx.body = unValidRes;
+      } else {
+        await next();
+      }
+    }
+    if(!result) { // token不正确
+      ctx.body = unValidRes;
+    }
+  } else {
+    await next();
+  }
 })
 
 // middlewares

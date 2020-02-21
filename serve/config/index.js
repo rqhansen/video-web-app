@@ -24,3 +24,8 @@ module.exports.movieTypes = [ //电影类型
     { '11': 'cartoon' }
 ];
 
+
+module.exports.handleTokenParams = {
+    secret: "rq's movie web app"
+};
+
