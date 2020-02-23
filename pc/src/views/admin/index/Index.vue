@@ -124,7 +124,7 @@ export default {
                 country: '',
                 types: '',
                 language: '',
-                caption: '',
+                caption: '中英双字幕',
                 onDate: '',
                 imdbScore: '',
                 doubanScore: '',

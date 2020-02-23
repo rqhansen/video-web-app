@@ -64,7 +64,6 @@ export default {
             const { data: { code,data: { token }} } = await request({url: '/api/adminLogin',method: 'post',data:params});
             this.loading = false;
             if(code != 0) {
-                this.$message.error('用户名或密码错误');
                 this.$set(this.ruleForm,'password','');
                 return;
             } 
