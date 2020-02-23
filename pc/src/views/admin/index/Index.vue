@@ -1,6 +1,7 @@
 <template>
     <div class="ad-index-wp section">
         <div class="ad-index">
+            <div class="login-out"><el-button @click="loginOut">退出</el-button></div>
             <h1>添加电影</h1>
             <el-form ref="form" :model="form" :rules="rules" label-width="100px">
                 <el-form-item label="typeId" prop="typeId" class="type-id-item">
@@ -227,6 +228,10 @@ export default {
             })
             this.getLastImgSrc();
             }).catch(() => {})
+        },
+        loginOut() {
+            localStorage.removeItem('token');
+            this.$router.push('/admin-login');
         }
     }
 }
@@ -235,9 +240,15 @@ export default {
 <style lang="scss" scoped>
 .ad-index-wp {
     .ad-index {
+        position: relative;
         min-width: 680px;
         padding-top: 30px;
         margin: 0 auto;
+        .login-out {
+            position: absolute;
+            right: 40px;
+            top: 20px;
+        }
         h1 {
             margin-bottom: 50px;
             text-align: center;
