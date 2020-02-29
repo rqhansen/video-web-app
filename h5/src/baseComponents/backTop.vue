@@ -4,7 +4,6 @@
             <div class="back-top">
                 <i class="iconfont iconback-top"></i>
             </div>
-            <div class="bg"></div>
         </aside>
     </transition>
 </template>
@@ -83,20 +82,6 @@ export default {
         height: 100%;
         font-size: 100px;
         color: #106482;
-    }
-    .back-top {
-        width: 100%;
-        height: 100%;
-    }
-    .bg {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        z-index: 0;
-        width: 55%;
-        height: 50%;
-        background-color:#fff;
     }
 }
 </style>
