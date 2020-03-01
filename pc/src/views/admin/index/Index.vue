@@ -206,28 +206,32 @@ export default {
             })
         },
         async add() {
-            const { data: { code,data: {message } } } = await request({
-                url: '/api/addMovie',
-                method: 'post',
-                data: this.form
-            });
-            this.loading = false;
-            if(code !== 0 )return;
-            this.$confirm('添加电影成功', '温馨提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                showCancelButton: false,
-                customClass: 'confirm-dialog-wp',
-                type: 'success'
-           }).then(() => {
-            Object.keys(this.form).forEach(key => {
-                const staticValues = ['typeId','typeName','format','videoSize'];
-                if(!staticValues.includes(key)) {
-                    this.$set(this.form,key,'');
-                }
-            })
-            this.getLastImgSrc();
-            }).catch(() => {})
+            try {
+                const { data: { code,data: {message } } } = await request({
+                    url: '/api/addMovie',
+                    method: 'post',
+                    data: this.form
+                });
+                this.loading = false;
+                if(code !== 0 )return;
+                this.$confirm('添加电影成功', '温馨提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    showCancelButton: false,
+                    customClass: 'confirm-dialog-wp',
+                    type: 'success'
+                }).then(() => {
+                    Object.keys(this.form).forEach(key => {
+                        const staticValues = ['typeId','typeName','format','videoSize'];
+                        if(!staticValues.includes(key)) {
+                            this.$set(this.form,key,'');
+                        }
+                    })
+                    this.getLastImgSrc();
+                }).catch(() => {})
+            } catch (error) {
+                this.loading = false;
+            }
         },
         loginOut() {
             localStorage.removeItem('token');
