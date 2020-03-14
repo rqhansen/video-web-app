@@ -69,3 +69,5 @@ server目录为服务端代码,端口为82。 pc目录为前端pc端代码，端
 
 <img src="https://github.com/rqhansen/video-web-app/blob/master/pc/images/pc-two.png"/>
 
+<img src="https://github.com/rqhansen/video-web-app/blob/master/pc/images/pc-three.png"/>
+
