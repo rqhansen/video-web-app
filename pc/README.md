@@ -5,12 +5,7 @@
 
 ### 描述
 ```
-写这个项目的目的一是为了进一步熟悉vue2.0相关的知识点，typescript在vue项目中的应用
-```
-二是为了熟悉使用Koa2搭建后端服务器,体验后端接口的设计方式
-```
-三是为了熟悉nginx搭建web服务器,加深理解nginx如何作为http静态资源服务器和反向代理服务器。
-```
+写这个项目的目的一是为了进一步熟悉vue2.0相关的知识点，typescript在vue项目中的应用，```二是为了熟悉使用Koa2搭建后端服务器,体验后端接口的设计方式```,三是为了熟悉nginx搭建web服务器,加深理解nginx如何作为http静态资源服务器和反向代理服务器。
 
 ###  技术栈： 
 ```
@@ -20,7 +15,6 @@ vue + vuex + vue-router + vue-cli3 + typescipt + axios + element-ui + scss  + ko
 
 ###  下载
 ```
-
 https://github.com/rqhansen/video-web-app.git
 
 ### 注意
