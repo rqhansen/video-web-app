@@ -12,6 +12,9 @@ const history = require('connect-history-api-fallback');
 // const logger = require('koa-logger')
 const checkToken = require('./middlewares/validToken.js');
 
+/**
+ * 小程序的token验证是否过期略
+ */
 
 
 

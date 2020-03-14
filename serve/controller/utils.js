@@ -8,6 +8,9 @@ const tokenUtils = {
     createToken() {
         return jwt.sign({adminName: 'rqhansen',time: Date.now(),timeout: 1000*60*60*2},secret);
     },
+    createMinToken(session_key,secret) {
+        return jwt.sign({key:session_key,time:Date.now(),timeout: 1000*60*60*1},secret);
+    },
     verifyToken(token) {
         return jwt.verify(token,secret);
     }

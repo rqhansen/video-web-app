@@ -5,7 +5,8 @@ module.exports.connectConfig = { //数据库连接池的配置
     // user: 'root',
     // password: 'admin',
     // database: 'movie'
-    host: '154.92.17.228',
+    // host: '154.92.17.228',
+    host: '42.51.29.9',
     user: 'movie',
     password: 'admin',
     database: 'movie'
