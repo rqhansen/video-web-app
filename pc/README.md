@@ -19,18 +19,14 @@ vue + vuex + vue-router + vue-cli3 + typescipt + axios + element-ui + scss  + ko
 ```
 
 https://github.com/rqhansen/video-web-app.git
-```
+
 ### 注意
 ```
 
 server目录为服务端代码,端口为82。 pc目录为前端pc端代码，端口8080，
-```
-
 由于服务器上的数据库访问设置的是指定IP访问，所以项目运行起来后，界面上并没有数据返回，
-```
-
 [在线预览](https://www.wanxunm.com),但是又因为是个人的在线项目，备案问题，一般情况下线上不展示对应页面。
-```
+
 
 ### 前端与后端依赖安装
 ```
