@@ -1,0 +1,14 @@
+.container {
+  padding-top: 20rpx;
+  background: rgba(204,204,204,.3);
+}
+
+.clear-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 20rpx;
+  background: #fff;
+
+}

@@ -1,0 +1,101 @@
+<!--index.wxml-->
+<view class="container">
+<!-- 导航条 -->
+  <scroll-view class="title-bar-content border-bottom" scroll-left="{{toNavLeft}}" scroll-x="true" scroll-with-animation="true">
+    <view class="title-bar-item {{index === currIndex ? '.red-color.border-bottom' : ''}}" wx:for="{{navs}}" wx:key="unique" bindtap="switchTab" data-index="{{index}}">{{item.label}}</view>
+  </scroll-view>
+  <!-- 导航条结束 -->
+  <view class="container-content-wrap">
+    <view class="container-content">
+      <!-- 文本框 -->
+      <view class="form-behavior">
+        <icon type="search" size="14" color="rgb(230, 67, 64)"/>
+        <view class="be-input" bindtap="bindFocus"><text>输入电影名称</text></view>
+      </view>
+      <!-- 轮播 -->
+      <view class="swiper-wrap">
+        <swiper class="swiper-container" duration="300" current="{{currIndex}}" bindchange="swipeList">
+          <block wx:for="{{navs.length}}" wx:key="index">
+            <swiper-item>
+              <scroll-view scroll-y="true" enable-back-to-top="true" enable-flex="true" scroll-top="{{scrollTops[currIndex]}}" bindscrolltolower="scrolltolower" bindscroll="swiperItemScroll">
+                <view class="scroll-view-content">
+                  <view class="movie-item-wrap" hover-class="item-hover" wx:for="{{!index?movies[index]:movies[index].typeMovies}}" wx:for-item="movieItem" wx:key="fullName" data-id="{{movieItem.id}}"  data-type="{{movieItem.filmType||movieItem.type}}" bindtap="goMovieDetail">
+                    <view class="movie-item">
+                      <image src="https://www.wanxunm.com/common/{{movieItem.indexImgSrc}}" mode="scaleToFill" lazy-load="true"></image>
+                    </view>
+                    <view class="name ellipsis"><text>{{movieItem.fullName || (movieItem.pureName+movieItem.sharpness)}}</text></view>
+                    <view class="pubDate ellipsis {{movieItem.isNew ? 'red-color' : ''}}"><text>{{movieItem.pubDate}}</text></view>
+                  </view>
+                    <view class="loading-wrap">
+      <mp-loading showLoading="{{showBottomLoading}}"/>
+  </view>
+                </view>
+              </scroll-view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索层 -->
+  <view class="search-layer {{hasFocus? 'show-layer' : ''}}">
+  <!-- 表单 -->
+    <view class="form border-bottom">
+      <view class="form-input-wrap">
+        <icon type="search" size="20"/>
+        <input class="form-input" placeholder="输入电影名称" value="{{inputValue}}" bindinput="input"/>
+        <view  bindtap="deleInputValue" wx:if="{{inputValue}}">
+          <icon type="cancel" size="20"/>
+        </view>
+      </view>
+      <view class="form-btn">
+        <button wx:if="{{inputValue}}" type="default" size="mini" plain="true" catchtap="searchMovie">搜索</button>
+        <button wx:else type="default" class="red-color" size="mini" plain="true" bindtap="cancel">取消</button>
+      </view>
+    </view>
+    <!-- 历史搜索 -->
+    <scroll-view style="height:calc(100% - 80rpx)" scroll-y="true">
+      <view class="his-search-wrap">
+        <view class="search-content">
+          <block  wx:if="{{historySearch.length}}">
+            <view class="search-title">
+              <text>历史搜索</text>
+              <text class="iconfont icon-clear" bindtap="clearHistory"></text>
+            </view>
+            <view class="search-history-wrap">
+              <view class="search-item" wx:for="{{historySearch}}" wx:key="*this">
+                <view class="searched" hover-class="search-actived" data-s-name="{{item}}" catchtap="searchMovie">{{item}}</view>
+              </view>
+            </view>
+          </block>
+          <block wx:if="{{searchedMovie.length}}">
+            <view class="search-movie-wrap">
+              <view class="search-movie-item" wx:for="{{searchedMovie}}" wx:key="*this" hover-class="item-hover" catchtap="goMovieDetail" data-id="{{item.id}}"  data-type="{{item.type}}">
+                <view class="avator">
+                  <image src="https://www.wanxunm.com/common/{{item.indexImgSrc}}" mode="scaleToFill" lazy-load="true"></image>
+                </view>
+                <view class="intro">
+                  <view class="title ellipsis margin"><text class="red-color">{{item.pureName}}</text><text>{{item.sharpness}}</text></view>
+                  <view class="year ellipsis margin"><text>{{item.year}}({{item.country}})</text></view>
+                  <view class="detail"><text>{{item.shortIntro}}</text></view>
+                  <view class="update"><text>更新:  {{item.pubDate}}</text><text class="red-color" >查看</text></view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view wx:elif="{{searchedMovie&&searchedMovie.length==0}}" class="empty">暂无数据</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+</view>

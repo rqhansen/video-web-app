@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="bg">
+    <!-- 个人信息 -->
+    <view class="user-info-wrap border-bottom">
+      <view class="center">
+        <button wx:if="{{!hasUserInfo && canIUse}}" size="mini" type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+          授权登录
+        </button>
+        <block wx:else>
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" ></image>
+          <view class="iconfont icon-weixin"></view>
+          <view>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 功能菜单 -->
+  <view class="menu-wrap">
+    <view class="menu-item" catchtap="goSetting">
+        <view class="text"><text>设置</text></view><view class="iconfont icon-right-arrow"></view>
+    </view>
+    <view class="menu-item" catchtap="goReward">
+        <view class="text"><text>打赏</text></view><view class="iconfont icon-right-arrow"></view>
+    </view>
+  </view>
+</view>

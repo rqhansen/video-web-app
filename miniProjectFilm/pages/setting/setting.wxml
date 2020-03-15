@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="content">
+    <view class="clear-wrap" catchtap="clearCache">
+        <text>清除缓存</text><text>{{cacheSize}}kb</text>
+    </view>
+  </view>
+</view>

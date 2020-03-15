@@ -1,0 +1,47 @@
+/**app.wxss**/
+@import './iconfont/iconfont.wxss';
+page {
+  height: 100%;
+   padding: 0;
+  font-family: "PingFangSC-Thin";
+  font-size: 32rpx;
+  overflow: hidden;
+}
+.container {
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+} 
+icon {
+  vertical-align: middle;
+}
+.ellipsis {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.red-color {
+  color: #e64340!important;
+}
+
+.item-hover {
+  background: rgba(153, 153, 153, .1);
+} 
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.0) {
+  .border-bottom:after  {
+      -webkit-transform: scaleY(.5);
+      transform: scaleY(.5);
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3.0) {
+  .border-bottom:after {
+    -webkit-transform: scaleY(.33);
+    transform: scaleY(.33);
+  }
+}
+
+
+

@@ -1,0 +1,49 @@
+
+.m-detail-wrap {
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.m-detail-wrap .center{
+  padding: 0 20rpx;
+  text-align: center;
+}
+.m-detail-content {
+  padding: 20rpx 20rpx 0;
+  margin-bottom: 20rpx;
+  border: 1px solid #e64340;
+}
+
+.m-detail-wrap .mar-bot {
+  margin-bottom: 20rpx;
+}
+
+.m-detail-wrap .p-name{
+  margin: 0 20rpx;
+}
+
+.m-drama-title {
+  font-size: 26rpx;
+}
+
+.avator image{
+  display: block;
+  width:600rpx;
+  height: 800rpx;
+  max-height: 800rpx;
+}
+
+.actor-label {
+  display: inline-block;
+  width: 170rpx;
+}
+
+.res {
+  margin-left: 30rpx;
+  word-break: break-all;
+}
+
+.mar-left {
+  text-indent: 80rpx;
+}
+

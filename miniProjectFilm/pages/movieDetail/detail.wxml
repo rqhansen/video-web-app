@@ -1,0 +1,47 @@
+<view class="container m-detail-wrap">
+  <scroll-view style="height:100%;" scroll-y="true">
+    <view class="m-detail-content">
+      <view class="center m-full-name red-color ellipsis mar-bot">
+        <text>{{mDetail.fullName}}</text>
+      </view>
+      <view class="center m-name mar-bot">
+        <text>片名: </text><text class="p-name">{{mDetail.pureName}}</text>发布时间：<text>{{mDetail.pubDate}}</text>
+      </view>
+      <view class="m-drama-title mar-bot ellipsis">
+        <text>{{mDetail.pureName}}迅雷下载地址和剧情：</text>
+      </view>
+      <view class="avator">
+        <image src="https://www.wanxunm.com/common/{{mDetail.detailImgSrc}}" mode="scaleToFill" lazy-load="true"></image>
+      </view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.transName&&mDetail.transName!==' '}}"><text decode="true">@译&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</text><text class="res">{{mDetail.transName}}</text></view>
+      <view class="mar-bot ellipsis"  wx:if="{{mDetail.subPureName&&mDetail.subPureName!==' '}}"><text decode="true">@片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</text><text class="res">{{mDetail.subPureName}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.year&&mDetail.year!==' '}}"><text decode="true">@年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代</text><text class="res">{{mDetail.year}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.country&&mDetail.country!==' '}}"><text decode="true">@产&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地</text><text class="res">{{mDetail.country}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.types&&mDetail.types!==' '}}"><text decode="true">@类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</text><text class="res">{{mDetail.types}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.language&&mDetail.language!==' '}}"><text decode="true">@语&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言</text><text class="res">{{mDetail.language}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.caption&&mDetail.caption!==' '}}"><text decode="true">@字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幕</text><text class="res">{{mDetail.caption}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.onDate&&mDetail.onDate!==' '}}">@上映日期<text class="res">{{mDetail.onDate}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.imdbScore&&mDetail.imdbScore!==' '}}">@IMDb评分<text class="res">{{mDetail.imdbScore}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.format&&mDetail.format!==' '}}"><text decode="true">@格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式</text><text class="res">{{mDetail.format}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.fileSize&&mDetail.fileSize!==' '}}">@文件大小<text class="res">{{mDetail.fileSize}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.videoSize&&mDetail.videoSize!==' '}}">@视频尺寸<text class="res">{{mDetail.videoSize}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.filmLength&&mDetail.filmLength!==' '}}"><text decode="true">@片&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长</text><text class="res">{{mDetail.filmLength}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.doubanScore&&mDetail.doubanScore!==' '}}">@豆瓣评分<text class="res">{{mDetail.doubanScore}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.director&&mDetail.director!==' '}}"><text decode="true">@导&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演</text><text class="res">{{mDetail.director}}</text></view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.editor&&mDetail.editor!==' '}}"><text decode="true">@编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;剧</text><text class="res">{{mDetail.editor}}</text></view>
+      <view class="mar-bot ellipsis">
+        <text decode="true">@主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演</text><text class="res">{{mDetail.actor[0]}}</text>
+      </view>
+      <view class="mar-bot ellipsis" wx:for="{{subActors}}" wx:key="unique">
+        <text class="actor-label"></text><text>{{item}}</text>
+      </view>
+      <view class="mar-bot ellipsis" wx:if="{{mDetail.label&&mDetail.label!==' '}}"><text decode="true">@标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签</text><text class="res">{{mDetail.label}}</text></view>
+      <view class="mar-bot ellipsis">
+        <text decode="true">@简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介</text>
+      </view>
+      <view class="mar-bot mar-left" wx:for="{{mDetail.shortIntro}}" wx:key="*this">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

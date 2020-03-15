@@ -1,0 +1,11 @@
+/* pages/reward/reward.wxss */
+
+.content {
+  margin: 100rpx auto 0;
+  text-align: center;
+}
+
+.content image {
+  width: 500rpx;
+  height: 500rpx;
+}

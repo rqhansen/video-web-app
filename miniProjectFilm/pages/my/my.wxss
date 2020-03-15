@@ -1,0 +1,75 @@
+
+.container {
+  background: rgba(204,204,204,.3);
+}
+.bg {
+  background: #fff;
+}
+
+.user-info-wrap {
+  position: relative;
+  height: 200rpx;
+  padding: 40rpx 0 50rpx;
+  background-color: #fff;
+}
+
+.user-info-wrap .center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user-info-wrap button {
+  vertical-align: middle;
+}
+
+.center image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+
+.center .userinfo-nickname {
+  font-weight: bold;
+}
+
+.center .icon-weixin {
+  position: absolute;
+  top: 148rpx;
+  right: 39%;
+  font-size: 60rpx;
+  color: #1afa29;
+}
+
+.icon-weixin:before {
+  position: absol
+} 
+
+.menu-wrap {
+  margin-top: 20rpx;
+}
+
+.menu-wrap .menu-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 20rpx;
+}
+
+.menu-wrap .menu-item {
+  background-color: #fff;
+}
+.menu-wrap .menu-item:not(:first-child) {
+  margin-top: 40rpx;
+}
+
+.menu text{
+  font-weight: bold;
+  color: 40rpx;
+}
+
+.menu-item .icon-right-arrow {
+  font-size: 40rpx;
+  color: rgba(204,204,204,.9);
+}
+

@@ -1,0 +1,6 @@
+<!--pages/reward/reward.wxml-->
+<view class="container">
+  <view class="content">
+    <image src="../../images/my/reward_qrcode.png" lazy-load="true" mode="scaleToFill"></image>
+  </view>
+</view>

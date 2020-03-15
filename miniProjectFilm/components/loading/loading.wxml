@@ -1,0 +1,1 @@
+<view  wx:if="{{showLoading}}" class="loading wx_dot_loading"></view>
