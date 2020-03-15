@@ -11,7 +11,7 @@ function login() {
       async success(res) {
         const { code } = res;
         wx.request({
-          url: "http://localhost:82/api/codeToGetSession",
+          url: "https:/www.wanxunm.com/api/codeToGetSession",
           method: "POST",
           data: { code },
           success(res) {
