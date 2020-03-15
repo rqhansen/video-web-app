@@ -42,10 +42,5 @@ https://github.com/rqhansen/video-web-app.git
 
 <img src="https://github.com/rqhansen/images/tree/master/video-web-app/gif-index.gif"/>
 
-<img src="https://github.com/rqhansen/images/tree/master/video-web-app/gif-two.gif"/>
-
-<img src="https://github.com/rqhansen/images/tree/master/video-web-app/gif-three.gif"/>
-
-<img src="https://github.com/rqhansen/images/tree/master/video-web-app/gif-four.gif"/>
 
 
