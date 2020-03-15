@@ -61,10 +61,10 @@ server目录为服务端代码,端口为82。 h5目录为前端h5端代码，端
 
 ## 部分截图
 
-<img src="https://github.com/rqhansen/video-web-app/blob/master/h5/images/h5-index.png"/>
+<img src="https://github.com/rqhansen/images/tree/master/video-web-app/h5-index.png"/>
 
-<img src="https://github.com/rqhansen/video-web-app/blob/master/h5/images/h5-two.png"/>
+<img src="https://github.com/rqhansen/images/tree/master/video-web-app/h5-two.png"/>
 
-<img src="https://github.com/rqhansen/video-web-app/blob/master/h5/images/h5-three.png"/>
+<img src="https://github.com/rqhansen/images/tree/master/video-web-app/h5-three.png"/>
 
 
