@@ -29,6 +29,12 @@ icon {
   background: rgba(153, 153, 153, .1);
 } 
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2.0) {
   .border-bottom:after  {
       -webkit-transform: scaleY(.5);
