@@ -16,8 +16,6 @@ const checkToken = require('./middlewares/validToken.js');
  * 小程序的token验证是否过期略
  */
 
-
-
 const router = require('./routes/index')
 // error handler
 onerror(app)
@@ -29,7 +27,7 @@ app.use(async (ctx, next) => {
   ctx.set('X-Powered-By', 'koa2');
 })
 
-// 验证token是否过期
+// 验证token是否过期(登录添加电影后台时)
 app.use(checkToken());
 
 // middlewares
@@ -62,6 +60,7 @@ app.on('error', (err, ctx) => {
 });
 
 app.use(history());
-app.listen(process.env.PORT || 82);
+// app.listen(process.env.PORT || 82);
+app.listen(82);
 
 module.exports = app

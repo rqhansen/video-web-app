@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 const { movieTypes, limitSeconds } = require('../config/index');
 const { handleTokenParams: { secret } } = require('../config/index');
+
 /**
- * 生成token
+ * 微信小程序生成token
  */
 const tokenUtils = {
     createToken() {
@@ -15,6 +16,8 @@ const tokenUtils = {
         return jwt.verify(token,secret);
     }
 }
+
+
 
 /**
  * 日期转为2019-07-03格式

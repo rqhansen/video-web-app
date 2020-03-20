@@ -25,10 +25,8 @@ function getOpenId(code) {
                 resolve(body1);
             } else {
                 const {session_key:sessionkey,openid} = JSON.parse(body);
-                console.log(sessionkey,openid);
                 const minToken = tokenUtils.createMinToken(sessionkey,openid);
                 const result = await connection.query(`insert into miniuser values ("${openid}","${sessionkey}")`);
-                console.log(result);
                 if(result) {
                     const body2 = {
                         code: 0,
