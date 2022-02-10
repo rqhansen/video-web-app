@@ -30,7 +30,7 @@
     "babel-plugin-component": "^1.1.1",
     "compression-webpack-plugin": "^3.0.0",
     "cssnano-preset-advanced": "^4.0.7",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
     "sass-loader": "^8.0.0",
